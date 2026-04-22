@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>English Master | Pełny Kurs</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
     .gradient-header { background: linear-gradient(135deg, #0f172a 0%, #312e81 100%); }
@@ -114,16 +114,19 @@
         <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 mb-8 pb-6 border-b border-slate-100">
           <div>
             <span id="lessonTag" class="text-indigo-600 font-bold text-xs uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full inline-block mb-3">
-              Moduł 1
+              Moduł 1: Podstawy
             </span>
-            <h2 id="lessonTitle" class="text-3xl md:text-4xl font-extrabold text-slate-900">Lekcja 1</h2>
+            <h2 id="lessonTitle" class="text-3xl md:text-4xl font-extrabold text-slate-900">Powitania</h2>
             <p id="lessonDescription" class="text-slate-600 mt-3 max-w-3xl">
-              Opis lekcji.
+              Nauka zwrotów powitalnych i pożegnalnych.
             </p>
           </div>
 
           <div class="flex flex-wrap gap-3">
-            <button id="tabAudio" onclick="setTab('audio')" class="tab-btn active px-4 py-3 rounded-2xl border border-slate-200 font-semibold text-slate-800 transition">
+            <button id="tabLesson" onclick="setTab('lesson')" class="tab-btn active px-4 py-3 rounded-2xl border border-slate-200 font-semibold text-slate-800 transition">
+              Lekcja
+            </button>
+            <button id="tabAudio" onclick="setTab('audio')" class="tab-btn px-4 py-3 rounded-2xl border border-slate-200 font-semibold text-slate-800 transition">
               Nagrania
             </button>
             <button id="tabInfo" onclick="setTab('info')" class="tab-btn px-4 py-3 rounded-2xl border border-slate-200 font-semibold text-slate-800 transition">
@@ -143,156 +146,475 @@
     M1L1: {
       module: "Moduł 1: Podstawy",
       title: "Powitania",
-      description: "Nauka zwrotów powitalnych i pożegnalnych, np. Hello i Goodbye."
+      description: "Nauka zwrotów powitalnych i pożegnalnych, np. Hello i Goodbye.",
+      learn: [
+        "poznasz podstawowe formy powitania",
+        "nauczysz się prostych pożegnań",
+        "oswoisz pierwsze słowa potrzebne do kontaktu"
+      ],
+      scope: [
+        "powitania",
+        "pożegnania",
+        "pierwszy kontakt"
+      ]
     },
     M1L2: {
       module: "Moduł 1: Podstawy",
       title: "Przedstawianie się",
-      description: "Podstawowe dane osobowe i zwrot Nice to meet you."
+      description: "Podstawowe dane osobowe i zwrot Nice to meet you.",
+      learn: [
+        "powiesz, jak się nazywasz",
+        "przedstawisz się drugiej osobie",
+        "użyjesz zwrotu Nice to meet you"
+      ],
+      scope: [
+        "imię",
+        "przedstawianie się",
+        "pierwsza rozmowa"
+      ]
     },
     M1L3: {
       module: "Moduł 1: Podstawy",
       title: "Liczby 1-10",
-      description: "Pierwsze kroki w liczeniu."
+      description: "Pierwsze kroki w liczeniu.",
+      learn: [
+        "poznasz liczby od 1 do 10",
+        "przećwiczysz ich wymowę",
+        "użyjesz ich w prostych sytuacjach"
+      ],
+      scope: [
+        "liczenie",
+        "liczby podstawowe",
+        "wymowa"
+      ]
     },
     M1L4: {
       module: "Moduł 1: Podstawy",
       title: "Kolory",
-      description: "Nazywanie barw otaczającego świata."
+      description: "Nazywanie barw otaczającego świata.",
+      learn: [
+        "nazwiesz podstawowe kolory",
+        "połączysz kolor z przedmiotem",
+        "utrwalisz słownictwo opisowe"
+      ],
+      scope: [
+        "kolory",
+        "opisy",
+        "podstawowe słownictwo"
+      ]
     },
     M1L5: {
       module: "Moduł 1: Podstawy",
       title: "Rodzina",
-      description: "Nazewnictwo najbliższych członków rodziny."
+      description: "Nazewnictwo najbliższych członków rodziny.",
+      learn: [
+        "nazwiesz członków rodziny",
+        "opowiesz o najbliższych",
+        "utrwalisz słownictwo osobowe"
+      ],
+      scope: [
+        "mother",
+        "father",
+        "brother",
+        "sister"
+      ]
     },
     M1L6: {
       module: "Moduł 1: Podstawy",
       title: "Samopoczucie",
-      description: "Pytania o stan emocjonalny i proste odpowiedzi."
+      description: "Pytania o stan emocjonalny i proste odpowiedzi.",
+      learn: [
+        "zadasz pytanie o samopoczucie",
+        "odpowiesz prostym zdaniem",
+        "użyjesz podstawowych reakcji w rozmowie"
+      ],
+      scope: [
+        "How are you?",
+        "samopoczucie",
+        "proste odpowiedzi"
+      ]
     },
 
     M2L1: {
       module: "Moduł 2: Życie Codzienne",
       title: "Mój Dom",
-      description: "Nazwy pomieszczeń i podstawowych mebli."
+      description: "Nazwy pomieszczeń i podstawowych mebli.",
+      learn: [
+        "nazwiesz najważniejsze pomieszczenia",
+        "poznasz podstawowe meble",
+        "opiszesz prosty układ domu"
+      ],
+      scope: [
+        "dom",
+        "pomieszczenia",
+        "meble"
+      ]
     },
     M2L2: {
       module: "Moduł 2: Życie Codzienne",
       title: "Jedzenie",
-      description: "Posiłki oraz podstawowe produkty spożywcze."
+      description: "Posiłki oraz podstawowe produkty spożywcze.",
+      learn: [
+        "nazwiesz popularne produkty",
+        "będziesz mówić o jedzeniu i napojach",
+        "utrwalisz słownictwo codzienne"
+      ],
+      scope: [
+        "jedzenie",
+        "napoje",
+        "posiłki"
+      ]
     },
     M2L3: {
       module: "Moduł 2: Życie Codzienne",
       title: "Czas wolny",
-      description: "Mówienie o zainteresowaniach i hobby."
+      description: "Mówienie o zainteresowaniach i hobby.",
+      learn: [
+        "powiesz, co lubisz robić",
+        "nazwiesz proste aktywności",
+        "opiszesz czas wolny"
+      ],
+      scope: [
+        "hobby",
+        "zainteresowania",
+        "free time"
+      ]
     },
     M2L4: {
       module: "Moduł 2: Życie Codzienne",
       title: "Zawody",
-      description: "Nazywanie popularnych profesji."
+      description: "Nazywanie popularnych profesji.",
+      learn: [
+        "nazwiesz wybrane zawody",
+        "powiesz, kim ktoś jest",
+        "utrwalisz słownictwo pracy"
+      ],
+      scope: [
+        "teacher",
+        "doctor",
+        "office",
+        "student"
+      ]
     },
     M2L5: {
       module: "Moduł 2: Życie Codzienne",
       title: "Zegar i Czas",
-      description: "Podawanie pełnych godzin i pór dnia."
+      description: "Podawanie pełnych godzin i pór dnia.",
+      learn: [
+        "odczytasz godziny",
+        "nazwiesz pory dnia",
+        "użyjesz słownictwa czasu"
+      ],
+      scope: [
+        "time",
+        "clock",
+        "morning",
+        "night"
+      ]
     },
     M2L6: {
       module: "Moduł 2: Życie Codzienne",
       title: "Codzienna Rutyna",
-      description: "Czasowniki opisujące typowe czynności od rana do wieczora."
+      description: "Czasowniki opisujące typowe czynności od rana do wieczora.",
+      learn: [
+        "opiszesz prostą rutynę dnia",
+        "użyjesz podstawowych czasowników",
+        "powiesz, co robisz rano i wieczorem"
+      ],
+      scope: [
+        "wake up",
+        "shower",
+        "dinner",
+        "go to bed"
+      ]
     },
 
     M3L1: {
       module: "Moduł 3: Zakupy",
       title: "Sklep spożywczy",
-      description: "Kupowanie artykułów pierwszej potrzeby."
+      description: "Kupowanie artykułów pierwszej potrzeby.",
+      learn: [
+        "nazwiesz podstawowe produkty",
+        "powiesz, co chcesz kupić",
+        "oswoisz słownictwo sklepu"
+      ],
+      scope: [
+        "produkty spożywcze",
+        "zakupy codzienne",
+        "podstawowe potrzeby"
+      ]
     },
     M3L2: {
       module: "Moduł 3: Zakupy",
       title: "Ubrania",
-      description: "Garderoba, rozmiary i przymierzanie."
+      description: "Garderoba, rozmiary i przymierzanie.",
+      learn: [
+        "nazwiesz ubrania",
+        "zrozumiesz podstawowe rozmiary",
+        "użyjesz słownictwa zakupów odzieżowych"
+      ],
+      scope: [
+        "clothes",
+        "sizes",
+        "fitting"
+      ]
     },
     M3L3: {
       module: "Moduł 3: Zakupy",
       title: "Liczby 20+ i Ceny",
-      description: "Pieniądze i liczebniki powyżej dwudziestu."
+      description: "Pieniądze i liczebniki powyżej dwudziestu.",
+      learn: [
+        "poznasz większe liczby",
+        "zrozumiesz ceny",
+        "połączysz liczebniki z zakupami"
+      ],
+      scope: [
+        "prices",
+        "money",
+        "numbers 20+"
+      ]
     },
     M3L4: {
       module: "Moduł 3: Zakupy",
       title: "Elektronika",
-      description: "Sprzęty elektroniczne i zgłaszanie ich awarii."
+      description: "Sprzęty elektroniczne i zgłaszanie ich awarii.",
+      learn: [
+        "nazwiesz podstawowe urządzenia",
+        "powiesz, że coś nie działa",
+        "użyjesz słownictwa technicznego"
+      ],
+      scope: [
+        "phone",
+        "charger",
+        "laptop",
+        "broken"
+      ]
     },
     M3L5: {
       module: "Moduł 3: Zakupy",
       title: "Płatności",
-      description: "Słownictwo związane z obsługą kasy i paragonem."
+      description: "Słownictwo związane z obsługą kasy i paragonem.",
+      learn: [
+        "powiesz, jak chcesz zapłacić",
+        "zrozumiesz słownictwo przy kasie",
+        "utrwalisz kartę, gotówkę i paragon"
+      ],
+      scope: [
+        "cash",
+        "card",
+        "PIN",
+        "receipt"
+      ]
     },
     M3L6: {
       module: "Moduł 3: Zakupy",
       title: "Reklamacje",
-      description: "Rozmowa z obsługą w przypadku zwrotów."
+      description: "Rozmowa z obsługą w przypadku zwrotów.",
+      learn: [
+        "powiesz, że chcesz zwrot",
+        "zgłosisz problem z zakupem",
+        "użyjesz słownictwa reklamacyjnego"
+      ],
+      scope: [
+        "refund",
+        "exchange",
+        "manager",
+        "help"
+      ]
     },
 
     M4L1: {
       module: "Moduł 4: Podróże",
       title: "Na lotnisku",
-      description: "Procedury lotniskowe i bilety."
+      description: "Procedury lotniskowe i bilety.",
+      learn: [
+        "poznasz słownictwo lotniskowe",
+        "zrozumiesz podstawowe procedury",
+        "użyjesz słów związanych z lotem"
+      ],
+      scope: [
+        "airport",
+        "ticket",
+        "passport",
+        "flight"
+      ]
     },
     M4L2: {
       module: "Moduł 4: Podróże",
       title: "Transport publiczny",
-      description: "Kupowanie biletów na pociąg lub autobus."
+      description: "Kupowanie biletów na pociąg lub autobus.",
+      learn: [
+        "kupisz prosty bilet",
+        "zrozumiesz podstawy transportu publicznego",
+        "utrwalisz słownictwo podróży"
+      ],
+      scope: [
+        "bus",
+        "train",
+        "ticket",
+        "station"
+      ]
     },
     M4L3: {
       module: "Moduł 4: Podróże",
       title: "Kierunki i Orientacja",
-      description: "Pytanie o drogę, skręcanie i odległości."
+      description: "Pytanie o drogę, skręcanie i odległości.",
+      learn: [
+        "zapytasz o drogę",
+        "zrozumiesz kierunki",
+        "użyjesz słów left, right, near, far"
+      ],
+      scope: [
+        "street",
+        "corner",
+        "left/right",
+        "near/far"
+      ]
     },
     M4L4: {
       module: "Moduł 4: Podróże",
       title: "Hotel i Zakwaterowanie",
-      description: "Rezerwacja pokoju, zameldowanie i bagaż."
+      description: "Rezerwacja pokoju, zameldowanie i bagaż.",
+      learn: [
+        "zarezerwujesz pokój",
+        "użyjesz słów związanych z hotelem",
+        "poradzisz sobie przy check-in"
+      ],
+      scope: [
+        "reservation",
+        "check-in",
+        "room",
+        "luggage"
+      ]
     },
     M4L5: {
       module: "Moduł 4: Podróże",
       title: "Kontakt Telefoniczny",
-      description: "Rozmowa przez telefon, wiadomości i zasięg."
+      description: "Rozmowa przez telefon, wiadomości i zasięg.",
+      learn: [
+        "użyjesz prostego słownictwa telefonicznego",
+        "powiesz o wiadomości i połączeniu",
+        "utrwalisz call, message, signal"
+      ],
+      scope: [
+        "call",
+        "message",
+        "signal",
+        "phone contact"
+      ]
     },
     M4L6: {
       module: "Moduł 4: Podróże",
       title: "Planowanie i Czas",
-      description: "Ustalanie spotkań, pory dnia i harmonogram."
+      description: "Ustalanie spotkań, pory dnia i harmonogram.",
+      learn: [
+        "ustalisz prosty termin",
+        "powiesz o porze dnia",
+        "użyjesz słów meeting i schedule"
+      ],
+      scope: [
+        "meeting",
+        "morning",
+        "evening",
+        "schedule"
+      ]
     },
 
     M5L1: {
       module: "Moduł 5: Praca i Biznes",
       title: "Firma i Biuro",
-      description: "Nazewnictwo stanowisk, praca zespołowa i biuro."
+      description: "Nazewnictwo stanowisk, praca zespołowa i biuro.",
+      learn: [
+        "nazwiesz wybrane role zawodowe",
+        "użyjesz słownictwa firmowego",
+        "utrwalisz office, team, manager"
+      ],
+      scope: [
+        "manager",
+        "team",
+        "office",
+        "company"
+      ]
     },
     M5L2: {
       module: "Moduł 5: Praca i Biznes",
       title: "Spotkania Służbowe",
-      description: "Umawianie terminów, kalendarz i zaproszenia."
+      description: "Umawianie terminów, kalendarz i zaproszenia.",
+      learn: [
+        "ustalisz spotkanie",
+        "użyjesz słownictwa terminarza",
+        "poznasz invite, calendar, appointment"
+      ],
+      scope: [
+        "calendar",
+        "appointment",
+        "invite",
+        "meeting setup"
+      ]
     },
     M5L3: {
       module: "Moduł 5: Praca i Biznes",
       title: "Oferty i Kontrakty",
-      description: "Usługi, szczegóły, umowy i terminy."
+      description: "Usługi, szczegóły, umowy i terminy.",
+      learn: [
+        "porozmawiasz o ofercie",
+        "użyjesz słownictwa usług i kontraktów",
+        "poznasz contract i deadline"
+      ],
+      scope: [
+        "service",
+        "details",
+        "contract",
+        "deadline"
+      ]
     },
     M5L4: {
       module: "Moduł 5: Praca i Biznes",
       title: "E-maile i Korespondencja",
-      description: "Pisanie odpowiedzi, załączniki i prośby."
+      description: "Pisanie odpowiedzi, załączniki i prośby.",
+      learn: [
+        "użyjesz słownictwa mailowego",
+        "poznasz request, reply, attachment",
+        "lepiej zrozumiesz korespondencję biurową"
+      ],
+      scope: [
+        "reply",
+        "attachment",
+        "request",
+        "email"
+      ]
     },
     M5L5: {
       module: "Moduł 5: Praca i Biznes",
       title: "Strategia i Prezentacje",
-      description: "Prezentowanie pomysłów, korzyści i celów."
+      description: "Prezentowanie pomysłów, korzyści i celów.",
+      learn: [
+        "omówisz pomysł i plan",
+        "użyjesz słownictwa prezentacyjnego",
+        "poznasz idea, benefit i goal"
+      ],
+      scope: [
+        "idea",
+        "benefit",
+        "goal",
+        "presentation"
+      ]
     },
     M5L6: {
       module: "Moduł 5: Praca i Biznes",
       title: "Rozwiązywanie Problemów",
-      description: "Zadania, priorytety, aktualizacje i wsparcie."
+      description: "Zadania, priorytety, aktualizacje i wsparcie.",
+      learn: [
+        "powiesz o zadaniu i problemie",
+        "użyjesz priorytetów i aktualizacji",
+        "utrwalisz support i update"
+      ],
+      scope: [
+        "task",
+        "priority",
+        "update",
+        "support"
+      ]
     }
   };
 
@@ -312,7 +634,7 @@
   }
 
   let currentLessonId = "M1L1";
-  let currentTab = "audio";
+  let currentTab = "lesson";
   let completedLessons = JSON.parse(localStorage.getItem("englishMasterCompletedLessons") || "[]");
 
   function getAudioFile(lessonId, typeKey) {
@@ -321,10 +643,6 @@
 
   function getModuleFromLessonId(lessonId) {
     return Number(lessonId.match(/^M(\d)L(\d)$/)[1]);
-  }
-
-  function getLessonNumberFromLessonId(lessonId) {
-    return Number(lessonId.match(/^M(\d)L(\d)$/)[2]);
   }
 
   function updateProgress() {
@@ -376,6 +694,7 @@
 
   function setTab(tab) {
     currentTab = tab;
+    document.getElementById("tabLesson").classList.toggle("active", tab === "lesson");
     document.getElementById("tabAudio").classList.toggle("active", tab === "audio");
     document.getElementById("tabInfo").classList.toggle("active", tab === "info");
     renderContent();
@@ -396,33 +715,79 @@
     renderContent();
   }
 
-  function renderContent() {
-    const container = document.getElementById("contentArea");
-    container.innerHTML = "";
-    const lessonInfo = courseData[currentLessonId];
+  function renderLessonContent(lessonInfo) {
+    return `
+      <div class="space-y-6">
+        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+          <h3 class="text-xl font-bold text-slate-900 mb-3">O czym jest ta lekcja</h3>
+          <p class="text-slate-700 leading-relaxed">${lessonInfo.description}</p>
+        </div>
 
-    if (currentTab === "info") {
-      container.innerHTML = `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
-            <h3 class="text-xl font-bold text-slate-900 mb-3">Informacje o lekcji</h3>
-            <div class="space-y-2 text-slate-700">
-              <p><strong>Moduł:</strong> ${lessonInfo.module}</p>
-              <p><strong>Lekcja:</strong> ${lessonInfo.title}</p>
-              <p><strong>ID:</strong> ${currentLessonId}</p>
-              <p><strong>Status:</strong> ${completedLessons.includes(currentLessonId) ? "Ukończona" : "Nieukończona"}</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-white border border-slate-200 rounded-3xl p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Czego się nauczysz</h3>
+            <ul class="space-y-3 text-slate-700">
+              ${lessonInfo.learn.map(item => `<li class="flex items-start gap-3"><span class="mt-1 text-indigo-600">•</span><span>${item}</span></li>`).join("")}
+            </ul>
+          </div>
+
+          <div class="bg-white border border-slate-200 rounded-3xl p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Zakres lekcji</h3>
+            <div class="flex flex-wrap gap-3">
+              ${lessonInfo.scope.map(item => `<span class="px-3 py-2 rounded-2xl bg-indigo-50 text-indigo-700 font-medium text-sm">${item}</span>`).join("")}
             </div>
           </div>
+        </div>
 
-          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
-            <h3 class="text-xl font-bold text-slate-900 mb-3">Opis</h3>
-            <p class="text-slate-700 leading-relaxed">${lessonInfo.description}</p>
+        <div class="bg-blue-50 border border-blue-200 rounded-3xl p-6">
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Jak pracować z lekcją</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-slate-700">
+            <div class="bg-white rounded-2xl p-4 border border-blue-100">
+              <div class="font-bold mb-2">1. Vocabulary</div>
+              <p class="text-sm">Najpierw odsłuchaj podstawowe słownictwo i oswój wymowę.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 border border-blue-100">
+              <div class="font-bold mb-2">2. Key Phrases / Dialogue</div>
+              <p class="text-sm">Potem przejdź do kluczowych zwrotów i dialogu w kontekście.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 border border-blue-100">
+              <div class="font-bold mb-2">3. Repeat / Questions</div>
+              <p class="text-sm">Na końcu utrwal materiał powtórką i pytaniami.</p>
+            </div>
           </div>
         </div>
-      `;
-      return;
-    }
+      </div>
+    `;
+  }
 
+  function renderInfoContent(lessonInfo) {
+    return `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Informacje o lekcji</h3>
+          <div class="space-y-2 text-slate-700">
+            <p><strong>Moduł:</strong> ${lessonInfo.module}</p>
+            <p><strong>Lekcja:</strong> ${lessonInfo.title}</p>
+            <p><strong>ID:</strong> ${currentLessonId}</p>
+            <p><strong>Status:</strong> ${completedLessons.includes(currentLessonId) ? "Ukończona" : "Nieukończona"}</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Dostępne nagrania</h3>
+          <ul class="space-y-2 text-slate-700">
+            <li>• Vocabulary</li>
+            <li>• Key Phrases</li>
+            <li>• Dialogue</li>
+            <li>• Repeat</li>
+            <li>• Questions</li>
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderAudioContent() {
     const wrapper = document.createElement("div");
     wrapper.className = "grid grid-cols-1 md:grid-cols-2 gap-6";
 
@@ -502,14 +867,25 @@
       wrapper.appendChild(card);
     });
 
-    container.appendChild(wrapper);
+    return wrapper;
   }
 
-  function playCurrentLesson() {
-    const firstFile = getAudioFile(currentLessonId, "Vocabulary");
-    document.getElementById("mainAudioPlayer").src = firstFile;
-    document.getElementById("mainAudioLabel").innerText = `${currentLessonId} • Vocabulary`;
-    document.getElementById("mainAudioPlayer").play().catch(() => {});
+  function renderContent() {
+    const container = document.getElementById("contentArea");
+    const lessonInfo = courseData[currentLessonId];
+    container.innerHTML = "";
+
+    if (currentTab === "lesson") {
+      container.innerHTML = renderLessonContent(lessonInfo);
+      return;
+    }
+
+    if (currentTab === "info") {
+      container.innerHTML = renderInfoContent(lessonInfo);
+      return;
+    }
+
+    container.appendChild(renderAudioContent());
   }
 
   function prevLesson() {
@@ -544,7 +920,8 @@
           id.toLowerCase().includes(query) ||
           lesson.title.toLowerCase().includes(query) ||
           lesson.description.toLowerCase().includes(query) ||
-          lesson.module.toLowerCase().includes(query)
+          lesson.module.toLowerCase().includes(query) ||
+          lesson.scope.some(x => x.toLowerCase().includes(query))
         );
       })
       .forEach(lessonId => {
