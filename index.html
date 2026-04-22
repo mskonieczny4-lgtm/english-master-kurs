@@ -176,8 +176,8 @@
         
         document.getElementById('lessonTitle').innerText = data.title;
         document.getElementById('lessonTag').innerText = data.tag;
-        document.getElementById('audioVocab').src = data.files.v;
-        document.getElementById('audioRepeat').src = data.files.r;
+       document.getElementById('audioVocab').src = "audio/" + data.files.v;
+       document.getElementById('audioRepeat').src = "audio/" + data.files.r;
 
         renderVocab(data.vocab, id);
     }
