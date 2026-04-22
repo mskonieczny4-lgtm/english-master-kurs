@@ -3,144 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Master | Pełny Kurs M1-M5 (Naprawiony)</title>
+    <title>English Master Premium | Full Access</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .card-flip { perspective: 1000px; }
-        .card-inner { transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; position: relative; width: 100%; height: 100%; }
-        .card-inner.flipped { transform: rotateY(180deg); }
-        .card-front, .card-back { 
-            backface-visibility: hidden; position: absolute; top: 0; left: 0; 
-            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
-            padding: 15px; border-radius: 16px; text-align: center;
+        :root {
+            --premium-gold: #d4af37;
+            --dark-bg: #0f172a;
         }
-        .card-back { transform: rotateY(180deg); background-color: #2563eb; color: white; font-weight: bold; }
-        .card-front { background-color: #f8fafc; border: 2px solid #e2e8f0; color: #1e293b; font-style: italic; }
-        .gradient-header { background: linear-gradient(135deg, #1e3a8a 0%, #4338ca 100%); }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--dark-bg);
+            color: #f1f5f9;
+        }
+        .premium-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .premium-card:hover {
+            border-color: var(--premium-gold);
+            transform: translateY(-5px);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #d4af37 50%, #b45309 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-premium {
+            background: linear-gradient(135deg, #d4af37 0%, #b45309 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-premium:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            filter: brightness(1.1);
+        }
+        #paywall {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+        }
+        .lock-icon { font-size: 3rem; margin-bottom: 1rem; }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen">
+<body class="overflow-x-hidden">
 
-<header class="gradient-header text-white p-6 shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div id="paywall" class="fixed inset-0 z-[100] flex items-center justify-center p-6 text-center">
+    <div class="max-w-md bg-slate-800 p-10 rounded-3xl border border-yellow-500/30 shadow-2xl">
+        <div class="lock-icon">🔒</div>
+        <h2 class="text-3xl font-800 mb-4">Dostęp Premium</h2>
+        <p class="text-slate-400 mb-8">Odblokuj pełny kurs (30 lekcji, audio HD, certyfikat) i zacznij mówić płynnie.</p>
+        <div class="text-4xl font-800 mb-8 gold-gradient">45.00 PLN</div>
+        <button onclick="unlockCourse()" class="btn-premium w-full py-4 rounded-2xl font-bold text-white text-lg">
+            ODBLOKUJ PEŁNY DOSTĘP
+        </button>
+        <p class="text-[10px] mt-4 text-slate-500">Bezpieczna płatność jednorazowa • Dożywotni dostęp</p>
+    </div>
+</div>
+
+<header class="p-8 border-b border-white/5">
+    <div class="container mx-auto flex justify-between items-center">
         <div>
-            <h1 class="text-3xl font-800 tracking-tighter">ENGLISH MASTER</h1>
-            <p class="text-blue-200 text-sm font-semibold uppercase tracking-widest">30 Lekcji • Moduły 1 - 5</p>
+            <h1 class="text-2xl font-800 tracking-tighter">ENGLISH <span class="gold-gradient">MASTER</span></h1>
+            <div class="flex items-center gap-2 mt-1">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Premium Status</span>
+            </div>
         </div>
-        <div class="bg-white/10 px-4 py-2 rounded-xl border border-white/20">
-            <span id="progressCount" class="text-xl font-bold">0</span> <span class="text-sm opacity-70">/ 30 ukończonych lekcji</span>
-        </div>
+        <nav class="hidden md:flex gap-8 text-sm font-medium text-slate-400">
+            <a href="#" class="hover:text-white transition-colors">Moduły</a>
+            <a href="#" class="hover:text-white transition-colors">Postęp</a>
+            <a href="#" class="hover:text-white transition-colors">Wsparcie</a>
+        </nav>
     </div>
 </header>
 
-<main class="container mx-auto p-4 lg:p-8">
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<main class="container mx-auto p-6 lg:p-12">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
         
-        <aside class="lg:col-span-1 space-y-6">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <label class="block text-slate-700 font-bold mb-3 italic">Wybierz Moduł i Lekcję:</label>
-                <select id="lessonSelect" class="w-full p-3 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-indigo-500 outline-none transition-all" onchange="loadLesson()">
-                    <optgroup label="M1: Podstawy">
-                        <option value="M1L1">L1: Powitania</option>
-                        <option value="M1L2">L2: Przedstawianie się</option>
-                        <option value="M1L3">L3: Liczby 1-10</option>
-                        <option value="M1L4">L4: Kolory</option>
-                        <option value="M1L5">L5: Rodzina</option>
-                        <option value="M1L6">L6: Samopoczucie</option>
+        <aside class="space-y-8">
+            <div class="premium-card p-6 rounded-2xl">
+                <label class="block text-[10px] font-bold text-slate-500 uppercase mb-4 tracking-widest">Wybierz Moduł</label>
+                <select id="lessonSelect" onchange="loadLesson()" class="w-full bg-slate-900 border border-white/10 rounded-xl p-3 text-sm focus:outline-none focus:border-yellow-600">
+                    <optgroup label="MODUŁ 4: PODRÓŻE">
+                        <option value="M4L3">L3: Kierunki & Orientacja</option>
+                        <option value="M4L4">L4: Hotel & Nocleg</option>
+                        <option value="M4L5">L5: Telefon & Kontakt</option>
+                        <option value="M4L6">L6: Czas & Planowanie</option>
                     </optgroup>
-                    <optgroup label="M2: Życie Codzienne">
-                        <option value="M2L1">L1: Mój Dom</option>
-                        <option value="M2L2">L2: Jedzenie</option>
-                        <option value="M2L3">L3: Czas wolny</option>
-                        <option value="M2L4">L4: Zawody</option>
-                        <option value="M2L5">L5: Zegar i Czas</option>
-                        <option value="M2L6">L6: Codzienna Rutyna</option>
-                    </optgroup>
-                    <optgroup label="M3: Zakupy">
-                        <option value="M3L1">L1: Sklep spożywczy</option>
-                        <option value="M3L2">L2: Ubrania</option>
-                        <option value="M3L3">L3: Liczby 20+ i Ceny</option>
-                        <option value="M3L4">L4: Elektronika</option>
-                        <option value="M3L5">L5: Płatności</option>
-                        <option value="M3L6">L6: Reklamacje</option>
-                    </optgroup>
-                    <optgroup label="M4: Podróże">
-                        <option value="M4L1">L1: Lotnisko</option>
-                        <option value="M4L2">L2: Transport</option>
-                        <option value="M4L3">L3: Kierunki i Orientacja</option>
-                        <option value="M4L4">L4: Hotel i Nocleg</option>
-                        <option value="M4L5">L5: Kontakt telefoniczny</option>
-                        <option value="M4L6">L6: Planowanie i Czas</option>
-                    </optgroup>
-                    <optgroup label="M5: Biznes i Praca">
-                        <option value="M5L1">L1: Biuro i Zespół</option>
-                        <option value="M5L2">L2: Kalendarz i Spotkania</option>
-                        <option value="M5L3">L3: Oferty i Kontrakty</option>
-                        <option value="M5L4">L4: E-maile i Wiadomości</option>
-                        <option value="M5L5">L5: Strategia i Cele</option>
-                        <option value="M5L6">L6: Rozwiązywanie Problemów</option>
+                    <optgroup label="MODUŁ 5: BIZNES">
+                        <option value="M5L1">L1: Biuro & Zespół</option>
+                        <option value="M5L2">L2: Kalendarz & Spotkania</option>
+                        <option value="M5L3">L3: Oferty & Kontrakty</option>
+                        <option value="M5L4">L4: E-maile & Wiadomości</option>
+                        <option value="M5L5">L5: Strategia & Cele</option>
+                        <option value="M5L6">L6: Problemy & Postęp</option>
                     </optgroup>
                 </select>
             </div>
 
-            <div class="bg-indigo-900 text-white p-6 rounded-2xl shadow-lg">
-                <h3 class="font-bold mb-4 flex items-center"><span class="mr-2">🎧</span> Odtwarzacz</h3>
+            <div class="premium-card p-6 rounded-2xl bg-indigo-500/5 border-indigo-500/20">
+                <h4 class="text-sm font-bold mb-4 flex items-center">
+                    <span class="mr-2">🎧</span> AUDIO HD
+                </h4>
                 <div class="space-y-4">
-                    <div>
-                        <p class="text-[10px] font-bold opacity-60 uppercase mb-1">Słownictwo (Vocabulary)</p>
-                        <audio id="audioVocab" controls class="w-full h-8"></audio>
-                    </div>
-                    <div>
-                        <p class="text-[10px] font-bold opacity-60 uppercase mb-1">Powtórki (Repeat)</p>
-                        <audio id="audioRepeat" controls class="w-full h-8"></audio>
-                    </div>
+                    <audio id="audioVocab" controls class="w-full h-8 opacity-60 hover:opacity-100 transition-opacity"></audio>
+                    <audio id="audioRepeat" controls class="w-full h-8 opacity-60 hover:opacity-100 transition-opacity"></audio>
                 </div>
             </div>
         </aside>
 
         <section class="lg:col-span-3">
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 min-h-[500px]">
-                <div class="flex justify-between items-center mb-8 pb-4 border-b border-slate-100">
-                    <div>
-                        <span id="lessonTag" class="text-indigo-600 font-bold text-xs uppercase tracking-widest">Moduł 5</span>
-                        <h2 id="lessonTitle" class="text-3xl font-800 text-slate-900">Biuro i Zespół</h2>
-                    </div>
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <h2 id="lessonTitle" class="text-5xl font-800 mb-2 tracking-tighter">Biuro i Zespół</h2>
+                    <p id="lessonTag" class="text-sm font-medium text-indigo-400">Moduł 5 • Biznes</p>
                 </div>
-                <div id="contentArea" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                    </div>
+                <div class="text-right">
+                    <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1">Twój Postęp</p>
+                    <div class="text-2xl font-800"><span id="progressCount">0</span> / 30</div>
+                </div>
             </div>
+
+            <div id="contentArea" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                </div>
         </section>
     </div>
 </main>
 
 <script>
     const lessonsData = {
-        // MODUŁ 1-3 (Standardowe dane)
-        "M1L1": { title: "Powitania", tag: "Moduł 1", vocab: ["Hello - Cześć", "Good morning - Dzień dobry", "Goodbye - Do widzenia", "How are you? - Jak się masz?"], files: {v: "M1L1_Vocabulary_1.mp3", r: "M1L1_Repeat_1.mp3"} },
-        // ... (dodaj pozostałe M1-M3)
-
-        // MODUŁ 4 (Poprawiony pod pliki audio)
-        "M4L3": { title: "Kierunki i Orientacja", tag: "Moduł 4", vocab: ["Street - Ulica", "Left/Right - Lewo/Prawo", "Straight ahead - Prosto przed siebie", "Corner - Róg", "Map - Mapa", "Near/Far - Blisko/Daleko"], files: {v: "M4L3_Vocabulary_1.mp3", r: "M4L3_Repeat_1.mp3"} },
-        "M4L4": { title: "Hotel i Nocleg", tag: "Moduł 4", vocab: ["Hotel - Hotel", "Room - Pokój", "Reservation - Rezerwacja", "Passport - Paszport", "Key - Klucz", "Luggage - Bagaż"], files: {v: "M4L4_Vocabulary_1.mp3", r: "M4L4_Repeat_1.mp3"} },
-        "M4L5": { title: "Kontakt telefoniczny", tag: "Moduł 4", vocab: ["Phone - Telefon", "Call - Dzwonić", "Message - Wiadomość", "Signal - Zasięg", "Answer - Odpowiedzieć", "Busy - Zajęty"], files: {v: "M4L5_Vocabulary_1.mp3", r: "M4L5_Repeat_1.mp3"} },
-        "M4L6": { title: "Planowanie i Czas", tag: "Moduł 4", vocab: ["Meeting - Spotkanie", "Plan - Plan", "Time - Czas", "Date - Data", "Tomorrow - Jutro", "Schedule - Harmonogram"], files: {v: "M4L6_Vocabulary_1.mp3", r: "M4L6_Repeat_1.mp3"} },
-
-        // MODUŁ 5 (Zaktualizowany całkowicie pod Twoje pliki BIZNESOWE)
-        "M5L1": { title: "Biuro i Zespół", tag: "Moduł 5", vocab: ["Job/Work - Praca", "Company - Firma", "Office - Biuro", "Manager - Kierownik", "Team - Zespół", "Experience - Doświadczenie", "Colleague - Współpracownik"], files: {v: "M5L1_Vocabulary_1.mp3", r: "M5L1_Repeat_1.mp3"} },
-        "M5L2": { title: "Kalendarz i Spotkania", tag: "Moduł 5", vocab: ["Client - Klient", "Calendar - Kalendarz", "Appointment - Umówione spotkanie", "Available - Dostępny", "Invite - Zaproszenie", "Confirm - Potwierdzić", "Agenda - Plan spotkania"], files: {v: "M5L2_Vocabulary_1.mp3", r: "M5L2_Repeat_1.mp3"} },
-        "M5L3": { title: "Oferty i Kontrakty", tag: "Moduł 5", vocab: ["Offer - Oferta", "Service - Usługa", "Question - Pytanie", "Details - Szczegóły", "Solution - Rozwiązanie", "Contract - Umowa", "Price - Cena", "Deadline - Termin ostateczny"], files: {v: "M5L3_Vocabulary_1.mp3", r: "M5L3_Repeat_1.mp3"} },
-        "M5L4": { title: "E-maile i Wiadomości", tag: "Moduł 5", vocab: ["Email - E-mail", "Subject - Temat", "Reply - Odpowiedź", "Attachment - Załącznik", "Message - Wiadomość", "Request - Prośba", "Information - Informacja", "Send/Receive - Wysłać/Otrzymać"], files: {v: "M5L4_Vocabulary_1.mp3", r: "M5L4_Repeat_1.mp3"} },
-        "M5L5": { title: "Strategia i Cele", tag: "Moduł 5", vocab: ["Idea - Pomysł", "Presentation - Prezentacja", "Benefit - Korzyść", "Result - Wynik", "Strategy - Strategia", "Goal - Cel", "Value - Wartość"], files: {v: "M5L5_Vocabulary_1.mp3", r: "M5L5_Repeat_1.mp3"} },
-        "M5L6": { title: "Rozwiązywanie Problemów", tag: "Moduł 5", vocab: ["Problem/Solution - Rozwiązanie problemu", "Issue - Kwestia/Sprawa", "Step - Krok", "Task - Zadanie", "Priority - Priorytet", "Update - Aktualizacja", "Support - Wsparcie", "Progress - Postęp"], files: {v: "M5L6_Vocabulary_1.mp3", r: "M5L6_Repeat_1.mp3"} },
+        "M4L3": { title: "Kierunki & Orientacja", tag: "Moduł 4 • Podróże", vocab: ["Street - Ulica", "Left - Lewo", "Right - Prawo", "Straight - Prosto", "Station - Stacja", "Map - Mapa"], files: {v: "M4L3_Vocabulary_1.mp3", r: "M4L3_Repeat_1.mp3"} },
+        "M4L4": { title: "Hotel & Nocleg", tag: "Moduł 4 • Podróże", vocab: ["Hotel - Hotel", "Room - Pokój", "Reservation - Rezerwacja", "Key - Klucz", "Luggage - Bagaż"], files: {v: "M4L4_Vocabulary_1.mp3", r: "M4L4_Repeat_1.mp3"} },
+        "M5L1": { title: "Biuro i Zespół", tag: "Moduł 5 • Biznes", vocab: ["Company - Firma", "Office - Biuro", "Manager - Kierownik", "Team - Zespół", "Experience - Doświadczenie"], files: {v: "M5L1_Vocabulary_1.mp3", r: "M5L1_Repeat_1.mp3"} },
+        "M5L2": { title: "Kalendarz i Spotkania", tag: "Moduł 5 • Biznes", vocab: ["Client - Klient", "Calendar - Kalendarz", "Appointment - Spotkanie", "Invite - Zaprosić", "Confirm - Potwierdzić"], files: {v: "M5L2_Vocabulary_1.mp3", r: "M5L2_Repeat_1.mp3"} },
+        "M5L3": { title: "Oferty i Kontrakty", tag: "Moduł 5 • Biznes", vocab: ["Offer - Oferta", "Service - Usługa", "Question - Pytanie", "Details - Szczegóły", "Contract - Umowa", "Deadline - Termin"], files: {v: "M5L3_Vocabulary_1.mp3", r: "M5L3_Repeat_1.mp3"} },
+        "M5L4": { title: "E-maile i Wiadomości", tag: "Moduł 5 • Biznes", vocab: ["Subject - Temat", "Reply - Odpowiedź", "Attachment - Załącznik", "Request - Prośba", "Information - Informacja"], files: {v: "M5L4_Vocabulary_1.mp3", r: "M5L4_Repeat_1.mp3"} },
+        "M5L5": { title: "Strategia i Cele", tag: "Moduł 5 • Biznes", vocab: ["Idea - Pomysł", "Presentation - Prezentacja", "Benefit - Korzyść", "Goal - Cel", "Value - Wartość"], files: {v: "M5L5_Vocabulary_1.mp3", r: "M5L5_Repeat_1.mp3"} },
+        "M5L6": { title: "Problemy i Postęp", tag: "Moduł 5 • Biznes", vocab: ["Issue - Kwestia", "Task - Zadanie", "Priority - Priorytet", "Update - Aktualizacja", "Progress - Postęp"], files: {v: "M5L6_Vocabulary_1.mp3", r: "M5L6_Repeat_1.mp3"} }
     };
 
     let completed = new Set();
 
+    function unlockCourse() {
+        document.getElementById('paywall').style.display = 'none';
+        document.body.style.overflow = 'auto';
+        loadLesson();
+    }
+
     function loadLesson() {
         const id = document.getElementById('lessonSelect').value;
-        const data = lessonsData[id] || { title: "W opracowaniu", tag: "-", vocab: [], files: {v:"", r:""} };
+        const data = lessonsData[id];
         
         document.getElementById('lessonTitle').innerText = data.title;
         document.getElementById('lessonTag').innerText = data.tag;
@@ -154,8 +167,8 @@
             container.innerHTML += `
                 <div class="card-flip h-32">
                     <div class="card-inner" onclick="this.classList.toggle('flipped'); trackProgress('${id}')">
-                        <div class="card-front font-semibold">${en}</div>
-                        <div class="card-back">${pl}</div>
+                        <div class="card-front text-sm uppercase tracking-widest font-bold">${en}</div>
+                        <div class="card-back text-lg">${pl}</div>
                     </div>
                 </div>
             `;
@@ -167,7 +180,8 @@
         document.getElementById('progressCount').innerText = completed.size;
     }
 
-    window.onload = loadLesson;
+    // Blokada scrolla na starcie
+    document.body.style.overflow = 'hidden';
 </script>
 </body>
 </html>
