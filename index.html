@@ -1,229 +1,570 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Master | Pełny Kurs M1-M5</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .card-flip { perspective: 1000px; }
-        .card-inner { transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; position: relative; width: 100%; height: 100%; }
-        .card-inner.flipped { transform: rotateY(180deg); }
-        .card-front, .card-back { 
-            backface-visibility: hidden; position: absolute; top: 0; left: 0; 
-            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
-            padding: 15px; border-radius: 16px; text-align: center; font-size: 1.1rem;
-        }
-        .card-back { transform: rotateY(180deg); background-color: #2563eb; color: white; font-weight: bold; }
-        .card-front { background-color: #f8fafc; border: 2px solid #e2e8f0; color: #1e293b; font-style: italic; }
-        .gradient-header { background: linear-gradient(135deg, #1e3a8a 0%, #4338ca 100%); }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Master | Pełny Kurs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    .gradient-header { background: linear-gradient(135deg, #0f172a 0%, #312e81 100%); }
+    .tab-btn.active {
+      background: #0f172a;
+      color: white;
+      border-color: #0f172a;
+    }
+    .lesson-btn.active {
+      background: #eef2ff;
+      border-color: #6366f1;
+      color: #312e81;
+    }
+    .audio-card.done {
+      border-color: #10b981;
+      background: #ecfdf5;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 min-h-screen">
 
 <header class="gradient-header text-white p-6 shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <div>
-            <h1 class="text-3xl font-800 tracking-tighter">ENGLISH MASTER</h1>
-            <p class="text-blue-200 text-sm font-semibold uppercase tracking-widest">Moduły 1 - 5 • 30 Lekcji</p>
-        </div>
-        <div class="flex items-center gap-4">
-            <input type="text" id="searchInput" placeholder="Szukaj słówka..." onkeyup="searchVocab()" class="px-4 py-2 rounded-full text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <div class="bg-white/10 px-4 py-2 rounded-xl border border-white/20">
-                <span class="text-xs block opacity-70">UKOŃCZONO</span>
-                <span id="progressCount" class="text-xl font-bold">0</span> <span class="text-sm opacity-70">/ 30</span>
-            </div>
-        </div>
+  <div class="container mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+    <div>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">ENGLISH MASTER</h1>
+      <p class="text-blue-200 text-sm font-semibold uppercase tracking-[0.2em] mt-1">
+        5 modułów • 30 lekcji • kurs audio
+      </p>
     </div>
+
+    <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Szukaj: podróże, biznes, M4L2..."
+        oninput="filterLessons()"
+        class="px-4 py-3 rounded-2xl text-slate-900 text-sm w-full sm:w-80 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      />
+      <div class="bg-white/10 px-5 py-3 rounded-2xl border border-white/20 min-w-[180px]">
+        <div class="text-[11px] uppercase tracking-widest opacity-70">Ukończone lekcje</div>
+        <div class="mt-1">
+          <span id="progressCount" class="text-2xl font-extrabold">0</span>
+          <span class="opacity-80">/ 30</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
 <main class="container mx-auto p-4 lg:p-8">
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        
-        <aside class="lg:col-span-1 space-y-6">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-                <h3 class="text-sm font-bold text-slate-500 uppercase mb-4 tracking-wider">Twoje Lekcje</h3>
-                <select id="lessonSelect" class="w-full p-3 bg-slate-50 border-2 border-slate-200 rounded-xl focus:border-indigo-500 outline-none transition-all font-medium" onchange="loadLesson()">
-                    <optgroup label="MODUŁ 1: Podstawy">
-                        <option value="M1L1">L1: Powitania</option>
-                        <option value="M1L2">L2: Przedstawianie się</option>
-                        <option value="M1L3">L3: Liczby 1-10</option>
-                        <option value="M1L4">L4: Kolory</option>
-                        <option value="M1L5">L5: Rodzina</option>
-                        <option value="M1L6">L6: Samopoczucie</option>
-                    </optgroup>
-                    <optgroup label="MODUŁ 2: Życie Codzienne">
-                        <option value="M2L1">L1: Mój Dom</option>
-                        <option value="M2L2">L2: Jedzenie</option>
-                        <option value="M2L3">L3: Czas wolny</option>
-                        <option value="M2L4">L4: Zawody</option>
-                        <option value="M2L5">L5: Zegar i Czas</option>
-                        <option value="M2L6">L6: Codzienna Rutyna</option>
-                    </optgroup>
-                    <optgroup label="MODUŁ 3: Zakupy">
-                        <option value="M3L1">L1: Sklep spożywczy</option>
-                        <option value="M3L2">L2: Ubrania</option>
-                        <option value="M3L3">L3: Liczby 20+ i Ceny</option>
-                        <option value="M3L4">L4: Elektronika</option>
-                        <option value="M3L5">L5: Płatności</option>
-                        <option value="M3L6">L6: Reklamacje</option>
-                    </optgroup>
-                    <optgroup label="MODUŁ 4: Podróże">
-                        <option value="M4L1">L1: Na Lotnisku</option>
-                        <option value="M4L2">L2: Rezerwacja Hotelu</option>
-                        <option value="M4L3">L3: Pytanie o drogę</option>
-                        <option value="M4L4">L4: W Restauracji</option>
-                        <option value="M4L5">L5: Atrakcje turystyczne</option>
-                        <option value="M4L6">L6: Pomoc w podróży</option>
-                    </optgroup>
-                    <optgroup label="MODUŁ 5: Zdrowie" selected>
-                        <option value="M5L1">L1: Części ciała i Ból</option>
-                        <option value="M5L2">L2: Wizyta w aptece</option>
-                        <option value="M5L3">L3: U Lekarza</option>
-                        <option value="M5L4">L4: Zdrowy Styl Życia</option>
-                        <option value="M5L5">L5: Emocje</option>
-                        <option value="M5L6">L6: Nagłe Wypadki</option>
-                    </optgroup>
-                </select>
-            </div>
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
 
-            <div class="bg-indigo-900 text-white p-6 rounded-2xl shadow-lg">
-                <h3 class="font-bold mb-4 flex items-center">
-                    <span class="mr-2">🎵</span> Centrum Audio
-                </h3>
-                <div class="space-y-4">
-                    <div class="bg-white/10 p-3 rounded-lg">
-                        <p class="text-[10px] font-bold opacity-60 mb-1 uppercase">Słownictwo</p>
-                        <audio id="audioVocab" controls class="w-full h-8"></audio>
-                    </div>
-                    <div class="bg-white/10 p-3 rounded-lg">
-                        <p class="text-[10px] font-bold opacity-60 mb-1 uppercase">Powtórki / Dialog</p>
-                        <audio id="audioRepeat" controls class="w-full h-8"></audio>
-                    </div>
-                </div>
-            </div>
-        </aside>
+    <aside class="xl:col-span-1 space-y-6">
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
+        <h3 class="text-sm font-bold text-slate-500 uppercase mb-4 tracking-wider">Moduły i lekcje</h3>
 
-        <section class="lg:col-span-3 space-y-6">
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 min-h-[600px]">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8 pb-6 border-b border-slate-100">
-                    <div>
-                        <span id="lessonTag" class="text-indigo-600 font-bold text-xs uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full mb-2 inline-block">Moduł 5</span>
-                        <h2 id="lessonTitle" class="text-4xl font-800 text-slate-900">U Lekarza</h2>
-                    </div>
-                    <button onclick="playCurrentLesson()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-bold transition-all transform hover:scale-105 shadow-md">
-                        ▶ Odtwórz Lekcję
-                    </button>
-                </div>
+        <div class="mb-4">
+          <select
+            id="moduleSelect"
+            class="w-full p-3 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:border-indigo-500 outline-none transition-all font-medium"
+            onchange="renderLessonButtons(); loadLesson(currentLessonId)"
+          >
+            <option value="1">Moduł 1: Podstawy</option>
+            <option value="2">Moduł 2: Życie codzienne</option>
+            <option value="3">Moduł 3: Zakupy</option>
+            <option value="4">Moduł 4: Podróże</option>
+            <option value="5">Moduł 5: Praca i biznes</option>
+          </select>
+        </div>
 
-                <div id="contentArea" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                    </div>
-            </div>
-        </section>
-    </div>
+        <div id="lessonButtons" class="grid grid-cols-2 gap-2"></div>
+      </div>
+
+      <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
+        <h3 class="text-sm font-bold text-slate-500 uppercase mb-4 tracking-wider">Sterowanie</h3>
+        <div class="grid grid-cols-1 gap-3">
+          <button onclick="prevLesson()" class="w-full px-4 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold transition">
+            ← Poprzednia lekcja
+          </button>
+          <button onclick="nextLesson()" class="w-full px-4 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition">
+            Następna lekcja →
+          </button>
+          <button onclick="markLessonComplete()" class="w-full px-4 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold transition">
+            ✓ Oznacz jako ukończoną
+          </button>
+          <button onclick="resetProgress()" class="w-full px-4 py-3 rounded-2xl bg-rose-100 hover:bg-rose-200 text-rose-700 font-semibold transition">
+            Reset postępu
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-indigo-900 text-white p-6 rounded-3xl shadow-lg">
+        <h3 class="font-bold mb-4 flex items-center text-lg">
+          <span class="mr-2">🎵</span> Główny odtwarzacz
+        </h3>
+
+        <div class="bg-white/10 p-4 rounded-2xl">
+          <p id="mainAudioLabel" class="text-sm font-semibold mb-3">Wybierz nagranie z lekcji</p>
+          <audio id="mainAudioPlayer" controls class="w-full"></audio>
+        </div>
+      </div>
+    </aside>
+
+    <section class="xl:col-span-3 space-y-6">
+      <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+        <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 mb-8 pb-6 border-b border-slate-100">
+          <div>
+            <span id="lessonTag" class="text-indigo-600 font-bold text-xs uppercase tracking-widest bg-indigo-50 px-3 py-1 rounded-full inline-block mb-3">
+              Moduł 1
+            </span>
+            <h2 id="lessonTitle" class="text-3xl md:text-4xl font-extrabold text-slate-900">Lekcja 1</h2>
+            <p id="lessonDescription" class="text-slate-600 mt-3 max-w-3xl">
+              Opis lekcji.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <button id="tabAudio" onclick="setTab('audio')" class="tab-btn active px-4 py-3 rounded-2xl border border-slate-200 font-semibold text-slate-800 transition">
+              Nagrania
+            </button>
+            <button id="tabInfo" onclick="setTab('info')" class="tab-btn px-4 py-3 rounded-2xl border border-slate-200 font-semibold text-slate-800 transition">
+              Informacje
+            </button>
+          </div>
+        </div>
+
+        <div id="contentArea"></div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <script>
-    const lessonsData = {
-        // M1
-        "M1L1": { title: "Powitania", tag: "Moduł 1", vocab: ["Hello - Cześć", "Good morning - Dzień dobry", "Goodbye - Do widzenia", "How are you? - Jak się masz?"], files: {v: "M1L1_Vocabulary_1.mp3", r: "M1L1_Repeat_1.mp3"} },
-        "M1L2": { title: "Przedstawianie się", tag: "Moduł 1", vocab: ["Name - Imię", "Nice to meet you - Miło Cię poznać", "I am... - Jestem...", "Friend - Przyjaciel"], files: {v: "M1L2_Vocabulary_1.mp3", r: "M1L2_Repeat_1.mp3"} },
-        "M1L3": { title: "Liczby 1-10", tag: "Moduł 1", vocab: ["One - Jeden", "Five - Pięć", "Seven - Siedem", "Ten - Dziesięć"], files: {v: "M1L3_Vocabulary_1.mp3", r: "M1L3_Repeat_1.mp3"} },
-        "M1L4": { title: "Kolory", tag: "Moduł 1", vocab: ["Red - Czerwony", "Blue - Niebieski", "Green - Zielony", "Yellow - Żółty"], files: {v: "M1L4_Vocabulary_1.mp3", r: "M1L4_Repeat_1.mp3"} },
-        "M1L5": { title: "Rodzina", tag: "Moduł 1", vocab: ["Mother - Matka", "Father - Ojciec", "Brother - Brat", "Sister - Siostra"], files: {v: "M1L5_Vocabulary_1.mp3", r: "M1L5_Repeat_1.mp3"} },
-        "M1L6": { title: "Samopoczucie", tag: "Moduł 1", vocab: ["Happy - Szczęśliwy", "Sad - Smutny", "Tired - Zmęczony", "Fine - Dobrze"], files: {v: "M1L6_Vocabulary_1.mp3", r: "M1L6_Repeat_1.mp3"} },
-        
-        // M2
-        "M2L1": { title: "Mój Dom", tag: "Moduł 2", vocab: ["House - Dom", "Kitchen - Kuchnia", "Bedroom - Sypialnia", "Bed - Łóżko"], files: {v: "M2L1_Vocabulary_1.mp3", r: "M2L1_Repeat_1.mp3"} },
-        "M2L2": { title: "Jedzenie", tag: "Moduł 2", vocab: ["Bread - Chleb", "Water - Woda", "Apple - Jabłko", "Tea - Herbata"], files: {v: "M2L2_Vocabulary_1.mp3", r: "M2L2_Repeat_1.mp3"} },
-        "M2L3": { title: "Czas wolny", tag: "Moduł 2", vocab: ["Book - Książka", "Music - Muzyka", "Sport - Sport", "Dance - Taniec"], files: {v: "M2L3_Vocabulary_1.mp3", r: "M2L3_Repeat_1.mp3"} },
-        "M2L4": { title: "Zawody", tag: "Moduł 2", vocab: ["Teacher - Nauczyciel", "Doctor - Lekarz", "Office - Biuro", "Student - Uczeń"], files: {v: "M2L4_Vocabulary_1.mp3", r: "M2L4_Repeat_1.mp3"} },
-        "M2L5": { title: "Zegar i Czas", tag: "Moduł 2", vocab: ["Time - Czas", "Clock - Zegar", "Morning - Rano", "Night - Noc"], files: {v: "M2L5_Vocabulary_1.mp3", r: "M2L5_Repeat_1.mp3"} },
-        "M2L6": { title: "Codzienna Rutyna", tag: "Moduł 2", vocab: ["Wake up - Budzić się", "Shower - Prysznic", "Dinner - Obiad", "Go to bed - Iść spać"], files: {v: "M2L6_Vocabulary_1.mp3", r: "M2L6_Repeat_1.mp3"} },
+  const courseData = {
+    M1L1: {
+      module: "Moduł 1: Podstawy",
+      title: "Powitania",
+      description: "Nauka zwrotów powitalnych i pożegnalnych, np. Hello i Goodbye."
+    },
+    M1L2: {
+      module: "Moduł 1: Podstawy",
+      title: "Przedstawianie się",
+      description: "Podstawowe dane osobowe i zwrot Nice to meet you."
+    },
+    M1L3: {
+      module: "Moduł 1: Podstawy",
+      title: "Liczby 1-10",
+      description: "Pierwsze kroki w liczeniu."
+    },
+    M1L4: {
+      module: "Moduł 1: Podstawy",
+      title: "Kolory",
+      description: "Nazywanie barw otaczającego świata."
+    },
+    M1L5: {
+      module: "Moduł 1: Podstawy",
+      title: "Rodzina",
+      description: "Nazewnictwo najbliższych członków rodziny."
+    },
+    M1L6: {
+      module: "Moduł 1: Podstawy",
+      title: "Samopoczucie",
+      description: "Pytania o stan emocjonalny i proste odpowiedzi."
+    },
 
-        // M3
-        "M3L1": { title: "Sklep spożywczy", tag: "Moduł 3", vocab: ["Milk - Mleko", "Eggs - Jajka", "Cheese - Ser", "Shop - Sklep"], files: {v: "M3L1_Vocabulary_1.mp3", r: "M3L1_Repeat_1.mp3"} },
-        "M3L2": { title: "Ubrania", tag: "Moduł 3", vocab: ["Shirt - Koszula", "Trousers - Spodnie", "Shoes - Buty", "Jacket - Kurtka"], files: {v: "M3L2_Vocabulary_1.mp3", r: "M3L2_Repeat_1.mp3"} },
-        "M3L3": { title: "Liczby i Ceny", tag: "Moduł 3", vocab: ["Price - Cena", "Twenty - Dwadzieścia", "Fifty - Pięćdziesiąt", "Pounds - Funty"], files: {v: "M3L3_Vocabulary_1.mp3", r: "M3L3_Repeat_1.mp3"} },
-        "M3L4": { title: "Elektronika", tag: "Moduł 3", vocab: ["Phone - Telefon", "Charger - Ładowarka", "Laptop - Komputer", "Broken - Zepsuty"], files: {v: "M3L4_Vocabulary_1.mp3", r: "M3L4_Repeat_1.mp3"} },
-        "M3L5": { title: "Płatności", tag: "Moduł 3", vocab: ["Cash - Gotówka", "Card - Karta", "PIN - PIN", "Receipt - Paragon"], files: {v: "M3L5_Vocabulary_1.mp3", r: "M3L5_Repeat_1.mp3"} },
-        "M3L6": { title: "Reklamacje", tag: "Moduł 3", vocab: ["Refund - Zwrot", "Manager - Manager", "Help - Pomoc", "Exchange - Wymiana"], files: {v: "M3L6_Vocabulary_1.mp3", r: "M3L6_Repeat_1.mp3"} },
+    M2L1: {
+      module: "Moduł 2: Życie Codzienne",
+      title: "Mój Dom",
+      description: "Nazwy pomieszczeń i podstawowych mebli."
+    },
+    M2L2: {
+      module: "Moduł 2: Życie Codzienne",
+      title: "Jedzenie",
+      description: "Posiłki oraz podstawowe produkty spożywcze."
+    },
+    M2L3: {
+      module: "Moduł 2: Życie Codzienne",
+      title: "Czas wolny",
+      description: "Mówienie o zainteresowaniach i hobby."
+    },
+    M2L4: {
+      module: "Moduł 2: Życie Codzienne",
+      title: "Zawody",
+      description: "Nazywanie popularnych profesji."
+    },
+    M2L5: {
+      module: "Moduł 2: Życie Codzienne",
+      title: "Zegar i Czas",
+      description: "Podawanie pełnych godzin i pór dnia."
+    },
+    M2L6: {
+      module: "Moduł 2: Życie Codzienne",
+      title: "Codzienna Rutyna",
+      description: "Czasowniki opisujące typowe czynności od rana do wieczora."
+    },
 
-        // M4
-        "M4L1": { title: "Na Lotnisku", tag: "Moduł 4", vocab: ["Passport - Paszport", "Ticket - Bilet", "Gate - Bramka", "Flight - Lot"], files: {v: "M4L1_Vocabulary_1.mp3", r: "M4L1_Repeat_1.mp3"} },
-        "M4L2": { title: "W Hotelu", tag: "Moduł 4", vocab: ["Room - Pokój", "Key - Klucz", "Check-in - Meldunek", "Reservation - Rezerwacja"], files: {v: "M4L2_Vocabulary_1.mp3", r: "M4L2_Repeat_1.mp3"} },
-        "M4L3": { title: "Transport", tag: "Moduł 4", vocab: ["Bus - Autobus", "Station - Stacja", "Map - Mapa", "Straight - Prosto"], files: {v: "M4L3_Vocabulary_1.mp3", r: "M4L3_Repeat_1.mp3"} },
-        "M4L4": { title: "W Restauracji", tag: "Moduł 4", vocab: ["Menu - Menu", "Table - Stolik", "Bill - Rachunek", "Order - Zamówienie"], files: {v: "M4L4_Vocabulary_1.mp3", r: "M4L4_Repeat_1.mp3"} },
-        "M4L5": { title: "Atrakcje", tag: "Moduł 4", vocab: ["Museum - Muzeum", "Park - Park", "Beach - Plaża", "Open - Otwarte"], files: {v: "M4L5_Vocabulary_1.mp3", r: "M4L5_Repeat_1.mp3"} },
-        "M4L6": { title: "Pomoc", tag: "Moduł 4", vocab: ["Help - Pomocy", "Police - Policja", "Lost - Zgubiony", "Safe - Bezpieczny"], files: {v: "M4L6_Vocabulary_1.mp3", r: "M4L6_Repeat_1.mp3"} },
+    M3L1: {
+      module: "Moduł 3: Zakupy",
+      title: "Sklep spożywczy",
+      description: "Kupowanie artykułów pierwszej potrzeby."
+    },
+    M3L2: {
+      module: "Moduł 3: Zakupy",
+      title: "Ubrania",
+      description: "Garderoba, rozmiary i przymierzanie."
+    },
+    M3L3: {
+      module: "Moduł 3: Zakupy",
+      title: "Liczby 20+ i Ceny",
+      description: "Pieniądze i liczebniki powyżej dwudziestu."
+    },
+    M3L4: {
+      module: "Moduł 3: Zakupy",
+      title: "Elektronika",
+      description: "Sprzęty elektroniczne i zgłaszanie ich awarii."
+    },
+    M3L5: {
+      module: "Moduł 3: Zakupy",
+      title: "Płatności",
+      description: "Słownictwo związane z obsługą kasy i paragonem."
+    },
+    M3L6: {
+      module: "Moduł 3: Zakupy",
+      title: "Reklamacje",
+      description: "Rozmowa z obsługą w przypadku zwrotów."
+    },
 
-        // M5
-        "M5L1": { title: "Części Ciała", tag: "Moduł 5", vocab: ["Head - Głowa", "Back - Plecy", "Arm - Ramię", "Pain - Ból"], files: {v: "M5L1_Vocabulary_1.mp3", r: "M5L1_Repeat_1.mp3"} },
-        "M5L2": { title: "W Aptece", tag: "Moduł 5", vocab: ["Medicine - Lek", "Painkiller - Przeciwbólowy", "Syrup - Syrop", "Cough - Kaszel"], files: {v: "M5L2_Vocabulary_1.mp3", r: "M5L2_Repeat_1.mp3"} },
-        "M5L3": { title: "U Lekarza", tag: "Moduł 5", vocab: ["Doctor - Lekarz", "Fever - Gorączka", "Rest - Odpoczynek", "Prescription - Recepta"], files: {v: "M5L3_Vocabulary_1.mp3", r: "M5L3_Repeat_1.mp3"} },
-        "M5L4": { title: "Zdrowy Styl Życia", tag: "Moduł 5", vocab: ["Healthy - Zdrowy", "Exercise - Ćwiczyć", "Water - Woda", "Sport - Sport"], files: {v: "M5L4_Vocabulary_1.mp3", r: "M5L4_Repeat_1.mp3"} },
-        "M5L5": { title: "Emocje", tag: "Moduł 5", vocab: ["Happy - Szczęśliwy", "Sad - Smutny", "Stressed - Zestresowany", "Tired - Zmęczony"], files: {v: "M5L5_Vocabulary_1.mp3", r: "M5L5_Repeat_1.mp3"} },
-        "M5L6": { title: "Nagłe Wypadki", tag: "Moduł 5", vocab: ["Accident - Wypadek", "Ambulance - Karetka", "Blood - Krew", "Call - Dzwonić"], files: {v: "M5L6_Vocabulary_1.mp3", r: "M5L6_Repeat_1.mp3"} },
-    };
+    M4L1: {
+      module: "Moduł 4: Podróże",
+      title: "Na lotnisku",
+      description: "Procedury lotniskowe i bilety."
+    },
+    M4L2: {
+      module: "Moduł 4: Podróże",
+      title: "Transport publiczny",
+      description: "Kupowanie biletów na pociąg lub autobus."
+    },
+    M4L3: {
+      module: "Moduł 4: Podróże",
+      title: "Kierunki i Orientacja",
+      description: "Pytanie o drogę, skręcanie i odległości."
+    },
+    M4L4: {
+      module: "Moduł 4: Podróże",
+      title: "Hotel i Zakwaterowanie",
+      description: "Rezerwacja pokoju, zameldowanie i bagaż."
+    },
+    M4L5: {
+      module: "Moduł 4: Podróże",
+      title: "Kontakt Telefoniczny",
+      description: "Rozmowa przez telefon, wiadomości i zasięg."
+    },
+    M4L6: {
+      module: "Moduł 4: Podróże",
+      title: "Planowanie i Czas",
+      description: "Ustalanie spotkań, pory dnia i harmonogram."
+    },
 
-    let completed = new Set();
+    M5L1: {
+      module: "Moduł 5: Praca i Biznes",
+      title: "Firma i Biuro",
+      description: "Nazewnictwo stanowisk, praca zespołowa i biuro."
+    },
+    M5L2: {
+      module: "Moduł 5: Praca i Biznes",
+      title: "Spotkania Służbowe",
+      description: "Umawianie terminów, kalendarz i zaproszenia."
+    },
+    M5L3: {
+      module: "Moduł 5: Praca i Biznes",
+      title: "Oferty i Kontrakty",
+      description: "Usługi, szczegóły, umowy i terminy."
+    },
+    M5L4: {
+      module: "Moduł 5: Praca i Biznes",
+      title: "E-maile i Korespondencja",
+      description: "Pisanie odpowiedzi, załączniki i prośby."
+    },
+    M5L5: {
+      module: "Moduł 5: Praca i Biznes",
+      title: "Strategia i Prezentacje",
+      description: "Prezentowanie pomysłów, korzyści i celów."
+    },
+    M5L6: {
+      module: "Moduł 5: Praca i Biznes",
+      title: "Rozwiązywanie Problemów",
+      description: "Zadania, priorytety, aktualizacje i wsparcie."
+    }
+  };
 
-    function loadLesson() {
-        const id = document.getElementById('lessonSelect').value;
-        const data = lessonsData[id];
-        
-        document.getElementById('lessonTitle').innerText = data.title;
-        document.getElementById('lessonTag').innerText = data.tag;
-       document.getElementById('audioVocab').src = "audio/" + data.files.v;
-       document.getElementById('audioRepeat').src = "audio/" + data.files.r;
+  const audioTypes = [
+    { key: "Vocabulary", label: "Vocabulary", color: "blue" },
+    { key: "KeyPhrases", label: "Key Phrases", color: "fuchsia" },
+    { key: "Dialogue", label: "Dialogue", color: "emerald" },
+    { key: "Repeat", label: "Repeat", color: "amber" },
+    { key: "Questions", label: "Questions", color: "violet" }
+  ];
 
-        renderVocab(data.vocab, id);
+  const lessonOrder = [];
+  for (let module = 1; module <= 5; module++) {
+    for (let lesson = 1; lesson <= 6; lesson++) {
+      lessonOrder.push(`M${module}L${lesson}`);
+    }
+  }
+
+  let currentLessonId = "M1L1";
+  let currentTab = "audio";
+  let completedLessons = JSON.parse(localStorage.getItem("englishMasterCompletedLessons") || "[]");
+
+  function getAudioFile(lessonId, typeKey) {
+    return `audio/${lessonId}_${typeKey}_1.mp3`;
+  }
+
+  function getModuleFromLessonId(lessonId) {
+    return Number(lessonId.match(/^M(\d)L(\d)$/)[1]);
+  }
+
+  function getLessonNumberFromLessonId(lessonId) {
+    return Number(lessonId.match(/^M(\d)L(\d)$/)[2]);
+  }
+
+  function updateProgress() {
+    document.getElementById("progressCount").innerText = completedLessons.length;
+  }
+
+  function saveProgress() {
+    localStorage.setItem("englishMasterCompletedLessons", JSON.stringify(completedLessons));
+    updateProgress();
+    renderLessonButtons();
+  }
+
+  function markLessonComplete() {
+    if (!completedLessons.includes(currentLessonId)) {
+      completedLessons.push(currentLessonId);
+      saveProgress();
+      alert(`Oznaczono ${currentLessonId} jako ukończoną.`);
+    } else {
+      alert(`Ta lekcja jest już oznaczona jako ukończona.`);
+    }
+  }
+
+  function resetProgress() {
+    if (confirm("Na pewno chcesz wyzerować cały postęp?")) {
+      completedLessons = [];
+      saveProgress();
+    }
+  }
+
+  function renderLessonButtons() {
+    const selectedModule = Number(document.getElementById("moduleSelect").value);
+    const container = document.getElementById("lessonButtons");
+    container.innerHTML = "";
+
+    for (let lesson = 1; lesson <= 6; lesson++) {
+      const lessonId = `M${selectedModule}L${lesson}`;
+      const isActive = lessonId === currentLessonId;
+      const isDone = completedLessons.includes(lessonId);
+
+      const button = document.createElement("button");
+      button.className = `lesson-btn px-3 py-3 rounded-2xl border font-semibold text-sm transition ${
+        isActive ? "active" : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
+      }`;
+      button.innerHTML = `${lessonId}${isDone ? " ✓" : ""}`;
+      button.onclick = () => loadLesson(lessonId);
+      container.appendChild(button);
+    }
+  }
+
+  function setTab(tab) {
+    currentTab = tab;
+    document.getElementById("tabAudio").classList.toggle("active", tab === "audio");
+    document.getElementById("tabInfo").classList.toggle("active", tab === "info");
+    renderContent();
+  }
+
+  function loadLesson(lessonId = null) {
+    if (lessonId) currentLessonId = lessonId;
+
+    const moduleNo = getModuleFromLessonId(currentLessonId);
+    const lessonInfo = courseData[currentLessonId];
+
+    document.getElementById("moduleSelect").value = String(moduleNo);
+    document.getElementById("lessonTag").innerText = lessonInfo.module;
+    document.getElementById("lessonTitle").innerText = lessonInfo.title;
+    document.getElementById("lessonDescription").innerText = lessonInfo.description;
+
+    renderLessonButtons();
+    renderContent();
+  }
+
+  function renderContent() {
+    const container = document.getElementById("contentArea");
+    container.innerHTML = "";
+    const lessonInfo = courseData[currentLessonId];
+
+    if (currentTab === "info") {
+      container.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Informacje o lekcji</h3>
+            <div class="space-y-2 text-slate-700">
+              <p><strong>Moduł:</strong> ${lessonInfo.module}</p>
+              <p><strong>Lekcja:</strong> ${lessonInfo.title}</p>
+              <p><strong>ID:</strong> ${currentLessonId}</p>
+              <p><strong>Status:</strong> ${completedLessons.includes(currentLessonId) ? "Ukończona" : "Nieukończona"}</p>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Opis</h3>
+            <p class="text-slate-700 leading-relaxed">${lessonInfo.description}</p>
+          </div>
+        </div>
+      `;
+      return;
     }
 
-    function renderVocab(vocabArray, lessonId) {
-        const container = document.getElementById('contentArea');
-        container.innerHTML = '';
-        vocabArray.forEach(item => {
-            const [en, pl] = item.split(' - ');
-            container.innerHTML += `
-                <div class="card-flip h-32">
-                    <div class="card-inner" onclick="this.classList.toggle('flipped'); trackProgress('${lessonId}')">
-                        <div class="card-front font-semibold">${en}</div>
-                        <div class="card-back">${pl}</div>
-                    </div>
-                </div>
-            `;
-        });
-    }
+    const wrapper = document.createElement("div");
+    wrapper.className = "grid grid-cols-1 md:grid-cols-2 gap-6";
 
-    function trackProgress(id) {
-        completed.add(id);
-        document.getElementById('progressCount').innerText = completed.size;
-    }
+    audioTypes.forEach(type => {
+      const fileName = `${currentLessonId}_${type.key}_1.mp3`;
+      const filePath = getAudioFile(currentLessonId, type.key);
 
-    function playCurrentLesson() {
-        document.getElementById('audioVocab').play();
-    }
+      const colorMap = {
+        blue: "border-blue-200 bg-blue-50 text-blue-700",
+        fuchsia: "border-fuchsia-200 bg-fuchsia-50 text-fuchsia-700",
+        emerald: "border-emerald-200 bg-emerald-50 text-emerald-700",
+        amber: "border-amber-200 bg-amber-50 text-amber-700",
+        violet: "border-violet-200 bg-violet-50 text-violet-700"
+      };
 
-    function searchVocab() {
-        const query = document.getElementById('searchInput').value.toLowerCase();
-        const results = [];
-        Object.values(lessonsData).forEach(l => {
-            l.vocab.forEach(v => {
-                if(v.toLowerCase().includes(query)) results.push(v);
-            });
-        });
-        if(query.length > 1) {
-            document.getElementById('lessonTitle').innerText = "Wyniki wyszukiwania";
-            renderVocab(results, 'search');
-        } else {
-            loadLesson();
+      const card = document.createElement("div");
+      card.className = `audio-card border rounded-3xl p-6 shadow-sm ${completedLessons.includes(currentLessonId) ? "done" : "bg-white border-slate-200"}`;
+
+      card.innerHTML = `
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <div class="inline-flex px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${colorMap[type.color]}">
+              ${type.label}
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mt-3">${type.label}</h3>
+            <p class="text-slate-500 text-sm mt-2 break-all">${fileName}</p>
+          </div>
+          <div class="text-2xl">🎧</div>
+        </div>
+
+        <div class="space-y-3">
+          <button class="play-btn w-full px-4 py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-semibold transition">
+            ▶ Odtwórz
+          </button>
+
+          <audio controls preload="none" class="w-full rounded-xl">
+            <source src="${filePath}" type="audio/mpeg">
+            Twoja przeglądarka nie obsługuje audio.
+          </audio>
+
+          <div class="flex gap-3">
+            <a href="${filePath}" target="_blank" class="flex-1 text-center px-4 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold transition">
+              Otwórz plik
+            </a>
+            <button class="copy-btn flex-1 px-4 py-3 rounded-2xl bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-semibold transition">
+              Kopiuj nazwę
+            </button>
+          </div>
+        </div>
+      `;
+
+      const audio = card.querySelector("audio");
+      const playBtn = card.querySelector(".play-btn");
+      const copyBtn = card.querySelector(".copy-btn");
+
+      playBtn.addEventListener("click", () => {
+        document.getElementById("mainAudioPlayer").src = filePath;
+        document.getElementById("mainAudioLabel").innerText = `${currentLessonId} • ${type.label}`;
+        document.getElementById("mainAudioPlayer").play().catch(() => {});
+      });
+
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(fileName);
+        copyBtn.innerText = "Skopiowano";
+        setTimeout(() => copyBtn.innerText = "Kopiuj nazwę", 1200);
+      });
+
+      audio.addEventListener("error", () => {
+        if (!card.querySelector(".audio-error")) {
+          const errorBox = document.createElement("div");
+          errorBox.className = "audio-error mt-3 px-4 py-3 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium";
+          errorBox.innerText = "Brak pliku w repozytorium albo błędna nazwa.";
+          card.appendChild(errorBox);
         }
+      });
+
+      wrapper.appendChild(card);
+    });
+
+    container.appendChild(wrapper);
+  }
+
+  function playCurrentLesson() {
+    const firstFile = getAudioFile(currentLessonId, "Vocabulary");
+    document.getElementById("mainAudioPlayer").src = firstFile;
+    document.getElementById("mainAudioLabel").innerText = `${currentLessonId} • Vocabulary`;
+    document.getElementById("mainAudioPlayer").play().catch(() => {});
+  }
+
+  function prevLesson() {
+    const currentIndex = lessonOrder.indexOf(currentLessonId);
+    if (currentIndex > 0) {
+      loadLesson(lessonOrder[currentIndex - 1]);
+    }
+  }
+
+  function nextLesson() {
+    const currentIndex = lessonOrder.indexOf(currentLessonId);
+    if (currentIndex < lessonOrder.length - 1) {
+      loadLesson(lessonOrder[currentIndex + 1]);
+    }
+  }
+
+  function filterLessons() {
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+    if (!query) {
+      renderLessonButtons();
+      return;
     }
 
-    window.onload = loadLesson;
+    const container = document.getElementById("lessonButtons");
+    container.innerHTML = "";
+
+    lessonOrder
+      .filter(id => {
+        const lesson = courseData[id];
+        return (
+          id.toLowerCase().includes(query) ||
+          lesson.title.toLowerCase().includes(query) ||
+          lesson.description.toLowerCase().includes(query) ||
+          lesson.module.toLowerCase().includes(query)
+        );
+      })
+      .forEach(lessonId => {
+        const isActive = lessonId === currentLessonId;
+        const isDone = completedLessons.includes(lessonId);
+
+        const button = document.createElement("button");
+        button.className = `lesson-btn px-3 py-3 rounded-2xl border font-semibold text-sm transition ${
+          isActive ? "active" : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"
+        }`;
+        button.innerHTML = `${lessonId}${isDone ? " ✓" : ""}`;
+        button.onclick = () => loadLesson(lessonId);
+        container.appendChild(button);
+      });
+  }
+
+  updateProgress();
+  renderLessonButtons();
+  loadLesson("M1L1");
 </script>
+
 </body>
 </html>
