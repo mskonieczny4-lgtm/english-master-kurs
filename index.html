@@ -321,6 +321,17 @@
     .info-card h3 { font-size: 22px; margin-bottom: 8px; }
     .info-card p { color: var(--muted); margin: 0; }
 
+    .demo-banner {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(137, 240, 194, 0.25);
+      background: rgba(137, 240, 194, 0.08);
+      color: #dffff0;
+    }
+
+    .demo-banner strong { display: block; margin-bottom: 4px; }
+
     .layout {
       display: grid;
       grid-template-columns: 340px minmax(0, 1fr);
@@ -398,7 +409,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      cursor: pointer;
       font-weight: 700;
     }
 
@@ -460,6 +470,7 @@
 
     .lesson-status.locked { color: #ffd79c; }
     .lesson-status.done { color: var(--green); }
+    .lesson-status.free { color: #b8ffe1; }
 
     .lesson-title {
       display: block;
@@ -676,8 +687,6 @@
       font-size: 14px;
     }
 
-    .hidden { display: none !important; }
-
     @media (max-width: 1100px) {
       .hero-grid,
       .layout,
@@ -747,6 +756,10 @@
             <a class="btn btn-primary" href="#kurs">Przejdź do kursu</a>
             <a class="btn btn-secondary" href="#co-zawiera">Zobacz, co zawiera</a>
           </div>
+          <div class="demo-banner">
+            <strong>Sprawdź kurs przed zakupem</strong>
+            Lekcja 1 i lekcja 2 są dostępne za darmo. Dzięki temu użytkownik może wejść niżej, kliknąć i zobaczyć dokładnie, jak wygląda kurs od środka przed zakupem pełnej wersji.
+          </div>
         </div>
 
         <aside class="card hero-side" id="kup-teraz">
@@ -761,9 +774,8 @@
               </div>
             </div>
             <a class="btn btn-gold" id="buyNowBtn" href="https://twoj-link-do-platnosci.pl" target="_blank" rel="noopener noreferrer">Kup i odblokuj kurs</a>
-            <button class="btn btn-secondary" id="demoUnlockBtn" type="button">Tryb demonstracyjny: odblokuj lokalnie</button>
             <div class="notice">
-              Ważne: ta wersja działa jako pojedynczy plik HTML. Prawdziwe zabezpieczenie płatnego dostępu wymaga płatności + backendu lub systemu członkostwa.
+              Wersja próbna: 2 darmowe lekcje do sprawdzenia. Po zakupie użytkownik otrzymuje dostęp do całego kursu.
             </div>
           </div>
 
@@ -777,8 +789,8 @@
               <span class="muted">lekcji krok po kroku</span>
             </div>
             <div class="stat">
-              <strong>6</strong>
-              <span class="muted">elementów w każdej lekcji</span>
+              <strong>2</strong>
+              <span class="muted">darmowe lekcje próbne</span>
             </div>
           </div>
         </aside>
@@ -848,10 +860,10 @@
           </div>
         </div>
         <div class="how-grid">
-          <article class="info-card"><h3>1. Wybierz lekcję</h3><p>Zacznij od modułu 1 i idź po kolei. Nie przeskakuj, jeśli dopiero zaczynasz.</p></article>
+          <article class="info-card"><h3>1. Sprawdź darmowe lekcje</h3><p>Na start dostępne są dwie lekcje próbne. Dzięki temu użytkownik widzi realną wartość kursu.</p></article>
           <article class="info-card"><h3>2. Przeczytaj czytankę</h3><p>Najpierw zobacz tekst i tłumaczenie. Dzięki temu łatwiej wyłapiesz sens nagrania.</p></article>
           <article class="info-card"><h3>3. Odsłuchaj i powtórz</h3><p>Przejdź do nagrań i powtarzaj na głos. Największy efekt daje regularna, krótka praktyka.</p></article>
-          <article class="info-card"><h3>4. Oznacz lekcję jako ukończoną</h3><p>Zamknij pętlę nauki. Postęp i motywacja rosną, kiedy widzisz, ile już zrobiłeś.</p></article>
+          <article class="info-card"><h3>4. Kup pełny dostęp</h3><p>Po sprawdzeniu wersji próbnej użytkownik może przejść do całego kursu i odblokować resztę lekcji.</p></article>
         </div>
       </div>
     </section>
@@ -890,7 +902,7 @@
             <div class="section-title" style="margin-bottom:12px;">
               <div>
                 <h3 style="font-size:22px;">Moduły i lekcje</h3>
-                <p class="muted small">5 modułów • 30 lekcji</p>
+                <p class="muted small">2 darmowe lekcje • 28 lekcji pełnych</p>
               </div>
             </div>
             <div id="moduleList" class="module-list"></div>
@@ -901,12 +913,12 @@
           <div class="locked-overlay" id="lockedOverlay">
             <div class="locked-card">
               <div class="eyebrow">Pełny kurs premium</div>
-              <h3>Ta lekcja jest zablokowana</h3>
-              <p>W wersji demonstracyjnej dostępne są tylko wybrane lekcje. Aby odblokować całość, podłącz płatność i system autoryzacji lub użyj lokalnego odblokowania testowego.</p>
+              <h3>Ta lekcja jest dostępna po zakupie</h3>
+              <p>Wersja próbna obejmuje 2 darmowe lekcje. Jeśli chcesz odblokować cały kurs i przejść przez wszystkie moduły, kup pełny dostęp.</p>
               <div class="locked-price">45 zł</div>
               <div class="action-row" style="justify-content:center;">
-                <a class="btn btn-gold" href="https://twoj-link-do-platnosci.pl" target="_blank" rel="noopener noreferrer">Kup dostęp</a>
-                <button class="btn btn-secondary" type="button" id="overlayUnlockBtn">Odblokuj lokalnie do testów</button>
+                <a class="btn btn-gold" href="https://twoj-link-do-platnosci.pl" target="_blank" rel="noopener noreferrer">Kup pełny dostęp</a>
+                <a class="btn btn-secondary" href="#kup-teraz">Wróć do oferty</a>
               </div>
             </div>
           </div>
@@ -1023,7 +1035,7 @@
               </article>
               <article class="subcard">
                 <h3>Uwaga techniczna</h3>
-                <p>Ten szablon zapisuje postęp lokalnie w przeglądarce. Do prawdziwego systemu sprzedaży dodaj logowanie lub autoryzację po płatności.</p>
+                <p>Sam plik HTML na GitHub Pages nie daje prawdziwej ochrony płatnego dostępu. Do sprzedaży trzeba podłączyć płatność i autoryzację lub platformę kursową.</p>
               </article>
             </div>
           </div>
@@ -1051,8 +1063,8 @@
   <footer class="footer">
     <div class="wrap footer-card">
       <strong>English Master Premium</strong>
-      <p style="margin:10px 0 0;">To jest kompletna, mocniejsza wersja strony kursu: ma sekcję sprzedażową, opisy wartości, czytanki, tłumaczenia, słownictwo, pytania, onboarding, postęp i blokadę płatnych lekcji.</p>
-      <div class="notice">Najważniejsze uczciwe zastrzeżenie: sam plik HTML na GitHub Pages nie daje prawdziwej ochrony przed darmowym dostępem. Aby kurs był naprawdę zabezpieczony, potrzebujesz płatności i backendu albo platformy kursowej.</div>
+      <p style="margin:10px 0 0;">Ta wersja ma już sens sprzedażowy: klient od razu widzi, że może sprawdzić 2 darmowe lekcje, a reszta jest płatna.</p>
+      <div class="notice">Najuczciwiej: to nadal jest wersja demonstracyjna pod GitHub Pages. Do prawdziwej sprzedaży kursu trzeba dołożyć bramkę płatności i system autoryzacji po zakupie.</div>
     </div>
   </footer>
 
@@ -1070,28 +1082,12 @@
         outcome: 'Poznasz podstawowe powitania i pożegnania oraz nauczysz się używać ich w prostych sytuacjach codziennych.',
         audience: 'Dla osób, które zaczynają naukę i chcą zbudować pierwszy kontakt językowy.',
         tip: 'Czytaj na głos bardzo wolno. Dla początkujących ważniejsza jest regularność niż tempo.',
-        locked: false,
+        free: true,
         readingEn: 'Anna meets Tom in the morning. She smiles and says, “Good morning, Tom.” Tom answers, “Good morning, Anna. How are you?” Anna says, “I am fine, thank you. And you?” Tom says, “I am good. Have a nice day!”',
         readingPl: 'Anna spotyka Toma rano. Uśmiecha się i mówi: „Dzień dobry, Tom.” Tom odpowiada: „Dzień dobry, Anna. Jak się masz?” Anna mówi: „Mam się dobrze, dziękuję. A ty?” Tom mówi: „U mnie dobrze. Miłego dnia!”',
-        vocab: [
-          ['Good morning', 'dzień dobry'],
-          ['How are you?', 'jak się masz?'],
-          ['I am fine', 'mam się dobrze'],
-          ['Have a nice day', 'miłego dnia']
-        ],
-        questions: [
-          'Jak Anna wita Toma?',
-          'Jak Tom pyta o samopoczucie?',
-          'Jak powiedzieć „mam się dobrze”?',
-          'Jak pożegnać się uprzejmie po angielsku?'
-        ],
-        audio: {
-          vocabulary: '',
-          keyPhrases: '',
-          dialogue: '',
-          repeat: '',
-          questions: ''
-        }
+        vocab: [['Good morning', 'dzień dobry'], ['How are you?', 'jak się masz?'], ['I am fine', 'mam się dobrze'], ['Have a nice day', 'miłego dnia']],
+        questions: ['Jak Anna wita Toma?', 'Jak Tom pyta o samopoczucie?', 'Jak powiedzieć „mam się dobrze”?', 'Jak pożegnać się uprzejmie po angielsku?'],
+        audio: { vocabulary: '', keyPhrases: '', dialogue: '', repeat: '', questions: '' }
       },
       {
         id: 2,
@@ -1105,7 +1101,7 @@
         outcome: 'Nauczysz się powiedzieć, jak masz na imię, skąd jesteś i czym się zajmujesz.',
         audience: 'Dla osób, które chcą zacząć krótkie rozmowy po angielsku.',
         tip: 'Ułóż własne 3 zdania o sobie i przeczytaj je kilka razy na głos.',
-        locked: false,
+        free: true,
         readingEn: 'My name is Marta. I am from Poland. I live in Gdynia and I work in a small company. I like learning English because I want to travel and speak with people from other countries.',
         readingPl: 'Mam na imię Marta. Jestem z Polski. Mieszkam w Gdyni i pracuję w małej firmie. Lubię uczyć się angielskiego, ponieważ chcę podróżować i rozmawiać z ludźmi z innych krajów.',
         vocab: [['My name is', 'mam na imię'], ['I am from', 'jestem z'], ['I live in', 'mieszkam w'], ['I work in', 'pracuję w']],
@@ -1124,7 +1120,7 @@
         outcome: 'Poznasz liczby oraz zdania związane z wiekiem i prostymi informacjami liczbowymi.',
         audience: 'Dla początkujących, którzy chcą oswoić się z liczbami w praktyce.',
         tip: 'Powtarzaj liczby na głos i łącz je z codziennymi przykładami, jak numer telefonu czy godzina.',
-        locked: true,
+        free: false,
         readingEn: 'John is twenty-eight years old. His sister is twenty-three. They live at number fifteen on Green Street. Their bus leaves at seven thirty in the morning.',
         readingPl: 'John ma dwadzieścia osiem lat. Jego siostra ma dwadzieścia trzy lata. Mieszkają pod numerem piętnaście przy Green Street. Ich autobus odjeżdża o siódmej trzydzieści rano.',
         vocab: [['years old', 'lat'], ['number', 'numer'], ['street', 'ulica'], ['leaves', 'odjeżdża']],
@@ -1143,7 +1139,7 @@
         outcome: 'Nauczysz się mówić o swoim tygodniu i prostych planach.',
         audience: 'Dla osób, które chcą opisywać prostą rutynę tygodniową.',
         tip: 'Połącz każdy dzień z jedną prostą czynnością, aby lepiej go zapamiętać.',
-        locked: true,
+        free: false,
         readingEn: 'On Monday, I work. On Tuesday, I go to the gym. On Wednesday, I study English. On Thursday, I visit my friend. On Friday, I relax at home.',
         readingPl: 'W poniedziałek pracuję. We wtorek idę na siłownię. W środę uczę się angielskiego. W czwartek odwiedzam przyjaciela. W piątek odpoczywam w domu.',
         vocab: [['Monday', 'poniedziałek'], ['Tuesday', 'wtorek'], ['study', 'uczyć się'], ['relax', 'odpoczywać']],
@@ -1162,7 +1158,7 @@
         outcome: 'Będziesz umiał zapytać o godzinę i opisać prosty plan dnia z godzinami.',
         audience: 'Dla osób potrzebujących codziennych zwrotów o czasie.',
         tip: 'Ćwicz na własnym planie dnia. Podaj 4 godziny i przypisz do nich czynności.',
-        locked: true,
+        free: false,
         readingEn: 'It is seven o’clock in the morning. I get up at seven fifteen. I start work at eight. At twelve, I have lunch. In the evening, I go home at six.',
         readingPl: 'Jest siódma rano. Wstaję o siódmej piętnaście. Zaczynam pracę o ósmej. O dwunastej jem lunch. Wieczorem wracam do domu o szóstej.',
         vocab: [['What time is it?', 'która jest godzina?'], ['get up', 'wstawać'], ['start work', 'zaczynać pracę'], ['lunch', 'obiad / lunch']],
@@ -1181,7 +1177,7 @@
         outcome: 'Nauczysz się zadawać proste pytania o imię, miejsce, czas i samopoczucie.',
         audience: 'Dla osób, które chcą zacząć aktywnie rozmawiać.',
         tip: 'Przerób pytania kilka razy i odpowiedz na nie własnymi słowami.',
-        locked: true,
+        free: false,
         readingEn: 'What is your name? Where do you live? How are you today? What time do you start work? These are simple questions that help you begin a conversation.',
         readingPl: 'Jak masz na imię? Gdzie mieszkasz? Jak się dziś masz? O której zaczynasz pracę? To proste pytania, które pomagają rozpocząć rozmowę.',
         vocab: [['What', 'co / jaki'], ['Where', 'gdzie'], ['How', 'jak'], ['begin', 'zaczynać']],
@@ -1211,23 +1207,17 @@
           outcome: `Po tej lekcji lepiej poradzisz sobie w sytuacji: ${title.toLowerCase()}.`,
           audience: 'Dla osób, które chcą używać angielskiego w prawdziwych sytuacjach.',
           tip: 'Najpierw przeczytaj tekst spokojnie, potem odsłuchaj dialog i powtórz całe zdania.',
-          locked: true,
+          free: false,
           readingEn: `This lesson is about ${title.toLowerCase()}. You learn useful words, simple sentences and a short practical text. Read the text slowly, listen to the audio and repeat the most important phrases. Step by step, you build confidence and start understanding more.`,
           readingPl: `Ta lekcja dotyczy tematu: ${title.toLowerCase()}. Uczysz się przydatnych słów, prostych zdań i krótkiego praktycznego tekstu. Czytaj tekst powoli, słuchaj nagrania i powtarzaj najważniejsze zwroty. Krok po kroku budujesz pewność i zaczynasz rozumieć więcej.`,
           vocab: [['useful words', 'przydatne słowa'], ['simple sentences', 'proste zdania'], ['practical text', 'praktyczny tekst'], ['confidence', 'pewność siebie']],
-          questions: [
-            `Jaki jest temat lekcji: ${title}?`,
-            'Co użytkownik ma zrobić po przeczytaniu tekstu?',
-            'Dlaczego warto powtarzać najważniejsze zwroty?',
-            'Co budujesz krok po kroku dzięki tej lekcji?'
-          ],
+          questions: [`Jaki jest temat lekcji: ${title}?`, 'Co użytkownik ma zrobić po przeczytaniu tekstu?', 'Dlaczego warto powtarzać najważniejsze zwroty?', 'Co budujesz krok po kroku dzięki tej lekcji?'],
           audio: { vocabulary: '', keyPhrases: '', dialogue: '', repeat: '', questions: '' }
         };
       })
     ];
 
-    const STORAGE_KEY_PROGRESS = 'english_master_progress_v2';
-    const STORAGE_KEY_UNLOCK = 'english_master_unlocked_v2';
+    const STORAGE_KEY_PROGRESS = 'english_master_progress_v3';
 
     const moduleListEl = document.getElementById('moduleList');
     const progressCountEl = document.getElementById('progressCount');
@@ -1253,12 +1243,9 @@
     const prevLessonBtn = document.getElementById('prevLessonBtn');
     const nextLessonBtn = document.getElementById('nextLessonBtn');
     const resetBtn = document.getElementById('resetBtn');
-    const demoUnlockBtn = document.getElementById('demoUnlockBtn');
-    const overlayUnlockBtn = document.getElementById('overlayUnlockBtn');
     const lockedOverlay = document.getElementById('lockedOverlay');
 
     let completedLessons = JSON.parse(localStorage.getItem(STORAGE_KEY_PROGRESS) || '[]');
-    let fullAccess = localStorage.getItem(STORAGE_KEY_UNLOCK) === 'true';
     let currentLessonId = 1;
 
     const modules = [
@@ -1273,16 +1260,12 @@
       localStorage.setItem(STORAGE_KEY_PROGRESS, JSON.stringify(completedLessons));
     }
 
-    function saveAccess() {
-      localStorage.setItem(STORAGE_KEY_UNLOCK, fullAccess ? 'true' : 'false');
-    }
-
     function getLessonById(id) {
       return LESSONS.find(lesson => lesson.id === id);
     }
 
     function isLessonLocked(lesson) {
-      return lesson.locked && !fullAccess;
+      return !lesson.free;
     }
 
     function buildModules() {
@@ -1294,9 +1277,8 @@
         const wrapper = document.createElement('div');
         wrapper.className = 'module-item';
 
-        const head = document.createElement('button');
+        const head = document.createElement('div');
         head.className = 'module-head';
-        head.type = 'button';
         head.innerHTML = `
           <span>
             Moduł ${module.id}: ${module.name}
@@ -1316,8 +1298,8 @@
 
           const done = completedLessons.includes(lesson.id);
           const locked = isLessonLocked(lesson);
-          const status = done ? 'Ukończona' : locked ? 'Zablokowana' : 'Dostępna';
-          const statusClass = done ? 'done' : locked ? 'locked' : '';
+          const status = done ? 'Ukończona' : lesson.free ? 'Darmowa' : 'Płatna';
+          const statusClass = done ? 'done' : lesson.free ? 'free' : 'locked';
 
           btn.innerHTML = `
             <div class="lesson-top">
@@ -1357,16 +1339,22 @@
         box.className = 'audio-box';
         box.innerHTML = `<label>${label}</label>`;
 
-        if (src) {
+        if (src && lesson.free) {
           const audio = document.createElement('audio');
           audio.controls = true;
           audio.src = src;
           box.appendChild(audio);
-        } else {
+        } else if (lesson.free) {
           const p = document.createElement('p');
           p.className = 'muted';
           p.style.margin = '0';
           p.textContent = 'Podmień pusty link na własny plik MP3.';
+          box.appendChild(p);
+        } else {
+          const p = document.createElement('p');
+          p.className = 'muted';
+          p.style.margin = '0';
+          p.textContent = 'Nagrania w tej lekcji są dostępne po zakupie pełnej wersji kursu.';
           box.appendChild(p);
         }
 
@@ -1392,8 +1380,8 @@
       lessonAudienceEl.textContent = lesson.audience;
       lessonTipEl.textContent = lesson.tip;
       accessStatusEl.textContent = locked
-        ? 'Ta lekcja jest zablokowana w trybie demonstracyjnym. Po odblokowaniu użytkownik widzi pełną zawartość.'
-        : 'Ta lekcja jest dostępna. Możesz odsłuchać nagrania, przeczytać tekst i oznaczyć ją jako ukończoną.';
+        ? 'Ta lekcja należy do pełnej wersji kursu. Użytkownik widzi, że darmowe są 2 lekcje, a reszta wymaga zakupu.'
+        : 'Ta lekcja jest dostępna bezpłatnie jako część wersji próbnej. Użytkownik może sprawdzić, jak wygląda kurs przed zakupem.';
 
       vocabListEl.innerHTML = '';
       lesson.vocab.forEach(item => {
@@ -1469,15 +1457,6 @@
       saveProgress();
       render();
     });
-
-    function unlockLocal() {
-      fullAccess = true;
-      saveAccess();
-      render();
-    }
-
-    demoUnlockBtn.addEventListener('click', unlockLocal);
-    overlayUnlockBtn.addEventListener('click', unlockLocal);
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
