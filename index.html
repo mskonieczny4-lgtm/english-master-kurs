@@ -3,1907 +3,1109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>English Master Premium</title>
-  <meta name="description" content="English Master Premium — kurs angielskiego z modułami, lekcjami audio, tekstami do czytania, tłumaczeniami, pytaniami i śledzeniem postępu." />
+  <title>Speak English Premium z AI</title>
   <style>
     :root {
-      --bg: #07111f;
-      --bg-2: #0d1a2e;
-      --panel: rgba(12, 24, 43, 0.92);
-      --panel-2: rgba(18, 31, 54, 0.95);
-      --line: rgba(130, 173, 255, 0.18);
-      --line-strong: rgba(130, 173, 255, 0.34);
-      --text: #eef4ff;
-      --muted: #9fb0cc;
-      --blue: #66a3ff;
-      --blue-2: #8ec5ff;
-      --accent: #d8e8ff;
-      --gold: #d5b26d;
-      --green: #89f0c2;
-      --red: #ff9f9f;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-      --radius-xl: 24px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
-      --max: 1320px;
+      --bg: #050816;
+      --bg2: #0b1025;
+      --card: rgba(255,255,255,0.08);
+      --card2: rgba(255,255,255,0.12);
+      --text: #f8fafc;
+      --muted: #a7b0c3;
+      --blue: #38bdf8;
+      --blue2: #2563eb;
+      --gold: #facc15;
+      --green: #22c55e;
+      --red: #ef4444;
+      --border: rgba(255,255,255,0.14);
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(88, 147, 255, 0.16), transparent 30%),
-        radial-gradient(circle at top left, rgba(213, 178, 109, 0.10), transparent 22%),
-        linear-gradient(180deg, #050d17 0%, #091527 100%);
+        radial-gradient(circle at top left, rgba(56,189,248,0.22), transparent 30%),
+        radial-gradient(circle at top right, rgba(37,99,235,0.24), transparent 32%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
       color: var(--text);
-      line-height: 1.6;
+      min-height: 100vh;
     }
 
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { font: inherit; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .wrap {
-      width: min(var(--max), calc(100% - 32px));
+    .page {
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
+      padding: 28px 0 60px;
     }
 
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      backdrop-filter: blur(18px);
-      background: rgba(5, 13, 23, 0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .topbar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
+      gap: 18px;
+      margin-bottom: 28px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 14px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
     }
 
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(102,163,255,0.9), rgba(213,178,109,0.75));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 10px 25px rgba(0,0,0,0.35);
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 30px rgba(56,189,248,0.35);
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .top-actions {
       display: flex;
-      align-items: center;
       gap: 10px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
-    .badge,
-    .mini-badge {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: var(--accent);
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .badge { padding: 12px 16px; }
-    .mini-badge { padding: 7px 12px; font-size: 13px; }
-
     .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 18px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 14px;
+      transition: 0.2s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      min-height: 50px;
-      padding: 0 20px;
-      border-radius: 14px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-      font-weight: 700;
+      gap: 8px;
     }
 
-    .btn:hover { transform: translateY(-1px); }
-    .btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.08);
+    }
 
     .btn-primary {
-      background: linear-gradient(135deg, #ffffff, #cfe1ff);
-      color: #07111f;
-      box-shadow: 0 18px 36px rgba(122, 170, 255, 0.25);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.04);
-      border-color: var(--line);
-      color: var(--text);
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: white;
+      box-shadow: 0 12px 30px rgba(37,99,235,0.35);
     }
 
     .btn-gold {
-      background: linear-gradient(135deg, #f0dfb9, #d5b26d);
-      color: #0c1420;
-      box-shadow: 0 18px 36px rgba(213, 178, 109, 0.18);
+      background: linear-gradient(135deg, #fde047, #f59e0b);
+      color: #111827;
+      box-shadow: 0 12px 30px rgba(250,204,21,0.25);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border: 1px solid var(--border);
     }
 
     .hero {
-      padding: 46px 0 26px;
-    }
-
-    .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 22px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
       align-items: stretch;
+      margin-bottom: 28px;
     }
 
-    .card {
-      background: linear-gradient(180deg, rgba(15, 28, 48, 0.96), rgba(10, 21, 37, 0.96));
-      border: 1px solid rgba(130, 173, 255, 0.14);
-      border-radius: var(--radius-xl);
+    .hero-card,
+    .access-card,
+    .panel {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+      border-radius: 28px;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
     }
 
-    .hero-copy {
+    .hero-card {
       padding: 34px;
+      min-height: 390px;
       position: relative;
       overflow: hidden;
     }
 
-    .hero-copy::before {
+    .hero-card:after {
       content: "";
       position: absolute;
-      inset: auto -120px -120px auto;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(102,163,255,0.18), transparent 70%);
-      pointer-events: none;
+      right: -100px;
+      top: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.18);
+      filter: blur(18px);
     }
 
-    .eyebrow {
+    .badge {
       display: inline-flex;
-      align-items: center;
       gap: 8px;
-      padding: 8px 14px;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid rgba(56,189,248,0.32);
+      background: rgba(56,189,248,0.11);
+      color: #dff7ff;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: var(--blue-2);
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      margin-bottom: 18px;
     }
 
-    h1, h2, h3, h4 { line-height: 1.15; margin: 0; }
-
-    h1 {
-      margin-top: 18px;
-      font-size: clamp(36px, 5vw, 68px);
-      letter-spacing: -0.04em;
-    }
-
-    .hero-copy p {
-      font-size: 18px;
-      color: var(--muted);
+    .hero h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
       max-width: 720px;
+    }
+
+    .hero .lead {
       margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 720px;
     }
 
-    .hero-points {
+    .hero-list {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 12px;
-      margin-top: 24px;
-    }
-
-    .hero-point {
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .hero-cta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
       margin-top: 26px;
     }
 
-    .hero-side {
-      padding: 28px;
+    .hero-list div {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 13px;
+      color: #eaf6ff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .access-card {
+      padding: 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 18px;
     }
 
-    .price-card {
-      display: grid;
-      gap: 12px;
-      padding: 22px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--line);
-    }
-
-    .price-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
     .price {
-      font-size: clamp(34px, 4vw, 54px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
+      font-size: 54px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      margin: 8px 0;
     }
 
-    .muted { color: var(--muted); }
-    .small { font-size: 14px; }
+    .price span {
+      font-size: 18px;
+      color: var(--muted);
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    .access-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .password-box {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.09);
+      color: white;
+      border-radius: 14px;
+      padding: 15px 16px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    input::placeholder {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .message {
+      min-height: 22px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .success {
+      color: var(--green);
+    }
+
+    .error {
+      color: var(--red);
+    }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 28px 0;
     }
 
     .stat {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border);
+      border-radius: 20px;
       padding: 18px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
     }
 
     .stat strong {
       display: block;
-      font-size: 28px;
-      margin-bottom: 5px;
+      font-size: 26px;
+      margin-bottom: 6px;
     }
 
-    section { padding: 14px 0 0; }
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
 
     .section-title {
+      margin: 36px 0 16px;
       display: flex;
-      align-items: flex-end;
+      align-items: end;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 18px;
     }
 
-    .section-title h2 {
-      font-size: clamp(28px, 3vw, 42px);
-      letter-spacing: -0.03em;
+    .section-title h3 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.04em;
     }
 
-    .benefits,
-    .trust-grid,
-    .bonus-grid,
-    .readings-grid,
-    .how-grid {
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .modules {
       display: grid;
-      gap: 16px;
+      gap: 18px;
     }
 
-    .benefits { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    .trust-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .bonus-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .readings-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .how-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
-    .info-card {
-      padding: 22px;
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(16, 31, 53, 0.94), rgba(9, 19, 33, 0.94));
-      border: 1px solid var(--line);
-    }
-
-    .info-card h3 { font-size: 22px; margin-bottom: 8px; }
-    .info-card p { color: var(--muted); margin: 0; }
-
-    .demo-banner {
-      margin-top: 18px;
-      padding: 18px 20px;
-      border-radius: 18px;
-      border: 1px solid rgba(137, 240, 194, 0.25);
-      background: rgba(137, 240, 194, 0.08);
-      color: #dffff0;
-    }
-
-    .demo-banner strong { display: block; margin-bottom: 4px; }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 340px minmax(0, 1fr);
-      gap: 22px;
-      padding-bottom: 34px;
-      margin-top: 24px;
-    }
-
-    .sidebar,
-    .content-panel {
-      min-height: 100%;
-    }
-
-    .sidebar {
-      padding: 22px;
-      position: sticky;
-      top: 86px;
-      align-self: start;
-    }
-
-    .progress-box,
-    .tip-box,
-    .module-box {
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .progress-box + .tip-box,
-    .tip-box + .module-box {
-      margin-top: 14px;
-    }
-
-    .progress-track {
-      width: 100%;
-      height: 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      overflow: hidden;
-      margin-top: 10px;
-    }
-
-    .progress-fill {
-      width: 0%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #8ec5ff, #d5b26d);
-      transition: width 0.3s ease;
-    }
-
-    .module-list,
-    .lesson-list,
-    .plain-list,
-    .question-list,
-    .vocab-list { list-style: none; padding: 0; margin: 0; }
-
-    .module-list { display: grid; gap: 14px; }
-
-    .module-item {
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
+    .module {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.07);
+      border-radius: 24px;
       overflow: hidden;
     }
 
-    .module-head {
-      width: 100%;
-      background: transparent;
-      color: var(--text);
-      border: 0;
-      text-align: left;
-      padding: 16px 18px;
+    .module-header {
+      padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .module-header h4 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .module-header span {
+      color: var(--muted);
+      font-size: 13px;
       font-weight: 700;
     }
 
-    .module-meta {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 3px;
-      font-weight: 500;
-    }
-
-    .lesson-list {
-      padding: 0 12px 12px;
+    .lessons {
       display: grid;
-      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 18px;
     }
 
-    .lesson-btn {
-      width: 100%;
-      border: 1px solid rgba(130, 173, 255, 0.12);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      border-radius: 16px;
-      padding: 14px 14px;
-      text-align: left;
-      cursor: pointer;
-      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    .lesson {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(0,0,0,0.16);
+      position: relative;
     }
 
-    .lesson-btn:hover { transform: translateY(-1px); border-color: var(--line-strong); }
-    .lesson-btn.active {
-      background: rgba(102,163,255,0.12);
-      border-color: rgba(102,163,255,0.42);
+    .lesson.locked {
+      opacity: 0.72;
     }
 
     .lesson-top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 10px;
-    }
-
-    .lesson-index {
-      font-size: 12px;
-      color: var(--blue-2);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
-
-    .lesson-status {
-      font-size: 12px;
-      padding: 6px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: var(--accent);
-      white-space: nowrap;
-    }
-
-    .lesson-status.locked { color: #ffd79c; }
-    .lesson-status.done { color: var(--green); }
-    .lesson-status.free { color: #b8ffe1; }
-
-    .lesson-title {
-      display: block;
-      font-size: 16px;
-      font-weight: 700;
-      margin-top: 6px;
-    }
-
-    .lesson-desc {
-      display: block;
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 5px;
-    }
-
-    .content-panel {
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .content-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .lesson-headline h2 {
-      font-size: clamp(28px, 3vw, 44px);
-      letter-spacing: -0.03em;
-      margin-top: 8px;
-    }
-
-    .lesson-headline p { margin: 10px 0 0; color: var(--muted); }
-
-    .lesson-tags {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .action-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .tab-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 26px 0 20px;
-    }
-
-    .tab-btn {
-      min-height: 44px;
-      border-radius: 12px;
-      padding: 0 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      cursor: pointer;
-      font-weight: 700;
-    }
-
-    .tab-btn.active {
-      background: rgba(102,163,255,0.14);
-      border-color: rgba(102,163,255,0.36);
-    }
-
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
-    .lesson-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .subcard {
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .subcard h3 { font-size: 20px; margin-bottom: 10px; }
-    .subcard p { margin: 0; color: var(--muted); }
-
-    .player-grid {
-      display: grid;
-      gap: 14px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .audio-box {
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .audio-box label {
-      display: block;
-      font-size: 13px;
-      color: var(--blue-2);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    audio { width: 100%; }
-
-    .reading-card {
-      padding: 22px;
-      border-radius: 22px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      margin-top: 16px;
-    }
-
-    .reading-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .reading-panel {
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .reading-panel h4 { margin-bottom: 10px; font-size: 18px; }
-    .reading-text { white-space: pre-line; color: var(--accent); }
-
-    .vocab-list,
-    .plain-list,
-    .question-list {
-      display: grid;
       gap: 12px;
+      align-items: start;
+      margin-bottom: 10px;
     }
 
-    .list-item {
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: var(--accent);
+    .lesson h5 {
+      margin: 0;
+      font-size: 17px;
     }
 
-    .list-item strong { display: block; margin-bottom: 3px; }
-
-    .locked-overlay {
-      position: absolute;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: linear-gradient(180deg, rgba(5, 13, 23, 0.50), rgba(5, 13, 23, 0.92));
-      backdrop-filter: blur(8px);
-      z-index: 40;
+    .tag {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+      background: rgba(56,189,248,0.13);
+      color: #cff4ff;
+      border: 1px solid rgba(56,189,248,0.28);
     }
 
-    .locked-overlay.show { display: flex; }
-
-    .locked-card {
-      width: min(560px, 100%);
-      padding: 28px;
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(16, 31, 53, 0.98), rgba(8, 18, 31, 0.98));
-      border: 1px solid rgba(213,178,109,0.28);
-      box-shadow: var(--shadow);
-      text-align: center;
+    .tag.lock {
+      background: rgba(250,204,21,0.13);
+      color: #fff1a8;
+      border: 1px solid rgba(250,204,21,0.28);
     }
 
-    .locked-card h3 { font-size: 32px; margin-bottom: 10px; }
-    .locked-card p { color: var(--muted); margin: 0 auto 18px; max-width: 480px; }
-
-    .locked-price {
-      font-size: 48px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      margin-bottom: 12px;
-    }
-
-    .footer {
-      padding: 24px 0 50px;
+    .lesson p {
       color: var(--muted);
-    }
-
-    .footer-card {
-      padding: 22px;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .notice {
-      margin-top: 14px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 197, 102, 0.24);
-      background: rgba(213, 178, 109, 0.08);
-      color: #ffe4b3;
+      line-height: 1.55;
+      margin: 0 0 14px;
       font-size: 14px;
     }
 
-    @media (max-width: 1100px) {
-      .hero-grid,
-      .layout,
-      .lesson-grid,
-      .reading-grid,
-      .player-grid,
-      .benefits,
-      .trust-grid,
-      .bonus-grid,
-      .readings-grid,
-      .how-grid,
+    .lesson-content {
+      display: none;
+      border-top: 1px solid var(--border);
+      margin-top: 14px;
+      padding-top: 14px;
+    }
+
+    .lesson.open .lesson-content {
+      display: block;
+    }
+
+    .words {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .word {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+
+    .word strong {
+      color: white;
+    }
+
+    .word span {
+      color: var(--muted);
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .audio-label {
+      color: #dbeafe;
+      font-weight: 800;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .lessons {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .top-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 16px;
+      }
+
+      .hero-card,
+      .access-card {
+        padding: 22px;
+        border-radius: 22px;
+      }
+
+      .hero-list {
+        grid-template-columns: 1fr;
+      }
+
       .stats {
         grid-template-columns: 1fr;
       }
 
-      .sidebar { position: static; top: auto; }
-      .hero-points { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 720px) {
-      .wrap { width: min(var(--max), calc(100% - 20px)); }
-      .hero-copy, .hero-side, .sidebar, .content-panel { padding: 20px; }
-      .topbar-inner, .content-top, .section-title { align-items: stretch; }
-      h1 { font-size: 34px; }
-      .locked-card h3 { font-size: 26px; }
-      .price { font-size: 38px; }
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
+  <main class="page" id="kurs">
+    <header class="topbar">
       <div class="brand">
-        <div class="brand-mark"></div>
+        <div class="logo">AI</div>
         <div>
-          <div>English Master</div>
-          <div class="small muted">Kurs Premium • Angielski krok po kroku</div>
+          <h1>Speak English Premium z AI</h1>
+          <p>Kurs angielskiego od podstaw</p>
         </div>
       </div>
+
       <div class="top-actions">
-        <div class="mini-badge">5 modułów</div>
-        <div class="mini-badge">30 lekcji</div>
-        <div class="mini-badge">Czytanki + audio</div>
-        <a class="btn btn-gold" href="#kup-teraz">Odblokuj za 45 zł</a>
+        <a class="btn btn-gold" href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">
+          Kup dostęp za 45 zł
+        </a>
+        <button class="btn btn-ghost" onclick="scrollToAccess()">Mam już dostęp</button>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="card hero-copy">
-          <div class="eyebrow">Kurs premium audio + czytanie + praktyka</div>
-          <h1>Ucz się angielskiego tak, aby naprawdę zacząć go używać.</h1>
+      <div class="hero-card">
+        <div class="badge">🔐 Kurs premium z dostępem po zakupie</div>
+        <h2>Ucz się angielskiego krok po kroku, bez chaosu.</h2>
+        <p class="lead">
+          Praktyczny kurs dla osób początkujących. Lekcje, słownictwo, polskie tłumaczenia,
+          powtórki i audio w jednym miejscu.
+        </p>
+
+        <div class="hero-list">
+          <div>✅ 5 modułów nauki</div>
+          <div>✅ 30 lekcji</div>
+          <div>✅ słownictwo z tłumaczeniem</div>
+          <div>✅ nagrania audio</div>
+        </div>
+      </div>
+
+      <aside class="access-card" id="dostep">
+        <div>
+          <div class="badge">Dostęp do kursu</div>
+          <div class="price">45 zł <span>/ jednorazowo</span></div>
           <p>
-            English Master Premium to praktyczny kurs dla osób początkujących i średnio początkujących.
-            Otrzymujesz uporządkowaną naukę w modułach, lekcje audio, teksty do czytania, tłumaczenia,
-            słownictwo, pytania sprawdzające i prosty system postępu.
+            Po zakupie na Naffy otrzymasz PDF z linkiem do kursu i hasłem dostępu.
+            Wpisz hasło poniżej, aby odblokować wszystkie lekcje.
           </p>
-          <div class="hero-points">
-            <div class="hero-point">Dla osób, które chcą mówić prosto, naturalnie i bez chaosu.</div>
-            <div class="hero-point">Każda lekcja zawiera czytankę, słówka, tłumaczenie i pytania.</div>
-            <div class="hero-point">Uczysz się przez codzienne sytuacje: dom, zakupy, podróże, praca.</div>
-            <div class="hero-point">Jasna ścieżka nauki od podstaw do praktycznych rozmów.</div>
-          </div>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#kurs">Przejdź do kursu</a>
-            <a class="btn btn-secondary" href="#co-zawiera">Zobacz, co zawiera</a>
-          </div>
-          <div class="demo-banner">
-            <strong>Sprawdź kurs przed zakupem</strong>
-            Lekcja 1 i lekcja 2 są dostępne za darmo. Dzięki temu użytkownik może wejść niżej, kliknąć i zobaczyć dokładnie, jak wygląda kurs od środka przed zakupem pełnej wersji.
-          </div>
         </div>
 
-        <aside class="card hero-side" id="kup-teraz">
-          <div class="price-card">
-            <div>
-              <div class="eyebrow">Jednorazowy dostęp</div>
-              <div class="price-row">
-                <div>
-                  <div class="price">45 zł</div>
-                  <div class="muted">Pełny kurs • 30 lekcji • dostęp do wszystkich modułów</div>
-                </div>
-              </div>
-            </div>
-            <a class="btn btn-gold" id="buyNowBtn" href="https://twoj-link-do-platnosci.pl" target="_blank" rel="noopener noreferrer">Kup i odblokuj kurs</a>
-            <div class="notice">
-              Wersja próbna: 2 darmowe lekcje do sprawdzenia. Po zakupie użytkownik otrzymuje dostęp do całego kursu.
-            </div>
-          </div>
+        <div class="password-box">
+          <a class="btn btn-gold" href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">
+            Kup dostęp za 45 zł
+          </a>
 
-          <div class="stats">
-            <div class="stat">
-              <strong>5</strong>
-              <span class="muted">modułów tematycznych</span>
-            </div>
-            <div class="stat">
-              <strong>30</strong>
-              <span class="muted">lekcji krok po kroku</span>
-            </div>
-            <div class="stat">
-              <strong>2</strong>
-              <span class="muted">darmowe lekcje próbne</span>
-            </div>
-          </div>
-        </aside>
-      </div>
+          <input id="passwordInput" type="password" placeholder="Wpisz hasło dostępu" />
+          <button class="btn btn-primary" onclick="unlockCourse()">Odblokuj kurs</button>
+          <div id="accessMessage" class="message"></div>
+        </div>
+      </aside>
     </section>
 
-    <section id="co-zawiera">
-      <div class="wrap">
-        <div class="section-title">
-          <div>
-            <h2>Co zawiera kurs</h2>
-            <p class="muted">Treść została zbudowana tak, aby kurs dawał realne poczucie postępu i większą wartość niż sam zestaw nagrań.</p>
-          </div>
-        </div>
-        <div class="benefits">
-          <article class="info-card">
-            <h3>Lekcje audio</h3>
-            <p>Każda lekcja może zawierać kilka nagrań: słownictwo, kluczowe zwroty, dialog, powtarzanie i pytania.</p>
-          </article>
-          <article class="info-card">
-            <h3>Teksty do czytania</h3>
-            <p>Najważniejszy brak został uzupełniony. Każda lekcja ma czytankę lub dialog po angielsku oraz tłumaczenie.</p>
-          </article>
-          <article class="info-card">
-            <h3>Słownictwo i zwroty</h3>
-            <p>Lista najważniejszych słów i wyrażeń do utrwalenia w każdej lekcji.</p>
-          </article>
-          <article class="info-card">
-            <h3>Pytania i powtórka</h3>
-            <p>Po lekcji użytkownik dostaje proste pytania i mini podsumowanie, aby lepiej utrwalić materiał.</p>
-          </article>
-        </div>
+    <section class="stats">
+      <div class="stat">
+        <strong>5</strong>
+        <span>modułów</span>
+      </div>
+      <div class="stat">
+        <strong>30</strong>
+        <span>lekcji</span>
+      </div>
+      <div class="stat">
+        <strong>AI</strong>
+        <span>wspiera naukę</span>
+      </div>
+      <div class="stat">
+        <strong>45 zł</strong>
+        <span>dostęp online</span>
       </div>
     </section>
 
     <section>
-      <div class="wrap">
-        <div class="section-title">
-          <div>
-            <h2>Dla kogo jest ten kurs</h2>
-            <p class="muted">Jasne pozycjonowanie oferty zwiększa jej wartość i ogranicza chaos komunikacyjny.</p>
-          </div>
-        </div>
-        <div class="trust-grid">
-          <article class="info-card">
-            <h3>Dla początkujących</h3>
-            <p>Jeśli znasz pojedyncze słowa, ale nie potrafisz swobodnie złożyć prostych zdań, ten kurs prowadzi Cię krok po kroku.</p>
-          </article>
-          <article class="info-card">
-            <h3>Dla zabieganych</h3>
-            <p>Uczysz się w krótkich blokach. Wchodzisz, robisz jedną lekcję, zaznaczasz postęp i wracasz później.</p>
-          </article>
-          <article class="info-card">
-            <h3>Dla osób, które chcą praktyki</h3>
-            <p>Nie uczysz się samych reguł. Pracujesz na codziennych sytuacjach: powitania, dom, zakupy, podróże, praca.</p>
-          </article>
+      <div class="section-title">
+        <div>
+          <h3>Mapa kursu</h3>
+          <p>Lekcja 1 jest dostępna jako próbka. Pełny kurs odblokujesz hasłem po zakupie.</p>
         </div>
       </div>
+
+      <div id="modules" class="modules"></div>
     </section>
 
-    <section>
-      <div class="wrap">
-        <div class="section-title">
-          <div>
-            <h2>Jak korzystać z kursu</h2>
-            <p class="muted">Prosty onboarding pomaga użytkownikowi od razu zacząć i zwiększa szansę, że kurs będzie regularnie używany.</p>
-          </div>
-        </div>
-        <div class="how-grid">
-          <article class="info-card"><h3>1. Sprawdź darmowe lekcje</h3><p>Na start dostępne są dwie lekcje próbne. Dzięki temu użytkownik widzi realną wartość kursu.</p></article>
-          <article class="info-card"><h3>2. Przeczytaj czytankę</h3><p>Najpierw zobacz tekst i tłumaczenie. Dzięki temu łatwiej wyłapiesz sens nagrania.</p></article>
-          <article class="info-card"><h3>3. Odsłuchaj i powtórz</h3><p>Przejdź do nagrań i powtarzaj na głos. Największy efekt daje regularna, krótka praktyka.</p></article>
-          <article class="info-card"><h3>4. Kup pełny dostęp</h3><p>Po sprawdzeniu wersji próbnej użytkownik może przejść do całego kursu i odblokować resztę lekcji.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="section-title">
-          <div>
-            <h2>Bonusy i elementy premium</h2>
-            <p class="muted">To podnosi odczuwaną wartość kursu i sprawia, że produkt wygląda jak pełna oferta, a nie tylko prototyp.</p>
-          </div>
-        </div>
-        <div class="bonus-grid">
-          <article class="info-card"><h3>Plan nauki</h3><p>Rekomendacja: 1 lekcja dziennie przez 30 dni albo 3 lekcje tygodniowo w spokojniejszym tempie.</p></article>
-          <article class="info-card"><h3>Śledzenie postępu</h3><p>Pasek postępu, licznik ukończonych lekcji i statusy w module.</p></article>
-          <article class="info-card"><h3>Układ premium</h3><p>Elegancka sekcja sprzedażowa, opis wartości, moduły, czytanki, pytania i blokada płatnych lekcji.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="kurs">
-      <div class="wrap layout">
-        <aside class="card sidebar">
-          <div class="progress-box">
-            <div class="eyebrow">Twój postęp</div>
-            <h3 style="margin-top:12px;">Ukończone lekcje: <span id="progressCount">0 / 30</span></h3>
-            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-          </div>
-
-          <div class="tip-box">
-            <h3 style="font-size:20px; margin:0 0 8px;">Jak uczyć się skutecznie</h3>
-            <p class="muted" style="margin:0;">Najpierw czytanka, potem audio, potem pytania. Jedna lekcja dziennie wystarczy, jeśli działasz regularnie.</p>
-          </div>
-
-          <div class="module-box">
-            <div class="section-title" style="margin-bottom:12px;">
-              <div>
-                <h3 style="font-size:22px;">Moduły i lekcje</h3>
-                <p class="muted small">2 darmowe lekcje • 28 lekcji pełnych</p>
-              </div>
-            </div>
-            <div id="moduleList" class="module-list"></div>
-          </div>
-        </aside>
-
-        <section class="card content-panel">
-          <div class="locked-overlay" id="lockedOverlay">
-            <div class="locked-card">
-              <div class="eyebrow">Pełny kurs premium</div>
-              <h3>Ta lekcja jest dostępna po zakupie</h3>
-              <p>Wersja próbna obejmuje 2 darmowe lekcje. Jeśli chcesz odblokować cały kurs i przejść przez wszystkie moduły, kup pełny dostęp.</p>
-              <div class="locked-price">45 zł</div>
-              <div class="action-row" style="justify-content:center;">
-                <a class="btn btn-gold" href="https://twoj-link-do-platnosci.pl" target="_blank" rel="noopener noreferrer">Kup pełny dostęp</a>
-                <a class="btn btn-secondary" href="#kup-teraz">Wróć do oferty</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="content-top">
-            <div class="lesson-headline">
-              <div class="eyebrow" id="lessonModuleTag">Moduł 1 • Podstawy</div>
-              <h2 id="lessonTitle">Powitania</h2>
-              <p id="lessonDescription">Nauka podstawowych zwrotów powitalnych i pożegnalnych.</p>
-              <div class="lesson-tags">
-                <div class="mini-badge" id="lessonLevel">Poziom: początkujący</div>
-                <div class="mini-badge" id="lessonTime">Czas: 8–12 minut</div>
-                <div class="mini-badge" id="lessonGoal">Cel: swobodne powitania</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="action-row">
-            <button class="btn btn-secondary" type="button" id="prevLessonBtn">← Poprzednia lekcja</button>
-            <button class="btn btn-secondary" type="button" id="nextLessonBtn">Następna lekcja →</button>
-            <button class="btn btn-primary" type="button" id="completeBtn">✓ Oznacz jako ukończoną</button>
-            <button class="btn btn-secondary" type="button" id="resetBtn">Reset postępu</button>
-          </div>
-
-          <div class="tab-row">
-            <button class="tab-btn active" data-tab="overview">Lekcja</button>
-            <button class="tab-btn" data-tab="reading">Czytanie</button>
-            <button class="tab-btn" data-tab="vocab">Słownictwo</button>
-            <button class="tab-btn" data-tab="audio">Nagrania</button>
-            <button class="tab-btn" data-tab="questions">Pytania</button>
-            <button class="tab-btn" data-tab="notes">Informacje</button>
-          </div>
-
-          <div class="tab-panel active" id="tab-overview">
-            <div class="lesson-grid">
-              <article class="subcard">
-                <h3>Co osiągniesz po tej lekcji</h3>
-                <p id="lessonOutcome">Poznasz podstawowe powitania i pożegnania oraz nauczysz się używać ich w prostych sytuacjach codziennych.</p>
-              </article>
-              <article class="subcard">
-                <h3>Jak przerobić lekcję</h3>
-                <p>Najpierw przeczytaj tekst, potem odsłuchaj nagrania, powtórz na głos i odpowiedz na pytania. Na końcu oznacz lekcję jako ukończoną.</p>
-              </article>
-            </div>
-
-            <div class="reading-card">
-              <h3>Krótki podgląd czytanki</h3>
-              <p class="muted">Najważniejszy element został dodany: tekst do czytania po angielsku wraz z tłumaczeniem i kontekstem.</p>
-              <div class="reading-grid">
-                <div class="reading-panel">
-                  <h4>English</h4>
-                  <div class="reading-text" id="previewReadingEn"></div>
-                </div>
-                <div class="reading-panel">
-                  <h4>Polski</h4>
-                  <div class="reading-text" id="previewReadingPl"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-panel" id="tab-reading">
-            <div class="reading-card" style="margin-top:0;">
-              <h3>Tekst do czytania</h3>
-              <p class="muted">Czytaj spokojnie, zwracaj uwagę na powtarzające się zwroty i wracaj do tekstu po odsłuchaniu nagrań.</p>
-              <div class="reading-grid">
-                <div class="reading-panel">
-                  <h4>English</h4>
-                  <div class="reading-text" id="readingEn"></div>
-                </div>
-                <div class="reading-panel">
-                  <h4>Tłumaczenie</h4>
-                  <div class="reading-text" id="readingPl"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-panel" id="tab-vocab">
-            <article class="subcard">
-              <h3>Kluczowe słownictwo</h3>
-              <ul class="vocab-list" id="vocabList"></ul>
-            </article>
-          </div>
-
-          <div class="tab-panel" id="tab-audio">
-            <article class="subcard">
-              <h3>Główny odtwarzacz</h3>
-              <p class="muted">Podmień linki MP3 na własne pliki. Poniżej masz gotową strukturę dla kilku typów nagrań w każdej lekcji.</p>
-              <div class="player-grid" id="audioGrid"></div>
-            </article>
-          </div>
-
-          <div class="tab-panel" id="tab-questions">
-            <article class="subcard">
-              <h3>Pytania po lekcji</h3>
-              <ul class="question-list" id="questionList"></ul>
-            </article>
-          </div>
-
-          <div class="tab-panel" id="tab-notes">
-            <div class="lesson-grid">
-              <article class="subcard">
-                <h3>Dla kogo jest ta lekcja</h3>
-                <p id="lessonAudience"></p>
-              </article>
-              <article class="subcard">
-                <h3>Wskazówka do nauki</h3>
-                <p id="lessonTip"></p>
-              </article>
-              <article class="subcard">
-                <h3>Status dostępu</h3>
-                <p id="accessStatus"></p>
-              </article>
-              <article class="subcard">
-                <h3>Uwaga techniczna</h3>
-                <p>Sam plik HTML na GitHub Pages nie daje prawdziwej ochrony płatnego dostępu. Do sprzedaży trzeba podłączyć płatność i autoryzację lub platformę kursową.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="section-title">
-          <div>
-            <h2>Przykładowe obszary czytania w kursie</h2>
-            <p class="muted">To pokazuje użytkownikowi, że kurs nie jest zbiorem pustych nagrań, tylko pełnym produktem edukacyjnym.</p>
-          </div>
-        </div>
-        <div class="readings-grid">
-          <article class="info-card"><h3>Codzienne rozmowy</h3><p>Powitania, przedstawianie się, pytania o samopoczucie, dom i rutyna dnia.</p></article>
-          <article class="info-card"><h3>Sytuacje praktyczne</h3><p>Zakupy, restauracja, hotel, lotnisko, pytanie o drogę, rozmowa telefoniczna.</p></article>
-          <article class="info-card"><h3>Praca i biznes</h3><p>Spotkania, wiadomości, obowiązki, umawianie terminów i podstawowe rozmowy zawodowe.</p></article>
-        </div>
-      </div>
-    </section>
+    <footer class="footer">
+      © Speak English Premium z AI — Strefa AI Architekt.  
+      Dostęp do kursu jest przeznaczony wyłącznie dla osoby, która dokonała zakupu.
+    </footer>
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer-card">
-      <strong>English Master Premium</strong>
-      <p style="margin:10px 0 0;">Ta wersja ma już sens sprzedażowy: klient od razu widzi, że może sprawdzić 2 darmowe lekcje, a reszta jest płatna.</p>
-      <div class="notice">Najuczciwiej: to nadal jest wersja demonstracyjna pod GitHub Pages. Do prawdziwej sprzedaży kursu trzeba dołożyć bramkę płatności i system autoryzacji po zakupie.</div>
-    </div>
-  </footer>
-
   <script>
-    const LESSONS = [
-      {
-        id: 1,
-        module: 1,
-        moduleName: 'Podstawy',
-        title: 'Powitania',
-        shortDescription: 'Nauka podstawowych zwrotów takich jak "Hello" czy "Goodbye".',
-        level: 'początkujący',
-        time: '8–12 minut',
-        goal: 'swobodne powitania',
-        outcome: 'Poznasz podstawowe powitania i pożegnania oraz nauczysz się używać ich w prostych sytuacjach codziennych.',
-        audience: 'Dla osób, które zaczynają naukę i chcą zbudować pierwszy kontakt językowy.',
-        tip: 'Czytaj na głos bardzo wolno. Dla początkujących ważniejsza jest regularność niż tempo.',
-        free: true,
-        readingEn: 'Anna meets Tom in the morning. She smiles and says, “Hello, Tom.” Tom answers, “Hi, Anna. How are you?” Anna says, “I am fine, thank you. Goodbye!”',
-        readingPl: 'Anna spotyka Toma rano. Uśmiecha się i mówi: „Cześć, Tom.” Tom odpowiada: „Cześć, Anna. Jak się masz?” Anna mówi: „Mam się dobrze, dziękuję. Do widzenia!”',
-        vocab: [['Hello', 'cześć / dzień dobry'], ['Goodbye', 'do widzenia'], ['Hi', 'cześć'], ['How are you?', 'jak się masz?']],
-        questions: ['Jak Anna wita Toma?', 'Jak Tom pyta o samopoczucie?', 'Jak powiedzieć „do widzenia”?', 'Jak odpowiedzieć na powitanie?']
-      },
-      {
-        id: 2,
-        module: 1,
-        moduleName: 'Podstawy',
-        title: 'Przedstawianie się',
-        shortDescription: 'Kluczowe frazy do podawania imienia i poznawania nowych osób.',
-        level: 'początkujący',
-        time: '8–12 minut',
-        goal: 'krótkie przedstawienie się',
-        outcome: 'Nauczysz się powiedzieć, jak masz na imię i zapytać o imię drugiej osoby.',
-        audience: 'Dla osób, które chcą zacząć krótkie rozmowy po angielsku.',
-        tip: 'Ułóż własne 3 zdania o sobie i przeczytaj je kilka razy na głos.',
-        free: true,
-        readingEn: 'My name is Marta. What is your name? Nice to meet you. I am from Poland and I am happy to learn English.',
-        readingPl: 'Mam na imię Marta. Jak masz na imię? Miło cię poznać. Jestem z Polski i cieszę się, że uczę się angielskiego.',
-        vocab: [['My name is', 'mam na imię'], ['What is your name?', 'jak masz na imię?'], ['Nice to meet you', 'miło cię poznać'], ['I am from Poland', 'jestem z Polski']],
-        questions: ['Jak przedstawić się po angielsku?', 'Jak zapytać o imię?', 'Jak powiedzieć „miło cię poznać”?', 'Skąd jest Marta?']
-      },
-      {
-        id: 3,
-        module: 1,
-        moduleName: 'Podstawy',
-        title: 'Liczby 1-10',
-        shortDescription: 'Pierwsze kroki w liczeniu po angielsku.',
-        level: 'początkujący',
-        time: '8–10 minut',
-        goal: 'używanie liczb 1-10',
-        outcome: 'Poznasz liczby od 1 do 10 i nauczysz się rozpoznawać je w prostych sytuacjach.',
-        audience: 'Dla początkujących, którzy chcą oswoić się z liczbami.',
-        tip: 'Powtarzaj liczby na głos kilka razy dziennie.',
-        free: false,
-        readingEn: 'One, two, three, four, five, six, seven, eight, nine, ten. I have two books and three pens.',
-        readingPl: 'Jeden, dwa, trzy, cztery, pięć, sześć, siedem, osiem, dziewięć, dziesięć. Mam dwie książki i trzy długopisy.',
-        vocab: [['one', 'jeden'], ['two', 'dwa'], ['three', 'trzy'], ['ten', 'dziesięć']],
-        questions: ['Jak powiedzieć „jeden”?', 'Jak powiedzieć „dziesięć”?', 'Ile książek mam w tekście?', 'Ile długopisów mam w tekście?']
-      },
-      {
-        id: 4,
-        module: 1,
-        moduleName: 'Podstawy',
-        title: 'Kolory',
-        shortDescription: 'Nazywanie podstawowych barw.',
-        level: 'początkujący',
-        time: '8–10 minut',
-        goal: 'rozpoznawanie kolorów',
-        outcome: 'Poznasz podstawowe kolory i nauczysz się używać ich w prostych zdaniach.',
-        audience: 'Dla początkujących budujących bazowe słownictwo.',
-        tip: 'Patrz na rzeczy wokół siebie i nazywaj ich kolory po angielsku.',
-        free: false,
-        readingEn: 'The sky is blue. The grass is green. My bag is black and my notebook is red.',
-        readingPl: 'Niebo jest niebieskie. Trawa jest zielona. Moja torba jest czarna, a mój notes jest czerwony.',
-        vocab: [['blue', 'niebieski'], ['green', 'zielony'], ['black', 'czarny'], ['red', 'czerwony']],
-        questions: ['Jaki kolor ma niebo?', 'Jaki kolor ma trawa?', 'Jaki kolor ma torba?', 'Jaki kolor ma notes?']
-      },
-      {
-        id: 5,
-        module: 1,
-        moduleName: 'Podstawy',
-        title: 'Rodzina',
-        shortDescription: 'Słownictwo opisujące najbliższych członków rodziny.',
-        level: 'początkujący',
-        time: '8–12 minut',
-        goal: 'mówienie o rodzinie',
-        outcome: 'Nauczysz się podstawowych słów związanych z rodziną.',
-        audience: 'Dla osób chcących mówić o sobie i bliskich.',
-        tip: 'Powiedz kilka prostych zdań o swojej rodzinie.',
-        free: false,
-        readingEn: 'This is my family. My mother is kind, my father is funny, and my sister is very smart.',
-        readingPl: 'To jest moja rodzina. Moja mama jest miła, mój tata jest zabawny, a moja siostra jest bardzo mądra.',
-        vocab: [['mother', 'mama'], ['father', 'tata'], ['sister', 'siostra'], ['family', 'rodzina']],
-        questions: ['Kto jest miły?', 'Kto jest zabawny?', 'Kto jest mądry?', 'Jak powiedzieć „rodzina”?']
-      },
-      {
-        id: 6,
-        module: 1,
-        moduleName: 'Podstawy',
-        title: 'Samopoczucie',
-        shortDescription: 'Wyrażanie emocji i odpowiadanie na pytanie "How are you?".',
-        level: 'początkujący',
-        time: '8–12 minut',
-        goal: 'mówienie o samopoczuciu',
-        outcome: 'Nauczysz się opisywać nastrój i reagować na proste pytania o samopoczucie.',
-        audience: 'Dla początkujących w codziennych rozmowach.',
-        tip: 'Ćwicz kilka odpowiedzi: dobrze, źle, zmęczony, szczęśliwy.',
-        free: false,
-        readingEn: 'How are you today? I am happy, but a little tired. My friend is great and ready for the day.',
-        readingPl: 'Jak się dziś masz? Jestem szczęśliwy, ale trochę zmęczony. Mój przyjaciel czuje się świetnie i jest gotowy na dzień.',
-        vocab: [['happy', 'szczęśliwy'], ['tired', 'zmęczony'], ['great', 'świetnie'], ['How are you?', 'jak się masz?']],
-        questions: ['Jak czuje się narrator?', 'Jak czuje się przyjaciel?', 'Jak powiedzieć „szczęśliwy”?', 'Jak zapytać o samopoczucie?']
-      },
-      {
-        id: 7,
-        module: 2,
-        moduleName: 'Życie Codzienne',
-        title: 'Mój Dom',
-        shortDescription: 'Nazwy pomieszczeń i przedmiotów codziennego użytku.',
-        level: 'początkujący / średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o domu',
-        outcome: 'Poznasz słownictwo związane z domem i pokojami.',
-        audience: 'Dla osób chcących mówić o codziennym otoczeniu.',
-        tip: 'Opisz własny dom prostymi zdaniami.',
-        free: false,
-        readingEn: 'My house has a kitchen, a bathroom, a bedroom and a living room. I like my kitchen very much.',
-        readingPl: 'Mój dom ma kuchnię, łazienkę, sypialnię i salon. Bardzo lubię swoją kuchnię.',
-        vocab: [['kitchen', 'kuchnia'], ['bathroom', 'łazienka'], ['bedroom', 'sypialnia'], ['living room', 'salon']],
-        questions: ['Jakie pomieszczenia są w domu?', 'Które pomieszczenie narrator lubi najbardziej?', 'Jak powiedzieć „łazienka”?', 'Jak powiedzieć „sypialnia”?']
-      },
-      {
-        id: 8,
-        module: 2,
-        moduleName: 'Życie Codzienne',
-        title: 'Jedzenie',
-        shortDescription: 'Słownictwo związane z posiłkami i produktami spożywczymi.',
-        level: 'początkujący / średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o jedzeniu',
-        outcome: 'Poznasz podstawowe słownictwo związane z jedzeniem i piciem.',
-        audience: 'Dla osób potrzebujących słów do codziennych sytuacji.',
-        tip: 'Nazwij po angielsku rzeczy, które jesz na śniadanie.',
-        free: false,
-        readingEn: 'For breakfast I eat bread, cheese and eggs. I drink tea in the morning and water during the day.',
-        readingPl: 'Na śniadanie jem chleb, ser i jajka. Rano piję herbatę, a w ciągu dnia wodę.',
-        vocab: [['bread', 'chleb'], ['cheese', 'ser'], ['eggs', 'jajka'], ['tea', 'herbata']],
-        questions: ['Co narrator je na śniadanie?', 'Co pije rano?', 'Jak powiedzieć „chleb”?', 'Jak powiedzieć „jajka”?']
-      },
-      {
-        id: 9,
-        module: 2,
-        moduleName: 'Życie Codzienne',
-        title: 'Czas wolny',
-        shortDescription: 'Mówienie o swoich hobby i zainteresowaniach.',
-        level: 'początkujący / średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o hobby',
-        outcome: 'Nauczysz się mówić o tym, co lubisz robić w wolnym czasie.',
-        audience: 'Dla osób chcących rozmawiać o zainteresowaniach.',
-        tip: 'Przygotuj 3 zdania o swoim hobby.',
-        free: false,
-        readingEn: 'In my free time I read books, listen to music and go for walks. On weekends I like to watch films.',
-        readingPl: 'W wolnym czasie czytam książki, słucham muzyki i chodzę na spacery. W weekendy lubię oglądać filmy.',
-        vocab: [['free time', 'czas wolny'], ['read books', 'czytać książki'], ['listen to music', 'słuchać muzyki'], ['watch films', 'oglądać filmy']],
-        questions: ['Co narrator robi w wolnym czasie?', 'Co lubi robić w weekend?', 'Jak powiedzieć „czas wolny”?', 'Jak powiedzieć „spacery”?']
-      },
-      {
-        id: 10,
-        module: 2,
-        moduleName: 'Życie Codzienne',
-        title: 'Zawody',
-        shortDescription: 'Podstawowe nazwy zawodów i miejsc pracy.',
-        level: 'początkujący / średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o zawodach',
-        outcome: 'Poznasz podstawowe słownictwo związane z pracą i zawodami.',
-        audience: 'Dla osób chcących opisać, czym się zajmują.',
-        tip: 'Powiedz po angielsku, gdzie pracujesz i co robisz.',
-        free: false,
-        readingEn: 'My brother is a doctor and my sister is a teacher. I work in an office and my friend works in a shop.',
-        readingPl: 'Mój brat jest lekarzem, a moja siostra jest nauczycielką. Ja pracuję w biurze, a mój przyjaciel pracuje w sklepie.',
-        vocab: [['doctor', 'lekarz'], ['teacher', 'nauczyciel'], ['office', 'biuro'], ['shop', 'sklep']],
-        questions: ['Kim jest brat?', 'Kim jest siostra?', 'Gdzie pracuje narrator?', 'Gdzie pracuje przyjaciel?']
-      },
-      {
-        id: 11,
-        module: 2,
-        moduleName: 'Życie Codzienne',
-        title: 'Zegar i Czas',
-        shortDescription: 'Umiejętność podawania godziny i pór dnia.',
-        level: 'początkujący / średnio początkujący',
-        time: '10–14 minut',
-        goal: 'podawanie czasu',
-        outcome: 'Nauczysz się mówić o godzinach i porach dnia.',
-        audience: 'Dla osób potrzebujących praktycznego słownictwa codziennego.',
-        tip: 'Ćwicz na swoim planie dnia.',
-        free: false,
-        readingEn: 'It is seven in the morning. I start work at eight and I have lunch at twelve. In the evening I relax at home.',
-        readingPl: 'Jest siódma rano. Zaczynam pracę o ósmej i jem lunch o dwunastej. Wieczorem odpoczywam w domu.',
-        vocab: [['morning', 'rano'], ['start work', 'zaczynać pracę'], ['lunch', 'lunch / obiad'], ['evening', 'wieczór']],
-        questions: ['O której zaczyna pracę?', 'O której je lunch?', 'Co robi wieczorem?', 'Jak powiedzieć „rano”?']
-      },
-      {
-        id: 12,
-        module: 2,
-        moduleName: 'Życie Codzienne',
-        title: 'Codzienna Rutyna',
-        shortDescription: 'Opisywanie planu dnia za pomocą czasowników czynnościowych.',
-        level: 'początkujący / średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o rutynie',
-        outcome: 'Nauczysz się opisywać prosty plan dnia.',
-        audience: 'Dla osób, które chcą mówić o codziennym życiu.',
-        tip: 'Opowiedz po angielsku o swoim poranku i wieczorze.',
-        free: false,
-        readingEn: 'Every day I get up, wash my face, make breakfast and go to work. In the evening I come home, eat dinner and go to sleep.',
-        readingPl: 'Każdego dnia wstaję, myję twarz, robię śniadanie i idę do pracy. Wieczorem wracam do domu, jem kolację i idę spać.',
-        vocab: [['get up', 'wstawać'], ['make breakfast', 'robić śniadanie'], ['come home', 'wracać do domu'], ['go to sleep', 'iść spać']],
-        questions: ['Co narrator robi rano?', 'Co robi wieczorem?', 'Jak powiedzieć „wstawać”?', 'Jak powiedzieć „iść spać”?']
-      },
-      {
-        id: 13,
-        module: 3,
-        moduleName: 'Zakupy',
-        title: 'Sklep spożywczy',
-        shortDescription: 'Zwroty potrzebne do robienia zakupów żywnościowych.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'zakupy spożywcze',
-        outcome: 'Poznasz podstawowe zwroty potrzebne w sklepie spożywczym.',
-        audience: 'Dla osób, które chcą poradzić sobie na zakupach.',
-        tip: 'Ćwicz pytania o produkty i ceny.',
-        free: false,
-        readingEn: 'I need milk, bread, apples and cheese. Where is the water? Can I have two bottles, please?',
-        readingPl: 'Potrzebuję mleka, chleba, jabłek i sera. Gdzie jest woda? Czy mogę prosić o dwie butelki?',
-        vocab: [['milk', 'mleko'], ['bread', 'chleb'], ['apples', 'jabłka'], ['bottles', 'butelki']],
-        questions: ['Czego potrzebuje narrator?', 'O co pyta?', 'Ile butelek chce kupić?', 'Jak powiedzieć „mleko”?']
-      },
-      {
-        id: 14,
-        module: 3,
-        moduleName: 'Zakupy',
-        title: 'Ubrania',
-        shortDescription: 'Nazwy części garderoby oraz rozmiarów.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o ubraniach',
-        outcome: 'Poznasz słownictwo związane z ubraniami i rozmiarami.',
-        audience: 'Dla osób kupujących ubrania za granicą.',
-        tip: 'Nazwij swoje ubrania po angielsku.',
-        free: false,
-        readingEn: 'I am looking for a blue shirt and black trousers. Do you have this jacket in a bigger size?',
-        readingPl: 'Szukam niebieskiej koszuli i czarnych spodni. Czy macie tę kurtkę w większym rozmiarze?',
-        vocab: [['shirt', 'koszula'], ['trousers', 'spodnie'], ['jacket', 'kurtka'], ['size', 'rozmiar']],
-        questions: ['Czego szuka narrator?', 'Jaki kolor ma koszula?', 'O co pyta w sklepie?', 'Jak powiedzieć „rozmiar”?']
-      },
-      {
-        id: 15,
-        module: 3,
-        moduleName: 'Zakupy',
-        title: 'Liczby 20+ i Ceny',
-        shortDescription: 'Liczenie pieniędzy i rozumienie kwot.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'rozumienie cen',
-        outcome: 'Nauczysz się rozumieć większe liczby i ceny.',
-        audience: 'Dla osób potrzebujących praktycznego języka zakupowego.',
-        tip: 'Ćwicz liczby i kwoty na głos.',
-        free: false,
-        readingEn: 'The shoes cost twenty-five pounds and the bag costs thirty euros. I have fifty in cash.',
-        readingPl: 'Buty kosztują dwadzieścia pięć funtów, a torba kosztuje trzydzieści euro. Mam pięćdziesiąt gotówką.',
-        vocab: [['twenty-five', 'dwadzieścia pięć'], ['thirty', 'trzydzieści'], ['cost', 'kosztować'], ['cash', 'gotówka']],
-        questions: ['Ile kosztują buty?', 'Ile kosztuje torba?', 'Ile gotówki ma narrator?', 'Jak powiedzieć „kosztować”?']
-      },
-      {
-        id: 16,
-        module: 3,
-        moduleName: 'Zakupy',
-        title: 'Elektronika',
-        shortDescription: 'Słownictwo dotyczące urządzeń i zgłaszania usterek.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o elektronice',
-        outcome: 'Poznasz podstawowe słownictwo dotyczące urządzeń i problemów technicznych.',
-        audience: 'Dla osób kupujących lub opisujących sprzęt.',
-        tip: 'Ćwicz słowa związane z telefonem i komputerem.',
-        free: false,
-        readingEn: 'My phone is broken and my laptop has a problem with the screen. I need help with this device.',
-        readingPl: 'Mój telefon jest zepsuty, a mój laptop ma problem z ekranem. Potrzebuję pomocy z tym urządzeniem.',
-        vocab: [['phone', 'telefon'], ['laptop', 'laptop'], ['screen', 'ekran'], ['device', 'urządzenie']],
-        questions: ['Co jest zepsute?', 'Z czym problem ma laptop?', 'Czego potrzebuje narrator?', 'Jak powiedzieć „ekran”?']
-      },
-      {
-        id: 17,
-        module: 3,
-        moduleName: 'Zakupy',
-        title: 'Płatności',
-        shortDescription: 'Obsługa transakcji: karta, gotówka, paragon.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'płatności w sklepie',
-        outcome: 'Nauczysz się mówić o sposobach płatności i paragonie.',
-        audience: 'Dla osób potrzebujących praktycznego języka przy kasie.',
-        tip: 'Ćwicz zdania: karta czy gotówka, poproszę paragon.',
-        free: false,
-        readingEn: 'Can I pay by card? Yes, of course. Do you need a receipt? No, thank you.',
-        readingPl: 'Czy mogę zapłacić kartą? Tak, oczywiście. Czy potrzebuje pan paragonu? Nie, dziękuję.',
-        vocab: [['pay by card', 'płacić kartą'], ['cash', 'gotówka'], ['receipt', 'paragon'], ['of course', 'oczywiście']],
-        questions: ['Jak pyta o płatność kartą?', 'O co pyta sprzedawca?', 'Jak brzmi odpowiedź?', 'Jak powiedzieć „paragon”?']
-      },
-      {
-        id: 18,
-        module: 3,
-        moduleName: 'Zakupy',
-        title: 'Reklamacje',
-        shortDescription: 'Rozwiązywanie problemów z zakupionym towarem.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'reklamacje i zwroty',
-        outcome: 'Poznasz podstawowe zwroty do zgłaszania problemów z zakupem.',
-        audience: 'Dla osób chcących poradzić sobie z reklamacją.',
-        tip: 'Ćwicz zdania: produkt nie działa, chcę zwrotu.',
-        free: false,
-        readingEn: 'This product does not work. I bought it yesterday and I would like a refund or a replacement.',
-        readingPl: 'Ten produkt nie działa. Kupiłem go wczoraj i chciałbym zwrot pieniędzy albo wymianę.',
-        vocab: [['product', 'produkt'], ['refund', 'zwrot pieniędzy'], ['replacement', 'wymiana'], ['does not work', 'nie działa']],
-        questions: ['Co jest problemem?', 'Kiedy produkt został kupiony?', 'Czego chce klient?', 'Jak powiedzieć „wymiana”?']
-      },
-      {
-        id: 19,
-        module: 4,
-        moduleName: 'Podróże',
-        title: 'Na Lotnisku',
-        shortDescription: 'Procedury odprawy i bilety.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'poruszanie się na lotnisku',
-        outcome: 'Poznasz podstawowe słownictwo związane z lotniskiem i odprawą.',
-        audience: 'Dla osób podróżujących samolotem.',
-        tip: 'Ćwicz słowa: boarding pass, ticket, passport.',
-        free: false,
-        readingEn: 'I have my passport and my ticket. Where is the check-in desk? My flight leaves in one hour.',
-        readingPl: 'Mam paszport i bilet. Gdzie jest stanowisko odprawy? Mój lot odlatuje za godzinę.',
-        vocab: [['passport', 'paszport'], ['ticket', 'bilet'], ['check-in desk', 'stanowisko odprawy'], ['flight', 'lot']],
-        questions: ['Co ma narrator?', 'O co pyta?', 'Kiedy odlatuje lot?', 'Jak powiedzieć „paszport”?']
-      },
-      {
-        id: 20,
-        module: 4,
-        moduleName: 'Podróże',
-        title: 'Transport',
-        shortDescription: 'Korzystanie z autobusów i pociągów.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'poruszanie się transportem',
-        outcome: 'Nauczysz się podstawowych zwrotów związanych z autobusem i pociągiem.',
-        audience: 'Dla osób podróżujących po mieście i kraju.',
-        tip: 'Ćwicz pytania o peron, przystanek i godzinę odjazdu.',
-        free: false,
-        readingEn: 'The bus stop is near the station. The train leaves at half past three. Which platform do I need?',
-        readingPl: 'Przystanek autobusowy jest blisko stacji. Pociąg odjeżdża o wpół do czwartej. Którego peronu potrzebuję?',
-        vocab: [['bus stop', 'przystanek autobusowy'], ['station', 'stacja'], ['train', 'pociąg'], ['platform', 'peron']],
-        questions: ['Gdzie jest przystanek?', 'O której odjeżdża pociąg?', 'O co pyta narrator?', 'Jak powiedzieć „peron”?']
-      },
-      {
-        id: 21,
-        module: 4,
-        moduleName: 'Podróże',
-        title: 'Kierunki i Orientacja',
-        shortDescription: 'Pytanie o drogę, skręcanie i czytanie mapy.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'pytanie o drogę',
-        outcome: 'Nauczysz się pytać o drogę i rozumieć podstawowe wskazówki.',
-        audience: 'Dla osób potrzebujących orientacji w mieście.',
-        tip: 'Ćwicz słowa left, right, street, map.',
-        free: false,
-        readingEn: 'Excuse me, where is this street? Go straight, then turn left. You can see it on the map.',
-        readingPl: 'Przepraszam, gdzie jest ta ulica? Proszę iść prosto, a potem skręcić w lewo. Może to pan zobaczyć na mapie.',
-        vocab: [['street', 'ulica'], ['go straight', 'iść prosto'], ['turn left', 'skręcić w lewo'], ['map', 'mapa']],
-        questions: ['O co pyta narrator?', 'Co ma zrobić najpierw?', 'W którą stronę ma skręcić?', 'Jak powiedzieć „mapa”?']
-      },
-      {
-        id: 22,
-        module: 4,
-        moduleName: 'Podróże',
-        title: 'Hotel i Nocleg',
-        shortDescription: 'Rezerwacja, zameldowanie oraz obsługa pokoju.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie w hotelu',
-        outcome: 'Poznasz podstawowe zwroty potrzebne przy rezerwacji i zameldowaniu.',
-        audience: 'Dla osób nocujących w hotelach.',
-        tip: 'Ćwicz słowa reservation, check-in, room.',
-        free: false,
-        readingEn: 'I have a reservation for two nights. I would like to check in. Is my room ready?',
-        readingPl: 'Mam rezerwację na dwie noce. Chciałbym się zameldować. Czy mój pokój jest gotowy?',
-        vocab: [['reservation', 'rezerwacja'], ['check-in', 'zameldowanie'], ['room', 'pokój'], ['ready', 'gotowy']],
-        questions: ['Na ile nocy jest rezerwacja?', 'Co chce zrobić narrator?', 'O co pyta w hotelu?', 'Jak powiedzieć „pokój”?']
-      },
-      {
-        id: 23,
-        module: 4,
-        moduleName: 'Podróże',
-        title: 'Kontakt Telefoniczny',
-        shortDescription: 'Rozmowy telefoniczne, wiadomości i zasięg.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'kontakt przez telefon',
-        outcome: 'Nauczysz się podstawowych zwrotów do rozmowy telefonicznej.',
-        audience: 'Dla osób korzystających z telefonu w podróży.',
-        tip: 'Ćwicz słowa call, message, signal.',
-        free: false,
-        readingEn: 'I need to make a call, but I do not have a signal. Can you send me a message later?',
-        readingPl: 'Muszę wykonać telefon, ale nie mam zasięgu. Czy możesz wysłać mi później wiadomość?',
-        vocab: [['call', 'telefon / rozmowa'], ['signal', 'zasięg'], ['message', 'wiadomość'], ['later', 'później']],
-        questions: ['Czego potrzebuje narrator?', 'Czego mu brakuje?', 'O co prosi?', 'Jak powiedzieć „wiadomość”?']
-      },
-      {
-        id: 24,
-        module: 4,
-        moduleName: 'Podróże',
-        title: 'Planowanie i Czas',
-        shortDescription: 'Umawianie spotkań, pory dnia i harmonogram.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'planowanie i umawianie',
-        outcome: 'Poznasz słownictwo związane z planowaniem spotkań i harmonogramem.',
-        audience: 'Dla osób organizujących dzień i spotkania.',
-        tip: 'Ćwicz słowa meeting, morning, evening, schedule.',
-        free: false,
-        readingEn: 'We have a meeting in the morning, and another one in the evening. Please check the schedule.',
-        readingPl: 'Mamy spotkanie rano i kolejne wieczorem. Proszę sprawdzić harmonogram.',
-        vocab: [['meeting', 'spotkanie'], ['morning', 'rano'], ['evening', 'wieczór'], ['schedule', 'harmonogram']],
-        questions: ['Kiedy są spotkania?', 'Co trzeba sprawdzić?', 'Jak powiedzieć „harmonogram”?', 'Jak powiedzieć „spotkanie”?']
-      },
-      {
-        id: 25,
-        module: 5,
-        moduleName: 'Biznes i Praca',
-        title: 'Biuro i Zespół',
-        shortDescription: 'Struktura firmy, zespół i stanowiska pracy.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o firmie i zespole',
-        outcome: 'Poznasz słownictwo związane z biurem, firmą i zespołem.',
-        audience: 'Dla osób chcących mówić o pracy zawodowej.',
-        tip: 'Ćwicz słowa company, team, manager.',
-        free: false,
-        readingEn: 'Our company has a great team. The manager is helpful and the office is modern.',
-        readingPl: 'Nasza firma ma świetny zespół. Menedżer jest pomocny, a biuro jest nowoczesne.',
-        vocab: [['company', 'firma'], ['team', 'zespół'], ['manager', 'menedżer'], ['office', 'biuro']],
-        questions: ['Co ma firma?', 'Jaki jest menedżer?', 'Jakie jest biuro?', 'Jak powiedzieć „zespół”?']
-      },
-      {
-        id: 26,
-        module: 5,
-        moduleName: 'Biznes i Praca',
-        title: 'Kalendarz i Spotkania',
-        shortDescription: 'Umawianie terminów, sprawdzanie dostępności i potwierdzanie spotkań.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'umawianie spotkań',
-        outcome: 'Nauczysz się ustalać terminy i potwierdzać spotkania.',
-        audience: 'Dla osób pracujących z klientami i zespołem.',
-        tip: 'Ćwicz słowa appointment, available, confirm.',
-        free: false,
-        readingEn: 'Are you available on Monday? I would like to confirm our appointment at ten o’clock.',
-        readingPl: 'Czy jesteś dostępny w poniedziałek? Chciałbym potwierdzić nasze spotkanie o dziesiątej.',
-        vocab: [['appointment', 'spotkanie / termin'], ['available', 'dostępny'], ['confirm', 'potwierdzić'], ['Monday', 'poniedziałek']],
-        questions: ['O co pyta narrator?', 'Co chce potwierdzić?', 'Na którą godzinę?', 'Jak powiedzieć „dostępny”?']
-      },
-      {
-        id: 27,
-        module: 5,
-        moduleName: 'Biznes i Praca',
-        title: 'Oferty i Kontrakty',
-        shortDescription: 'Szczegóły usług, podpisywanie umów i pilnowanie terminów.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o ofercie i umowie',
-        outcome: 'Poznasz podstawowe słownictwo związane z usługami, kontraktami i terminami.',
-        audience: 'Dla osób pracujących z ofertami i klientami.',
-        tip: 'Ćwicz słowa service, contract, deadline.',
-        free: false,
-        readingEn: 'Our service is ready. We need to sign the contract today and finish everything before the deadline.',
-        readingPl: 'Nasza usługa jest gotowa. Musimy dziś podpisać umowę i skończyć wszystko przed terminem.',
-        vocab: [['service', 'usługa'], ['contract', 'umowa'], ['deadline', 'termin'], ['sign', 'podpisać']],
-        questions: ['Co jest gotowe?', 'Co trzeba podpisać?', 'Do kiedy trzeba skończyć?', 'Jak powiedzieć „umowa”?']
-      },
-      {
-        id: 28,
-        module: 5,
-        moduleName: 'Biznes i Praca',
-        title: 'E-maile i Wiadomości',
-        shortDescription: 'Pisanie tematów wiadomości, wysyłanie załączników i odpowiedzi.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'pisanie maili',
-        outcome: 'Nauczysz się podstawowych zwrotów związanych z e-mailami i wiadomościami.',
-        audience: 'Dla osób pracujących z komunikacją pisemną.',
-        tip: 'Ćwicz słowa subject, attachment, reply.',
-        free: false,
-        readingEn: 'Please check the subject of the email. I sent the attachment yesterday and I am waiting for your reply.',
-        readingPl: 'Proszę sprawdzić temat wiadomości. Wysłałem załącznik wczoraj i czekam na twoją odpowiedź.',
-        vocab: [['subject', 'temat wiadomości'], ['attachment', 'załącznik'], ['reply', 'odpowiedź'], ['email', 'e-mail']],
-        questions: ['Co trzeba sprawdzić?', 'Co zostało wysłane?', 'Na co narrator czeka?', 'Jak powiedzieć „załącznik”?']
-      },
-      {
-        id: 29,
-        module: 5,
-        moduleName: 'Biznes i Praca',
-        title: 'Strategia i Cele',
-        shortDescription: 'Prezentowanie pomysłów, omawianie korzyści i dążenie do celu.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o strategii i celach',
-        outcome: 'Poznasz słownictwo związane z pomysłami, korzyściami i celami.',
-        audience: 'Dla osób mówiących o planach i wynikach.',
-        tip: 'Ćwicz słowa idea, benefit, goal.',
-        free: false,
-        readingEn: 'This idea has many benefits and it can help us reach our goal faster.',
-        readingPl: 'Ten pomysł ma wiele korzyści i może pomóc nam szybciej osiągnąć nasz cel.',
-        vocab: [['idea', 'pomysł'], ['benefit', 'korzyść'], ['goal', 'cel'], ['reach', 'osiągnąć']],
-        questions: ['Co ma wiele korzyści?', 'W czym może pomóc?', 'Jaki jest efekt?', 'Jak powiedzieć „cel”?']
-      },
-      {
-        id: 30,
-        module: 5,
-        moduleName: 'Biznes i Praca',
-        title: 'Rozwiązywanie Problemów',
-        shortDescription: 'Zarządzanie zadaniami, ustalanie priorytetów i śledzenie postępów.',
-        level: 'średnio początkujący',
-        time: '10–14 minut',
-        goal: 'mówienie o problemach i zadaniach',
-        outcome: 'Poznasz słownictwo związane z zadaniami, priorytetami i postępem.',
-        audience: 'Dla osób pracujących zadaniowo i projektowo.',
-        tip: 'Ćwicz słowa task, priority, progress.',
-        free: false,
-        readingEn: 'We have a task to finish today. First, we need to set the right priority and then track our progress.',
-        readingPl: 'Mamy dziś zadanie do skończenia. Najpierw musimy ustalić właściwy priorytet, a potem śledzić nasz postęp.',
-        vocab: [['task', 'zadanie'], ['priority', 'priorytet'], ['progress', 'postęp'], ['finish', 'skończyć']],
-        questions: ['Co trzeba skończyć?', 'Co trzeba ustalić najpierw?', 'Co trzeba śledzić?', 'Jak powiedzieć „postęp”?']
-      }
-    ];
-
-    const STORAGE_KEY_PROGRESS = 'english_master_progress_v3';
-
-    const moduleListEl = document.getElementById('moduleList');
-    const progressCountEl = document.getElementById('progressCount');
-    const progressFillEl = document.getElementById('progressFill');
-    const lessonModuleTagEl = document.getElementById('lessonModuleTag');
-    const lessonTitleEl = document.getElementById('lessonTitle');
-    const lessonDescriptionEl = document.getElementById('lessonDescription');
-    const lessonLevelEl = document.getElementById('lessonLevel');
-    const lessonTimeEl = document.getElementById('lessonTime');
-    const lessonGoalEl = document.getElementById('lessonGoal');
-    const lessonOutcomeEl = document.getElementById('lessonOutcome');
-    const previewReadingEnEl = document.getElementById('previewReadingEn');
-    const previewReadingPlEl = document.getElementById('previewReadingPl');
-    const readingEnEl = document.getElementById('readingEn');
-    const readingPlEl = document.getElementById('readingPl');
-    const vocabListEl = document.getElementById('vocabList');
-    const questionListEl = document.getElementById('questionList');
-    const audioGridEl = document.getElementById('audioGrid');
-    const lessonAudienceEl = document.getElementById('lessonAudience');
-    const lessonTipEl = document.getElementById('lessonTip');
-    const accessStatusEl = document.getElementById('accessStatus');
-    const completeBtn = document.getElementById('completeBtn');
-    const prevLessonBtn = document.getElementById('prevLessonBtn');
-    const nextLessonBtn = document.getElementById('nextLessonBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const lockedOverlay = document.getElementById('lockedOverlay');
-
-    let completedLessons = JSON.parse(localStorage.getItem(STORAGE_KEY_PROGRESS) || '[]');
-    let currentLessonId = 1;
+    const COURSE_PASSWORD = "EnglishPremium45";
+    const NAFFY_LINK = "https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq";
 
     const modules = [
-      { id: 1, name: 'Podstawy' },
-      { id: 2, name: 'Życie codzienne' },
-      { id: 3, name: 'Zakupy' },
-      { id: 4, name: 'Podróże' },
-      { id: 5, name: 'Praca i biznes' }
+      {
+        title: "Moduł 1: Podstawy",
+        lessons: [
+          {
+            title: "Lekcja 1: Powitania",
+            description: "Nauka podstawowych zwrotów takich jak Hello, Goodbye i How are you?",
+            words: [
+              ["Hello", "Cześć"],
+              ["Good morning", "Dzień dobry"],
+              ["Goodbye", "Do widzenia"],
+              ["How are you?", "Jak się masz?"],
+              ["Thank you", "Dziękuję"]
+            ]
+          },
+          {
+            title: "Lekcja 2: Przedstawianie się",
+            description: "Kluczowe frazy do podawania imienia i poznawania nowych osób.",
+            words: [
+              ["My name is...", "Mam na imię..."],
+              ["I am from Poland", "Jestem z Polski"],
+              ["Nice to meet you", "Miło cię poznać"],
+              ["What is your name?", "Jak masz na imię?"],
+              ["I am a student", "Jestem uczniem"]
+            ]
+          },
+          {
+            title: "Lekcja 3: Liczby 1-10",
+            description: "Pierwsze kroki w liczeniu po angielsku.",
+            words: [
+              ["One", "Jeden"],
+              ["Two", "Dwa"],
+              ["Three", "Trzy"],
+              ["Four", "Cztery"],
+              ["Five", "Pięć"]
+            ]
+          },
+          {
+            title: "Lekcja 4: Kolory",
+            description: "Nazywanie podstawowych kolorów.",
+            words: [
+              ["Red", "Czerwony"],
+              ["Blue", "Niebieski"],
+              ["Green", "Zielony"],
+              ["Black", "Czarny"],
+              ["White", "Biały"]
+            ]
+          },
+          {
+            title: "Lekcja 5: Rodzina",
+            description: "Słownictwo opisujące najbliższych członków rodziny.",
+            words: [
+              ["Mother", "Mama"],
+              ["Father", "Tata"],
+              ["Sister", "Siostra"],
+              ["Brother", "Brat"],
+              ["Family", "Rodzina"]
+            ]
+          },
+          {
+            title: "Lekcja 6: Samopoczucie",
+            description: "Wyrażanie emocji i odpowiadanie na pytanie How are you?",
+            words: [
+              ["Happy", "Szczęśliwy"],
+              ["Sad", "Smutny"],
+              ["Tired", "Zmęczony"],
+              ["Good", "Dobrze"],
+              ["Bad", "Źle"]
+            ]
+          }
+        ]
+      },
+      {
+        title: "Moduł 2: Życie codzienne",
+        lessons: [
+          {
+            title: "Lekcja 1: Mój dom",
+            description: "Nazwy pomieszczeń i przedmiotów codziennego użytku.",
+            words: [
+              ["House", "Dom"],
+              ["Room", "Pokój"],
+              ["Kitchen", "Kuchnia"],
+              ["Bathroom", "Łazienka"],
+              ["Bed", "Łóżko"]
+            ]
+          },
+          {
+            title: "Lekcja 2: Jedzenie",
+            description: "Podstawowe słowa związane z jedzeniem i piciem.",
+            words: [
+              ["Water", "Woda"],
+              ["Bread", "Chleb"],
+              ["Apple", "Jabłko"],
+              ["Coffee", "Kawa"],
+              ["Dinner", "Obiad"]
+            ]
+          },
+          {
+            title: "Lekcja 3: Zakupy",
+            description: "Zwroty przydatne podczas prostych zakupów.",
+            words: [
+              ["Shop", "Sklep"],
+              ["Price", "Cena"],
+              ["I want", "Chcę"],
+              ["How much?", "Ile kosztuje?"],
+              ["Card", "Karta"]
+            ]
+          },
+          {
+            title: "Lekcja 4: Czas",
+            description: "Podstawy mówienia o czasie i planie dnia.",
+            words: [
+              ["Today", "Dzisiaj"],
+              ["Tomorrow", "Jutro"],
+              ["Morning", "Poranek"],
+              ["Evening", "Wieczór"],
+              ["Now", "Teraz"]
+            ]
+          },
+          {
+            title: "Lekcja 5: Praca",
+            description: "Proste słowa i zdania związane z pracą.",
+            words: [
+              ["Work", "Praca"],
+              ["Office", "Biuro"],
+              ["Boss", "Szef"],
+              ["Meeting", "Spotkanie"],
+              ["Task", "Zadanie"]
+            ]
+          },
+          {
+            title: "Lekcja 6: Transport",
+            description: "Słownictwo potrzebne w podróży i przemieszczaniu się.",
+            words: [
+              ["Car", "Samochód"],
+              ["Bus", "Autobus"],
+              ["Train", "Pociąg"],
+              ["Ticket", "Bilet"],
+              ["Station", "Stacja"]
+            ]
+          }
+        ]
+      },
+      {
+        title: "Moduł 3: Komunikacja",
+        lessons: [
+          {
+            title: "Lekcja 1: Prośby",
+            description: "Jak grzecznie o coś poprosić.",
+            words: [
+              ["Please", "Proszę"],
+              ["Can I?", "Czy mogę?"],
+              ["Could you?", "Czy mógłbyś?"],
+              ["Help me", "Pomóż mi"],
+              ["I need", "Potrzebuję"]
+            ]
+          },
+          {
+            title: "Lekcja 2: Pytania",
+            description: "Podstawowe pytania w codziennej rozmowie.",
+            words: [
+              ["What?", "Co?"],
+              ["Where?", "Gdzie?"],
+              ["When?", "Kiedy?"],
+              ["Why?", "Dlaczego?"],
+              ["How?", "Jak?"]
+            ]
+          },
+          {
+            title: "Lekcja 3: Odpowiedzi",
+            description: "Krótkie odpowiedzi w rozmowie.",
+            words: [
+              ["Yes", "Tak"],
+              ["No", "Nie"],
+              ["Maybe", "Może"],
+              ["I know", "Wiem"],
+              ["I don't know", "Nie wiem"]
+            ]
+          },
+          {
+            title: "Lekcja 4: Telefon",
+            description: "Proste zwroty do rozmowy telefonicznej.",
+            words: [
+              ["Call", "Dzwonić"],
+              ["Phone", "Telefon"],
+              ["Message", "Wiadomość"],
+              ["Can you hear me?", "Czy mnie słyszysz?"],
+              ["I will call you", "Zadzwonię do ciebie"]
+            ]
+          },
+          {
+            title: "Lekcja 5: Internet",
+            description: "Słownictwo związane z internetem i aplikacjami.",
+            words: [
+              ["Website", "Strona internetowa"],
+              ["Email", "E-mail"],
+              ["Password", "Hasło"],
+              ["Login", "Logowanie"],
+              ["Download", "Pobieranie"]
+            ]
+          },
+          {
+            title: "Lekcja 6: Problemy",
+            description: "Jak powiedzieć, że coś nie działa lub jest problem.",
+            words: [
+              ["Problem", "Problem"],
+              ["It doesn't work", "To nie działa"],
+              ["I need help", "Potrzebuję pomocy"],
+              ["I don't understand", "Nie rozumiem"],
+              ["Can you repeat?", "Czy możesz powtórzyć?"]
+            ]
+          }
+        ]
+      },
+      {
+        title: "Moduł 4: Podróże",
+        lessons: [
+          {
+            title: "Lekcja 1: Hotel",
+            description: "Zwroty potrzebne w hotelu.",
+            words: [
+              ["Hotel", "Hotel"],
+              ["Room", "Pokój"],
+              ["Reservation", "Rezerwacja"],
+              ["Key", "Klucz"],
+              ["Check-in", "Zameldowanie"]
+            ]
+          },
+          {
+            title: "Lekcja 2: Lotnisko",
+            description: "Podstawowe słowa przy odprawie i podróży samolotem.",
+            words: [
+              ["Airport", "Lotnisko"],
+              ["Flight", "Lot"],
+              ["Passport", "Paszport"],
+              ["Gate", "Bramka"],
+              ["Luggage", "Bagaż"]
+            ]
+          },
+          {
+            title: "Lekcja 3: Restauracja",
+            description: "Zamawianie jedzenia i napojów.",
+            words: [
+              ["Menu", "Menu"],
+              ["I would like", "Chciałbym"],
+              ["Bill", "Rachunek"],
+              ["Table", "Stolik"],
+              ["Waiter", "Kelner"]
+            ]
+          },
+          {
+            title: "Lekcja 4: Kierunki",
+            description: "Jak zapytać o drogę i zrozumieć wskazówki.",
+            words: [
+              ["Left", "Lewo"],
+              ["Right", "Prawo"],
+              ["Straight", "Prosto"],
+              ["Near", "Blisko"],
+              ["Far", "Daleko"]
+            ]
+          },
+          {
+            title: "Lekcja 5: Miasto",
+            description: "Najważniejsze miejsca w mieście.",
+            words: [
+              ["City", "Miasto"],
+              ["Street", "Ulica"],
+              ["Bank", "Bank"],
+              ["Pharmacy", "Apteka"],
+              ["Hospital", "Szpital"]
+            ]
+          },
+          {
+            title: "Lekcja 6: Bezpieczeństwo",
+            description: "Podstawowe zwroty w trudnych sytuacjach.",
+            words: [
+              ["Help!", "Pomocy!"],
+              ["Police", "Policja"],
+              ["Doctor", "Lekarz"],
+              ["I am lost", "Zgubiłem się"],
+              ["Emergency", "Nagły wypadek"]
+            ]
+          }
+        ]
+      },
+      {
+        title: "Moduł 5: Praktyka",
+        lessons: [
+          {
+            title: "Lekcja 1: Codzienna rozmowa",
+            description: "Prosty dialog na start.",
+            words: [
+              ["How was your day?", "Jak minął twój dzień?"],
+              ["It was good", "Było dobrze"],
+              ["What are you doing?", "Co robisz?"],
+              ["I am learning English", "Uczę się angielskiego"],
+              ["See you later", "Do zobaczenia później"]
+            ]
+          },
+          {
+            title: "Lekcja 2: Małe rozmowy",
+            description: "Zwroty do krótkiej rozmowy z drugą osobą.",
+            words: [
+              ["Nice weather", "Ładna pogoda"],
+              ["I agree", "Zgadzam się"],
+              ["Really?", "Naprawdę?"],
+              ["That's interesting", "To ciekawe"],
+              ["Good idea", "Dobry pomysł"]
+            ]
+          },
+          {
+            title: "Lekcja 3: Plany",
+            description: "Jak mówić o planach i zamiarach.",
+            words: [
+              ["I want to", "Chcę"],
+              ["I plan to", "Planuję"],
+              ["Next week", "W przyszłym tygodniu"],
+              ["Soon", "Wkrótce"],
+              ["Later", "Później"]
+            ]
+          },
+          {
+            title: "Lekcja 4: Opisywanie siebie",
+            description: "Jak powiedzieć kilka zdań o sobie.",
+            words: [
+              ["I like", "Lubię"],
+              ["I live in", "Mieszkam w"],
+              ["I work as", "Pracuję jako"],
+              ["My hobby is", "Moje hobby to"],
+              ["I speak Polish", "Mówię po polsku"]
+            ]
+          },
+          {
+            title: "Lekcja 5: Powtórka",
+            description: "Powtórka najważniejszych zwrotów z kursu.",
+            words: [
+              ["Hello", "Cześć"],
+              ["Thank you", "Dziękuję"],
+              ["I need help", "Potrzebuję pomocy"],
+              ["How much?", "Ile kosztuje?"],
+              ["I don't understand", "Nie rozumiem"]
+            ]
+          },
+          {
+            title: "Lekcja 6: Test końcowy",
+            description: "Sprawdzenie podstaw po ukończeniu kursu.",
+            words: [
+              ["Start", "Start"],
+              ["Finish", "Koniec"],
+              ["Repeat", "Powtórz"],
+              ["Answer", "Odpowiedź"],
+              ["Good luck", "Powodzenia"]
+            ]
+          }
+        ]
+      }
     ];
 
-    function saveProgress() {
-      localStorage.setItem(STORAGE_KEY_PROGRESS, JSON.stringify(completedLessons));
+    function isUnlocked() {
+      return localStorage.getItem("speakEnglishPremiumUnlocked") === "true";
     }
 
-    function getLessonById(id) {
-      return LESSONS.find(lesson => lesson.id === id);
+    function unlockCourse() {
+      const input = document.getElementById("passwordInput");
+      const message = document.getElementById("accessMessage");
+      const value = input.value.trim();
+
+      if (value === COURSE_PASSWORD) {
+        localStorage.setItem("speakEnglishPremiumUnlocked", "true");
+        message.textContent = "Dostęp odblokowany. Możesz korzystać z całego kursu.";
+        message.className = "message success";
+        renderCourse();
+      } else {
+        message.textContent = "Nieprawidłowe hasło. Sprawdź hasło z PDF-a po zakupie.";
+        message.className = "message error";
+      }
     }
 
-    function isLessonLocked(lesson) {
-      return !lesson.free;
+    function scrollToAccess() {
+      document.getElementById("dostep").scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(() => {
+        document.getElementById("passwordInput").focus();
+      }, 500);
     }
 
-    function buildModules() {
-      moduleListEl.innerHTML = '';
-      modules.forEach(module => {
-        const lessons = LESSONS.filter(lesson => lesson.module === module.id);
-        const moduleDone = lessons.filter(lesson => completedLessons.includes(lesson.id)).length;
+    function getAudioPath(moduleIndex, lessonIndex, type) {
+      const m = moduleIndex + 1;
+      const l = lessonIndex + 1;
+      if (type === "vocabulary") {
+        return `audio/M${m}L${l}_Vocabulary_1.mp3`;
+      }
+      return `audio/M${m}L${l}_Repeat_1.mp3`;
+    }
 
-        const wrapper = document.createElement('div');
-        wrapper.className = 'module-item';
+    function renderWords(words) {
+      return words.map(pair => `
+        <div class="word">
+          <strong>${pair[0]}</strong>
+          <span>${pair[1]}</span>
+        </div>
+      `).join("");
+    }
 
-        const head = document.createElement('div');
-        head.className = 'module-head';
-        head.innerHTML = `
-          <span>
-            Moduł ${module.id}: ${module.name}
-            <span class="module-meta">${moduleDone} / ${lessons.length} ukończonych</span>
-          </span>
-          <span class="mini-badge">${lessons.length} lekcji</span>
-        `;
+    function renderCourse() {
+      const container = document.getElementById("modules");
+      const unlocked = isUnlocked();
 
-        const list = document.createElement('div');
-        list.className = 'lesson-list';
+      container.innerHTML = modules.map((module, moduleIndex) => {
+        const lessonsHtml = module.lessons.map((lesson, lessonIndex) => {
+          const isPreview = moduleIndex === 0 && lessonIndex === 0;
+          const canOpen = unlocked || isPreview;
+          const locked = !canOpen;
 
-        lessons.forEach(lesson => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'lesson-btn';
-          if (lesson.id === currentLessonId) btn.classList.add('active');
+          return `
+            <article class="lesson ${locked ? "locked" : ""}" id="lesson-${moduleIndex}-${lessonIndex}">
+              <div class="lesson-top">
+                <h5>${lesson.title}</h5>
+                <span class="tag ${locked ? "lock" : ""}">
+                  ${locked ? "🔒 Zablokowana" : isPreview ? "👀 Próbka" : "✅ Dostępna"}
+                </span>
+              </div>
 
-          const done = completedLessons.includes(lesson.id);
-          const locked = isLessonLocked(lesson);
-          const status = done ? 'Ukończona' : lesson.free ? 'Darmowa' : 'Płatna';
-          const statusClass = done ? 'done' : lesson.free ? 'free' : 'locked';
+              <p>${lesson.description}</p>
 
-          btn.innerHTML = `
-            <div class="lesson-top">
-              <span class="lesson-index">Lekcja ${lesson.id}</span>
-              <span class="lesson-status ${statusClass}">${status}</span>
-            </div>
-            <span class="lesson-title">${lesson.title}</span>
-            <span class="lesson-desc">${lesson.shortDescription}</span>
+              ${locked ? `
+                <button class="btn btn-gold" onclick="window.open('${NAFFY_LINK}', '_blank')">
+                  Kup dostęp za 45 zł
+                </button>
+              ` : `
+                <button class="btn btn-primary" onclick="toggleLesson(${moduleIndex}, ${lessonIndex})">
+                  Otwórz lekcję
+                </button>
+
+                <div class="lesson-content">
+                  <div class="words">
+                    ${renderWords(lesson.words)}
+                  </div>
+
+                  <div class="audio-label">Nagranie: słownictwo</div>
+                  <audio controls preload="none">
+                    <source src="${getAudioPath(moduleIndex, lessonIndex, "vocabulary")}" type="audio/mpeg">
+                    Twoja przeglądarka nie obsługuje odtwarzacza audio.
+                  </audio>
+
+                  <div class="audio-label">Nagranie: powtórka</div>
+                  <audio controls preload="none">
+                    <source src="${getAudioPath(moduleIndex, lessonIndex, "repeat")}" type="audio/mpeg">
+                    Twoja przeglądarka nie obsługuje odtwarzacza audio.
+                  </audio>
+                </div>
+              `}
+            </article>
           `;
+        }).join("");
 
-          btn.addEventListener('click', () => {
-            currentLessonId = lesson.id;
-            render();
-          });
+        return `
+          <section class="module">
+            <div class="module-header">
+              <h4>${module.title}</h4>
+              <span>6 lekcji</span>
+            </div>
+            <div class="lessons">
+              ${lessonsHtml}
+            </div>
+          </section>
+        `;
+      }).join("");
 
-          list.appendChild(btn);
-        });
-
-        wrapper.appendChild(head);
-        wrapper.appendChild(list);
-        moduleListEl.appendChild(wrapper);
-      });
+      const msg = document.getElementById("accessMessage");
+      if (unlocked) {
+        msg.textContent = "Kurs jest odblokowany na tym urządzeniu.";
+        msg.className = "message success";
+      }
     }
 
-    function getAudioPaths(lesson) {
-      const moduleLessonMap = {
-        1: { moduleAudio: 1, lessonAudio: 1 },
-        2: { moduleAudio: 1, lessonAudio: 2 },
-        3: { moduleAudio: 1, lessonAudio: 3 },
-        4: { moduleAudio: 1, lessonAudio: 4 },
-        5: { moduleAudio: 1, lessonAudio: 5 },
-        6: { moduleAudio: 1, lessonAudio: 6 },
-        7: { moduleAudio: 2, lessonAudio: 1 },
-        8: { moduleAudio: 2, lessonAudio: 2 },
-        9: { moduleAudio: 2, lessonAudio: 3 },
-        10: { moduleAudio: 2, lessonAudio: 4 },
-        11: { moduleAudio: 2, lessonAudio: 5 },
-        12: { moduleAudio: 2, lessonAudio: 6 },
-        13: { moduleAudio: 3, lessonAudio: 1 },
-        14: { moduleAudio: 3, lessonAudio: 2 },
-        15: { moduleAudio: 3, lessonAudio: 3 },
-        16: { moduleAudio: 3, lessonAudio: 4 },
-        17: { moduleAudio: 3, lessonAudio: 5 },
-        18: { moduleAudio: 3, lessonAudio: 6 },
-        19: { moduleAudio: 4, lessonAudio: 1 },
-        20: { moduleAudio: 4, lessonAudio: 2 },
-        21: { moduleAudio: 4, lessonAudio: 3 },
-        22: { moduleAudio: 4, lessonAudio: 4 },
-        23: { moduleAudio: 4, lessonAudio: 5 },
-        24: { moduleAudio: 4, lessonAudio: 6 },
-        25: { moduleAudio: 5, lessonAudio: 1 },
-        26: { moduleAudio: 5, lessonAudio: 2 },
-        27: { moduleAudio: 5, lessonAudio: 3 },
-        28: { moduleAudio: 5, lessonAudio: 4 },
-        29: { moduleAudio: 5, lessonAudio: 5 },
-        30: { moduleAudio: 5, lessonAudio: 6 }
-      };
-
-      const pair = moduleLessonMap[lesson.id];
-      const base = `audio/M${pair.moduleAudio}L${pair.lessonAudio}`;
-      return {
-        vocabulary: `${base}_Vocabulary_1.mp3`,
-        keyPhrases: `${base}_KeyPhrases_1.mp3`,
-        dialogue: `${base}_Dialogue_1.mp3`,
-        repeat: `${base}_Repeat_1.mp3`,
-        questions: `${base}_Questions_1.mp3`
-      };
+    function toggleLesson(moduleIndex, lessonIndex) {
+      const lesson = document.getElementById(`lesson-${moduleIndex}-${lessonIndex}`);
+      lesson.classList.toggle("open");
     }
 
-    function buildAudioPlayers(lesson) {
-      const paths = getAudioPaths(lesson);
-      const audioItems = [
-        ['Vocabulary', paths.vocabulary],
-        ['Key Phrases', paths.keyPhrases],
-        ['Dialogue', paths.dialogue],
-        ['Repeat', paths.repeat],
-        ['Questions', paths.questions]
-      ];
-
-      audioGridEl.innerHTML = '';
-      audioItems.forEach(([label, src]) => {
-        const box = document.createElement('div');
-        box.className = 'audio-box';
-        box.innerHTML = `<label>${label}</label>`;
-
-        if (lesson.free) {
-          const audio = document.createElement('audio');
-          audio.controls = true;
-          audio.preload = 'none';
-          audio.src = src;
-          box.appendChild(audio);
-        } else {
-          const p = document.createElement('p');
-          p.className = 'muted';
-          p.style.margin = '0';
-          p.textContent = 'Nagrania w tej lekcji są dostępne po zakupie pełnej wersji kursu.';
-          box.appendChild(p);
-        }
-
-        audioGridEl.appendChild(box);
-      });
-    }
-
-    function renderLesson() {
-      const lesson = getLessonById(currentLessonId);
-      const locked = isLessonLocked(lesson);
-
-      lessonModuleTagEl.textContent = `Moduł ${lesson.module} • ${lesson.moduleName}`;
-      lessonTitleEl.textContent = lesson.title;
-      lessonDescriptionEl.textContent = lesson.shortDescription;
-      lessonLevelEl.textContent = `Poziom: ${lesson.level}`;
-      lessonTimeEl.textContent = `Czas: ${lesson.time}`;
-      lessonGoalEl.textContent = `Cel: ${lesson.goal}`;
-      lessonOutcomeEl.textContent = lesson.outcome;
-      previewReadingEnEl.textContent = lesson.readingEn;
-      previewReadingPlEl.textContent = lesson.readingPl;
-      readingEnEl.textContent = lesson.readingEn;
-      readingPlEl.textContent = lesson.readingPl;
-      lessonAudienceEl.textContent = lesson.audience;
-      lessonTipEl.textContent = lesson.tip;
-      accessStatusEl.textContent = locked
-        ? 'Ta lekcja należy do pełnej wersji kursu. Użytkownik widzi, że darmowe są 2 lekcje, a reszta wymaga zakupu.'
-        : 'Ta lekcja jest dostępna bezpłatnie jako część wersji próbnej. Użytkownik może sprawdzić, jak wygląda kurs przed zakupem.';
-
-      vocabListEl.innerHTML = '';
-      lesson.vocab.forEach(item => {
-        const li = document.createElement('li');
-        li.className = 'list-item';
-        li.innerHTML = `<strong>${item[0]}</strong>${item[1]}`;
-        vocabListEl.appendChild(li);
-      });
-
-      questionListEl.innerHTML = '';
-      lesson.questions.forEach(question => {
-        const li = document.createElement('li');
-        li.className = 'list-item';
-        li.textContent = question;
-        questionListEl.appendChild(li);
-      });
-
-      buildAudioPlayers(lesson);
-
-      completeBtn.disabled = locked;
-      completeBtn.textContent = completedLessons.includes(lesson.id)
-        ? '✓ Lekcja ukończona'
-        : '✓ Oznacz jako ukończoną';
-
-      lockedOverlay.classList.toggle('show', locked);
-    }
-
-    function updateProgress() {
-      const completed = completedLessons.length;
-      progressCountEl.textContent = `${completed} / ${LESSONS.length}`;
-      const percentage = (completed / LESSONS.length) * 100;
-      progressFillEl.style.width = `${percentage}%`;
-    }
-
-    function render() {
-      buildModules();
-      renderLesson();
-      updateProgress();
-      updateNavButtons();
-    }
-
-    function updateNavButtons() {
-      prevLessonBtn.disabled = currentLessonId <= 1;
-      nextLessonBtn.disabled = currentLessonId >= LESSONS.length;
-    }
-
-    prevLessonBtn.addEventListener('click', () => {
-      if (currentLessonId > 1) {
-        currentLessonId -= 1;
-        render();
+    document.getElementById("passwordInput").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        unlockCourse();
       }
     });
 
-    nextLessonBtn.addEventListener('click', () => {
-      if (currentLessonId < LESSONS.length) {
-        currentLessonId += 1;
-        render();
-      }
-    });
-
-    completeBtn.addEventListener('click', () => {
-      const lesson = getLessonById(currentLessonId);
-      if (isLessonLocked(lesson)) return;
-      if (!completedLessons.includes(lesson.id)) {
-        completedLessons.push(lesson.id);
-        saveProgress();
-      }
-      render();
-    });
-
-    resetBtn.addEventListener('click', () => {
-      completedLessons = [];
-      saveProgress();
-      render();
-    });
-
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(tab => tab.classList.remove('active'));
-        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
-      });
-    });
-
-    render();
+    renderCourse();
   </script>
 </body>
 </html>
