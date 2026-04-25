@@ -4,13 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Speak English Premium z AI</title>
-  <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio.">
+  <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio i czytankami.">
   <style>
     :root {
       --bg:#050814;
       --bg2:#0b1226;
-      --panel:rgba(255,255,255,.085);
-      --panel2:rgba(255,255,255,.13);
       --line:rgba(255,255,255,.16);
       --text:#f5f7ff;
       --muted:#b9c4e6;
@@ -22,9 +20,13 @@
       --shadow:0 28px 80px rgba(0,0,0,.42);
     }
 
-    * { box-sizing:border-box; }
+    * {
+      box-sizing:border-box;
+    }
 
-    html { scroll-behavior:smooth; }
+    html {
+      scroll-behavior:smooth;
+    }
 
     body {
       margin:0;
@@ -380,8 +382,47 @@
       margin-top:6px;
     }
 
+    .reading-card {
+      margin:16px;
+      padding:18px;
+      border:1px solid rgba(143,211,255,.22);
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.045));
+    }
+
+    .reading-card h3 {
+      margin:0 0 14px;
+      color:var(--gold);
+      font-size:20px;
+    }
+
+    .reading-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .reading-grid div {
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      background:rgba(0,0,0,.18);
+      padding:14px;
+    }
+
+    .reading-grid h4 {
+      margin:0 0 10px;
+      color:var(--blue2);
+      font-size:15px;
+    }
+
+    .reading-grid p {
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
     .lessons {
-      padding:16px;
+      padding:0 16px 16px;
       display:grid;
       gap:12px;
     }
@@ -495,7 +536,8 @@
         grid-template-columns:repeat(2,1fr);
       }
 
-      .audio-list {
+      .audio-list,
+      .reading-grid {
         grid-template-columns:1fr;
       }
     }
@@ -530,7 +572,11 @@
       }
 
       .lessons {
-        padding:10px;
+        padding:0 10px 10px;
+      }
+
+      .reading-card {
+        margin:10px;
       }
     }
   </style>
@@ -540,9 +586,9 @@
     <header>
       <section class="hero">
         <div>
-          <div class="badge">🎧 Kurs online z nagraniami audio</div>
+          <div class="badge">🎧 Kurs online z nagraniami audio i czytankami</div>
           <h1>Speak English Premium z AI</h1>
-          <p>Praktyczny kurs angielskiego dla początkujących. Uczysz się krok po kroku: słownictwa, kluczowych zwrotów, dialogów, pytań i powtórek audio.</p>
+          <p>Praktyczny kurs angielskiego dla początkujących. Uczysz się krok po kroku: słuchasz nagrań, czytasz proste teksty po angielsku i sprawdzasz tłumaczenie po polsku.</p>
           <div class="actions">
             <a class="btn" href="#login">🔐 Mam hasło</a>
             <a class="btn buy" href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">🛒 Kup kurs za 45 zł</a>
@@ -556,7 +602,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>5 modułów, 30 lekcji i nagrania audio do nauki we własnym tempie.</p>
+            <p>5 modułów, 30 lekcji, nagrania audio i czytanki z tłumaczeniem.</p>
           </div>
         </div>
       </section>
@@ -566,12 +612,12 @@
       <div class="stat"><strong>5</strong><span>modułów kursu</span></div>
       <div class="stat"><strong>30</strong><span>lekcji krok po kroku</span></div>
       <div class="stat"><strong>148</strong><span>plików audio</span></div>
-      <div class="stat"><strong>45 zł</strong><span>dostęp do kursu</span></div>
+      <div class="stat"><strong>5</strong><span>czytanek z tłumaczeniem</span></div>
     </section>
 
     <section id="login" class="login-box">
       <h2>Dostęp do kursu</h2>
-      <p>Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła odblokujesz wszystkie moduły i lekcje.</p>
+      <p>Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła odblokujesz wszystkie moduły, lekcje, nagrania i czytanki.</p>
       <div class="login-row">
         <input id="passwordInput" type="password" placeholder="Wpisz hasło dostępu">
         <button class="btn" type="button" onclick="unlockCourse()">Odblokuj kurs</button>
@@ -587,7 +633,7 @@
       <div class="course-top">
         <div>
           <h2>Panel kursu</h2>
-          <p>Moduły i lekcje są zwijane, żeby strona była czytelna. Kliknij wybrany moduł, potem lekcję i uruchom odpowiednie nagranie audio.</p>
+          <p>Każdy moduł zawiera czytankę po angielsku z tłumaczeniem oraz neutralnie opisane lekcje audio. Dzięki temu nie ma ryzyka pomieszania tematów z nagraniami.</p>
         </div>
         <button class="btn secondary" type="button" onclick="lockCourse()">🔒 Zablokuj kurs</button>
       </div>
@@ -601,13 +647,28 @@
           </div>
           <span class="arrow">›</span>
         </summary>
+
+        <div class="reading-card">
+          <h3>📘 Czytanka modułowa</h3>
+          <div class="reading-grid">
+            <div>
+              <h4>English text</h4>
+              <p>My name is Anna. I am from Poland. I am learning English because I want to speak with people from other countries. Every day I repeat simple words and short sentences. I say hello, I introduce myself, and I ask simple questions. English is new for me, but I learn step by step.</p>
+            </div>
+            <div>
+              <h4>Tłumaczenie na polski</h4>
+              <p>Mam na imię Anna. Jestem z Polski. Uczę się angielskiego, ponieważ chcę rozmawiać z ludźmi z innych krajów. Każdego dnia powtarzam proste słowa i krótkie zdania. Mówię „cześć”, przedstawiam się i zadaję proste pytania. Angielski jest dla mnie nowy, ale uczę się krok po kroku.</p>
+            </div>
+          </div>
+        </div>
+
         <div class="lessons">
           
           <details class="lesson">
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 1</strong>
-                <span>M1L1 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M1L1 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -669,7 +730,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 2</strong>
-                <span>M1L2 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M1L2 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -731,7 +792,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 3</strong>
-                <span>M1L3 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M1L3 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -793,7 +854,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 4</strong>
-                <span>M1L4 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M1L4 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -855,7 +916,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 5</strong>
-                <span>M1L5 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M1L5 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -917,7 +978,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 6</strong>
-                <span>M1L6 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M1L6 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -985,13 +1046,28 @@
           </div>
           <span class="arrow">›</span>
         </summary>
+
+        <div class="reading-card">
+          <h3>📘 Czytanka modułowa</h3>
+          <div class="reading-grid">
+            <div>
+              <h4>English text</h4>
+              <p>Every morning I wake up early. I make breakfast, drink tea, and plan my day. I go shopping when I need food or water. Sometimes I take a bus or walk to the city. I like learning useful English words for everyday life because I can use them at home, in a shop, and on the street.</p>
+            </div>
+            <div>
+              <h4>Tłumaczenie na polski</h4>
+              <p>Każdego ranka wstaję wcześnie. Robię śniadanie, piję herbatę i planuję dzień. Idę na zakupy, kiedy potrzebuję jedzenia albo wody. Czasami jadę autobusem albo idę pieszo do miasta. Lubię uczyć się przydatnych angielskich słów do codziennego życia, ponieważ mogę ich używać w domu, w sklepie i na ulicy.</p>
+            </div>
+          </div>
+        </div>
+
         <div class="lessons">
           
           <details class="lesson">
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 1</strong>
-                <span>M2L1 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M2L1 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1063,7 +1139,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 2</strong>
-                <span>M2L2 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M2L2 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1125,7 +1201,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 3</strong>
-                <span>M2L3 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M2L3 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1187,7 +1263,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 4</strong>
-                <span>M2L4 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M2L4 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1249,7 +1325,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 5</strong>
-                <span>M2L5 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M2L5 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1291,7 +1367,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 6</strong>
-                <span>M2L6 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M2L6 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1349,13 +1425,28 @@
           </div>
           <span class="arrow">›</span>
         </summary>
+
+        <div class="reading-card">
+          <h3>📘 Czytanka modułowa</h3>
+          <div class="reading-grid">
+            <div>
+              <h4>English text</h4>
+              <p>At work I try to speak clearly and politely. I write short messages, answer simple questions, and ask for help when I need it. I can say when I am available and I can make an appointment. I do not need perfect English. I need simple English that helps me communicate.</p>
+            </div>
+            <div>
+              <h4>Tłumaczenie na polski</h4>
+              <p>W pracy staram się mówić jasno i uprzejmie. Piszę krótkie wiadomości, odpowiadam na proste pytania i proszę o pomoc, kiedy jej potrzebuję. Potrafię powiedzieć, kiedy jestem dostępny, i umówić termin. Nie potrzebuję idealnego angielskiego. Potrzebuję prostego angielskiego, który pomaga mi się komunikować.</p>
+            </div>
+          </div>
+        </div>
+
         <div class="lessons">
           
           <details class="lesson">
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 1</strong>
-                <span>M3L1 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M3L1 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1417,7 +1508,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 2</strong>
-                <span>M3L2 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M3L2 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1479,7 +1570,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 3</strong>
-                <span>M3L3 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M3L3 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1541,7 +1632,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 4</strong>
-                <span>M3L4 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M3L4 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1603,7 +1694,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 5</strong>
-                <span>M3L5 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M3L5 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1665,7 +1756,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 6</strong>
-                <span>M3L6 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M3L6 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1733,13 +1824,28 @@
           </div>
           <span class="arrow">›</span>
         </summary>
+
+        <div class="reading-card">
+          <h3>📘 Czytanka modułowa</h3>
+          <div class="reading-grid">
+            <div>
+              <h4>English text</h4>
+              <p>When I travel, I use English in many situations. I can ask for a room in a hotel, order food in a restaurant, and ask for directions. At the airport I listen carefully and look for important information. If I have a problem, I stay calm and use simple sentences.</p>
+            </div>
+            <div>
+              <h4>Tłumaczenie na polski</h4>
+              <p>Kiedy podróżuję, używam angielskiego w wielu sytuacjach. Potrafię zapytać o pokój w hotelu, zamówić jedzenie w restauracji i zapytać o drogę. Na lotnisku słucham uważnie i szukam ważnych informacji. Jeśli mam problem, zachowuję spokój i używam prostych zdań.</p>
+            </div>
+          </div>
+        </div>
+
         <div class="lessons">
           
           <details class="lesson">
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 1</strong>
-                <span>M4L1 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M4L1 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1801,7 +1907,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 2</strong>
-                <span>M4L2 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M4L2 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1863,7 +1969,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 3</strong>
-                <span>M4L3 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M4L3 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1925,7 +2031,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 4</strong>
-                <span>M4L4 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M4L4 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -1987,7 +2093,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 5</strong>
-                <span>M4L5 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M4L5 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -2049,7 +2155,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 6</strong>
-                <span>M4L6 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M4L6 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -2117,13 +2223,28 @@
           </div>
           <span class="arrow">›</span>
         </summary>
+
+        <div class="reading-card">
+          <h3>📘 Czytanka modułowa</h3>
+          <div class="reading-grid">
+            <div>
+              <h4>English text</h4>
+              <p>Now I can use many simple English sentences. I can talk about myself, my day, my plans, and basic situations. I still make mistakes, but I understand more and I speak with more confidence. The most important thing is regular practice. Small steps every day bring real progress.</p>
+            </div>
+            <div>
+              <h4>Tłumaczenie na polski</h4>
+              <p>Teraz potrafię używać wielu prostych zdań po angielsku. Potrafię mówić o sobie, swoim dniu, swoich planach i podstawowych sytuacjach. Nadal popełniam błędy, ale rozumiem więcej i mówię z większą pewnością. Najważniejsza jest regularna praktyka. Małe kroki każdego dnia dają prawdziwy postęp.</p>
+            </div>
+          </div>
+        </div>
+
         <div class="lessons">
           
           <details class="lesson">
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 1</strong>
-                <span>M5L1 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M5L1 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -2185,7 +2306,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 2</strong>
-                <span>M5L2 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M5L2 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -2247,7 +2368,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 3</strong>
-                <span>M5L3 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M5L3 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -2309,7 +2430,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 4</strong>
-                <span>M5L4 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M5L4 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -2371,7 +2492,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 5</strong>
-                <span>M5L5 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M5L5 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -2433,7 +2554,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 6</strong>
-                <span>M5L6 · słuchaj nagrań po kolei: słownictwo, zwroty, dialog, pytania i powtórka.</span>
+                <span>M5L6 · słuchaj nagrań po kolei.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
