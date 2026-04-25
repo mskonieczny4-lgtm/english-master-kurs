@@ -3,1109 +3,801 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Speak English Premium z AI</title>
+  <meta name="description" content="Speak English Premium z AI — kurs angielskiego dla początkujących z nagraniami audio, modułami i lekcjami online." />
+
   <style>
     :root {
-      --bg: #050816;
-      --bg2: #0b1025;
-      --card: rgba(255,255,255,0.08);
-      --card2: rgba(255,255,255,0.12);
-      --text: #f8fafc;
-      --muted: #a7b0c3;
-      --blue: #38bdf8;
-      --blue2: #2563eb;
-      --gold: #facc15;
-      --green: #22c55e;
-      --red: #ef4444;
-      --border: rgba(255,255,255,0.14);
-      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --bg: #050814;
+      --bg2: #0b1226;
+      --card: rgba(255, 255, 255, 0.08);
+      --card2: rgba(255, 255, 255, 0.12);
+      --line: rgba(255, 255, 255, 0.16);
+      --text: #f5f7ff;
+      --muted: #b8c4e6;
+      --blue: #4da3ff;
+      --blue2: #8fd3ff;
+      --gold: #f7c873;
+      --green: #7CFFB2;
+      --danger: #ff6b6b;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+      --radius: 24px;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(56,189,248,0.22), transparent 30%),
-        radial-gradient(circle at top right, rgba(37,99,235,0.24), transparent 32%),
-        linear-gradient(135deg, var(--bg), var(--bg2));
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(77, 163, 255, 0.28), transparent 32%),
+        radial-gradient(circle at 80% 15%, rgba(143, 211, 255, 0.16), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(247, 200, 115, 0.08), transparent 26%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 70%);
     }
 
     .page {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 28px 0 60px;
+      position: relative;
+      z-index: 1;
     }
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--blue), var(--blue2));
-      display: grid;
-      place-items: center;
-      box-shadow: 0 0 30px rgba(56,189,248,0.35);
-      font-weight: 900;
-      font-size: 20px;
-    }
-
-    .brand h1 {
-      margin: 0;
-      font-size: 20px;
-      letter-spacing: -0.03em;
-    }
-
-    .brand p {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      border: 0;
-      border-radius: 14px;
-      padding: 13px 18px;
-      cursor: pointer;
-      font-weight: 800;
-      font-size: 14px;
-      transition: 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.08);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--blue), var(--blue2));
-      color: white;
-      box-shadow: 0 12px 30px rgba(37,99,235,0.35);
-    }
-
-    .btn-gold {
-      background: linear-gradient(135deg, #fde047, #f59e0b);
-      color: #111827;
-      box-shadow: 0 12px 30px rgba(250,204,21,0.25);
-    }
-
-    .btn-ghost {
-      background: rgba(255,255,255,0.08);
-      color: white;
-      border: 1px solid var(--border);
+    header {
+      padding: 44px 0 22px;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 26px;
-      align-items: stretch;
-      margin-bottom: 28px;
-    }
-
-    .hero-card,
-    .access-card,
-    .panel {
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-    }
-
-    .hero-card {
-      padding: 34px;
-      min-height: 390px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card:after {
-      content: "";
-      position: absolute;
-      right: -100px;
-      top: -120px;
-      width: 320px;
-      height: 320px;
-      border-radius: 999px;
-      background: rgba(56,189,248,0.18);
-      filter: blur(18px);
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+      min-height: 540px;
     }
 
     .badge {
       display: inline-flex;
-      gap: 8px;
       align-items: center;
-      padding: 8px 12px;
-      border: 1px solid rgba(56,189,248,0.32);
-      background: rgba(56,189,248,0.11);
-      color: #dff7ff;
+      gap: 8px;
+      padding: 9px 15px;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--blue2);
+      font-weight: 800;
+      font-size: 14px;
       margin-bottom: 18px;
     }
 
-    .hero h2 {
+    h1 {
       margin: 0;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.02;
-      letter-spacing: -0.06em;
-      max-width: 720px;
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -2px;
     }
 
-    .hero .lead {
-      margin: 18px 0 0;
+    .hero p {
       color: var(--muted);
       font-size: 18px;
       line-height: 1.7;
-      max-width: 720px;
+      margin: 20px 0 0;
+      max-width: 680px;
     }
 
-    .hero-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+    .hero-actions {
+      display: flex;
       gap: 12px;
+      flex-wrap: wrap;
       margin-top: 26px;
     }
 
-    .hero-list div {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid var(--border);
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
       border-radius: 16px;
-      padding: 13px;
-      color: #eaf6ff;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .access-card {
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .price {
-      font-size: 54px;
-      line-height: 1;
+      padding: 14px 20px;
       font-weight: 900;
-      letter-spacing: -0.06em;
-      margin: 8px 0;
-    }
-
-    .price span {
-      font-size: 18px;
-      color: var(--muted);
-      letter-spacing: 0;
-      font-weight: 700;
-    }
-
-    .access-card p {
-      color: var(--muted);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .password-box {
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    input {
-      width: 100%;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.09);
-      color: white;
-      border-radius: 14px;
-      padding: 15px 16px;
-      outline: none;
       font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      color: #07101f;
+      background: linear-gradient(135deg, var(--blue2), var(--blue));
+      box-shadow: 0 18px 40px rgba(77, 163, 255, 0.24);
+      transition: 0.2s ease;
     }
 
-    input::placeholder {
-      color: rgba(255,255,255,0.45);
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
-    .message {
-      min-height: 22px;
-      font-size: 14px;
-      font-weight: 700;
+    .btn.secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line);
+      box-shadow: none;
     }
 
-    .success {
-      color: var(--green);
+    .cover-card {
+      position: relative;
+      min-height: 420px;
+      border: 1px solid rgba(143, 211, 255, 0.28);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 50% 28%, rgba(143, 211, 255, 0.28), transparent 26%),
+        linear-gradient(160deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 28px;
     }
 
-    .error {
-      color: var(--red);
+    .cover-card::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(143,211,255,0.5), rgba(77,163,255,0.12), transparent 68%);
+      filter: blur(4px);
+    }
+
+    .cover-orb {
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      top: 95px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.28);
+      background:
+        linear-gradient(135deg, rgba(143,211,255,0.42), rgba(5,8,20,0.1)),
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,0.85), transparent 14%);
+      box-shadow:
+        0 0 80px rgba(77,163,255,0.36),
+        inset 0 0 44px rgba(255,255,255,0.12);
+    }
+
+    .cover-lines {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.08) 50%, transparent 90%),
+        repeating-linear-gradient(0deg, transparent 0 22px, rgba(255,255,255,0.04) 23px);
+      opacity: 0.65;
+    }
+
+    .cover-text {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 28px;
+      z-index: 2;
+    }
+
+    .cover-text .small {
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .cover-text h2 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.05;
+      letter-spacing: -1px;
+    }
+
+    .cover-text p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
     }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin: 28px 0;
+      margin: 8px 0 38px;
     }
 
     .stat {
+      border: 1px solid var(--line);
       background: rgba(255,255,255,0.07);
-      border: 1px solid var(--border);
       border-radius: 20px;
       padding: 18px;
+      text-align: center;
     }
 
     .stat strong {
       display: block;
-      font-size: 26px;
-      margin-bottom: 6px;
+      font-size: 28px;
+      color: var(--blue2);
     }
 
     .stat span {
+      display: block;
       color: var(--muted);
-      font-size: 13px;
-    }
-
-    .section-title {
-      margin: 36px 0 16px;
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .section-title h3 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: -0.04em;
-    }
-
-    .section-title p {
-      margin: 0;
-      color: var(--muted);
+      margin-top: 6px;
       font-size: 14px;
     }
 
-    .modules {
+    .login-box {
+      width: min(720px, 100%);
+      margin: 0 auto 48px;
+      border: 1px solid rgba(143,211,255,0.24);
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.055));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .login-box h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .login-box p {
+      margin: 10px 0 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .login-row {
       display: grid;
-      gap: 18px;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.22);
+      color: var(--text);
+      padding: 15px 16px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .message {
+      min-height: 24px;
+      margin-top: 14px;
+      font-weight: 800;
+      color: var(--danger);
+    }
+
+    #course {
+      display: none;
+      padding-bottom: 70px;
+    }
+
+    .course-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .course-top h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 46px);
+      letter-spacing: -1px;
+    }
+
+    .course-top p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 760px;
     }
 
     .module {
-      border: 1px solid var(--border);
+      border: 1px solid var(--line);
       background: rgba(255,255,255,0.07);
       border-radius: 24px;
+      margin: 14px 0;
       overflow: hidden;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.18);
     }
 
-    .module-header {
+    .module summary {
+      list-style: none;
+      cursor: pointer;
       padding: 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 16px;
-      background: rgba(255,255,255,0.05);
-      border-bottom: 1px solid var(--border);
+      align-items: center;
+      background: linear-gradient(135deg, rgba(77,163,255,0.16), rgba(255,255,255,0.045));
     }
 
-    .module-header h4 {
-      margin: 0;
-      font-size: 20px;
+    .module summary::-webkit-details-marker {
+      display: none;
     }
 
-    .module-header span {
+    .module-title {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .module-title strong {
+      font-size: 22px;
+    }
+
+    .module-title span {
       color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .chevron {
+      flex: 0 0 auto;
+      color: var(--blue2);
+      font-weight: 900;
+      transition: 0.2s ease;
+    }
+
+    details[open] > summary .chevron {
+      transform: rotate(90deg);
     }
 
     .lessons {
+      padding: 16px;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      padding: 18px;
+      gap: 12px;
     }
 
     .lesson {
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.13);
+      background: rgba(0,0,0,0.18);
       border-radius: 20px;
-      padding: 18px;
-      background: rgba(0,0,0,0.16);
-      position: relative;
+      overflow: hidden;
     }
 
-    .lesson.locked {
-      opacity: 0.72;
-    }
-
-    .lesson-top {
+    .lesson summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 16px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      align-items: start;
-      margin-bottom: 10px;
+      gap: 14px;
     }
 
-    .lesson h5 {
-      margin: 0;
+    .lesson summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .lesson-title {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .lesson-title strong {
       font-size: 17px;
     }
 
-    .tag {
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 12px;
-      font-weight: 900;
-      white-space: nowrap;
-      background: rgba(56,189,248,0.13);
-      color: #cff4ff;
-      border: 1px solid rgba(56,189,248,0.28);
-    }
-
-    .tag.lock {
-      background: rgba(250,204,21,0.13);
-      color: #fff1a8;
-      border: 1px solid rgba(250,204,21,0.28);
-    }
-
-    .lesson p {
+    .lesson-title span {
       color: var(--muted);
-      line-height: 1.55;
-      margin: 0 0 14px;
-      font-size: 14px;
+      font-size: 13px;
     }
 
-    .lesson-content {
-      display: none;
-      border-top: 1px solid var(--border);
-      margin-top: 14px;
-      padding-top: 14px;
-    }
-
-    .lesson.open .lesson-content {
-      display: block;
-    }
-
-    .words {
+    .audio-list {
+      padding: 0 16px 16px;
       display: grid;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .word {
-      display: flex;
-      justify-content: space-between;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 10px 12px;
-      font-size: 14px;
     }
 
-    .word strong {
-      color: white;
+    .audio-card {
+      border: 1px solid rgba(255,255,255,0.13);
+      background: rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 14px;
     }
 
-    .word span {
-      color: var(--muted);
+    .audio-card h4 {
+      margin: 0 0 10px;
+      color: var(--blue2);
+      font-size: 15px;
     }
 
     audio {
       width: 100%;
-      margin-top: 8px;
     }
 
-    .audio-label {
-      color: #dbeafe;
-      font-weight: 800;
+    .note {
+      color: var(--muted);
       font-size: 13px;
+      line-height: 1.55;
       margin-top: 12px;
     }
 
     .footer {
-      margin-top: 40px;
       color: var(--muted);
       text-align: center;
-      font-size: 13px;
+      padding: 34px 0 48px;
+      font-size: 14px;
       line-height: 1.6;
     }
 
-    .hidden {
-      display: none !important;
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 12px;
+      }
+
+      .cover-card {
+        min-height: 360px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .audio-list {
+        grid-template-columns: 1fr;
+      }
     }
 
-    @media (max-width: 900px) {
-      .hero {
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+      }
+
+      header {
+        padding-top: 28px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .login-row {
         grid-template-columns: 1fr;
       }
 
       .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
+      }
+
+      .module summary,
+      .lesson summary {
+        padding: 15px;
       }
 
       .lessons {
-        grid-template-columns: 1fr;
+        padding: 10px;
       }
 
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .top-actions {
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .page {
-        width: min(100% - 20px, 1180px);
-        padding-top: 16px;
-      }
-
-      .hero-card,
-      .access-card {
-        padding: 22px;
-        border-radius: 22px;
-      }
-
-      .hero-list {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .btn {
-        width: 100%;
+      .cover-text h2 {
+        font-size: 28px;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="page" id="kurs">
-    <header class="topbar">
-      <div class="brand">
-        <div class="logo">AI</div>
+  <div class="page">
+    <header>
+      <section class="hero">
         <div>
+          <div class="badge">🎧 Kurs online z nagraniami audio</div>
           <h1>Speak English Premium z AI</h1>
-          <p>Kurs angielskiego od podstaw</p>
-        </div>
-      </div>
+          <p>
+            Praktyczny kurs angielskiego dla początkujących. Uczysz się krok po kroku:
+            słownictwa, kluczowych zwrotów, dialogów, pytań i powtórek audio.
+          </p>
 
-      <div class="top-actions">
-        <a class="btn btn-gold" href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">
-          Kup dostęp za 45 zł
-        </a>
-        <button class="btn btn-ghost" onclick="scrollToAccess()">Mam już dostęp</button>
-      </div>
+          <div class="hero-actions">
+            <a class="btn" href="#login">🔐 Przejdź do dostępu</a>
+            <a class="btn secondary" href="#opis">📘 Zobacz zawartość</a>
+          </div>
+        </div>
+
+        <div class="cover-card" aria-label="Okładka kursu Speak English Premium z AI">
+          <div class="cover-lines"></div>
+          <div class="cover-orb"></div>
+          <div class="cover-text">
+            <div class="small">Premium English Course</div>
+            <h2>Angielski od podstaw w prostych lekcjach</h2>
+            <p>5 modułów, 30 lekcji i nagrania audio do nauki we własnym tempie.</p>
+          </div>
+        </div>
+      </section>
     </header>
 
-    <section class="hero">
-      <div class="hero-card">
-        <div class="badge">🔐 Kurs premium z dostępem po zakupie</div>
-        <h2>Ucz się angielskiego krok po kroku, bez chaosu.</h2>
-        <p class="lead">
-          Praktyczny kurs dla osób początkujących. Lekcje, słownictwo, polskie tłumaczenia,
-          powtórki i audio w jednym miejscu.
-        </p>
-
-        <div class="hero-list">
-          <div>✅ 5 modułów nauki</div>
-          <div>✅ 30 lekcji</div>
-          <div>✅ słownictwo z tłumaczeniem</div>
-          <div>✅ nagrania audio</div>
-        </div>
-      </div>
-
-      <aside class="access-card" id="dostep">
-        <div>
-          <div class="badge">Dostęp do kursu</div>
-          <div class="price">45 zł <span>/ jednorazowo</span></div>
-          <p>
-            Po zakupie na Naffy otrzymasz PDF z linkiem do kursu i hasłem dostępu.
-            Wpisz hasło poniżej, aby odblokować wszystkie lekcje.
-          </p>
-        </div>
-
-        <div class="password-box">
-          <a class="btn btn-gold" href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">
-            Kup dostęp za 45 zł
-          </a>
-
-          <input id="passwordInput" type="password" placeholder="Wpisz hasło dostępu" />
-          <button class="btn btn-primary" onclick="unlockCourse()">Odblokuj kurs</button>
-          <div id="accessMessage" class="message"></div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="stats">
+    <section id="opis" class="stats">
       <div class="stat">
         <strong>5</strong>
-        <span>modułów</span>
+        <span>modułów kursu</span>
       </div>
       <div class="stat">
         <strong>30</strong>
-        <span>lekcji</span>
+        <span>lekcji krok po kroku</span>
       </div>
       <div class="stat">
-        <strong>AI</strong>
-        <span>wspiera naukę</span>
+        <strong>140+</strong>
+        <span>nagrań audio</span>
       </div>
       <div class="stat">
         <strong>45 zł</strong>
-        <span>dostęp online</span>
+        <span>dostęp do kursu</span>
       </div>
     </section>
 
-    <section>
-      <div class="section-title">
+    <section id="login" class="login-box">
+      <h2>Dostęp do kursu</h2>
+      <p>
+        Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła
+        odblokujesz wszystkie moduły i lekcje.
+      </p>
+
+      <div class="login-row">
+        <input id="passwordInput" type="password" placeholder="Wpisz hasło dostępu" />
+        <button class="btn" onclick="checkPassword()">Odblokuj kurs</button>
+      </div>
+
+      <div id="loginMessage" class="message"></div>
+    </section>
+
+    <main id="course">
+      <div class="course-top">
         <div>
-          <h3>Mapa kursu</h3>
-          <p>Lekcja 1 jest dostępna jako próbka. Pełny kurs odblokujesz hasłem po zakupie.</p>
+          <h2>Panel kursu</h2>
+          <p>
+            Moduły i lekcje są zwijane, żeby strona była czytelna. Kliknij wybrany moduł,
+            potem lekcję i uruchom odpowiednie nagranie audio.
+          </p>
         </div>
+        <button class="btn secondary" onclick="lockCourse()">🔒 Zablokuj kurs</button>
       </div>
 
-      <div id="modules" class="modules"></div>
-    </section>
+      <div id="modulesContainer"></div>
+
+      <div class="note">
+        Wskazówka: jeśli nagranie nie odtwarza się od razu, sprawdź, czy plik MP3 znajduje się
+        w folderze <strong>audio</strong> i czy nazwa pliku jest dokładnie taka sama jak w kodzie.
+      </div>
+    </main>
 
     <footer class="footer">
-      © Speak English Premium z AI — Strefa AI Architekt.  
-      Dostęp do kursu jest przeznaczony wyłącznie dla osoby, która dokonała zakupu.
+      Speak English Premium z AI<br>
+      Kurs online dla początkujących.
     </footer>
-  </main>
+  </div>
 
   <script>
-    const COURSE_PASSWORD = "EnglishPremium45";
-    const NAFFY_LINK = "https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq";
+    const COURSE_PASSWORD = "SpeakPremium45";
 
     const modules = [
       {
         title: "Moduł 1: Podstawy",
+        subtitle: "Pierwsze słowa, proste zwroty i najważniejsze podstawy.",
         lessons: [
-          {
-            title: "Lekcja 1: Powitania",
-            description: "Nauka podstawowych zwrotów takich jak Hello, Goodbye i How are you?",
-            words: [
-              ["Hello", "Cześć"],
-              ["Good morning", "Dzień dobry"],
-              ["Goodbye", "Do widzenia"],
-              ["How are you?", "Jak się masz?"],
-              ["Thank you", "Dziękuję"]
-            ]
-          },
-          {
-            title: "Lekcja 2: Przedstawianie się",
-            description: "Kluczowe frazy do podawania imienia i poznawania nowych osób.",
-            words: [
-              ["My name is...", "Mam na imię..."],
-              ["I am from Poland", "Jestem z Polski"],
-              ["Nice to meet you", "Miło cię poznać"],
-              ["What is your name?", "Jak masz na imię?"],
-              ["I am a student", "Jestem uczniem"]
-            ]
-          },
-          {
-            title: "Lekcja 3: Liczby 1-10",
-            description: "Pierwsze kroki w liczeniu po angielsku.",
-            words: [
-              ["One", "Jeden"],
-              ["Two", "Dwa"],
-              ["Three", "Trzy"],
-              ["Four", "Cztery"],
-              ["Five", "Pięć"]
-            ]
-          },
-          {
-            title: "Lekcja 4: Kolory",
-            description: "Nazywanie podstawowych kolorów.",
-            words: [
-              ["Red", "Czerwony"],
-              ["Blue", "Niebieski"],
-              ["Green", "Zielony"],
-              ["Black", "Czarny"],
-              ["White", "Biały"]
-            ]
-          },
-          {
-            title: "Lekcja 5: Rodzina",
-            description: "Słownictwo opisujące najbliższych członków rodziny.",
-            words: [
-              ["Mother", "Mama"],
-              ["Father", "Tata"],
-              ["Sister", "Siostra"],
-              ["Brother", "Brat"],
-              ["Family", "Rodzina"]
-            ]
-          },
-          {
-            title: "Lekcja 6: Samopoczucie",
-            description: "Wyrażanie emocji i odpowiadanie na pytanie How are you?",
-            words: [
-              ["Happy", "Szczęśliwy"],
-              ["Sad", "Smutny"],
-              ["Tired", "Zmęczony"],
-              ["Good", "Dobrze"],
-              ["Bad", "Źle"]
-            ]
-          }
+          lesson("M1L1", "Lekcja 1: Powitania", "Hello, goodbye i podstawowe formy powitania.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M1L2", "Lekcja 2: Przedstawianie się", "Imię, podstawowe informacje i poznawanie nowych osób.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M1L3", "Lekcja 3: Liczby 1–10", "Podstawowe liczby i krótkie przykłady użycia.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M1L4", "Lekcja 4: Kolory", "Nazwy kolorów i proste zdania z kolorami.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M1L5", "Lekcja 5: Rodzina", "Najbliżsi członkowie rodziny i proste opisy.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M1L6", "Lekcja 6: Samopoczucie", "Jak odpowiedzieć na pytanie: How are you?", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"])
         ]
       },
       {
         title: "Moduł 2: Życie codzienne",
+        subtitle: "Dom, jedzenie, zakupy, transport, czas i codzienne sytuacje.",
         lessons: [
-          {
-            title: "Lekcja 1: Mój dom",
-            description: "Nazwy pomieszczeń i przedmiotów codziennego użytku.",
-            words: [
-              ["House", "Dom"],
-              ["Room", "Pokój"],
-              ["Kitchen", "Kuchnia"],
-              ["Bathroom", "Łazienka"],
-              ["Bed", "Łóżko"]
-            ]
-          },
-          {
-            title: "Lekcja 2: Jedzenie",
-            description: "Podstawowe słowa związane z jedzeniem i piciem.",
-            words: [
-              ["Water", "Woda"],
-              ["Bread", "Chleb"],
-              ["Apple", "Jabłko"],
-              ["Coffee", "Kawa"],
-              ["Dinner", "Obiad"]
-            ]
-          },
-          {
-            title: "Lekcja 3: Zakupy",
-            description: "Zwroty przydatne podczas prostych zakupów.",
-            words: [
-              ["Shop", "Sklep"],
-              ["Price", "Cena"],
-              ["I want", "Chcę"],
-              ["How much?", "Ile kosztuje?"],
-              ["Card", "Karta"]
-            ]
-          },
-          {
-            title: "Lekcja 4: Czas",
-            description: "Podstawy mówienia o czasie i planie dnia.",
-            words: [
-              ["Today", "Dzisiaj"],
-              ["Tomorrow", "Jutro"],
-              ["Morning", "Poranek"],
-              ["Evening", "Wieczór"],
-              ["Now", "Teraz"]
-            ]
-          },
-          {
-            title: "Lekcja 5: Praca",
-            description: "Proste słowa i zdania związane z pracą.",
-            words: [
-              ["Work", "Praca"],
-              ["Office", "Biuro"],
-              ["Boss", "Szef"],
-              ["Meeting", "Spotkanie"],
-              ["Task", "Zadanie"]
-            ]
-          },
-          {
-            title: "Lekcja 6: Transport",
-            description: "Słownictwo potrzebne w podróży i przemieszczaniu się.",
-            words: [
-              ["Car", "Samochód"],
-              ["Bus", "Autobus"],
-              ["Train", "Pociąg"],
-              ["Ticket", "Bilet"],
-              ["Station", "Stacja"]
-            ]
-          }
+          lesson("M2L1", "Lekcja 1: Mój dom", "Pomieszczenia, przedmioty i proste zdania o domu.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat", "Test_Intro"]),
+          lesson("M2L2", "Lekcja 2: Jedzenie i napoje", "Podstawowe produkty, napoje i zamawianie jedzenia.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M2L3", "Lekcja 3: Codzienne czynności", "Rutyna dnia i najczęstsze aktywności.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M2L4", "Lekcja 4: Zakupy", "Proste zwroty przy zakupach i pytanie o cenę.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M2L5", "Lekcja 5: Transport", "Zwroty związane z przemieszczaniem się.", ["KeyPhrases", "Dialogue", "Repeat"]),
+          lesson("M2L6", "Lekcja 6: Czas i dni tygodnia", "Dni tygodnia, godziny i podstawowe pytania o czas.", ["Vocabulary", "Dialogue", "Questions", "Repeat"])
         ]
       },
       {
-        title: "Moduł 3: Komunikacja",
+        title: "Moduł 3: Praca i kontakt",
+        subtitle: "Proste rozmowy w pracy, wiadomości, telefon i umawianie terminu.",
         lessons: [
-          {
-            title: "Lekcja 1: Prośby",
-            description: "Jak grzecznie o coś poprosić.",
-            words: [
-              ["Please", "Proszę"],
-              ["Can I?", "Czy mogę?"],
-              ["Could you?", "Czy mógłbyś?"],
-              ["Help me", "Pomóż mi"],
-              ["I need", "Potrzebuję"]
-            ]
-          },
-          {
-            title: "Lekcja 2: Pytania",
-            description: "Podstawowe pytania w codziennej rozmowie.",
-            words: [
-              ["What?", "Co?"],
-              ["Where?", "Gdzie?"],
-              ["When?", "Kiedy?"],
-              ["Why?", "Dlaczego?"],
-              ["How?", "Jak?"]
-            ]
-          },
-          {
-            title: "Lekcja 3: Odpowiedzi",
-            description: "Krótkie odpowiedzi w rozmowie.",
-            words: [
-              ["Yes", "Tak"],
-              ["No", "Nie"],
-              ["Maybe", "Może"],
-              ["I know", "Wiem"],
-              ["I don't know", "Nie wiem"]
-            ]
-          },
-          {
-            title: "Lekcja 4: Telefon",
-            description: "Proste zwroty do rozmowy telefonicznej.",
-            words: [
-              ["Call", "Dzwonić"],
-              ["Phone", "Telefon"],
-              ["Message", "Wiadomość"],
-              ["Can you hear me?", "Czy mnie słyszysz?"],
-              ["I will call you", "Zadzwonię do ciebie"]
-            ]
-          },
-          {
-            title: "Lekcja 5: Internet",
-            description: "Słownictwo związane z internetem i aplikacjami.",
-            words: [
-              ["Website", "Strona internetowa"],
-              ["Email", "E-mail"],
-              ["Password", "Hasło"],
-              ["Login", "Logowanie"],
-              ["Download", "Pobieranie"]
-            ]
-          },
-          {
-            title: "Lekcja 6: Problemy",
-            description: "Jak powiedzieć, że coś nie działa lub jest problem.",
-            words: [
-              ["Problem", "Problem"],
-              ["It doesn't work", "To nie działa"],
-              ["I need help", "Potrzebuję pomocy"],
-              ["I don't understand", "Nie rozumiem"],
-              ["Can you repeat?", "Czy możesz powtórzyć?"]
-            ]
-          }
+          lesson("M3L1", "Lekcja 1: W pracy", "Podstawowe słownictwo związane z pracą.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M3L2", "Lekcja 2: Spotkania i rozmowy", "Zwroty używane podczas prostych spotkań.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M3L3", "Lekcja 3: E-mail i wiadomości", "Podstawowe formy komunikacji pisemnej.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M3L4", "Lekcja 4: Telefon i kontakt", "Zwroty przy rozmowie telefonicznej i kontakcie.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M3L5", "Lekcja 5: Prośby i pomoc", "Jak prosić o pomoc i reagować w prosty sposób.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M3L6", "Lekcja 6: Umawianie terminu", "Pytanie o termin, potwierdzanie i przesuwanie spotkań.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"])
         ]
       },
       {
-        title: "Moduł 4: Podróże",
+        title: "Moduł 4: Podróże i sytuacje praktyczne",
+        subtitle: "Hotel, lotnisko, restauracja, droga, zwiedzanie i nagłe sytuacje.",
         lessons: [
-          {
-            title: "Lekcja 1: Hotel",
-            description: "Zwroty potrzebne w hotelu.",
-            words: [
-              ["Hotel", "Hotel"],
-              ["Room", "Pokój"],
-              ["Reservation", "Rezerwacja"],
-              ["Key", "Klucz"],
-              ["Check-in", "Zameldowanie"]
-            ]
-          },
-          {
-            title: "Lekcja 2: Lotnisko",
-            description: "Podstawowe słowa przy odprawie i podróży samolotem.",
-            words: [
-              ["Airport", "Lotnisko"],
-              ["Flight", "Lot"],
-              ["Passport", "Paszport"],
-              ["Gate", "Bramka"],
-              ["Luggage", "Bagaż"]
-            ]
-          },
-          {
-            title: "Lekcja 3: Restauracja",
-            description: "Zamawianie jedzenia i napojów.",
-            words: [
-              ["Menu", "Menu"],
-              ["I would like", "Chciałbym"],
-              ["Bill", "Rachunek"],
-              ["Table", "Stolik"],
-              ["Waiter", "Kelner"]
-            ]
-          },
-          {
-            title: "Lekcja 4: Kierunki",
-            description: "Jak zapytać o drogę i zrozumieć wskazówki.",
-            words: [
-              ["Left", "Lewo"],
-              ["Right", "Prawo"],
-              ["Straight", "Prosto"],
-              ["Near", "Blisko"],
-              ["Far", "Daleko"]
-            ]
-          },
-          {
-            title: "Lekcja 5: Miasto",
-            description: "Najważniejsze miejsca w mieście.",
-            words: [
-              ["City", "Miasto"],
-              ["Street", "Ulica"],
-              ["Bank", "Bank"],
-              ["Pharmacy", "Apteka"],
-              ["Hospital", "Szpital"]
-            ]
-          },
-          {
-            title: "Lekcja 6: Bezpieczeństwo",
-            description: "Podstawowe zwroty w trudnych sytuacjach.",
-            words: [
-              ["Help!", "Pomocy!"],
-              ["Police", "Policja"],
-              ["Doctor", "Lekarz"],
-              ["I am lost", "Zgubiłem się"],
-              ["Emergency", "Nagły wypadek"]
-            ]
-          }
+          lesson("M4L1", "Lekcja 1: Hotel", "Zwroty przy meldowaniu się i pobycie w hotelu.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M4L2", "Lekcja 2: Lotnisko", "Podstawowe sytuacje na lotnisku.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M4L3", "Lekcja 3: Restauracja", "Zamawianie jedzenia i krótkie rozmowy w restauracji.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M4L4", "Lekcja 4: Pytanie o drogę", "Jak zapytać o drogę i zrozumieć prostą odpowiedź.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M4L5", "Lekcja 5: Zwiedzanie", "Zwroty przy zwiedzaniu miasta i atrakcji.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M4L6", "Lekcja 6: Nagłe sytuacje", "Pomoc, problem i podstawowe reakcje w trudnej sytuacji.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"])
         ]
       },
       {
-        title: "Moduł 5: Praktyka",
+        title: "Moduł 5: Utrwalenie i komunikacja",
+        subtitle: "Powtórki, krótkie rozmowy, opowiadanie o sobie i mini test końcowy.",
         lessons: [
-          {
-            title: "Lekcja 1: Codzienna rozmowa",
-            description: "Prosty dialog na start.",
-            words: [
-              ["How was your day?", "Jak minął twój dzień?"],
-              ["It was good", "Było dobrze"],
-              ["What are you doing?", "Co robisz?"],
-              ["I am learning English", "Uczę się angielskiego"],
-              ["See you later", "Do zobaczenia później"]
-            ]
-          },
-          {
-            title: "Lekcja 2: Małe rozmowy",
-            description: "Zwroty do krótkiej rozmowy z drugą osobą.",
-            words: [
-              ["Nice weather", "Ładna pogoda"],
-              ["I agree", "Zgadzam się"],
-              ["Really?", "Naprawdę?"],
-              ["That's interesting", "To ciekawe"],
-              ["Good idea", "Dobry pomysł"]
-            ]
-          },
-          {
-            title: "Lekcja 3: Plany",
-            description: "Jak mówić o planach i zamiarach.",
-            words: [
-              ["I want to", "Chcę"],
-              ["I plan to", "Planuję"],
-              ["Next week", "W przyszłym tygodniu"],
-              ["Soon", "Wkrótce"],
-              ["Later", "Później"]
-            ]
-          },
-          {
-            title: "Lekcja 4: Opisywanie siebie",
-            description: "Jak powiedzieć kilka zdań o sobie.",
-            words: [
-              ["I like", "Lubię"],
-              ["I live in", "Mieszkam w"],
-              ["I work as", "Pracuję jako"],
-              ["My hobby is", "Moje hobby to"],
-              ["I speak Polish", "Mówię po polsku"]
-            ]
-          },
-          {
-            title: "Lekcja 5: Powtórka",
-            description: "Powtórka najważniejszych zwrotów z kursu.",
-            words: [
-              ["Hello", "Cześć"],
-              ["Thank you", "Dziękuję"],
-              ["I need help", "Potrzebuję pomocy"],
-              ["How much?", "Ile kosztuje?"],
-              ["I don't understand", "Nie rozumiem"]
-            ]
-          },
-          {
-            title: "Lekcja 6: Test końcowy",
-            description: "Sprawdzenie podstaw po ukończeniu kursu.",
-            words: [
-              ["Start", "Start"],
-              ["Finish", "Koniec"],
-              ["Repeat", "Powtórz"],
-              ["Answer", "Odpowiedź"],
-              ["Good luck", "Powodzenia"]
-            ]
-          }
+          lesson("M5L1", "Lekcja 1: Rozmowa w codziennych sytuacjach", "Łączenie poznanych zwrotów w krótkich rozmowach.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M5L2", "Lekcja 2: Opowiadanie o sobie", "Proste zdania o sobie, pracy, rodzinie i zainteresowaniach.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M5L3", "Lekcja 3: Plany i przyszłość", "Mówienie o prostych planach i przyszłych działaniach.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M5L4", "Lekcja 4: Powtórka najważniejszych zwrotów", "Utrwalenie zwrotów z całego kursu.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M5L5", "Lekcja 5: Krótkie rozmowy", "Ćwiczenie prostych dialogów i reakcji.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"]),
+          lesson("M5L6", "Lekcja 6: Mini test końcowy / utrwalenie", "Końcowe utrwalenie materiału i sprawdzenie postępów.", ["Vocabulary", "KeyPhrases", "Dialogue", "Questions", "Repeat"])
         ]
       }
     ];
 
-    function isUnlocked() {
-      return localStorage.getItem("speakEnglishPremiumUnlocked") === "true";
+    const audioLabels = {
+      Vocabulary: "Słownictwo",
+      KeyPhrases: "Kluczowe zwroty",
+      Dialogue: "Dialog",
+      Questions: "Pytania",
+      Repeat: "Powtórka",
+      Test_Intro: "Wprowadzenie do testu"
+    };
+
+    function lesson(code, title, description, audioTypes) {
+      return {
+        code,
+        title,
+        description,
+        audios: audioTypes.map(type => {
+          return {
+            type,
+            label: audioLabels[type] || type,
+            src: `audio/${code}_${type}_1.mp3`
+          };
+        }).map(audio => {
+          if (audio.type === "Test_Intro") {
+            audio.src = `audio/${code}_Test_Intro.mp3`;
+          }
+          return audio;
+        })
+      };
     }
 
-    function unlockCourse() {
+    function checkPassword() {
       const input = document.getElementById("passwordInput");
-      const message = document.getElementById("accessMessage");
-      const value = input.value.trim();
+      const message = document.getElementById("loginMessage");
+      const course = document.getElementById("course");
 
-      if (value === COURSE_PASSWORD) {
-        localStorage.setItem("speakEnglishPremiumUnlocked", "true");
-        message.textContent = "Dostęp odblokowany. Możesz korzystać z całego kursu.";
-        message.className = "message success";
-        renderCourse();
+      if (input.value.trim() === COURSE_PASSWORD) {
+        message.style.color = "var(--green)";
+        message.textContent = "Dostęp odblokowany. Możesz rozpocząć naukę.";
+        course.style.display = "block";
+        renderModules();
+        setTimeout(() => {
+          course.scrollIntoView({ behavior: "smooth" });
+        }, 350);
+        localStorage.setItem("speakEnglishPremiumAccess", "yes");
       } else {
-        message.textContent = "Nieprawidłowe hasło. Sprawdź hasło z PDF-a po zakupie.";
-        message.className = "message error";
+        message.style.color = "var(--danger)";
+        message.textContent = "Nieprawidłowe hasło. Sprawdź hasło z pliku PDF.";
       }
     }
 
-    function scrollToAccess() {
-      document.getElementById("dostep").scrollIntoView({ behavior: "smooth", block: "center" });
-      setTimeout(() => {
-        document.getElementById("passwordInput").focus();
-      }, 500);
+    function lockCourse() {
+      localStorage.removeItem("speakEnglishPremiumAccess");
+      document.getElementById("course").style.display = "none";
+      document.getElementById("passwordInput").value = "";
+      document.getElementById("loginMessage").style.color = "var(--muted)";
+      document.getElementById("loginMessage").textContent = "Kurs został zablokowany.";
+      document.getElementById("login").scrollIntoView({ behavior: "smooth" });
     }
 
-    function getAudioPath(moduleIndex, lessonIndex, type) {
-      const m = moduleIndex + 1;
-      const l = lessonIndex + 1;
-      if (type === "vocabulary") {
-        return `audio/M${m}L${l}_Vocabulary_1.mp3`;
-      }
-      return `audio/M${m}L${l}_Repeat_1.mp3`;
-    }
-
-    function renderWords(words) {
-      return words.map(pair => `
-        <div class="word">
-          <strong>${pair[0]}</strong>
-          <span>${pair[1]}</span>
-        </div>
-      `).join("");
-    }
-
-    function renderCourse() {
-      const container = document.getElementById("modules");
-      const unlocked = isUnlocked();
+    function renderModules() {
+      const container = document.getElementById("modulesContainer");
+      if (container.dataset.rendered === "yes") return;
 
       container.innerHTML = modules.map((module, moduleIndex) => {
-        const lessonsHtml = module.lessons.map((lesson, lessonIndex) => {
-          const isPreview = moduleIndex === 0 && lessonIndex === 0;
-          const canOpen = unlocked || isPreview;
-          const locked = !canOpen;
+        const lessonsHtml = module.lessons.map((lessonItem, lessonIndex) => {
+          const audioHtml = lessonItem.audios.map(audio => `
+            <div class="audio-card">
+              <h4>${audio.label}</h4>
+              <audio controls preload="metadata">
+                <source src="${audio.src}" type="audio/mpeg">
+                Twoja przeglądarka nie obsługuje odtwarzacza audio.
+              </audio>
+            </div>
+          `).join("");
 
           return `
-            <article class="lesson ${locked ? "locked" : ""}" id="lesson-${moduleIndex}-${lessonIndex}">
-              <div class="lesson-top">
-                <h5>${lesson.title}</h5>
-                <span class="tag ${locked ? "lock" : ""}">
-                  ${locked ? "🔒 Zablokowana" : isPreview ? "👀 Próbka" : "✅ Dostępna"}
-                </span>
-              </div>
-
-              <p>${lesson.description}</p>
-
-              ${locked ? `
-                <button class="btn btn-gold" onclick="window.open('${NAFFY_LINK}', '_blank')">
-                  Kup dostęp za 45 zł
-                </button>
-              ` : `
-                <button class="btn btn-primary" onclick="toggleLesson(${moduleIndex}, ${lessonIndex})">
-                  Otwórz lekcję
-                </button>
-
-                <div class="lesson-content">
-                  <div class="words">
-                    ${renderWords(lesson.words)}
-                  </div>
-
-                  <div class="audio-label">Nagranie: słownictwo</div>
-                  <audio controls preload="none">
-                    <source src="${getAudioPath(moduleIndex, lessonIndex, "vocabulary")}" type="audio/mpeg">
-                    Twoja przeglądarka nie obsługuje odtwarzacza audio.
-                  </audio>
-
-                  <div class="audio-label">Nagranie: powtórka</div>
-                  <audio controls preload="none">
-                    <source src="${getAudioPath(moduleIndex, lessonIndex, "repeat")}" type="audio/mpeg">
-                    Twoja przeglądarka nie obsługuje odtwarzacza audio.
-                  </audio>
+            <details class="lesson">
+              <summary>
+                <div class="lesson-title">
+                  <strong>${lessonItem.title}</strong>
+                  <span>${lessonItem.description}</span>
                 </div>
-              `}
-            </article>
+                <div class="chevron">›</div>
+              </summary>
+              <div class="audio-list">
+                ${audioHtml}
+              </div>
+            </details>
           `;
         }).join("");
 
         return `
-          <section class="module">
-            <div class="module-header">
-              <h4>${module.title}</h4>
-              <span>6 lekcji</span>
-            </div>
+          <details class="module">
+            <summary>
+              <div class="module-title">
+                <strong>${module.title}</strong>
+                <span>${module.subtitle}</span>
+              </div>
+              <div class="chevron">›</div>
+            </summary>
             <div class="lessons">
               ${lessonsHtml}
             </div>
-          </section>
+          </details>
         `;
       }).join("");
 
-      const msg = document.getElementById("accessMessage");
-      if (unlocked) {
-        msg.textContent = "Kurs jest odblokowany na tym urządzeniu.";
-        msg.className = "message success";
-      }
-    }
-
-    function toggleLesson(moduleIndex, lessonIndex) {
-      const lesson = document.getElementById(`lesson-${moduleIndex}-${lessonIndex}`);
-      lesson.classList.toggle("open");
+      container.dataset.rendered = "yes";
     }
 
     document.getElementById("passwordInput").addEventListener("keydown", function(event) {
       if (event.key === "Enter") {
-        unlockCourse();
+        checkPassword();
       }
     });
 
-    renderCourse();
+    window.addEventListener("load", function() {
+      if (localStorage.getItem("speakEnglishPremiumAccess") === "yes") {
+        document.getElementById("course").style.display = "block";
+        document.getElementById("loginMessage").style.color = "var(--green)";
+        document.getElementById("loginMessage").textContent = "Dostęp jest już odblokowany na tym urządzeniu.";
+        renderModules();
+      }
+    });
   </script>
 </body>
 </html>
