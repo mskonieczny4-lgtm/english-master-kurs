@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Speak English Premium z AI</title>
-  <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio i czytankami.">
+  <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio, czytankami i ćwiczeniem pisania.">
   <style>
     :root {
       --bg:#050814; --bg2:#0b1226; --line:rgba(255,255,255,.16); --text:#f5f7ff;
@@ -54,7 +54,8 @@
     .login-box h2 { margin:0; font-size:28px; }
     .login-box p { margin:10px 0 18px; color:var(--muted); line-height:1.6; }
     .login-row { display:grid; grid-template-columns:1fr auto; gap:12px; }
-    input { width:100%; border:1px solid var(--line); border-radius:16px; background:rgba(0,0,0,.22); color:var(--text); padding:15px 16px; outline:none; font-size:16px; }
+    input, textarea { width:100%; border:1px solid var(--line); border-radius:16px; background:rgba(0,0,0,.22); color:var(--text); padding:15px 16px; outline:none; font-size:16px; font-family:Arial, Helvetica, sans-serif; }
+    textarea { min-height:160px; resize:vertical; line-height:1.6; }
     .message { min-height:24px; margin-top:14px; font-weight:900; }
     .buy-note { margin-top:16px; padding:14px 16px; border:1px solid rgba(143,211,255,.22); border-radius:16px; background:rgba(255,255,255,.06); color:var(--muted); line-height:1.6; }
     .buy-note a { color:var(--blue2); font-weight:900; text-decoration:none; }
@@ -72,8 +73,14 @@
     .module-title span { display:block; color:var(--muted); font-size:14px; margin-top:6px; }
     .reading-card { margin:16px; padding:18px; border:1px solid rgba(143,211,255,.22); border-radius:20px; background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.045)); }
     .reading-card h3 { margin:0 0 14px; color:var(--gold); font-size:20px; }
-    .reading-audio { border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(0,0,0,.18); padding:14px; margin-bottom:14px; }
-    .reading-audio h4 { margin:0 0 10px; color:var(--blue2); font-size:15px; }
+    .reading-audio, .writing-task { border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(0,0,0,.18); padding:14px; margin-bottom:14px; }
+    .reading-audio h4, .writing-task h4 { margin:0 0 10px; color:var(--blue2); font-size:15px; }
+    .writing-task p { margin:0 0 12px; color:var(--muted); line-height:1.6; }
+    .writing-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .writing-result { margin-top:12px; padding:12px 14px; border-radius:14px; display:none; line-height:1.6; font-weight:700; }
+    .writing-result.good { display:block; color:var(--green); background:rgba(124,255,178,.08); border:1px solid rgba(124,255,178,.2); }
+    .writing-result.medium { display:block; color:var(--gold); background:rgba(247,200,115,.08); border:1px solid rgba(247,200,115,.2); }
+    .writing-result.bad { display:block; color:var(--red); background:rgba(255,118,118,.08); border:1px solid rgba(255,118,118,.2); }
     .reading-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
     .reading-grid div { border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(0,0,0,.18); padding:14px; }
     .reading-grid h4 { margin:0 0 10px; color:var(--blue2); font-size:15px; }
@@ -117,9 +124,9 @@
     <header>
       <section class="hero">
         <div>
-          <div class="badge">🎧 Kurs online z nagraniami audio i czytankami</div>
+          <div class="badge">🎧 Kurs online z audio, czytankami i ćwiczeniem pisania</div>
           <h1>Speak English Premium z AI</h1>
-          <p>Praktyczny kurs angielskiego dla początkujących. Uczysz się krok po kroku: słuchasz nagrań, czytasz proste teksty po angielsku i sprawdzasz tłumaczenie po polsku.</p>
+          <p>Praktyczny kurs angielskiego dla początkujących. Słuchasz nagrań, czytasz proste teksty po angielsku, sprawdzasz tłumaczenie i ćwiczysz pisanie.</p>
           <div class="actions">
             <a class="btn" href="#login">🔐 Mam hasło</a>
             <a class="btn buy" href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">🛒 Kup kurs za 45 zł</a>
@@ -131,7 +138,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>5 modułów, 30 lekcji, nagrania audio i czytanki z tłumaczeniem.</p>
+            <p>5 modułów, 30 lekcji, audio, czytanki i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -141,12 +148,12 @@
       <div class="stat"><strong>5</strong><span>modułów kursu</span></div>
       <div class="stat"><strong>30</strong><span>lekcji krok po kroku</span></div>
       <div class="stat"><strong>148</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>5</strong><span>nagrań czytanek</span></div>
+      <div class="stat"><strong>5</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
       <h2>Dostęp do kursu</h2>
-      <p>Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła odblokujesz wszystkie moduły, lekcje, nagrania i czytanki.</p>
+      <p>Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła odblokujesz wszystkie moduły, lekcje, nagrania, czytanki i ćwiczenia pisania.</p>
       <div class="login-row">
         <input id="passwordInput" type="password" placeholder="Wpisz hasło dostępu">
         <button class="btn" type="button" onclick="unlockCourse()">Odblokuj kurs</button>
@@ -162,7 +169,7 @@
       <div class="course-top">
         <div>
           <h2>Panel kursu</h2>
-          <p>Każdy moduł zawiera czytankę po angielsku z nagraniem i tłumaczeniem oraz neutralnie opisane lekcje audio. Dzięki temu nie ma ryzyka pomieszania tematów z nagraniami.</p>
+          <p>Każdy moduł zawiera czytankę po angielsku z nagraniem, tłumaczenie oraz ćwiczenie pisania z automatycznym wynikiem.</p>
         </div>
         <button class="btn secondary" type="button" onclick="lockCourse()">🔒 Zablokuj kurs</button>
       </div>
@@ -197,6 +204,17 @@
               <h4>Tłumaczenie na polski</h4>
               <p>Mam na imię Anna. Jestem z Polski. Uczę się angielskiego, ponieważ chcę rozmawiać z ludźmi z innych krajów. Każdego dnia powtarzam proste słowa i krótkie zdania. Mówię „cześć”, przedstawiam się i zadaję proste pytania. Angielski jest dla mnie nowy, ale uczę się krok po kroku.</p>
             </div>
+          </div>
+
+          <div class="writing-task" data-answer="My name is Anna. I am from Poland. I am learning English because I want to speak with people from other countries. Every day I repeat simple words and short sentences. I say hello, I introduce myself, and I ask simple questions. English is new for me, but I learn step by step." data-module="M1">
+            <h4>✍️ Ćwiczenie pisania</h4>
+            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
+            <textarea id="M1_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
+            <div class="writing-actions">
+              <button class="btn" type="button" onclick="checkWriting('M1')">✅ Sprawdź odpowiedź</button>
+              <button class="btn secondary" type="button" onclick="clearWriting('M1')">🧹 Wyczyść</button>
+            </div>
+            <div id="M1_result" class="writing-result"></div>
           </div>
         </div>
 
@@ -606,6 +624,17 @@
               <p>Każdego ranka wstaję wcześnie. Robię śniadanie, piję herbatę i planuję dzień. Idę na zakupy, kiedy potrzebuję jedzenia albo wody. Czasami jadę autobusem albo idę pieszo do miasta. Lubię uczyć się przydatnych angielskich słów do codziennego życia, ponieważ mogę ich używać w domu, w sklepie i na ulicy.</p>
             </div>
           </div>
+
+          <div class="writing-task" data-answer="Every morning I wake up early. I make breakfast, drink tea, and plan my day. I go shopping when I need food or water. Sometimes I take a bus or walk to the city. I like learning useful English words for everyday life because I can use them at home, in a shop, and on the street." data-module="M2">
+            <h4>✍️ Ćwiczenie pisania</h4>
+            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
+            <textarea id="M2_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
+            <div class="writing-actions">
+              <button class="btn" type="button" onclick="checkWriting('M2')">✅ Sprawdź odpowiedź</button>
+              <button class="btn secondary" type="button" onclick="clearWriting('M2')">🧹 Wyczyść</button>
+            </div>
+            <div id="M2_result" class="writing-result"></div>
+          </div>
         </div>
 
         <div class="lessons">
@@ -993,6 +1022,17 @@
               <h4>Tłumaczenie na polski</h4>
               <p>W pracy staram się mówić jasno i uprzejmie. Piszę krótkie wiadomości, odpowiadam na proste pytania i proszę o pomoc, kiedy jej potrzebuję. Potrafię powiedzieć, kiedy jestem dostępny, i umówić termin. Nie potrzebuję idealnego angielskiego. Potrzebuję prostego angielskiego, który pomaga mi się komunikować.</p>
             </div>
+          </div>
+
+          <div class="writing-task" data-answer="At work I try to speak clearly and politely. I write short messages, answer simple questions, and ask for help when I need it. I can say when I am available and I can make an appointment. I do not need perfect English. I need simple English that helps me communicate." data-module="M3">
+            <h4>✍️ Ćwiczenie pisania</h4>
+            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
+            <textarea id="M3_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
+            <div class="writing-actions">
+              <button class="btn" type="button" onclick="checkWriting('M3')">✅ Sprawdź odpowiedź</button>
+              <button class="btn secondary" type="button" onclick="clearWriting('M3')">🧹 Wyczyść</button>
+            </div>
+            <div id="M3_result" class="writing-result"></div>
           </div>
         </div>
 
@@ -1402,6 +1442,17 @@
               <p>Kiedy podróżuję, używam angielskiego w wielu sytuacjach. Potrafię zapytać o pokój w hotelu, zamówić jedzenie w restauracji i zapytać o drogę. Na lotnisku słucham uważnie i szukam ważnych informacji. Jeśli mam problem, zachowuję spokój i używam prostych zdań.</p>
             </div>
           </div>
+
+          <div class="writing-task" data-answer="When I travel, I use English in many situations. I can ask for a room in a hotel, order food in a restaurant, and ask for directions. At the airport I listen carefully and look for important information. If I have a problem, I stay calm and use simple sentences." data-module="M4">
+            <h4>✍️ Ćwiczenie pisania</h4>
+            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
+            <textarea id="M4_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
+            <div class="writing-actions">
+              <button class="btn" type="button" onclick="checkWriting('M4')">✅ Sprawdź odpowiedź</button>
+              <button class="btn secondary" type="button" onclick="clearWriting('M4')">🧹 Wyczyść</button>
+            </div>
+            <div id="M4_result" class="writing-result"></div>
+          </div>
         </div>
 
         <div class="lessons">
@@ -1809,6 +1860,17 @@
               <h4>Tłumaczenie na polski</h4>
               <p>Teraz potrafię używać wielu prostych zdań po angielsku. Potrafię mówić o sobie, swoim dniu, swoich planach i podstawowych sytuacjach. Nadal popełniam błędy, ale rozumiem więcej i mówię z większą pewnością. Najważniejsza jest regularna praktyka. Małe kroki każdego dnia dają prawdziwy postęp.</p>
             </div>
+          </div>
+
+          <div class="writing-task" data-answer="Now I can use many simple English sentences. I can talk about myself, my day, my plans, and basic situations. I still make mistakes, but I understand more and I speak with more confidence. The most important thing is regular practice. Small steps every day bring real progress." data-module="M5">
+            <h4>✍️ Ćwiczenie pisania</h4>
+            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
+            <textarea id="M5_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
+            <div class="writing-actions">
+              <button class="btn" type="button" onclick="checkWriting('M5')">✅ Sprawdź odpowiedź</button>
+              <button class="btn secondary" type="button" onclick="clearWriting('M5')">🧹 Wyczyść</button>
+            </div>
+            <div id="M5_result" class="writing-result"></div>
           </div>
         </div>
 
@@ -2233,6 +2295,95 @@
       message.style.color = "var(--green)";
       message.textContent = "Dostęp jest już odblokowany na tym urządzeniu.";
     }
+
+    function normalizeText(text) {
+      return text
+        .toLowerCase()
+        .replace(/[.,!?;:()"„”]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function checkWriting(moduleId) {
+      const task = document.querySelector('.writing-task[data-module="' + moduleId + '"]');
+      const textarea = document.getElementById(moduleId + "_writing");
+      const result = document.getElementById(moduleId + "_result");
+
+      if (!task || !textarea || !result) return;
+
+      const original = normalizeText(task.dataset.answer || "");
+      const userText = normalizeText(textarea.value || "");
+
+      localStorage.setItem("writing_" + moduleId, textarea.value || "");
+
+      if (!userText) {
+        result.className = "writing-result bad";
+        result.innerHTML = "Wpisz tekst po angielsku, a potem kliknij <strong>Sprawdź odpowiedź</strong>.";
+        return;
+      }
+
+      const originalWords = original.split(" ").filter(Boolean);
+      const userWords = userText.split(" ").filter(Boolean);
+
+      let correct = 0;
+      const maxLen = Math.max(originalWords.length, userWords.length);
+
+      for (let i = 0; i < maxLen; i++) {
+        if (originalWords[i] && userWords[i] && originalWords[i] === userWords[i]) {
+          correct++;
+        }
+      }
+
+      const score = Math.round((correct / originalWords.length) * 100);
+      const missingCount = Math.max(0, originalWords.length - userWords.length);
+      const extraCount = Math.max(0, userWords.length - originalWords.length);
+
+      let className = "bad";
+      let title = "Spróbuj jeszcze raz.";
+      let advice = "Najpierw przeczytaj tekst po angielsku, potem przepisz go powoli zdanie po zdaniu.";
+
+      if (score >= 95) {
+        className = "good";
+        title = "Świetnie! Tekst jest prawie idealny.";
+        advice = "Możesz przejść dalej albo spróbować przepisać tekst z pamięci.";
+      } else if (score >= 75) {
+        className = "medium";
+        title = "Dobrze! Masz kilka różnic do poprawy.";
+        advice = "Sprawdź literówki, kolejność słów i brakujące wyrazy.";
+      } else if (score >= 50) {
+        className = "medium";
+        title = "Jest postęp, ale warto poprawić tekst.";
+        advice = "Porównaj swoją odpowiedź z czytanką i spróbuj ponownie.";
+      }
+
+      result.className = "writing-result " + className;
+      result.innerHTML =
+        "<strong>" + title + "</strong><br>" +
+        "Wynik zgodności: <strong>" + score + "%</strong><br>" +
+        "Słowa w oryginale: " + originalWords.length + ". Twoje słowa: " + userWords.length + ".<br>" +
+        (missingCount > 0 ? "Brakuje około: " + missingCount + " słów.<br>" : "") +
+        (extraCount > 0 ? "Masz około: " + extraCount + " dodatkowych słów.<br>" : "") +
+        advice;
+    }
+
+    function clearWriting(moduleId) {
+      const textarea = document.getElementById(moduleId + "_writing");
+      const result = document.getElementById(moduleId + "_result");
+      if (textarea) textarea.value = "";
+      if (result) {
+        result.className = "writing-result";
+        result.innerHTML = "";
+      }
+      localStorage.removeItem("writing_" + moduleId);
+    }
+
+    window.addEventListener("load", function() {
+      ["M1", "M2", "M3", "M4", "M5"].forEach(function(moduleId) {
+        const saved = localStorage.getItem("writing_" + moduleId);
+        const textarea = document.getElementById(moduleId + "_writing");
+        if (saved && textarea) textarea.value = saved;
+      });
+    });
   </script>
 </body>
 </html>
