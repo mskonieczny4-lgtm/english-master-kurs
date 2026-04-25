@@ -7,31 +7,14 @@
   <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio i czytankami.">
   <style>
     :root {
-      --bg:#050814;
-      --bg2:#0b1226;
-      --line:rgba(255,255,255,.16);
-      --text:#f5f7ff;
-      --muted:#b9c4e6;
-      --blue:#4da3ff;
-      --blue2:#8fd3ff;
-      --gold:#f7c873;
-      --green:#7cffb2;
-      --red:#ff7676;
-      --shadow:0 28px 80px rgba(0,0,0,.42);
+      --bg:#050814; --bg2:#0b1226; --line:rgba(255,255,255,.16); --text:#f5f7ff;
+      --muted:#b9c4e6; --blue:#4da3ff; --blue2:#8fd3ff; --gold:#f7c873;
+      --green:#7cffb2; --red:#ff7676; --shadow:0 28px 80px rgba(0,0,0,.42);
     }
-
-    * {
-      box-sizing:border-box;
-    }
-
-    html {
-      scroll-behavior:smooth;
-    }
-
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
     body {
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      color:var(--text);
+      margin:0; font-family:Arial, Helvetica, sans-serif; color:var(--text);
       background:
         radial-gradient(circle at 12% 0%, rgba(77,163,255,.34), transparent 34%),
         radial-gradient(circle at 82% 12%, rgba(143,211,255,.18), transparent 28%),
@@ -39,545 +22,93 @@
         linear-gradient(135deg,var(--bg),var(--bg2));
       min-height:100vh;
     }
-
     body:before {
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-      background-size:44px 44px;
-      mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 70%);
-    }
-
-    .page {
-      width:min(1180px, calc(100% - 28px));
-      margin:0 auto;
-      position:relative;
-      z-index:1;
-    }
-
-    header {
-      padding:44px 0 22px;
-    }
-
-    .hero {
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:28px;
-      align-items:center;
-      min-height:520px;
-    }
-
-    .badge {
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:9px 15px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,.07);
-      color:var(--blue2);
-      font-weight:800;
-      font-size:14px;
-      margin-bottom:18px;
-    }
-
-    h1 {
-      margin:0;
-      font-size:clamp(38px,6vw,76px);
-      line-height:.98;
-      letter-spacing:-2px;
-    }
-
-    .hero p {
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.7;
-      margin:20px 0 0;
-      max-width:680px;
-    }
-
-    .actions {
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:26px;
-    }
-
-    .btn {
-      display:inline-flex;
-      justify-content:center;
-      align-items:center;
-      gap:8px;
-      border:0;
-      border-radius:16px;
-      padding:14px 20px;
-      font-weight:900;
-      font-size:15px;
-      text-decoration:none;
-      cursor:pointer;
-      color:#06101f;
-      background:linear-gradient(135deg,var(--blue2),var(--blue));
-      box-shadow:0 18px 40px rgba(77,163,255,.24);
-      transition:.2s ease;
-    }
-
-    .btn:hover {
-      transform:translateY(-2px);
-    }
-
-    .btn.secondary {
-      color:var(--text);
-      background:rgba(255,255,255,.08);
-      border:1px solid var(--line);
-      box-shadow:none;
-    }
-
-    .btn.buy {
-      color:#07101f;
-      background:linear-gradient(135deg,#ffe29a,var(--gold));
-      box-shadow:0 18px 40px rgba(247,200,115,.18);
-    }
-
-    .cover {
-      position:relative;
-      min-height:420px;
-      border:1px solid rgba(143,211,255,.28);
-      border-radius:34px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      background:
-        radial-gradient(circle at 50% 28%, rgba(143,211,255,.28), transparent 26%),
-        linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
-    }
-
-    .cover:before {
-      content:"";
-      position:absolute;
-      width:280px;
-      height:280px;
-      top:70px;
-      left:50%;
-      transform:translateX(-50%);
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(143,211,255,.5), rgba(77,163,255,.12), transparent 68%);
-      filter:blur(4px);
-    }
-
-    .orb {
-      position:absolute;
-      width:210px;
-      height:210px;
-      top:95px;
-      left:50%;
-      transform:translateX(-50%);
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.28);
-      background:
-        linear-gradient(135deg, rgba(143,211,255,.42), rgba(5,8,20,.1)),
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,.85), transparent 14%);
-      box-shadow:0 0 80px rgba(77,163,255,.36), inset 0 0 44px rgba(255,255,255,.12);
-    }
-
-    .cover-lines {
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg,transparent 10%,rgba(255,255,255,.08) 50%,transparent 90%),
-        repeating-linear-gradient(0deg,transparent 0 22px,rgba(255,255,255,.04) 23px);
-      opacity:.65;
-    }
-
-    .cover-text {
-      position:absolute;
-      left:28px;
-      right:28px;
-      bottom:28px;
-    }
-
-    .cover-text .small {
-      color:var(--gold);
-      font-weight:900;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      font-size:13px;
-      margin-bottom:10px;
-    }
-
-    .cover-text h2 {
-      margin:0;
-      font-size:34px;
-      line-height:1.05;
-      letter-spacing:-1px;
-    }
-
-    .cover-text p {
-      margin:12px 0 0;
-      color:var(--muted);
-      line-height:1.55;
-    }
-
-    .stats {
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-      margin:8px 0 38px;
-    }
-
-    .stat {
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.07);
-      border-radius:20px;
-      padding:18px;
-      text-align:center;
-    }
-
-    .stat strong {
-      display:block;
-      font-size:28px;
-      color:var(--blue2);
-    }
-
-    .stat span {
-      display:block;
-      color:var(--muted);
-      margin-top:6px;
-      font-size:14px;
-    }
-
-    .login-box {
-      width:min(760px,100%);
-      margin:0 auto 48px;
-      border:1px solid rgba(143,211,255,.24);
-      background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.055));
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      padding:24px;
-    }
-
-    .login-box h2 {
-      margin:0;
-      font-size:28px;
-    }
-
-    .login-box p {
-      margin:10px 0 18px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .login-row {
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:12px;
-    }
-
-    input {
-      width:100%;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:rgba(0,0,0,.22);
-      color:var(--text);
-      padding:15px 16px;
-      outline:none;
-      font-size:16px;
-    }
-
-    .message {
-      min-height:24px;
-      margin-top:14px;
-      font-weight:900;
-    }
-
-    .buy-note {
-      margin-top:16px;
-      padding:14px 16px;
-      border:1px solid rgba(143,211,255,.22);
-      border-radius:16px;
-      background:rgba(255,255,255,.06);
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .buy-note a {
-      color:var(--blue2);
-      font-weight:900;
-      text-decoration:none;
-    }
-
-    .buy-note a:hover {
-      text-decoration:underline;
-    }
-
-    #course {
-      display:none;
-      padding-bottom:70px;
-    }
-
-    #course.unlocked {
-      display:block;
-    }
-
-    .course-top {
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:16px;
-      flex-wrap:wrap;
-      margin-bottom:18px;
-    }
-
-    .course-top h2 {
-      margin:0;
-      font-size:clamp(30px,4vw,48px);
-      letter-spacing:-1px;
-    }
-
-    .course-top p {
-      margin:10px 0 0;
-      color:var(--muted);
-      line-height:1.6;
-      max-width:760px;
-    }
-
-    .module {
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.07);
-      border-radius:24px;
-      margin:14px 0;
-      overflow:hidden;
-      box-shadow:0 18px 60px rgba(0,0,0,.18);
-    }
-
-    summary {
-      list-style:none;
-      cursor:pointer;
-    }
-
-    summary::-webkit-details-marker {
-      display:none;
-    }
-
-    .module > summary {
-      padding:20px;
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      align-items:center;
-      background:linear-gradient(135deg,rgba(77,163,255,.16),rgba(255,255,255,.045));
-    }
-
-    .module-title strong {
-      display:block;
-      font-size:22px;
-    }
-
-    .module-title span {
-      display:block;
-      color:var(--muted);
-      font-size:14px;
-      margin-top:6px;
-    }
-
-    .reading-card {
-      margin:16px;
-      padding:18px;
-      border:1px solid rgba(143,211,255,.22);
-      border-radius:20px;
-      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.045));
-    }
-
-    .reading-card h3 {
-      margin:0 0 14px;
-      color:var(--gold);
-      font-size:20px;
-    }
-
-    .reading-grid {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-
-    .reading-grid div {
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:16px;
-      background:rgba(0,0,0,.18);
-      padding:14px;
-    }
-
-    .reading-grid h4 {
-      margin:0 0 10px;
-      color:var(--blue2);
-      font-size:15px;
-    }
-
-    .reading-grid p {
-      margin:0;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    .lessons {
-      padding:0 16px 16px;
-      display:grid;
-      gap:12px;
-    }
-
-    .lesson {
-      border:1px solid rgba(255,255,255,.13);
-      background:rgba(0,0,0,.18);
-      border-radius:20px;
-      overflow:hidden;
-    }
-
-    .lesson > summary {
-      padding:16px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:14px;
-    }
-
-    .lesson-title strong {
-      display:block;
-      font-size:17px;
-    }
-
-    .lesson-title span {
-      display:block;
-      color:var(--muted);
-      font-size:13px;
-      margin-top:5px;
-      line-height:1.45;
-    }
-
-    .arrow {
-      color:var(--blue2);
-      font-weight:900;
-      transition:.2s ease;
-    }
-
-    details[open] > summary .arrow {
-      transform:rotate(90deg);
-    }
-
-    .audio-list {
-      padding:0 16px 16px;
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:12px;
-    }
-
-    .audio-card {
-      border:1px solid rgba(255,255,255,.13);
-      background:rgba(255,255,255,.06);
-      border-radius:18px;
-      padding:14px;
-    }
-
-    .audio-top {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      margin-bottom:10px;
-    }
-
-    .audio-top h4 {
-      margin:0;
-      color:var(--blue2);
-      font-size:15px;
-    }
-
-    .audio-top span {
-      color:var(--muted);
-      font-size:12px;
-      border:1px solid var(--line);
-      padding:4px 8px;
-      border-radius:999px;
-      background:rgba(0,0,0,.16);
-    }
-
-    audio {
-      width:100%;
-    }
-
-    .note {
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.55;
-      margin-top:12px;
-    }
-
-    footer {
-      color:var(--muted);
-      text-align:center;
-      padding:34px 0 48px;
-      font-size:14px;
-      line-height:1.6;
-    }
-
+      content:""; position:fixed; inset:0; pointer-events:none;
+      background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:44px 44px; mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 70%);
+    }
+    .page { width:min(1180px, calc(100% - 28px)); margin:0 auto; position:relative; z-index:1; }
+    header { padding:44px 0 22px; }
+    .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:28px; align-items:center; min-height:520px; }
+    .badge { display:inline-flex; gap:8px; align-items:center; padding:9px 15px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.07); color:var(--blue2); font-weight:800; font-size:14px; margin-bottom:18px; }
+    h1 { margin:0; font-size:clamp(38px,6vw,76px); line-height:.98; letter-spacing:-2px; }
+    .hero p { color:var(--muted); font-size:18px; line-height:1.7; margin:20px 0 0; max-width:680px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; gap:8px; border:0; border-radius:16px; padding:14px 20px; font-weight:900; font-size:15px; text-decoration:none; cursor:pointer; color:#06101f; background:linear-gradient(135deg,var(--blue2),var(--blue)); box-shadow:0 18px 40px rgba(77,163,255,.24); transition:.2s ease; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn.secondary { color:var(--text); background:rgba(255,255,255,.08); border:1px solid var(--line); box-shadow:none; }
+    .btn.buy { color:#07101f; background:linear-gradient(135deg,#ffe29a,var(--gold)); box-shadow:0 18px 40px rgba(247,200,115,.18); }
+    .cover { position:relative; min-height:420px; border:1px solid rgba(143,211,255,.28); border-radius:34px; overflow:hidden; box-shadow:var(--shadow); background:radial-gradient(circle at 50% 28%, rgba(143,211,255,.28), transparent 26%), linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.04)); }
+    .cover:before { content:""; position:absolute; width:280px; height:280px; top:70px; left:50%; transform:translateX(-50%); border-radius:50%; background:radial-gradient(circle, rgba(143,211,255,.5), rgba(77,163,255,.12), transparent 68%); filter:blur(4px); }
+    .orb { position:absolute; width:210px; height:210px; top:95px; left:50%; transform:translateX(-50%); border-radius:50%; border:1px solid rgba(255,255,255,.28); background:linear-gradient(135deg, rgba(143,211,255,.42), rgba(5,8,20,.1)), radial-gradient(circle at 35% 30%, rgba(255,255,255,.85), transparent 14%); box-shadow:0 0 80px rgba(77,163,255,.36), inset 0 0 44px rgba(255,255,255,.12); }
+    .cover-lines { position:absolute; inset:0; background:linear-gradient(90deg,transparent 10%,rgba(255,255,255,.08) 50%,transparent 90%), repeating-linear-gradient(0deg,transparent 0 22px,rgba(255,255,255,.04) 23px); opacity:.65; }
+    .cover-text { position:absolute; left:28px; right:28px; bottom:28px; }
+    .cover-text .small { color:var(--gold); font-weight:900; letter-spacing:1px; text-transform:uppercase; font-size:13px; margin-bottom:10px; }
+    .cover-text h2 { margin:0; font-size:34px; line-height:1.05; letter-spacing:-1px; }
+    .cover-text p { margin:12px 0 0; color:var(--muted); line-height:1.55; }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:8px 0 38px; }
+    .stat { border:1px solid var(--line); background:rgba(255,255,255,.07); border-radius:20px; padding:18px; text-align:center; }
+    .stat strong { display:block; font-size:28px; color:var(--blue2); }
+    .stat span { display:block; color:var(--muted); margin-top:6px; font-size:14px; }
+    .login-box { width:min(760px,100%); margin:0 auto 48px; border:1px solid rgba(143,211,255,.24); background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.055)); border-radius:24px; box-shadow:var(--shadow); padding:24px; }
+    .login-box h2 { margin:0; font-size:28px; }
+    .login-box p { margin:10px 0 18px; color:var(--muted); line-height:1.6; }
+    .login-row { display:grid; grid-template-columns:1fr auto; gap:12px; }
+    input { width:100%; border:1px solid var(--line); border-radius:16px; background:rgba(0,0,0,.22); color:var(--text); padding:15px 16px; outline:none; font-size:16px; }
+    .message { min-height:24px; margin-top:14px; font-weight:900; }
+    .buy-note { margin-top:16px; padding:14px 16px; border:1px solid rgba(143,211,255,.22); border-radius:16px; background:rgba(255,255,255,.06); color:var(--muted); line-height:1.6; }
+    .buy-note a { color:var(--blue2); font-weight:900; text-decoration:none; }
+    .buy-note a:hover { text-decoration:underline; }
+    #course { display:none; padding-bottom:70px; }
+    #course.unlocked { display:block; }
+    .course-top { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+    .course-top h2 { margin:0; font-size:clamp(30px,4vw,48px); letter-spacing:-1px; }
+    .course-top p { margin:10px 0 0; color:var(--muted); line-height:1.6; max-width:760px; }
+    .module { border:1px solid var(--line); background:rgba(255,255,255,.07); border-radius:24px; margin:14px 0; overflow:hidden; box-shadow:0 18px 60px rgba(0,0,0,.18); }
+    summary { list-style:none; cursor:pointer; }
+    summary::-webkit-details-marker { display:none; }
+    .module > summary { padding:20px; display:flex; justify-content:space-between; gap:16px; align-items:center; background:linear-gradient(135deg,rgba(77,163,255,.16),rgba(255,255,255,.045)); }
+    .module-title strong { display:block; font-size:22px; }
+    .module-title span { display:block; color:var(--muted); font-size:14px; margin-top:6px; }
+    .reading-card { margin:16px; padding:18px; border:1px solid rgba(143,211,255,.22); border-radius:20px; background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.045)); }
+    .reading-card h3 { margin:0 0 14px; color:var(--gold); font-size:20px; }
+    .reading-audio { border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(0,0,0,.18); padding:14px; margin-bottom:14px; }
+    .reading-audio h4 { margin:0 0 10px; color:var(--blue2); font-size:15px; }
+    .reading-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .reading-grid div { border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(0,0,0,.18); padding:14px; }
+    .reading-grid h4 { margin:0 0 10px; color:var(--blue2); font-size:15px; }
+    .reading-grid p { margin:0; color:var(--muted); line-height:1.7; }
+    .lessons { padding:0 16px 16px; display:grid; gap:12px; }
+    .lesson { border:1px solid rgba(255,255,255,.13); background:rgba(0,0,0,.18); border-radius:20px; overflow:hidden; }
+    .lesson > summary { padding:16px; display:flex; justify-content:space-between; align-items:center; gap:14px; }
+    .lesson-title strong { display:block; font-size:17px; }
+    .lesson-title span { display:block; color:var(--muted); font-size:13px; margin-top:5px; line-height:1.45; }
+    .arrow { color:var(--blue2); font-weight:900; transition:.2s ease; }
+    details[open] > summary .arrow { transform:rotate(90deg); }
+    .audio-list { padding:0 16px 16px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .audio-card { border:1px solid rgba(255,255,255,.13); background:rgba(255,255,255,.06); border-radius:18px; padding:14px; }
+    .audio-top { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; }
+    .audio-top h4 { margin:0; color:var(--blue2); font-size:15px; }
+    .audio-top span { color:var(--muted); font-size:12px; border:1px solid var(--line); padding:4px 8px; border-radius:999px; background:rgba(0,0,0,.16); }
+    audio { width:100%; }
+    .note { color:var(--muted); font-size:13px; line-height:1.55; margin-top:12px; }
+    footer { color:var(--muted); text-align:center; padding:34px 0 48px; font-size:14px; line-height:1.6; }
     @media (max-width:860px) {
-      .hero {
-        grid-template-columns:1fr;
-        min-height:auto;
-        padding-top:12px;
-      }
-
-      .cover {
-        min-height:360px;
-      }
-
-      .stats {
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .audio-list,
-      .reading-grid {
-        grid-template-columns:1fr;
-      }
+      .hero { grid-template-columns:1fr; min-height:auto; padding-top:12px; }
+      .cover { min-height:360px; }
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .audio-list, .reading-grid { grid-template-columns:1fr; }
     }
-
     @media (max-width:560px) {
-      .page {
-        width:min(100% - 20px,1180px);
-      }
-
-      header {
-        padding-top:28px;
-      }
-
-      h1 {
-        letter-spacing:-1px;
-      }
-
-      .hero p {
-        font-size:16px;
-      }
-
-      .login-row {
-        grid-template-columns:1fr;
-      }
-
-      .stats {
-        grid-template-columns:1fr;
-      }
-
-      .cover-text h2 {
-        font-size:28px;
-      }
-
-      .lessons {
-        padding:0 10px 10px;
-      }
-
-      .reading-card {
-        margin:10px;
-      }
+      .page { width:min(100% - 20px,1180px); }
+      header { padding-top:28px; }
+      h1 { letter-spacing:-1px; }
+      .hero p { font-size:16px; }
+      .login-row { grid-template-columns:1fr; }
+      .stats { grid-template-columns:1fr; }
+      .cover-text h2 { font-size:28px; }
+      .lessons { padding:0 10px 10px; }
+      .reading-card { margin:10px; }
     }
   </style>
 </head>
@@ -595,10 +126,8 @@
             <a class="btn secondary" href="#opis">📘 Zobacz zawartość</a>
           </div>
         </div>
-
         <div class="cover" aria-label="Okładka kursu Speak English Premium z AI">
-          <div class="cover-lines"></div>
-          <div class="orb"></div>
+          <div class="cover-lines"></div><div class="orb"></div>
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
@@ -611,8 +140,8 @@
     <section id="opis" class="stats">
       <div class="stat"><strong>5</strong><span>modułów kursu</span></div>
       <div class="stat"><strong>30</strong><span>lekcji krok po kroku</span></div>
-      <div class="stat"><strong>148</strong><span>plików audio</span></div>
-      <div class="stat"><strong>5</strong><span>czytanek z tłumaczeniem</span></div>
+      <div class="stat"><strong>148</strong><span>plików audio lekcji</span></div>
+      <div class="stat"><strong>5</strong><span>nagrań czytanek</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -633,7 +162,7 @@
       <div class="course-top">
         <div>
           <h2>Panel kursu</h2>
-          <p>Każdy moduł zawiera czytankę po angielsku z tłumaczeniem oraz neutralnie opisane lekcje audio. Dzięki temu nie ma ryzyka pomieszania tematów z nagraniami.</p>
+          <p>Każdy moduł zawiera czytankę po angielsku z nagraniem i tłumaczeniem oraz neutralnie opisane lekcje audio. Dzięki temu nie ma ryzyka pomieszania tematów z nagraniami.</p>
         </div>
         <button class="btn secondary" type="button" onclick="lockCourse()">🔒 Zablokuj kurs</button>
       </div>
@@ -650,6 +179,15 @@
 
         <div class="reading-card">
           <h3>📘 Czytanka modułowa</h3>
+
+          <div class="reading-audio">
+            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
+            <audio controls preload="metadata">
+              <source src="audio/M1_Reading.mp3.mp3" type="audio/mpeg">
+              Twoja przeglądarka nie obsługuje odtwarzacza audio.
+            </audio>
+          </div>
+
           <div class="reading-grid">
             <div>
               <h4>English text</h4>
@@ -1049,6 +587,15 @@
 
         <div class="reading-card">
           <h3>📘 Czytanka modułowa</h3>
+
+          <div class="reading-audio">
+            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
+            <audio controls preload="metadata">
+              <source src="audio/M2_Reading.mp3.mp3" type="audio/mpeg">
+              Twoja przeglądarka nie obsługuje odtwarzacza audio.
+            </audio>
+          </div>
+
           <div class="reading-grid">
             <div>
               <h4>English text</h4>
@@ -1428,6 +975,15 @@
 
         <div class="reading-card">
           <h3>📘 Czytanka modułowa</h3>
+
+          <div class="reading-audio">
+            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
+            <audio controls preload="metadata">
+              <source src="audio/M3_Reading.mp3.mp3" type="audio/mpeg">
+              Twoja przeglądarka nie obsługuje odtwarzacza audio.
+            </audio>
+          </div>
+
           <div class="reading-grid">
             <div>
               <h4>English text</h4>
@@ -1827,6 +1383,15 @@
 
         <div class="reading-card">
           <h3>📘 Czytanka modułowa</h3>
+
+          <div class="reading-audio">
+            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
+            <audio controls preload="metadata">
+              <source src="audio/M4_Reading.mp3.mp3" type="audio/mpeg">
+              Twoja przeglądarka nie obsługuje odtwarzacza audio.
+            </audio>
+          </div>
+
           <div class="reading-grid">
             <div>
               <h4>English text</h4>
@@ -2226,6 +1791,15 @@
 
         <div class="reading-card">
           <h3>📘 Czytanka modułowa</h3>
+
+          <div class="reading-audio">
+            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
+            <audio controls preload="metadata">
+              <source src="audio/M5_Reading.mp3.mp3" type="audio/mpeg">
+              Twoja przeglądarka nie obsługuje odtwarzacza audio.
+            </audio>
+          </div>
+
           <div class="reading-grid">
             <div>
               <h4>English text</h4>
