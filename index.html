@@ -141,6 +141,12 @@
       box-shadow: none;
     }
 
+    .btn.buy {
+      color: #07101f;
+      background: linear-gradient(135deg, #ffe29a, #f7c873);
+      box-shadow: 0 18px 40px rgba(247, 200, 115, 0.18);
+    }
+
     .cover-card {
       position: relative;
       min-height: 420px;
@@ -298,6 +304,26 @@
       margin-top: 14px;
       font-weight: 800;
       color: var(--danger);
+    }
+
+    .buy-note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 1px solid rgba(143, 211, 255, 0.22);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .buy-note a {
+      color: var(--blue2);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .buy-note a:hover {
+      text-decoration: underline;
     }
 
     #course {
@@ -532,7 +558,12 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn" href="#login">🔐 Przejdź do dostępu</a>
+            <a class="btn" href="#login">🔐 Mam hasło</a>
+
+            <a class="btn buy" href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">
+              🛒 Kup kurs za 45 zł
+            </a>
+
             <a class="btn secondary" href="#opis">📘 Zobacz zawartość</a>
           </div>
         </div>
@@ -581,6 +612,13 @@
       </div>
 
       <div id="loginMessage" class="message"></div>
+
+      <div class="buy-note">
+        Nie masz jeszcze hasła?
+        <a href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">
+          Kup dostęp do kursu na Naffy za 45 zł
+        </a>
+      </div>
     </section>
 
     <main id="course">
@@ -693,13 +731,10 @@
           return {
             type,
             label: audioLabels[type] || type,
-            src: `audio/${code}_${type}_1.mp3`
+            src: type === "Test_Intro"
+              ? `audio/${code}_Test_Intro.mp3`
+              : `audio/${code}_${type}_1.mp3`
           };
-        }).map(audio => {
-          if (audio.type === "Test_Intro") {
-            audio.src = `audio/${code}_Test_Intro.mp3`;
-          }
-          return audio;
         })
       };
     }
@@ -737,8 +772,8 @@
       const container = document.getElementById("modulesContainer");
       if (container.dataset.rendered === "yes") return;
 
-      container.innerHTML = modules.map((module, moduleIndex) => {
-        const lessonsHtml = module.lessons.map((lessonItem, lessonIndex) => {
+      container.innerHTML = modules.map(module => {
+        const lessonsHtml = module.lessons.map(lessonItem => {
           const audioHtml = lessonItem.audios.map(audio => `
             <div class="audio-card">
               <h4>${audio.label}</h4>
