@@ -688,7 +688,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>7 modułów, 39 lekcji, audio, dialogi i sprawdzanie pisania.</p>
+            <p>7 modułów, 40 lekcji, audio, dialogi i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -696,9 +696,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>7</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>39</strong><span>lekcji krok po kroku</span></div>
-      <div class="stat"><strong>174+</strong><span>pliki audio lekcji</span></div>
-      <div class="stat"><strong>14</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>40</strong><span>lekcji krok po kroku</span></div>
+      <div class="stat"><strong>177+</strong><span>plików audio lekcji</span></div>
+      <div class="stat"><strong>15</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -1048,6 +1048,36 @@
         translationHtml: "<strong>A:</strong> Cześć. Czy wysłałeś/wysłałaś e-mail?<br><strong>B:</strong> Jeszcze nie. Wyślę go dzisiaj.<br><strong>A:</strong> Proszę załącz dokument.<br><strong>B:</strong> Oczywiście. Załączę plik.<br><strong>A:</strong> Czy możesz odpowiedzieć przed jutrem?<br><strong>B:</strong> Tak, nie ma problemu.",
         english: "Hello. Did you send the email? Not yet. I will send it today. Please attach the document. Of course. I will attach the file. Can you reply before tomorrow? Yes, no problem.",
         polish: "Cześć. Czy wysłałeś/wysłałaś e-mail? Jeszcze nie. Wyślę go dzisiaj. Proszę załącz dokument. Oczywiście. Załączę plik. Czy możesz odpowiedzieć przed jutrem? Tak, nie ma problemu."
+      },
+      M7L4: {
+        module: "M7",
+        title: "Lekcja 4: Spotkanie w pracy",
+        subtitle: "spotkanie, agenda, temat, pomysł, decyzja, notatki i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — spotkanie w pracy",
+        audioBase: "M7L4",
+        vocabulary: [
+          ["meeting", "spotkanie"],
+          ["agenda", "agenda / plan spotkania"],
+          ["topic", "temat"],
+          ["idea", "pomysł"],
+          ["team", "zespół"],
+          ["presentation", "prezentacja"],
+          ["question", "pytanie"],
+          ["decision", "decyzja"],
+          ["notes", "notatki"],
+          ["summary", "podsumowanie"]
+        ],
+        phrases: [
+          ["The meeting starts now.", "Spotkanie zaczyna się teraz."],
+          ["What is the main topic?", "Jaki jest główny temat?"],
+          ["I have an idea.", "Mam pomysł."],
+          ["Can I ask a question?", "Czy mogę zadać pytanie?"],
+          ["Let’s make a decision.", "Podejmijmy decyzję."]
+        ],
+        dialogueHtml: "<strong>A:</strong> Good morning. The meeting starts now.<br><strong>B:</strong> Good morning. What is the main topic?<br><strong>A:</strong> Today we talk about the new project.<br><strong>B:</strong> I have an idea.<br><strong>A:</strong> Great. Please tell us.<br><strong>B:</strong> Let’s write it in the notes.",
+        translationHtml: "<strong>A:</strong> Dzień dobry. Spotkanie zaczyna się teraz.<br><strong>B:</strong> Dzień dobry. Jaki jest główny temat?<br><strong>A:</strong> Dzisiaj rozmawiamy o nowym projekcie.<br><strong>B:</strong> Mam pomysł.<br><strong>A:</strong> Świetnie. Proszę, powiedz nam.<br><strong>B:</strong> Zapiszmy to w notatkach.",
+        english: "Good morning. The meeting starts now. Good morning. What is the main topic? Today we talk about the new project. I have an idea. Great. Please tell us. Let’s write it in the notes.",
+        polish: "Dzień dobry. Spotkanie zaczyna się teraz. Dzień dobry. Jaki jest główny temat? Dzisiaj rozmawiamy o nowym projekcie. Mam pomysł. Świetnie. Proszę, powiedz nam. Zapiszmy to w notatkach."
       }
     };
 
@@ -1085,7 +1115,7 @@
       {
         code: "M7",
         title: "Moduł 7: Angielski w pracy",
-        subtitle: "Nowy moduł. Praktyczny angielski do pracy, biura, zespołu i prostych rozmów służbowych."
+        subtitle: "Praktyczny angielski do pracy, biura, zespołu i prostych rozmów służbowych."
       }
     ];
 
@@ -1332,7 +1362,8 @@
         <div class="lessons">
           ${customLessonCard("M7L1", false)}
           ${customLessonCard("M7L2", false)}
-          ${customLessonCard("M7L3", true)}
+          ${customLessonCard("M7L3", false)}
+          ${customLessonCard("M7L4", true)}
         </div>
       `;
     }
@@ -1466,7 +1497,7 @@
       [
         "M1", "M2", "M3", "M4", "M5",
         "M6L1", "M6L2", "M6L3", "M6L4", "M6L5", "M6L6",
-        "M7L1", "M7L2", "M7L3"
+        "M7L1", "M7L2", "M7L3", "M7L4"
       ].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
