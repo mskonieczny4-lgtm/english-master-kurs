@@ -688,7 +688,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>7 modułów, 40 lekcji, audio, dialogi i sprawdzanie pisania.</p>
+            <p>7 modułów, 41 lekcji, audio, dialogi i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -696,9 +696,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>7</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>40</strong><span>lekcji krok po kroku</span></div>
-      <div class="stat"><strong>177+</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>15</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>41</strong><span>lekcji krok po kroku</span></div>
+      <div class="stat"><strong>180+</strong><span>plików audio lekcji</span></div>
+      <div class="stat"><strong>16</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -780,58 +780,36 @@
 
     const customLessons = {
       M6L1: {
-        module: "M6",
         title: "Lekcja 1: Na lotnisku",
         subtitle: "odprawa, paszport, bagaż, bramka, dialog i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — dialog na lotnisku",
         audioBase: "M6L1",
         vocabulary: [
-          ["airport", "lotnisko"],
-          ["ticket", "bilet"],
-          ["passport", "paszport"],
-          ["luggage", "bagaż"],
-          ["gate", "bramka"],
-          ["flight", "lot"],
-          ["boarding pass", "karta pokładowa"],
-          ["seat", "miejsce"],
-          ["delay", "opóźnienie"],
-          ["plane", "samolot"]
+          ["airport", "lotnisko"], ["ticket", "bilet"], ["passport", "paszport"], ["luggage", "bagaż"], ["gate", "bramka"],
+          ["flight", "lot"], ["boarding pass", "karta pokładowa"], ["seat", "miejsce"], ["delay", "opóźnienie"], ["plane", "samolot"]
         ],
         phrases: [
-          ["Where is the gate?", "Gdzie jest bramka?"],
-          ["I have a ticket.", "Mam bilet."],
-          ["Here is my passport.", "Oto mój paszport."],
-          ["My flight is delayed.", "Mój lot jest opóźniony."],
-          ["Where can I check in?", "Gdzie mogę się odprawić?"]
+          ["Where is the gate?", "Gdzie jest bramka?"], ["I have a ticket.", "Mam bilet."], ["Here is my passport.", "Oto mój paszport."],
+          ["My flight is delayed.", "Mój lot jest opóźniony."], ["Where can I check in?", "Gdzie mogę się odprawić?"]
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. Can I see your passport, please?<br><strong>B:</strong> Good morning. Here is my passport.<br><strong>A:</strong> Thank you. Do you have any luggage?<br><strong>B:</strong> Yes, I have one suitcase.<br><strong>A:</strong> Your gate is number twelve.<br><strong>B:</strong> Thank you very much.",
         translationHtml: "<strong>A:</strong> Dzień dobry. Czy mogę zobaczyć pana/pani paszport?<br><strong>B:</strong> Dzień dobry. Oto mój paszport.<br><strong>A:</strong> Dziękuję. Czy ma pan/pani jakiś bagaż?<br><strong>B:</strong> Tak, mam jedną walizkę.<br><strong>A:</strong> Pańska bramka to numer dwanaście.<br><strong>B:</strong> Bardzo dziękuję.",
         english: "Good morning. Can I see your passport, please? Good morning. Here is my passport. Thank you. Do you have any luggage? Yes, I have one suitcase. Your gate is number twelve. Thank you very much.",
         polish: "Dzień dobry. Czy mogę zobaczyć pana/pani paszport? Dzień dobry. Oto mój paszport. Dziękuję. Czy ma pan/pani jakiś bagaż? Tak, mam jedną walizkę. Pańska bramka to numer dwanaście. Bardzo dziękuję."
       },
+
       M6L2: {
-        module: "M6",
         title: "Lekcja 2: W hotelu",
         subtitle: "rezerwacja, pokój, śniadanie, klucz i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — dialog w hotelu",
         audioBase: "M6L2",
         vocabulary: [
-          ["hotel", "hotel"],
-          ["room", "pokój"],
-          ["reservation", "rezerwacja"],
-          ["key", "klucz"],
-          ["reception", "recepcja"],
-          ["night", "noc"],
-          ["breakfast", "śniadanie"],
-          ["bathroom", "łazienka"],
-          ["elevator", "winda"],
-          ["check-in", "zameldowanie"]
+          ["hotel", "hotel"], ["room", "pokój"], ["reservation", "rezerwacja"], ["key", "klucz"], ["reception", "recepcja"],
+          ["night", "noc"], ["breakfast", "śniadanie"], ["bathroom", "łazienka"], ["elevator", "winda"], ["check-in", "zameldowanie"]
         ],
         phrases: [
-          ["I have a reservation.", "Mam rezerwację."],
-          ["I would like a room.", "Chciałbym/chciałabym pokój."],
-          ["Is breakfast included?", "Czy śniadanie jest wliczone?"],
-          ["What time is check-out?", "O której jest wymeldowanie?"],
+          ["I have a reservation.", "Mam rezerwację."], ["I would like a room.", "Chciałbym/chciałabym pokój."],
+          ["Is breakfast included?", "Czy śniadanie jest wliczone?"], ["What time is check-out?", "O której jest wymeldowanie?"],
           ["Can I have the key?", "Czy mogę dostać klucz?"]
         ],
         dialogueHtml: "<strong>A:</strong> Good evening. I have a reservation.<br><strong>B:</strong> Good evening. What is your name?<br><strong>A:</strong> My name is Anna Kowalska.<br><strong>B:</strong> Yes, I see your reservation. Your room is number twenty-one.<br><strong>A:</strong> Is breakfast included?<br><strong>B:</strong> Yes, breakfast is from seven to ten.",
@@ -839,29 +817,19 @@
         english: "Good evening. I have a reservation. Good evening. What is your name? My name is Anna Kowalska. Yes, I see your reservation. Your room is number twenty-one. Is breakfast included? Yes, breakfast is from seven to ten.",
         polish: "Dobry wieczór. Mam rezerwację. Dobry wieczór. Jak się pani nazywa? Nazywam się Anna Kowalska. Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden. Czy śniadanie jest wliczone? Tak, śniadanie jest od siódmej do dziesiątej."
       },
+
       M6L3: {
-        module: "M6",
         title: "Lekcja 3: W restauracji",
         subtitle: "menu, zamówienie, jedzenie, napoje, rachunek i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — dialog w restauracji",
         audioBase: "M6L3",
         vocabulary: [
-          ["restaurant", "restauracja"],
-          ["menu", "menu"],
-          ["waiter", "kelner"],
-          ["food", "jedzenie"],
-          ["drink", "napój"],
-          ["water", "woda"],
-          ["coffee", "kawa"],
-          ["bill", "rachunek"],
-          ["table", "stolik"],
-          ["order", "zamówienie"]
+          ["restaurant", "restauracja"], ["menu", "menu"], ["waiter", "kelner"], ["food", "jedzenie"], ["drink", "napój"],
+          ["water", "woda"], ["coffee", "kawa"], ["bill", "rachunek"], ["table", "stolik"], ["order", "zamówienie"]
         ],
         phrases: [
-          ["Can I see the menu?", "Czy mogę zobaczyć menu?"],
-          ["I would like water.", "Poproszę wodę."],
-          ["I would like this dish.", "Poproszę to danie."],
-          ["The food is very good.", "Jedzenie jest bardzo dobre."],
+          ["Can I see the menu?", "Czy mogę zobaczyć menu?"], ["I would like water.", "Poproszę wodę."],
+          ["I would like this dish.", "Poproszę to danie."], ["The food is very good.", "Jedzenie jest bardzo dobre."],
           ["Can I have the bill?", "Czy mogę prosić rachunek?"]
         ],
         dialogueHtml: "<strong>A:</strong> Good afternoon. Can I see the menu, please?<br><strong>B:</strong> Of course. Here you are.<br><strong>A:</strong> Thank you. I would like chicken and water.<br><strong>B:</strong> Would you like coffee after the meal?<br><strong>A:</strong> Yes, please.<br><strong>B:</strong> Great. I will bring your order.",
@@ -869,59 +837,38 @@
         english: "Good afternoon. Can I see the menu, please? Of course. Here you are. Thank you. I would like chicken and water. Would you like coffee after the meal? Yes, please. Great. I will bring your order.",
         polish: "Dzień dobry. Czy mogę zobaczyć menu? Oczywiście. Proszę bardzo. Dziękuję. Poproszę kurczaka i wodę. Czy chciałby pan/chciałaby pani kawę po posiłku? Tak, proszę. Świetnie. Przyniosę zamówienie."
       },
+
       M6L4: {
-        module: "M6",
         title: "Lekcja 4: Pytanie o drogę",
         subtitle: "ulica, kierunki, stacja, mapa i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — pytanie o drogę",
         audioBase: "M6L4",
         vocabulary: [
-          ["street", "ulica"],
-          ["left", "lewo"],
-          ["right", "prawo"],
-          ["straight", "prosto"],
-          ["near", "blisko"],
-          ["far", "daleko"],
-          ["map", "mapa"],
-          ["station", "stacja"],
-          ["shop", "sklep"],
-          ["city center", "centrum miasta"]
+          ["street", "ulica"], ["left", "lewo"], ["right", "prawo"], ["straight", "prosto"], ["near", "blisko"],
+          ["far", "daleko"], ["map", "mapa"], ["station", "stacja"], ["shop", "sklep"], ["city center", "centrum miasta"]
         ],
         phrases: [
-          ["Where is the station?", "Gdzie jest stacja?"],
-          ["Go straight.", "Idź prosto."],
-          ["Turn left.", "Skręć w lewo."],
-          ["Turn right.", "Skręć w prawo."],
-          ["Is it far?", "Czy to daleko?"]
+          ["Where is the station?", "Gdzie jest stacja?"], ["Go straight.", "Idź prosto."], ["Turn left.", "Skręć w lewo."],
+          ["Turn right.", "Skręć w prawo."], ["Is it far?", "Czy to daleko?"]
         ],
         dialogueHtml: "<strong>A:</strong> Excuse me. Where is the train station?<br><strong>B:</strong> Go straight and turn left.<br><strong>A:</strong> Is it far?<br><strong>B:</strong> No, it is about five minutes from here.<br><strong>A:</strong> Thank you.<br><strong>B:</strong> You are welcome.",
         translationHtml: "<strong>A:</strong> Przepraszam. Gdzie jest stacja kolejowa?<br><strong>B:</strong> Proszę iść prosto i skręcić w lewo.<br><strong>A:</strong> Czy to daleko?<br><strong>B:</strong> Nie, to około pięć minut stąd.<br><strong>A:</strong> Dziękuję.<br><strong>B:</strong> Nie ma za co.",
         english: "Excuse me. Where is the train station? Go straight and turn left. Is it far? No, it is about five minutes from here. Thank you. You are welcome.",
         polish: "Przepraszam. Gdzie jest stacja kolejowa? Proszę iść prosto i skręcić w lewo. Czy to daleko? Nie, to około pięć minut stąd. Dziękuję. Nie ma za co."
       },
+
       M6L5: {
-        module: "M6",
         title: "Lekcja 5: W sklepie",
         subtitle: "cena, płatność, rozmiar, karta i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — dialog w sklepie",
         audioBase: "M6L5",
         vocabulary: [
-          ["shop", "sklep"],
-          ["price", "cena"],
-          ["money", "pieniądze"],
-          ["card", "karta"],
-          ["cash", "gotówka"],
-          ["bag", "torba"],
-          ["receipt", "paragon"],
-          ["cheap", "tani"],
-          ["expensive", "drogi"],
-          ["size", "rozmiar"]
+          ["shop", "sklep"], ["price", "cena"], ["money", "pieniądze"], ["card", "karta"], ["cash", "gotówka"],
+          ["bag", "torba"], ["receipt", "paragon"], ["cheap", "tani"], ["expensive", "drogi"], ["size", "rozmiar"]
         ],
         phrases: [
-          ["How much is it?", "Ile to kosztuje?"],
-          ["Can I pay by card?", "Czy mogę zapłacić kartą?"],
-          ["It is too expensive.", "To jest za drogie."],
-          ["Do you have a smaller size?", "Czy macie mniejszy rozmiar?"],
+          ["How much is it?", "Ile to kosztuje?"], ["Can I pay by card?", "Czy mogę zapłacić kartą?"],
+          ["It is too expensive.", "To jest za drogie."], ["Do you have a smaller size?", "Czy macie mniejszy rozmiar?"],
           ["I would like this one.", "Chciałbym/chciałabym ten."]
         ],
         dialogueHtml: "<strong>A:</strong> Hello. How much is this T-shirt?<br><strong>B:</strong> It is fifteen pounds.<br><strong>A:</strong> Do you have a smaller size?<br><strong>B:</strong> Yes, we do. Here you are.<br><strong>A:</strong> Great. Can I pay by card?<br><strong>B:</strong> Yes, of course.",
@@ -929,59 +876,38 @@
         english: "Hello. How much is this T-shirt? It is fifteen pounds. Do you have a smaller size? Yes, we do. Here you are. Great. Can I pay by card? Yes, of course.",
         polish: "Dzień dobry. Ile kosztuje ta koszulka? Kosztuje piętnaście funtów. Czy macie mniejszy rozmiar? Tak, mamy. Proszę bardzo. Świetnie. Czy mogę zapłacić kartą? Tak, oczywiście."
       },
+
       M6L6: {
-        module: "M6",
         title: "Lekcja 6: Problemy w podróży",
         subtitle: "pomoc, zgubiony bagaż, telefon, lekarz, policja i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — problemy w podróży",
         audioBase: "M6L6",
         vocabulary: [
-          ["problem", "problem"],
-          ["help", "pomoc"],
-          ["lost", "zgubiony"],
-          ["bag", "torba"],
-          ["phone", "telefon"],
-          ["address", "adres"],
-          ["doctor", "lekarz"],
-          ["police", "policja"],
-          ["mistake", "błąd"],
-          ["emergency", "nagły wypadek"]
+          ["problem", "problem"], ["help", "pomoc"], ["lost", "zgubiony"], ["bag", "torba"], ["phone", "telefon"],
+          ["address", "adres"], ["doctor", "lekarz"], ["police", "policja"], ["mistake", "błąd"], ["emergency", "nagły wypadek"]
         ],
         phrases: [
-          ["I need help.", "Potrzebuję pomocy."],
-          ["I lost my bag.", "Zgubiłem/Zgubiłam torbę."],
-          ["I have a problem.", "Mam problem."],
-          ["Can you help me?", "Czy może mi pan/pani pomóc?"],
-          ["I need a doctor.", "Potrzebuję lekarza."]
+          ["I need help.", "Potrzebuję pomocy."], ["I lost my bag.", "Zgubiłem/Zgubiłam torbę."],
+          ["I have a problem.", "Mam problem."], ["Can you help me?", "Czy może mi pan/pani pomóc?"], ["I need a doctor.", "Potrzebuję lekarza."]
         ],
         dialogueHtml: "<strong>A:</strong> Excuse me. I need help.<br><strong>B:</strong> What is the problem?<br><strong>A:</strong> I lost my bag.<br><strong>B:</strong> Where did you see it last?<br><strong>A:</strong> At the airport.<br><strong>B:</strong> Please go to the information desk.",
         translationHtml: "<strong>A:</strong> Przepraszam. Potrzebuję pomocy.<br><strong>B:</strong> Jaki jest problem?<br><strong>A:</strong> Zgubiłem/Zgubiłam torbę.<br><strong>B:</strong> Gdzie widział/widziała ją pan/pani ostatnio?<br><strong>A:</strong> Na lotnisku.<br><strong>B:</strong> Proszę iść do punktu informacyjnego.",
         english: "Excuse me. I need help. What is the problem? I lost my bag. Where did you see it last? At the airport. Please go to the information desk.",
         polish: "Przepraszam. Potrzebuję pomocy. Jaki jest problem? Zgubiłem/Zgubiłam torbę. Gdzie widział/widziała ją pan/pani ostatnio? Na lotnisku. Proszę iść do punktu informacyjnego."
       },
+
       M7L1: {
-        module: "M7",
         title: "Lekcja 1: Pierwszy dzień w pracy",
         subtitle: "praca, biuro, zespół, zadania, spotkanie i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — pierwszy dzień w pracy",
         audioBase: "M7L1",
         vocabulary: [
-          ["work", "praca"],
-          ["job", "praca / stanowisko"],
-          ["office", "biuro"],
-          ["manager", "kierownik / menedżer"],
-          ["team", "zespół"],
-          ["colleague", "współpracownik"],
-          ["task", "zadanie"],
-          ["meeting", "spotkanie"],
-          ["break", "przerwa"],
-          ["schedule", "grafik / plan"]
+          ["work", "praca"], ["job", "praca / stanowisko"], ["office", "biuro"], ["manager", "kierownik / menedżer"], ["team", "zespół"],
+          ["colleague", "współpracownik"], ["task", "zadanie"], ["meeting", "spotkanie"], ["break", "przerwa"], ["schedule", "grafik / plan"]
         ],
         phrases: [
-          ["This is my first day.", "To mój pierwszy dzień."],
-          ["I am new here.", "Jestem tu nowy/nowa."],
-          ["Nice to meet you.", "Miło cię poznać."],
-          ["Can you show me my desk?", "Czy możesz pokazać mi moje biurko?"],
+          ["This is my first day.", "To mój pierwszy dzień."], ["I am new here.", "Jestem tu nowy/nowa."],
+          ["Nice to meet you.", "Miło cię poznać."], ["Can you show me my desk?", "Czy możesz pokazać mi moje biurko?"],
           ["I am ready to start.", "Jestem gotowy/gotowa zacząć."]
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. This is my first day.<br><strong>B:</strong> Good morning. Welcome to the team.<br><strong>A:</strong> Thank you. I am new here.<br><strong>B:</strong> No problem. I will show you your desk.<br><strong>A:</strong> Great. I am ready to start.<br><strong>B:</strong> Perfect. We have a short meeting at nine.",
@@ -989,29 +915,19 @@
         english: "Good morning. This is my first day. Good morning. Welcome to the team. Thank you. I am new here. No problem. I will show you your desk. Great. I am ready to start. Perfect. We have a short meeting at nine.",
         polish: "Dzień dobry. To mój pierwszy dzień. Dzień dobry. Witamy w zespole. Dziękuję. Jestem tu nowy/nowa. Nie ma problemu. Pokażę ci twoje biurko. Świetnie. Jestem gotowy/gotowa zacząć. Doskonale. Mamy krótkie spotkanie o dziewiątej."
       },
+
       M7L2: {
-        module: "M7",
         title: "Lekcja 2: Rozmowa z przełożonym",
         subtitle: "szef, projekt, termin, raport, plan, priorytet i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — rozmowa z przełożonym",
         audioBase: "M7L2",
         vocabulary: [
-          ["boss", "szef"],
-          ["manager", "kierownik / menedżer"],
-          ["question", "pytanie"],
-          ["answer", "odpowiedź"],
-          ["project", "projekt"],
-          ["deadline", "termin"],
-          ["report", "raport"],
-          ["plan", "plan"],
-          ["feedback", "opinia / informacja zwrotna"],
-          ["priority", "priorytet"]
+          ["boss", "szef"], ["manager", "kierownik / menedżer"], ["question", "pytanie"], ["answer", "odpowiedź"], ["project", "projekt"],
+          ["deadline", "termin"], ["report", "raport"], ["plan", "plan"], ["feedback", "opinia / informacja zwrotna"], ["priority", "priorytet"]
         ],
         phrases: [
-          ["Can I ask a question?", "Czy mogę zadać pytanie?"],
-          ["What is the deadline?", "Jaki jest termin?"],
-          ["I will prepare the report.", "Przygotuję raport."],
-          ["This is my priority.", "To jest mój priorytet."],
+          ["Can I ask a question?", "Czy mogę zadać pytanie?"], ["What is the deadline?", "Jaki jest termin?"],
+          ["I will prepare the report.", "Przygotuję raport."], ["This is my priority.", "To jest mój priorytet."],
           ["Thank you for your feedback.", "Dziękuję za informację zwrotną."]
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. Can I ask a question?<br><strong>B:</strong> Of course. What do you need?<br><strong>A:</strong> What is the deadline for this project?<br><strong>B:</strong> The deadline is Friday.<br><strong>A:</strong> Thank you. I will prepare the report.<br><strong>B:</strong> Great. This is your priority today.",
@@ -1019,29 +935,19 @@
         english: "Good morning. Can I ask a question? Of course. What do you need? What is the deadline for this project? The deadline is Friday. Thank you. I will prepare the report. Great. This is your priority today.",
         polish: "Dzień dobry. Czy mogę zadać pytanie? Oczywiście. Czego potrzebujesz? Jaki jest termin tego projektu? Termin jest w piątek. Dziękuję. Przygotuję raport. Świetnie. To jest twój priorytet na dziś."
       },
+
       M7L3: {
-        module: "M7",
         title: "Lekcja 3: Proste wiadomości służbowe",
         subtitle: "wiadomość, e-mail, temat, odpowiedź, załącznik i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — proste wiadomości służbowe",
         audioBase: "M7L3",
         vocabulary: [
-          ["message", "wiadomość"],
-          ["email", "e-mail"],
-          ["subject", "temat"],
-          ["reply", "odpowiedź"],
-          ["send", "wysłać"],
-          ["document", "dokument"],
-          ["attachment", "załącznik"],
-          ["information", "informacja"],
-          ["today", "dzisiaj"],
-          ["tomorrow", "jutro"]
+          ["message", "wiadomość"], ["email", "e-mail"], ["subject", "temat"], ["reply", "odpowiedź"], ["send", "wysłać"],
+          ["document", "dokument"], ["attachment", "załącznik"], ["information", "informacja"], ["today", "dzisiaj"], ["tomorrow", "jutro"]
         ],
         phrases: [
-          ["I will send the email.", "Wyślę e-mail."],
-          ["Please check the document.", "Proszę sprawdzić dokument."],
-          ["Thank you for your message.", "Dziękuję za wiadomość."],
-          ["Can you reply today?", "Czy możesz odpowiedzieć dzisiaj?"],
+          ["I will send the email.", "Wyślę e-mail."], ["Please check the document.", "Proszę sprawdzić dokument."],
+          ["Thank you for your message.", "Dziękuję za wiadomość."], ["Can you reply today?", "Czy możesz odpowiedzieć dzisiaj?"],
           ["I attached the file.", "Załączyłem/Załączyłam plik."]
         ],
         dialogueHtml: "<strong>A:</strong> Hello. Did you send the email?<br><strong>B:</strong> Not yet. I will send it today.<br><strong>A:</strong> Please attach the document.<br><strong>B:</strong> Of course. I will attach the file.<br><strong>A:</strong> Can you reply before tomorrow?<br><strong>B:</strong> Yes, no problem.",
@@ -1049,35 +955,55 @@
         english: "Hello. Did you send the email? Not yet. I will send it today. Please attach the document. Of course. I will attach the file. Can you reply before tomorrow? Yes, no problem.",
         polish: "Cześć. Czy wysłałeś/wysłałaś e-mail? Jeszcze nie. Wyślę go dzisiaj. Proszę załącz dokument. Oczywiście. Załączę plik. Czy możesz odpowiedzieć przed jutrem? Tak, nie ma problemu."
       },
+
       M7L4: {
-        module: "M7",
         title: "Lekcja 4: Spotkanie w pracy",
         subtitle: "spotkanie, agenda, temat, pomysł, decyzja, notatki i ćwiczenie pisania",
         writingTitle: "Ćwiczenie pisania — spotkanie w pracy",
         audioBase: "M7L4",
         vocabulary: [
-          ["meeting", "spotkanie"],
-          ["agenda", "agenda / plan spotkania"],
-          ["topic", "temat"],
-          ["idea", "pomysł"],
-          ["team", "zespół"],
-          ["presentation", "prezentacja"],
-          ["question", "pytanie"],
-          ["decision", "decyzja"],
-          ["notes", "notatki"],
-          ["summary", "podsumowanie"]
+          ["meeting", "spotkanie"], ["agenda", "agenda / plan spotkania"], ["topic", "temat"], ["idea", "pomysł"], ["team", "zespół"],
+          ["presentation", "prezentacja"], ["question", "pytanie"], ["decision", "decyzja"], ["notes", "notatki"], ["summary", "podsumowanie"]
         ],
         phrases: [
-          ["The meeting starts now.", "Spotkanie zaczyna się teraz."],
-          ["What is the main topic?", "Jaki jest główny temat?"],
-          ["I have an idea.", "Mam pomysł."],
-          ["Can I ask a question?", "Czy mogę zadać pytanie?"],
+          ["The meeting starts now.", "Spotkanie zaczyna się teraz."], ["What is the main topic?", "Jaki jest główny temat?"],
+          ["I have an idea.", "Mam pomysł."], ["Can I ask a question?", "Czy mogę zadać pytanie?"],
           ["Let’s make a decision.", "Podejmijmy decyzję."]
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. The meeting starts now.<br><strong>B:</strong> Good morning. What is the main topic?<br><strong>A:</strong> Today we talk about the new project.<br><strong>B:</strong> I have an idea.<br><strong>A:</strong> Great. Please tell us.<br><strong>B:</strong> Let’s write it in the notes.",
         translationHtml: "<strong>A:</strong> Dzień dobry. Spotkanie zaczyna się teraz.<br><strong>B:</strong> Dzień dobry. Jaki jest główny temat?<br><strong>A:</strong> Dzisiaj rozmawiamy o nowym projekcie.<br><strong>B:</strong> Mam pomysł.<br><strong>A:</strong> Świetnie. Proszę, powiedz nam.<br><strong>B:</strong> Zapiszmy to w notatkach.",
         english: "Good morning. The meeting starts now. Good morning. What is the main topic? Today we talk about the new project. I have an idea. Great. Please tell us. Let’s write it in the notes.",
         polish: "Dzień dobry. Spotkanie zaczyna się teraz. Dzień dobry. Jaki jest główny temat? Dzisiaj rozmawiamy o nowym projekcie. Mam pomysł. Świetnie. Proszę, powiedz nam. Zapiszmy to w notatkach."
+      },
+
+      M7L5: {
+        title: "Lekcja 5: Prośba o pomoc",
+        subtitle: "pomoc, problem, zadanie, komputer, hasło, dokument i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — prośba o pomoc",
+        audioBase: "M7L5",
+        vocabulary: [
+          ["help", "pomoc"],
+          ["problem", "problem"],
+          ["task", "zadanie"],
+          ["computer", "komputer"],
+          ["password", "hasło"],
+          ["document", "dokument"],
+          ["mistake", "błąd"],
+          ["question", "pytanie"],
+          ["solution", "rozwiązanie"],
+          ["support", "wsparcie"]
+        ],
+        phrases: [
+          ["Can you help me?", "Czy możesz mi pomóc?"],
+          ["I have a problem.", "Mam problem."],
+          ["I cannot open the document.", "Nie mogę otworzyć dokumentu."],
+          ["I forgot my password.", "Zapomniałem/Zapomniałam hasła."],
+          ["Thank you for your help.", "Dziękuję za pomoc."]
+        ],
+        dialogueHtml: "<strong>A:</strong> Excuse me. Can you help me?<br><strong>B:</strong> Of course. What is the problem?<br><strong>A:</strong> I cannot open the document.<br><strong>B:</strong> Did you check your password?<br><strong>A:</strong> I forgot my password.<br><strong>B:</strong> No problem. I will help you reset it.",
+        translationHtml: "<strong>A:</strong> Przepraszam. Czy możesz mi pomóc?<br><strong>B:</strong> Oczywiście. Jaki jest problem?<br><strong>A:</strong> Nie mogę otworzyć dokumentu.<br><strong>B:</strong> Czy sprawdziłeś/sprawdziłaś hasło?<br><strong>A:</strong> Zapomniałem/Zapomniałam hasła.<br><strong>B:</strong> Nie ma problemu. Pomogę ci je zresetować.",
+        english: "Excuse me. Can you help me? Of course. What is the problem? I cannot open the document. Did you check your password? I forgot my password. No problem. I will help you reset it.",
+        polish: "Przepraszam. Czy możesz mi pomóc? Oczywiście. Jaki jest problem? Nie mogę otworzyć dokumentu. Czy sprawdziłeś/sprawdziłaś hasło? Zapomniałem/Zapomniałam hasła. Nie ma problemu. Pomogę ci je zresetować."
       }
     };
 
@@ -1363,7 +1289,8 @@
           ${customLessonCard("M7L1", false)}
           ${customLessonCard("M7L2", false)}
           ${customLessonCard("M7L3", false)}
-          ${customLessonCard("M7L4", true)}
+          ${customLessonCard("M7L4", false)}
+          ${customLessonCard("M7L5", true)}
         </div>
       `;
     }
@@ -1497,7 +1424,7 @@
       [
         "M1", "M2", "M3", "M4", "M5",
         "M6L1", "M6L2", "M6L3", "M6L4", "M6L5", "M6L6",
-        "M7L1", "M7L2", "M7L3", "M7L4"
+        "M7L1", "M7L2", "M7L3", "M7L4", "M7L5"
       ].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
