@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Speak English Premium z AI</title>
-  <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio, czytankami i ćwiczeniem pisania.">
+  <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio, dialogami, tłumaczeniami i ćwiczeniem pisania.">
 
   <style>
     :root {
@@ -671,7 +671,7 @@
     <header>
       <section class="hero">
         <div>
-          <div class="badge">🎧 Kurs online z audio, czytankami i ćwiczeniem pisania</div>
+          <div class="badge">🎧 Kurs online z audio, dialogami i ćwiczeniem pisania</div>
           <h1>Speak English Premium z AI</h1>
           <p>Praktyczny kurs angielskiego dla początkujących. Słuchasz nagrań, czytasz proste teksty po angielsku, sprawdzasz tłumaczenie i ćwiczysz pisanie.</p>
 
@@ -688,22 +688,22 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>6 modułów, 36 lekcji, audio, czytanki i sprawdzanie pisania.</p>
+            <p>7 modułów, 37 lekcji, audio, dialogi i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
     </header>
 
     <section id="opis" class="stats">
-      <div class="stat"><strong>6</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>36</strong><span>lekcji krok po kroku</span></div>
-      <div class="stat"><strong>165+</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>11</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>7</strong><span>modułów kursu</span></div>
+      <div class="stat"><strong>37</strong><span>lekcji krok po kroku</span></div>
+      <div class="stat"><strong>168+</strong><span>plików audio lekcji</span></div>
+      <div class="stat"><strong>12</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
       <h2>Dostęp do kursu</h2>
-      <p>Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła odblokujesz wszystkie moduły, lekcje, nagrania, czytanki i ćwiczenia pisania.</p>
+      <p>Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła odblokujesz wszystkie moduły, lekcje, nagrania, dialogi, tłumaczenia i ćwiczenia pisania.</p>
 
       <div class="login-row">
         <input id="passwordInput" type="password" placeholder="Wpisz hasło dostępu">
@@ -750,72 +750,244 @@
     const course = document.getElementById("course");
     const modulesContainer = document.getElementById("modulesContainer");
 
-    const writingTasks = {
+    const moduleReadings = {
       M1: {
         title: "Czytanka modułowa",
         english: "My name is Anna. I am from Poland. I am learning English because I want to speak with people from other countries. Every day I repeat simple words and short sentences. I say hello, I introduce myself, and I ask simple questions. English is new for me, but I learn step by step.",
-        polish: "Mam na imię Anna. Jestem z Polski. Uczę się angielskiego, ponieważ chcę rozmawiać z ludźmi z innych krajów. Każdego dnia powtarzam proste słowa i krótkie zdania. Mówię „cześć”, przedstawiam się i zadaję proste pytania. Angielski jest dla mnie nowy, ale uczę się krok po kroku.",
-        audio: "audio/M1_Reading.mp3"
+        polish: "Mam na imię Anna. Jestem z Polski. Uczę się angielskiego, ponieważ chcę rozmawiać z ludźmi z innych krajów. Każdego dnia powtarzam proste słowa i krótkie zdania. Mówię „cześć”, przedstawiam się i zadaję proste pytania. Angielski jest dla mnie nowy, ale uczę się krok po kroku."
       },
       M2: {
         title: "Czytanka modułowa",
         english: "Every morning I wake up early. I make breakfast, drink tea, and plan my day. I go shopping when I need food or water. Sometimes I take a bus or walk to the city. I like learning useful English words for everyday life because I can use them at home, in a shop, and on the street.",
-        polish: "Każdego ranka wstaję wcześnie. Robię śniadanie, piję herbatę i planuję dzień. Idę na zakupy, kiedy potrzebuję jedzenia albo wody. Czasami jadę autobusem albo idę pieszo do miasta. Lubię uczyć się przydatnych angielskich słów do codziennego życia, ponieważ mogę ich używać w domu, w sklepie i na ulicy.",
-        audio: "audio/M2_Reading.mp3"
+        polish: "Każdego ranka wstaję wcześnie. Robię śniadanie, piję herbatę i planuję dzień. Idę na zakupy, kiedy potrzebuję jedzenia albo wody. Czasami jadę autobusem albo idę pieszo do miasta. Lubię uczyć się przydatnych angielskich słów do codziennego życia, ponieważ mogę ich używać w domu, w sklepie i na ulicy."
       },
       M3: {
         title: "Czytanka modułowa",
         english: "At work I try to speak clearly and politely. I write short messages, answer simple questions, and ask for help when I need it. I can say when I am available and I can make an appointment. I do not need perfect English. I need simple English that helps me communicate.",
-        polish: "W pracy staram się mówić jasno i uprzejmie. Piszę krótkie wiadomości, odpowiadam na proste pytania i proszę o pomoc, kiedy jej potrzebuję. Potrafię powiedzieć, kiedy jestem dostępny, i umówić termin. Nie potrzebuję idealnego angielskiego. Potrzebuję prostego angielskiego, który pomaga mi się komunikować.",
-        audio: "audio/M3_Reading.mp3"
+        polish: "W pracy staram się mówić jasno i uprzejmie. Piszę krótkie wiadomości, odpowiadam na proste pytania i proszę o pomoc, kiedy jej potrzebuję. Potrafię powiedzieć, kiedy jestem dostępny, i umówić termin. Nie potrzebuję idealnego angielskiego. Potrzebuję prostego angielskiego, który pomaga mi się komunikować."
       },
       M4: {
         title: "Czytanka modułowa",
         english: "When I travel, I use English in many situations. I can ask for a room in a hotel, order food in a restaurant, and ask for directions. At the airport I listen carefully and look for important information. If I have a problem, I stay calm and use simple sentences.",
-        polish: "Kiedy podróżuję, używam angielskiego w wielu sytuacjach. Potrafię zapytać o pokój w hotelu, zamówić jedzenie w restauracji i zapytać o drogę. Na lotnisku słucham uważnie i szukam ważnych informacji. Jeśli mam problem, zachowuję spokój i używam prostych zdań.",
-        audio: "audio/M4_Reading.mp3"
+        polish: "Kiedy podróżuję, używam angielskiego w wielu sytuacjach. Potrafię zapytać o pokój w hotelu, zamówić jedzenie w restauracji i zapytać o drogę. Na lotnisku słucham uważnie i szukam ważnych informacji. Jeśli mam problem, zachowuję spokój i używam prostych zdań."
       },
       M5: {
         title: "Czytanka modułowa",
         english: "Now I can use many simple English sentences. I can talk about myself, my day, my plans, and basic situations. I still make mistakes, but I understand more and I speak with more confidence. The most important thing is regular practice. Small steps every day bring real progress.",
-        polish: "Teraz potrafię używać wielu prostych zdań po angielsku. Potrafię mówić o sobie, swoim dniu, swoich planach i podstawowych sytuacjach. Nadal popełniam błędy, ale rozumiem więcej i mówię z większą pewnością. Najważniejsza jest regularna praktyka. Małe kroki każdego dnia dają prawdziwy postęp.",
-        audio: "audio/M5_Reading.mp3"
-      },
+        polish: "Teraz potrafię używać wielu prostych zdań po angielsku. Potrafię mówić o sobie, swoim dniu, swoich planach i podstawowych sytuacjach. Nadal popełniam błędy, ale rozumiem więcej i mówię z większą pewnością. Najważniejsza jest regularna praktyka. Małe kroki każdego dnia dają prawdziwy postęp."
+      }
+    };
+
+    const customLessons = {
       M6L1: {
-        title: "Ćwiczenie pisania — dialog na lotnisku",
+        module: "M6",
+        title: "Lekcja 1: Na lotnisku",
+        subtitle: "odprawa, paszport, bagaż, bramka, dialog i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — dialog na lotnisku",
+        audioBase: "M6L1",
+        vocabulary: [
+          ["airport", "lotnisko"],
+          ["ticket", "bilet"],
+          ["passport", "paszport"],
+          ["luggage", "bagaż"],
+          ["gate", "bramka"],
+          ["flight", "lot"],
+          ["boarding pass", "karta pokładowa"],
+          ["seat", "miejsce"],
+          ["delay", "opóźnienie"],
+          ["plane", "samolot"]
+        ],
+        phrases: [
+          ["Where is the gate?", "Gdzie jest bramka?"],
+          ["I have a ticket.", "Mam bilet."],
+          ["Here is my passport.", "Oto mój paszport."],
+          ["My flight is delayed.", "Mój lot jest opóźniony."],
+          ["Where can I check in?", "Gdzie mogę się odprawić?"]
+        ],
+        dialogueHtml: "<strong>A:</strong> Good morning. Can I see your passport, please?<br><strong>B:</strong> Good morning. Here is my passport.<br><strong>A:</strong> Thank you. Do you have any luggage?<br><strong>B:</strong> Yes, I have one suitcase.<br><strong>A:</strong> Your gate is number twelve.<br><strong>B:</strong> Thank you very much.",
+        translationHtml: "<strong>A:</strong> Dzień dobry. Czy mogę zobaczyć pana/pani paszport?<br><strong>B:</strong> Dzień dobry. Oto mój paszport.<br><strong>A:</strong> Dziękuję. Czy ma pan/pani jakiś bagaż?<br><strong>B:</strong> Tak, mam jedną walizkę.<br><strong>A:</strong> Pańska bramka to numer dwanaście.<br><strong>B:</strong> Bardzo dziękuję.",
         english: "Good morning. Can I see your passport, please? Good morning. Here is my passport. Thank you. Do you have any luggage? Yes, I have one suitcase. Your gate is number twelve. Thank you very much.",
-        polish: "Dzień dobry. Czy mogę zobaczyć pana/pani paszport? Dzień dobry. Oto mój paszport. Dziękuję. Czy ma pan/pani jakiś bagaż? Tak, mam jedną walizkę. Pańska bramka to numer dwanaście. Bardzo dziękuję.",
-        audio: "audio/M6L1_Dialogue.mp3"
+        polish: "Dzień dobry. Czy mogę zobaczyć pana/pani paszport? Dzień dobry. Oto mój paszport. Dziękuję. Czy ma pan/pani jakiś bagaż? Tak, mam jedną walizkę. Pańska bramka to numer dwanaście. Bardzo dziękuję."
       },
       M6L2: {
-        title: "Ćwiczenie pisania — dialog w hotelu",
+        module: "M6",
+        title: "Lekcja 2: W hotelu",
+        subtitle: "rezerwacja, pokój, śniadanie, klucz i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — dialog w hotelu",
+        audioBase: "M6L2",
+        vocabulary: [
+          ["hotel", "hotel"],
+          ["room", "pokój"],
+          ["reservation", "rezerwacja"],
+          ["key", "klucz"],
+          ["reception", "recepcja"],
+          ["night", "noc"],
+          ["breakfast", "śniadanie"],
+          ["bathroom", "łazienka"],
+          ["elevator", "winda"],
+          ["check-in", "zameldowanie"]
+        ],
+        phrases: [
+          ["I have a reservation.", "Mam rezerwację."],
+          ["I would like a room.", "Chciałbym/chciałabym pokój."],
+          ["Is breakfast included?", "Czy śniadanie jest wliczone?"],
+          ["What time is check-out?", "O której jest wymeldowanie?"],
+          ["Can I have the key?", "Czy mogę dostać klucz?"]
+        ],
+        dialogueHtml: "<strong>A:</strong> Good evening. I have a reservation.<br><strong>B:</strong> Good evening. What is your name?<br><strong>A:</strong> My name is Anna Kowalska.<br><strong>B:</strong> Yes, I see your reservation. Your room is number twenty-one.<br><strong>A:</strong> Is breakfast included?<br><strong>B:</strong> Yes, breakfast is from seven to ten.",
+        translationHtml: "<strong>A:</strong> Dobry wieczór. Mam rezerwację.<br><strong>B:</strong> Dobry wieczór. Jak się pani nazywa?<br><strong>A:</strong> Nazywam się Anna Kowalska.<br><strong>B:</strong> Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden.<br><strong>A:</strong> Czy śniadanie jest wliczone?<br><strong>B:</strong> Tak, śniadanie jest od siódmej do dziesiątej.",
         english: "Good evening. I have a reservation. Good evening. What is your name? My name is Anna Kowalska. Yes, I see your reservation. Your room is number twenty-one. Is breakfast included? Yes, breakfast is from seven to ten.",
-        polish: "Dobry wieczór. Mam rezerwację. Dobry wieczór. Jak się pani nazywa? Nazywam się Anna Kowalska. Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden. Czy śniadanie jest wliczone? Tak, śniadanie jest od siódmej do dziesiątej.",
-        audio: "audio/M6L2_Dialogue.mp3"
+        polish: "Dobry wieczór. Mam rezerwację. Dobry wieczór. Jak się pani nazywa? Nazywam się Anna Kowalska. Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden. Czy śniadanie jest wliczone? Tak, śniadanie jest od siódmej do dziesiątej."
       },
       M6L3: {
-        title: "Ćwiczenie pisania — dialog w restauracji",
+        module: "M6",
+        title: "Lekcja 3: W restauracji",
+        subtitle: "menu, zamówienie, jedzenie, napoje, rachunek i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — dialog w restauracji",
+        audioBase: "M6L3",
+        vocabulary: [
+          ["restaurant", "restauracja"],
+          ["menu", "menu"],
+          ["waiter", "kelner"],
+          ["food", "jedzenie"],
+          ["drink", "napój"],
+          ["water", "woda"],
+          ["coffee", "kawa"],
+          ["bill", "rachunek"],
+          ["table", "stolik"],
+          ["order", "zamówienie"]
+        ],
+        phrases: [
+          ["Can I see the menu?", "Czy mogę zobaczyć menu?"],
+          ["I would like water.", "Poproszę wodę."],
+          ["I would like this dish.", "Poproszę to danie."],
+          ["The food is very good.", "Jedzenie jest bardzo dobre."],
+          ["Can I have the bill?", "Czy mogę prosić rachunek?"]
+        ],
+        dialogueHtml: "<strong>A:</strong> Good afternoon. Can I see the menu, please?<br><strong>B:</strong> Of course. Here you are.<br><strong>A:</strong> Thank you. I would like chicken and water.<br><strong>B:</strong> Would you like coffee after the meal?<br><strong>A:</strong> Yes, please.<br><strong>B:</strong> Great. I will bring your order.",
+        translationHtml: "<strong>A:</strong> Dzień dobry. Czy mogę zobaczyć menu?<br><strong>B:</strong> Oczywiście. Proszę bardzo.<br><strong>A:</strong> Dziękuję. Poproszę kurczaka i wodę.<br><strong>B:</strong> Czy chciałby pan/chciałaby pani kawę po posiłku?<br><strong>A:</strong> Tak, proszę.<br><strong>B:</strong> Świetnie. Przyniosę zamówienie.",
         english: "Good afternoon. Can I see the menu, please? Of course. Here you are. Thank you. I would like chicken and water. Would you like coffee after the meal? Yes, please. Great. I will bring your order.",
-        polish: "Dzień dobry. Czy mogę zobaczyć menu? Oczywiście. Proszę bardzo. Dziękuję. Poproszę kurczaka i wodę. Czy chciałby pan/chciałaby pani kawę po posiłku? Tak, proszę. Świetnie. Przyniosę zamówienie.",
-        audio: "audio/M6L3_Dialogue.mp3"
+        polish: "Dzień dobry. Czy mogę zobaczyć menu? Oczywiście. Proszę bardzo. Dziękuję. Poproszę kurczaka i wodę. Czy chciałby pan/chciałaby pani kawę po posiłku? Tak, proszę. Świetnie. Przyniosę zamówienie."
       },
       M6L4: {
-        title: "Ćwiczenie pisania — pytanie o drogę",
+        module: "M6",
+        title: "Lekcja 4: Pytanie o drogę",
+        subtitle: "ulica, kierunki, stacja, mapa i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — pytanie o drogę",
+        audioBase: "M6L4",
+        vocabulary: [
+          ["street", "ulica"],
+          ["left", "lewo"],
+          ["right", "prawo"],
+          ["straight", "prosto"],
+          ["near", "blisko"],
+          ["far", "daleko"],
+          ["map", "mapa"],
+          ["station", "stacja"],
+          ["shop", "sklep"],
+          ["city center", "centrum miasta"]
+        ],
+        phrases: [
+          ["Where is the station?", "Gdzie jest stacja?"],
+          ["Go straight.", "Idź prosto."],
+          ["Turn left.", "Skręć w lewo."],
+          ["Turn right.", "Skręć w prawo."],
+          ["Is it far?", "Czy to daleko?"]
+        ],
+        dialogueHtml: "<strong>A:</strong> Excuse me. Where is the train station?<br><strong>B:</strong> Go straight and turn left.<br><strong>A:</strong> Is it far?<br><strong>B:</strong> No, it is about five minutes from here.<br><strong>A:</strong> Thank you.<br><strong>B:</strong> You are welcome.",
+        translationHtml: "<strong>A:</strong> Przepraszam. Gdzie jest stacja kolejowa?<br><strong>B:</strong> Proszę iść prosto i skręcić w lewo.<br><strong>A:</strong> Czy to daleko?<br><strong>B:</strong> Nie, to około pięć minut stąd.<br><strong>A:</strong> Dziękuję.<br><strong>B:</strong> Nie ma za co.",
         english: "Excuse me. Where is the train station? Go straight and turn left. Is it far? No, it is about five minutes from here. Thank you. You are welcome.",
-        polish: "Przepraszam. Gdzie jest stacja kolejowa? Proszę iść prosto i skręcić w lewo. Czy to daleko? Nie, to około pięć minut stąd. Dziękuję. Nie ma za co.",
-        audio: "audio/M6L4_Dialogue.mp3"
+        polish: "Przepraszam. Gdzie jest stacja kolejowa? Proszę iść prosto i skręcić w lewo. Czy to daleko? Nie, to około pięć minut stąd. Dziękuję. Nie ma za co."
       },
       M6L5: {
-        title: "Ćwiczenie pisania — dialog w sklepie",
+        module: "M6",
+        title: "Lekcja 5: W sklepie",
+        subtitle: "cena, płatność, rozmiar, karta i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — dialog w sklepie",
+        audioBase: "M6L5",
+        vocabulary: [
+          ["shop", "sklep"],
+          ["price", "cena"],
+          ["money", "pieniądze"],
+          ["card", "karta"],
+          ["cash", "gotówka"],
+          ["bag", "torba"],
+          ["receipt", "paragon"],
+          ["cheap", "tani"],
+          ["expensive", "drogi"],
+          ["size", "rozmiar"]
+        ],
+        phrases: [
+          ["How much is it?", "Ile to kosztuje?"],
+          ["Can I pay by card?", "Czy mogę zapłacić kartą?"],
+          ["It is too expensive.", "To jest za drogie."],
+          ["Do you have a smaller size?", "Czy macie mniejszy rozmiar?"],
+          ["I would like this one.", "Chciałbym/chciałabym ten."]
+        ],
+        dialogueHtml: "<strong>A:</strong> Hello. How much is this T-shirt?<br><strong>B:</strong> It is fifteen pounds.<br><strong>A:</strong> Do you have a smaller size?<br><strong>B:</strong> Yes, we do. Here you are.<br><strong>A:</strong> Great. Can I pay by card?<br><strong>B:</strong> Yes, of course.",
+        translationHtml: "<strong>A:</strong> Dzień dobry. Ile kosztuje ta koszulka?<br><strong>B:</strong> Kosztuje piętnaście funtów.<br><strong>A:</strong> Czy macie mniejszy rozmiar?<br><strong>B:</strong> Tak, mamy. Proszę bardzo.<br><strong>A:</strong> Świetnie. Czy mogę zapłacić kartą?<br><strong>B:</strong> Tak, oczywiście.",
         english: "Hello. How much is this T-shirt? It is fifteen pounds. Do you have a smaller size? Yes, we do. Here you are. Great. Can I pay by card? Yes, of course.",
-        polish: "Dzień dobry. Ile kosztuje ta koszulka? Kosztuje piętnaście funtów. Czy macie mniejszy rozmiar? Tak, mamy. Proszę bardzo. Świetnie. Czy mogę zapłacić kartą? Tak, oczywiście.",
-        audio: "audio/M6L5_Dialogue.mp3"
+        polish: "Dzień dobry. Ile kosztuje ta koszulka? Kosztuje piętnaście funtów. Czy macie mniejszy rozmiar? Tak, mamy. Proszę bardzo. Świetnie. Czy mogę zapłacić kartą? Tak, oczywiście."
       },
       M6L6: {
-        title: "Ćwiczenie pisania — problemy w podróży",
+        module: "M6",
+        title: "Lekcja 6: Problemy w podróży",
+        subtitle: "pomoc, zgubiony bagaż, telefon, lekarz, policja i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — problemy w podróży",
+        audioBase: "M6L6",
+        vocabulary: [
+          ["problem", "problem"],
+          ["help", "pomoc"],
+          ["lost", "zgubiony"],
+          ["bag", "torba"],
+          ["phone", "telefon"],
+          ["address", "adres"],
+          ["doctor", "lekarz"],
+          ["police", "policja"],
+          ["mistake", "błąd"],
+          ["emergency", "nagły wypadek"]
+        ],
+        phrases: [
+          ["I need help.", "Potrzebuję pomocy."],
+          ["I lost my bag.", "Zgubiłem/Zgubiłam torbę."],
+          ["I have a problem.", "Mam problem."],
+          ["Can you help me?", "Czy może mi pan/pani pomóc?"],
+          ["I need a doctor.", "Potrzebuję lekarza."]
+        ],
+        dialogueHtml: "<strong>A:</strong> Excuse me. I need help.<br><strong>B:</strong> What is the problem?<br><strong>A:</strong> I lost my bag.<br><strong>B:</strong> Where did you see it last?<br><strong>A:</strong> At the airport.<br><strong>B:</strong> Please go to the information desk.",
+        translationHtml: "<strong>A:</strong> Przepraszam. Potrzebuję pomocy.<br><strong>B:</strong> Jaki jest problem?<br><strong>A:</strong> Zgubiłem/Zgubiłam torbę.<br><strong>B:</strong> Gdzie widział/widziała ją pan/pani ostatnio?<br><strong>A:</strong> Na lotnisku.<br><strong>B:</strong> Proszę iść do punktu informacyjnego.",
         english: "Excuse me. I need help. What is the problem? I lost my bag. Where did you see it last? At the airport. Please go to the information desk.",
-        polish: "Przepraszam. Potrzebuję pomocy. Jaki jest problem? Zgubiłem/Zgubiłam torbę. Gdzie widział/widziała ją pan/pani ostatnio? Na lotnisku. Proszę iść do punktu informacyjnego.",
-        audio: "audio/M6L6_Dialogue.mp3"
+        polish: "Przepraszam. Potrzebuję pomocy. Jaki jest problem? Zgubiłem/Zgubiłam torbę. Gdzie widział/widziała ją pan/pani ostatnio? Na lotnisku. Proszę iść do punktu informacyjnego."
+      },
+      M7L1: {
+        module: "M7",
+        title: "Lekcja 1: Pierwszy dzień w pracy",
+        subtitle: "praca, biuro, zespół, zadania, spotkanie i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — pierwszy dzień w pracy",
+        audioBase: "M7L1",
+        vocabulary: [
+          ["work", "praca"],
+          ["job", "praca / stanowisko"],
+          ["office", "biuro"],
+          ["manager", "kierownik / menedżer"],
+          ["team", "zespół"],
+          ["colleague", "współpracownik"],
+          ["task", "zadanie"],
+          ["meeting", "spotkanie"],
+          ["break", "przerwa"],
+          ["schedule", "grafik / plan"]
+        ],
+        phrases: [
+          ["This is my first day.", "To mój pierwszy dzień."],
+          ["I am new here.", "Jestem tu nowy/nowa."],
+          ["Nice to meet you.", "Miło cię poznać."],
+          ["Can you show me my desk?", "Czy możesz pokazać mi moje biurko?"],
+          ["I am ready to start.", "Jestem gotowy/gotowa zacząć."]
+        ],
+        dialogueHtml: "<strong>A:</strong> Good morning. This is my first day.<br><strong>B:</strong> Good morning. Welcome to the team.<br><strong>A:</strong> Thank you. I am new here.<br><strong>B:</strong> No problem. I will show you your desk.<br><strong>A:</strong> Great. I am ready to start.<br><strong>B:</strong> Perfect. We have a short meeting at nine.",
+        translationHtml: "<strong>A:</strong> Dzień dobry. To mój pierwszy dzień.<br><strong>B:</strong> Dzień dobry. Witamy w zespole.<br><strong>A:</strong> Dziękuję. Jestem tu nowy/nowa.<br><strong>B:</strong> Nie ma problemu. Pokażę ci twoje biurko.<br><strong>A:</strong> Świetnie. Jestem gotowy/gotowa zacząć.<br><strong>B:</strong> Doskonale. Mamy krótkie spotkanie o dziewiątej.",
+        english: "Good morning. This is my first day. Good morning. Welcome to the team. Thank you. I am new here. No problem. I will show you your desk. Great. I am ready to start. Perfect. We have a short meeting at nine.",
+        polish: "Dzień dobry. To mój pierwszy dzień. Dzień dobry. Witamy w zespole. Dziękuję. Jestem tu nowy/nowa. Nie ma problemu. Pokażę ci twoje biurko. Świetnie. Jestem gotowy/gotowa zacząć. Doskonale. Mamy krótkie spotkanie o dziewiątej."
       }
     };
 
@@ -848,7 +1020,12 @@
       {
         code: "M6",
         title: "Moduł 6: Angielski w podróży",
-        subtitle: "Nowy moduł. Zawiera praktyczny angielski w podróży: lotnisko, hotel, restauracja, droga, sklep i problemy."
+        subtitle: "Praktyczny angielski w podróży: lotnisko, hotel, restauracja, droga, sklep i problemy."
+      },
+      {
+        code: "M7",
+        title: "Moduł 7: Angielski w pracy",
+        subtitle: "Nowy moduł. Praktyczny angielski do pracy, biura, zespołu i prostych rozmów służbowych."
       }
     ];
 
@@ -894,6 +1071,12 @@
         .replaceAll("'", "&#039;");
     }
 
+    function tableRows(items) {
+      return items.map(function(row) {
+        return "<tr><td>" + escapeHtml(row[0]) + "</td><td>" + escapeHtml(row[1]) + "</td></tr>";
+      }).join("");
+    }
+
     function audioCard(title, code, src) {
       return `
         <div class="audio-card">
@@ -933,30 +1116,14 @@
       `;
     }
 
-    function readingCard(moduleCode) {
-      const task = writingTasks[moduleCode];
+    function moduleReadingCard(moduleCode) {
+      const task = moduleReadings[moduleCode];
 
       if (!task) return "";
-
-      const showAudio = moduleCode.startsWith("M6");
 
       return `
         <div class="reading-card">
           <h3>📘 ${task.title}</h3>
-
-          ${
-            showAudio
-              ? `
-                <div class="reading-audio">
-                  <h4>🎧 Posłuchaj tekstu po angielsku</h4>
-                  <audio controls preload="metadata">
-                    <source src="${task.audio}" type="audio/mpeg">
-                    Twoja przeglądarka nie obsługuje odtwarzacza audio.
-                  </audio>
-                </div>
-              `
-              : ""
-          }
 
           <div class="reading-grid">
             <div>
@@ -986,82 +1153,58 @@
       `;
     }
 
-    function module6Lesson1() {
+    function customWritingCard(code) {
+      const task = customLessons[code];
+
       return `
-        <details class="lesson">
-          <summary>
-            <div class="lesson-title">
-              <strong>Lekcja 1: Na lotnisku</strong>
-              <span>M6L1 · odprawa, paszport, bagaż, bramka, dialog i ćwiczenie pisania.</span>
+        <div class="reading-card">
+          <h3>📘 ${task.writingTitle}</h3>
+
+          <div class="reading-audio">
+            <h4>🎧 Posłuchaj tekstu po angielsku</h4>
+            <audio controls preload="metadata">
+              <source src="audio/${task.audioBase}_Dialogue.mp3" type="audio/mpeg">
+              Twoja przeglądarka nie obsługuje odtwarzacza audio.
+            </audio>
+          </div>
+
+          <div class="reading-grid">
+            <div>
+              <h4>English text</h4>
+              <p>${escapeHtml(task.english)}</p>
             </div>
-            <span class="arrow">›</span>
-          </summary>
-
-          <div class="lesson-content">
-            <h4>Słownictwo</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>airport</td><td>lotnisko</td></tr>
-              <tr><td>ticket</td><td>bilet</td></tr>
-              <tr><td>passport</td><td>paszport</td></tr>
-              <tr><td>luggage</td><td>bagaż</td></tr>
-              <tr><td>gate</td><td>bramka</td></tr>
-              <tr><td>flight</td><td>lot</td></tr>
-              <tr><td>boarding pass</td><td>karta pokładowa</td></tr>
-              <tr><td>seat</td><td>miejsce</td></tr>
-              <tr><td>delay</td><td>opóźnienie</td></tr>
-              <tr><td>plane</td><td>samolot</td></tr>
-            </table>
-
-            <h4>Zwroty</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>Where is the gate?</td><td>Gdzie jest bramka?</td></tr>
-              <tr><td>I have a ticket.</td><td>Mam bilet.</td></tr>
-              <tr><td>Here is my passport.</td><td>Oto mój paszport.</td></tr>
-              <tr><td>My flight is delayed.</td><td>Mój lot jest opóźniony.</td></tr>
-              <tr><td>Where can I check in?</td><td>Gdzie mogę się odprawić?</td></tr>
-            </table>
-
-            <h4>Dialog</h4>
-            <p>
-              <strong>A:</strong> Good morning. Can I see your passport, please?<br>
-              <strong>B:</strong> Good morning. Here is my passport.<br>
-              <strong>A:</strong> Thank you. Do you have any luggage?<br>
-              <strong>B:</strong> Yes, I have one suitcase.<br>
-              <strong>A:</strong> Your gate is number twelve.<br>
-              <strong>B:</strong> Thank you very much.
-            </p>
-
-            <h4>Tłumaczenie dialogu</h4>
-            <p>
-              <strong>A:</strong> Dzień dobry. Czy mogę zobaczyć pana/pani paszport?<br>
-              <strong>B:</strong> Dzień dobry. Oto mój paszport.<br>
-              <strong>A:</strong> Dziękuję. Czy ma pan/pani jakiś bagaż?<br>
-              <strong>B:</strong> Tak, mam jedną walizkę.<br>
-              <strong>A:</strong> Pańska bramka to numer dwanaście.<br>
-              <strong>B:</strong> Bardzo dziękuję.
-            </p>
+            <div>
+              <h4>Tłumaczenie na polski</h4>
+              <p>${escapeHtml(task.polish)}</p>
+            </div>
           </div>
 
-          <div class="audio-list">
-            ${audioCard("Słownictwo", "M6L1", "audio/M6L1_Vocabulary.mp3")}
-            ${audioCard("Zwroty", "M6L1", "audio/M6L1_Phrases.mp3")}
-            ${audioCard("Dialog", "M6L1", "audio/M6L1_Dialogue.mp3")}
-          </div>
+          <div class="writing-task" data-answer="${escapeHtml(task.english)}" data-module="${code}">
+            <h4>✍️ Ćwiczenie pisania</h4>
+            <p>Posłuchaj nagrania, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
 
-          ${readingCard("M6L1")}
-        </details>
+            <textarea id="${code}_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
+
+            <div class="writing-actions">
+              <button class="btn" type="button" onclick="checkWriting('${code}')">✅ Sprawdź odpowiedź</button>
+              <button class="btn secondary" type="button" onclick="clearWriting('${code}')">🧹 Wyczyść</button>
+            </div>
+
+            <div id="${code}_result" class="writing-result"></div>
+          </div>
+        </div>
       `;
     }
 
-    function module6Lesson2() {
+    function customLessonCard(code, openByDefault) {
+      const lesson = customLessons[code];
+
       return `
-        <details class="lesson">
+        <details class="lesson" ${openByDefault ? "open" : ""}>
           <summary>
             <div class="lesson-title">
-              <strong>Lekcja 2: W hotelu</strong>
-              <span>M6L2 · rezerwacja, pokój, śniadanie, klucz i ćwiczenie pisania.</span>
+              <strong>${lesson.title}</strong>
+              <span>${code} · ${lesson.subtitle}.</span>
             </div>
             <span class="arrow">›</span>
           </summary>
@@ -1070,332 +1213,29 @@
             <h4>Słownictwo</h4>
             <table>
               <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>hotel</td><td>hotel</td></tr>
-              <tr><td>room</td><td>pokój</td></tr>
-              <tr><td>reservation</td><td>rezerwacja</td></tr>
-              <tr><td>key</td><td>klucz</td></tr>
-              <tr><td>reception</td><td>recepcja</td></tr>
-              <tr><td>night</td><td>noc</td></tr>
-              <tr><td>breakfast</td><td>śniadanie</td></tr>
-              <tr><td>bathroom</td><td>łazienka</td></tr>
-              <tr><td>elevator</td><td>winda</td></tr>
-              <tr><td>check-in</td><td>zameldowanie</td></tr>
+              ${tableRows(lesson.vocabulary)}
             </table>
 
             <h4>Zwroty</h4>
             <table>
               <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>I have a reservation.</td><td>Mam rezerwację.</td></tr>
-              <tr><td>I would like a room.</td><td>Chciałbym/chciałabym pokój.</td></tr>
-              <tr><td>Is breakfast included?</td><td>Czy śniadanie jest wliczone?</td></tr>
-              <tr><td>What time is check-out?</td><td>O której jest wymeldowanie?</td></tr>
-              <tr><td>Can I have the key?</td><td>Czy mogę dostać klucz?</td></tr>
+              ${tableRows(lesson.phrases)}
             </table>
 
             <h4>Dialog</h4>
-            <p>
-              <strong>A:</strong> Good evening. I have a reservation.<br>
-              <strong>B:</strong> Good evening. What is your name?<br>
-              <strong>A:</strong> My name is Anna Kowalska.<br>
-              <strong>B:</strong> Yes, I see your reservation. Your room is number twenty-one.<br>
-              <strong>A:</strong> Is breakfast included?<br>
-              <strong>B:</strong> Yes, breakfast is from seven to ten.
-            </p>
+            <p>${lesson.dialogueHtml}</p>
 
             <h4>Tłumaczenie dialogu</h4>
-            <p>
-              <strong>A:</strong> Dobry wieczór. Mam rezerwację.<br>
-              <strong>B:</strong> Dobry wieczór. Jak się pani nazywa?<br>
-              <strong>A:</strong> Nazywam się Anna Kowalska.<br>
-              <strong>B:</strong> Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden.<br>
-              <strong>A:</strong> Czy śniadanie jest wliczone?<br>
-              <strong>B:</strong> Tak, śniadanie jest od siódmej do dziesiątej.
-            </p>
+            <p>${lesson.translationHtml}</p>
           </div>
 
           <div class="audio-list">
-            ${audioCard("Słownictwo", "M6L2", "audio/M6L2_Vocabulary.mp3")}
-            ${audioCard("Zwroty", "M6L2", "audio/M6L2_Phrases.mp3")}
-            ${audioCard("Dialog", "M6L2", "audio/M6L2_Dialogue.mp3")}
+            ${audioCard("Słownictwo", code, "audio/" + lesson.audioBase + "_Vocabulary.mp3")}
+            ${audioCard("Zwroty", code, "audio/" + lesson.audioBase + "_Phrases.mp3")}
+            ${audioCard("Dialog", code, "audio/" + lesson.audioBase + "_Dialogue.mp3")}
           </div>
 
-          ${readingCard("M6L2")}
-        </details>
-      `;
-    }
-
-    function module6Lesson3() {
-      return `
-        <details class="lesson">
-          <summary>
-            <div class="lesson-title">
-              <strong>Lekcja 3: W restauracji</strong>
-              <span>M6L3 · menu, zamówienie, jedzenie, napoje, rachunek i ćwiczenie pisania.</span>
-            </div>
-            <span class="arrow">›</span>
-          </summary>
-
-          <div class="lesson-content">
-            <h4>Słownictwo</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>restaurant</td><td>restauracja</td></tr>
-              <tr><td>menu</td><td>menu</td></tr>
-              <tr><td>waiter</td><td>kelner</td></tr>
-              <tr><td>food</td><td>jedzenie</td></tr>
-              <tr><td>drink</td><td>napój</td></tr>
-              <tr><td>water</td><td>woda</td></tr>
-              <tr><td>coffee</td><td>kawa</td></tr>
-              <tr><td>bill</td><td>rachunek</td></tr>
-              <tr><td>table</td><td>stolik</td></tr>
-              <tr><td>order</td><td>zamówienie</td></tr>
-            </table>
-
-            <h4>Zwroty</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>Can I see the menu?</td><td>Czy mogę zobaczyć menu?</td></tr>
-              <tr><td>I would like water.</td><td>Poproszę wodę.</td></tr>
-              <tr><td>I would like this dish.</td><td>Poproszę to danie.</td></tr>
-              <tr><td>The food is very good.</td><td>Jedzenie jest bardzo dobre.</td></tr>
-              <tr><td>Can I have the bill?</td><td>Czy mogę prosić rachunek?</td></tr>
-            </table>
-
-            <h4>Dialog</h4>
-            <p>
-              <strong>A:</strong> Good afternoon. Can I see the menu, please?<br>
-              <strong>B:</strong> Of course. Here you are.<br>
-              <strong>A:</strong> Thank you. I would like chicken and water.<br>
-              <strong>B:</strong> Would you like coffee after the meal?<br>
-              <strong>A:</strong> Yes, please.<br>
-              <strong>B:</strong> Great. I will bring your order.
-            </p>
-
-            <h4>Tłumaczenie dialogu</h4>
-            <p>
-              <strong>A:</strong> Dzień dobry. Czy mogę zobaczyć menu?<br>
-              <strong>B:</strong> Oczywiście. Proszę bardzo.<br>
-              <strong>A:</strong> Dziękuję. Poproszę kurczaka i wodę.<br>
-              <strong>B:</strong> Czy chciałby pan/chciałaby pani kawę po posiłku?<br>
-              <strong>A:</strong> Tak, proszę.<br>
-              <strong>B:</strong> Świetnie. Przyniosę zamówienie.
-            </p>
-          </div>
-
-          <div class="audio-list">
-            ${audioCard("Słownictwo", "M6L3", "audio/M6L3_Vocabulary.mp3")}
-            ${audioCard("Zwroty", "M6L3", "audio/M6L3_Phrases.mp3")}
-            ${audioCard("Dialog", "M6L3", "audio/M6L3_Dialogue.mp3")}
-          </div>
-
-          ${readingCard("M6L3")}
-        </details>
-      `;
-    }
-
-    function module6Lesson4() {
-      return `
-        <details class="lesson">
-          <summary>
-            <div class="lesson-title">
-              <strong>Lekcja 4: Pytanie o drogę</strong>
-              <span>M6L4 · ulica, kierunki, stacja, mapa i ćwiczenie pisania.</span>
-            </div>
-            <span class="arrow">›</span>
-          </summary>
-
-          <div class="lesson-content">
-            <h4>Słownictwo</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>street</td><td>ulica</td></tr>
-              <tr><td>left</td><td>lewo</td></tr>
-              <tr><td>right</td><td>prawo</td></tr>
-              <tr><td>straight</td><td>prosto</td></tr>
-              <tr><td>near</td><td>blisko</td></tr>
-              <tr><td>far</td><td>daleko</td></tr>
-              <tr><td>map</td><td>mapa</td></tr>
-              <tr><td>station</td><td>stacja</td></tr>
-              <tr><td>shop</td><td>sklep</td></tr>
-              <tr><td>city center</td><td>centrum miasta</td></tr>
-            </table>
-
-            <h4>Zwroty</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>Where is the station?</td><td>Gdzie jest stacja?</td></tr>
-              <tr><td>Go straight.</td><td>Idź prosto.</td></tr>
-              <tr><td>Turn left.</td><td>Skręć w lewo.</td></tr>
-              <tr><td>Turn right.</td><td>Skręć w prawo.</td></tr>
-              <tr><td>Is it far?</td><td>Czy to daleko?</td></tr>
-            </table>
-
-            <h4>Dialog</h4>
-            <p>
-              <strong>A:</strong> Excuse me. Where is the train station?<br>
-              <strong>B:</strong> Go straight and turn left.<br>
-              <strong>A:</strong> Is it far?<br>
-              <strong>B:</strong> No, it is about five minutes from here.<br>
-              <strong>A:</strong> Thank you.<br>
-              <strong>B:</strong> You are welcome.
-            </p>
-
-            <h4>Tłumaczenie dialogu</h4>
-            <p>
-              <strong>A:</strong> Przepraszam. Gdzie jest stacja kolejowa?<br>
-              <strong>B:</strong> Proszę iść prosto i skręcić w lewo.<br>
-              <strong>A:</strong> Czy to daleko?<br>
-              <strong>B:</strong> Nie, to około pięć minut stąd.<br>
-              <strong>A:</strong> Dziękuję.<br>
-              <strong>B:</strong> Nie ma za co.
-            </p>
-          </div>
-
-          <div class="audio-list">
-            ${audioCard("Słownictwo", "M6L4", "audio/M6L4_Vocabulary.mp3")}
-            ${audioCard("Zwroty", "M6L4", "audio/M6L4_Phrases.mp3")}
-            ${audioCard("Dialog", "M6L4", "audio/M6L4_Dialogue.mp3")}
-          </div>
-
-          ${readingCard("M6L4")}
-        </details>
-      `;
-    }
-
-    function module6Lesson5() {
-      return `
-        <details class="lesson">
-          <summary>
-            <div class="lesson-title">
-              <strong>Lekcja 5: W sklepie</strong>
-              <span>M6L5 · cena, płatność, rozmiar, karta i ćwiczenie pisania.</span>
-            </div>
-            <span class="arrow">›</span>
-          </summary>
-
-          <div class="lesson-content">
-            <h4>Słownictwo</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>shop</td><td>sklep</td></tr>
-              <tr><td>price</td><td>cena</td></tr>
-              <tr><td>money</td><td>pieniądze</td></tr>
-              <tr><td>card</td><td>karta</td></tr>
-              <tr><td>cash</td><td>gotówka</td></tr>
-              <tr><td>bag</td><td>torba</td></tr>
-              <tr><td>receipt</td><td>paragon</td></tr>
-              <tr><td>cheap</td><td>tani</td></tr>
-              <tr><td>expensive</td><td>drogi</td></tr>
-              <tr><td>size</td><td>rozmiar</td></tr>
-            </table>
-
-            <h4>Zwroty</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>How much is it?</td><td>Ile to kosztuje?</td></tr>
-              <tr><td>Can I pay by card?</td><td>Czy mogę zapłacić kartą?</td></tr>
-              <tr><td>It is too expensive.</td><td>To jest za drogie.</td></tr>
-              <tr><td>Do you have a smaller size?</td><td>Czy macie mniejszy rozmiar?</td></tr>
-              <tr><td>I would like this one.</td><td>Chciałbym/chciałabym ten.</td></tr>
-            </table>
-
-            <h4>Dialog</h4>
-            <p>
-              <strong>A:</strong> Hello. How much is this T-shirt?<br>
-              <strong>B:</strong> It is fifteen pounds.<br>
-              <strong>A:</strong> Do you have a smaller size?<br>
-              <strong>B:</strong> Yes, we do. Here you are.<br>
-              <strong>A:</strong> Great. Can I pay by card?<br>
-              <strong>B:</strong> Yes, of course.
-            </p>
-
-            <h4>Tłumaczenie dialogu</h4>
-            <p>
-              <strong>A:</strong> Dzień dobry. Ile kosztuje ta koszulka?<br>
-              <strong>B:</strong> Kosztuje piętnaście funtów.<br>
-              <strong>A:</strong> Czy macie mniejszy rozmiar?<br>
-              <strong>B:</strong> Tak, mamy. Proszę bardzo.<br>
-              <strong>A:</strong> Świetnie. Czy mogę zapłacić kartą?<br>
-              <strong>B:</strong> Tak, oczywiście.
-            </p>
-          </div>
-
-          <div class="audio-list">
-            ${audioCard("Słownictwo", "M6L5", "audio/M6L5_Vocabulary.mp3")}
-            ${audioCard("Zwroty", "M6L5", "audio/M6L5_Phrases.mp3")}
-            ${audioCard("Dialog", "M6L5", "audio/M6L5_Dialogue.mp3")}
-          </div>
-
-          ${readingCard("M6L5")}
-        </details>
-      `;
-    }
-
-    function module6Lesson6() {
-      return `
-        <details class="lesson" open>
-          <summary>
-            <div class="lesson-title">
-              <strong>Lekcja 6: Problemy w podróży</strong>
-              <span>M6L6 · pomoc, zgubiony bagaż, telefon, lekarz, policja i ćwiczenie pisania.</span>
-            </div>
-            <span class="arrow">›</span>
-          </summary>
-
-          <div class="lesson-content">
-            <h4>Słownictwo</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>problem</td><td>problem</td></tr>
-              <tr><td>help</td><td>pomoc</td></tr>
-              <tr><td>lost</td><td>zgubiony</td></tr>
-              <tr><td>bag</td><td>torba</td></tr>
-              <tr><td>phone</td><td>telefon</td></tr>
-              <tr><td>address</td><td>adres</td></tr>
-              <tr><td>doctor</td><td>lekarz</td></tr>
-              <tr><td>police</td><td>policja</td></tr>
-              <tr><td>mistake</td><td>błąd</td></tr>
-              <tr><td>emergency</td><td>nagły wypadek</td></tr>
-            </table>
-
-            <h4>Zwroty</h4>
-            <table>
-              <tr><th>English</th><th>Polski</th></tr>
-              <tr><td>I need help.</td><td>Potrzebuję pomocy.</td></tr>
-              <tr><td>I lost my bag.</td><td>Zgubiłem/Zgubiłam torbę.</td></tr>
-              <tr><td>I have a problem.</td><td>Mam problem.</td></tr>
-              <tr><td>Can you help me?</td><td>Czy może mi pan/pani pomóc?</td></tr>
-              <tr><td>I need a doctor.</td><td>Potrzebuję lekarza.</td></tr>
-            </table>
-
-            <h4>Dialog</h4>
-            <p>
-              <strong>A:</strong> Excuse me. I need help.<br>
-              <strong>B:</strong> What is the problem?<br>
-              <strong>A:</strong> I lost my bag.<br>
-              <strong>B:</strong> Where did you see it last?<br>
-              <strong>A:</strong> At the airport.<br>
-              <strong>B:</strong> Please go to the information desk.
-            </p>
-
-            <h4>Tłumaczenie dialogu</h4>
-            <p>
-              <strong>A:</strong> Przepraszam. Potrzebuję pomocy.<br>
-              <strong>B:</strong> Jaki jest problem?<br>
-              <strong>A:</strong> Zgubiłem/Zgubiłam torbę.<br>
-              <strong>B:</strong> Gdzie widział/widziała ją pan/pani ostatnio?<br>
-              <strong>A:</strong> Na lotnisku.<br>
-              <strong>B:</strong> Proszę iść do punktu informacyjnego.
-            </p>
-          </div>
-
-          <div class="audio-list">
-            ${audioCard("Słownictwo", "M6L6", "audio/M6L6_Vocabulary.mp3")}
-            ${audioCard("Zwroty", "M6L6", "audio/M6L6_Phrases.mp3")}
-            ${audioCard("Dialog", "M6L6", "audio/M6L6_Dialogue.mp3")}
-          </div>
-
-          ${readingCard("M6L6")}
+          ${customWritingCard(code)}
         </details>
       `;
     }
@@ -1410,12 +1250,27 @@
         </div>
 
         <div class="lessons">
-          ${module6Lesson1()}
-          ${module6Lesson2()}
-          ${module6Lesson3()}
-          ${module6Lesson4()}
-          ${module6Lesson5()}
-          ${module6Lesson6()}
+          ${customLessonCard("M6L1", false)}
+          ${customLessonCard("M6L2", false)}
+          ${customLessonCard("M6L3", false)}
+          ${customLessonCard("M6L4", false)}
+          ${customLessonCard("M6L5", false)}
+          ${customLessonCard("M6L6", false)}
+        </div>
+      `;
+    }
+
+    function module7Content() {
+      return `
+        <div class="reading-card">
+          <h3>💼 Moduł 7: Angielski w pracy</h3>
+          <p style="color:var(--muted);line-height:1.7;margin:0;">
+            Ten moduł rozwija praktyczny angielski potrzebny w pracy: pierwszy dzień, rozmowa z przełożonym, wiadomości służbowe, spotkania, proszenie o pomoc oraz grafik pracy.
+          </p>
+        </div>
+
+        <div class="lessons">
+          ${customLessonCard("M7L1", true)}
         </div>
       `;
     }
@@ -1426,8 +1281,12 @@
       modules.forEach(function(module) {
         let body = "";
 
-        if (module.code !== "M6") {
-          body += readingCard(module.code);
+        if (module.code === "M6") {
+          body = module6Content();
+        } else if (module.code === "M7") {
+          body = module7Content();
+        } else {
+          body += moduleReadingCard(module.code);
           body += `<div class="lessons">`;
 
           for (let i = 1; i <= 6; i++) {
@@ -1435,12 +1294,10 @@
           }
 
           body += `</div>`;
-        } else {
-          body += module6Content();
         }
 
         html += `
-          <details class="module" ${module.code === "M6" ? "open" : ""}>
+          <details class="module" ${module.code === "M7" ? "open" : ""}>
             <summary>
               <div class="module-title">
                 <strong>${module.title}</strong>
@@ -1544,7 +1401,11 @@
     }
 
     window.addEventListener("load", function() {
-      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2", "M6L3", "M6L4", "M6L5", "M6L6"].forEach(function(moduleId) {
+      [
+        "M1", "M2", "M3", "M4", "M5",
+        "M6L1", "M6L2", "M6L3", "M6L4", "M6L5", "M6L6",
+        "M7L1"
+      ].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
 
