@@ -687,7 +687,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>6 modułów, 35 lekcji, audio, czytanki i sprawdzanie pisania.</p>
+            <p>6 modułów, 36 lekcji, audio, czytanki i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -695,9 +695,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>6</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>35</strong><span>lekcji krok po kroku</span></div>
-      <div class="stat"><strong>162+</strong><span>pliki audio lekcji</span></div>
-      <div class="stat"><strong>10</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>36</strong><span>lekcji krok po kroku</span></div>
+      <div class="stat"><strong>165+</strong><span>plików audio lekcji</span></div>
+      <div class="stat"><strong>11</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -809,6 +809,12 @@
         english: "Hello. How much is this T-shirt? It is fifteen pounds. Do you have a smaller size? Yes, we do. Here you are. Great. Can I pay by card? Yes, of course.",
         polish: "Dzień dobry. Ile kosztuje ta koszulka? Kosztuje piętnaście funtów. Czy macie mniejszy rozmiar? Tak, mamy. Proszę bardzo. Świetnie. Czy mogę zapłacić kartą? Tak, oczywiście.",
         audio: "audio/M6L5_Dialogue.mp3"
+      },
+      M6L6: {
+        title: "Ćwiczenie pisania — problemy w podróży",
+        english: "Excuse me. I need help. What is the problem? I lost my bag. Where did you see it last? At the airport. Please go to the information desk.",
+        polish: "Przepraszam. Potrzebuję pomocy. Jaki jest problem? Zgubiłem/Zgubiłam torbę. Gdzie widział/widziała ją pan/pani ostatnio? Na lotnisku. Proszę iść do punktu informacyjnego.",
+        audio: "audio/M6L6_Dialogue.mp3"
       }
     };
 
@@ -1255,7 +1261,7 @@
 
     function module6Lesson5() {
       return `
-        <details class="lesson" open>
+        <details class="lesson">
           <summary>
             <div class="lesson-title">
               <strong>Lekcja 5: W sklepie</strong>
@@ -1322,6 +1328,75 @@
       `;
     }
 
+    function module6Lesson6() {
+      return `
+        <details class="lesson" open>
+          <summary>
+            <div class="lesson-title">
+              <strong>Lekcja 6: Problemy w podróży</strong>
+              <span>M6L6 · pomoc, zgubiony bagaż, telefon, lekarz, policja i ćwiczenie pisania.</span>
+            </div>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="lesson-content">
+            <h4>Słownictwo</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>problem</td><td>problem</td></tr>
+              <tr><td>help</td><td>pomoc</td></tr>
+              <tr><td>lost</td><td>zgubiony</td></tr>
+              <tr><td>bag</td><td>torba</td></tr>
+              <tr><td>phone</td><td>telefon</td></tr>
+              <tr><td>address</td><td>adres</td></tr>
+              <tr><td>doctor</td><td>lekarz</td></tr>
+              <tr><td>police</td><td>policja</td></tr>
+              <tr><td>mistake</td><td>błąd</td></tr>
+              <tr><td>emergency</td><td>nagły wypadek</td></tr>
+            </table>
+
+            <h4>Zwroty</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>I need help.</td><td>Potrzebuję pomocy.</td></tr>
+              <tr><td>I lost my bag.</td><td>Zgubiłem/Zgubiłam torbę.</td></tr>
+              <tr><td>I have a problem.</td><td>Mam problem.</td></tr>
+              <tr><td>Can you help me?</td><td>Czy może mi pan/pani pomóc?</td></tr>
+              <tr><td>I need a doctor.</td><td>Potrzebuję lekarza.</td></tr>
+            </table>
+
+            <h4>Dialog</h4>
+            <p>
+              <strong>A:</strong> Excuse me. I need help.<br>
+              <strong>B:</strong> What is the problem?<br>
+              <strong>A:</strong> I lost my bag.<br>
+              <strong>B:</strong> Where did you see it last?<br>
+              <strong>A:</strong> At the airport.<br>
+              <strong>B:</strong> Please go to the information desk.
+            </p>
+
+            <h4>Tłumaczenie dialogu</h4>
+            <p>
+              <strong>A:</strong> Przepraszam. Potrzebuję pomocy.<br>
+              <strong>B:</strong> Jaki jest problem?<br>
+              <strong>A:</strong> Zgubiłem/Zgubiłam torbę.<br>
+              <strong>B:</strong> Gdzie widział/widziała ją pan/pani ostatnio?<br>
+              <strong>A:</strong> Na lotnisku.<br>
+              <strong>B:</strong> Proszę iść do punktu informacyjnego.
+            </p>
+          </div>
+
+          <div class="audio-list">
+            ${audioCard("Słownictwo", "M6L6", "audio/M6L6_Vocabulary.mp3")}
+            ${audioCard("Zwroty", "M6L6", "audio/M6L6_Phrases.mp3")}
+            ${audioCard("Dialog", "M6L6", "audio/M6L6_Dialogue.mp3")}
+          </div>
+
+          ${readingCard("M6L6")}
+        </details>
+      `;
+    }
+
     function module6Content() {
       return `
         <div class="reading-card">
@@ -1337,6 +1412,7 @@
           ${module6Lesson3()}
           ${module6Lesson4()}
           ${module6Lesson5()}
+          ${module6Lesson6()}
         </div>
       `;
     }
@@ -1465,7 +1541,7 @@
     }
 
     window.addEventListener("load", function() {
-      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2", "M6L3", "M6L4", "M6L5"].forEach(function(moduleId) {
+      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2", "M6L3", "M6L4", "M6L5", "M6L6"].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
 
