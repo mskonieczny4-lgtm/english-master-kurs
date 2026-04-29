@@ -594,14 +594,28 @@
       background:rgba(255,255,255,.08);
     }
 
-    audio { width:100%; }
-
-    .note {
+    .support-note {
+      margin:24px 0 0;
+      padding:16px 18px;
+      border:1px solid rgba(143,211,255,.24);
+      border-radius:18px;
+      background:rgba(255,255,255,.06);
       color:var(--muted);
-      font-size:13px;
-      line-height:1.55;
-      margin-top:12px;
+      line-height:1.6;
+      text-align:center;
     }
+
+    .support-note a {
+      color:var(--blue2);
+      font-weight:900;
+      text-decoration:none;
+    }
+
+    .support-note a:hover {
+      text-decoration:underline;
+    }
+
+    audio { width:100%; }
 
     footer {
       color:var(--muted);
@@ -673,7 +687,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>6 modułów, 32 lekcje, audio, czytanki i sprawdzanie pisania.</p>
+            <p>6 modułów, 33 lekcje, audio, czytanki i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -681,9 +695,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>6</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>32</strong><span>lekcje krok po kroku</span></div>
-      <div class="stat"><strong>153+</strong><span>pliki audio lekcji</span></div>
-      <div class="stat"><strong>7</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>33</strong><span>lekcje krok po kroku</span></div>
+      <div class="stat"><strong>156+</strong><span>plików audio lekcji</span></div>
+      <div class="stat"><strong>8</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -715,8 +729,9 @@
 
       <div id="modulesContainer"></div>
 
-      <div class="note">
-        Wskazówka: jeśli nagranie nie odtwarza się od razu, sprawdź, czy plik MP3 znajduje się w folderze <strong>audio</strong> i czy nazwa pliku jest dokładnie taka sama jak w kodzie.
+      <div class="support-note">
+        Masz problem z dostępem do kursu lub odtwarzaniem lekcji? Napisz do nas:
+        <a href="mailto:info@strefaaiarchitekt.pl">info@strefaaiarchitekt.pl</a>
       </div>
     </main>
 
@@ -776,6 +791,12 @@
         english: "Good evening. I have a reservation. Good evening. What is your name? My name is Anna Kowalska. Yes, I see your reservation. Your room is number twenty-one. Is breakfast included? Yes, breakfast is from seven to ten.",
         polish: "Dobry wieczór. Mam rezerwację. Dobry wieczór. Jak się pani nazywa? Nazywam się Anna Kowalska. Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden. Czy śniadanie jest wliczone? Tak, śniadanie jest od siódmej do dziesiątej.",
         audio: "audio/M6L2_Dialogue.mp3"
+      },
+      M6L3: {
+        title: "Ćwiczenie pisania — dialog w restauracji",
+        english: "Good afternoon. Can I see the menu, please? Of course. Here you are. Thank you. I would like chicken and water. Would you like coffee after the meal? Yes, please. Great. I will bring your order.",
+        polish: "Dzień dobry. Czy mogę zobaczyć menu? Oczywiście. Proszę bardzo. Dziękuję. Poproszę kurczaka i wodę. Czy chciałby pan/chciałaby pani kawę po posiłku? Tak, proszę. Świetnie. Przyniosę zamówienie.",
+        audio: "audio/M6L3_Dialogue.mp3"
       }
     };
 
@@ -1015,7 +1036,7 @@
 
     function module6Lesson2() {
       return `
-        <details class="lesson" open>
+        <details class="lesson">
           <summary>
             <div class="lesson-title">
               <strong>Lekcja 2: W hotelu</strong>
@@ -1082,6 +1103,75 @@
       `;
     }
 
+    function module6Lesson3() {
+      return `
+        <details class="lesson" open>
+          <summary>
+            <div class="lesson-title">
+              <strong>Lekcja 3: W restauracji</strong>
+              <span>M6L3 · menu, zamówienie, jedzenie, napoje, rachunek i ćwiczenie pisania.</span>
+            </div>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="lesson-content">
+            <h4>Słownictwo</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>restaurant</td><td>restauracja</td></tr>
+              <tr><td>menu</td><td>menu</td></tr>
+              <tr><td>waiter</td><td>kelner</td></tr>
+              <tr><td>food</td><td>jedzenie</td></tr>
+              <tr><td>drink</td><td>napój</td></tr>
+              <tr><td>water</td><td>woda</td></tr>
+              <tr><td>coffee</td><td>kawa</td></tr>
+              <tr><td>bill</td><td>rachunek</td></tr>
+              <tr><td>table</td><td>stolik</td></tr>
+              <tr><td>order</td><td>zamówienie</td></tr>
+            </table>
+
+            <h4>Zwroty</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>Can I see the menu?</td><td>Czy mogę zobaczyć menu?</td></tr>
+              <tr><td>I would like water.</td><td>Poproszę wodę.</td></tr>
+              <tr><td>I would like this dish.</td><td>Poproszę to danie.</td></tr>
+              <tr><td>The food is very good.</td><td>Jedzenie jest bardzo dobre.</td></tr>
+              <tr><td>Can I have the bill?</td><td>Czy mogę prosić rachunek?</td></tr>
+            </table>
+
+            <h4>Dialog</h4>
+            <p>
+              <strong>A:</strong> Good afternoon. Can I see the menu, please?<br>
+              <strong>B:</strong> Of course. Here you are.<br>
+              <strong>A:</strong> Thank you. I would like chicken and water.<br>
+              <strong>B:</strong> Would you like coffee after the meal?<br>
+              <strong>A:</strong> Yes, please.<br>
+              <strong>B:</strong> Great. I will bring your order.
+            </p>
+
+            <h4>Tłumaczenie dialogu</h4>
+            <p>
+              <strong>A:</strong> Dzień dobry. Czy mogę zobaczyć menu?<br>
+              <strong>B:</strong> Oczywiście. Proszę bardzo.<br>
+              <strong>A:</strong> Dziękuję. Poproszę kurczaka i wodę.<br>
+              <strong>B:</strong> Czy chciałby pan/chciałaby pani kawę po posiłku?<br>
+              <strong>A:</strong> Tak, proszę.<br>
+              <strong>B:</strong> Świetnie. Przyniosę zamówienie.
+            </p>
+          </div>
+
+          <div class="audio-list">
+            ${audioCard("Słownictwo", "M6L3", "audio/M6L3_Vocabulary.mp3")}
+            ${audioCard("Zwroty", "M6L3", "audio/M6L3_Phrases.mp3")}
+            ${audioCard("Dialog", "M6L3", "audio/M6L3_Dialogue.mp3")}
+          </div>
+
+          ${readingCard("M6L3")}
+        </details>
+      `;
+    }
+
     function module6Content() {
       return `
         <div class="reading-card">
@@ -1094,6 +1184,7 @@
         <div class="lessons">
           ${module6Lesson1()}
           ${module6Lesson2()}
+          ${module6Lesson3()}
         </div>
       `;
     }
@@ -1222,7 +1313,7 @@
     }
 
     window.addEventListener("load", function() {
-      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2"].forEach(function(moduleId) {
+      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2", "M6L3"].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
 
