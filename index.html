@@ -138,50 +138,40 @@
     .cover {
       position:relative;
       min-height:420px;
-      border:1px solid rgba(143,211,255,.28);
+      border:1px solid rgba(143,211,255,.34);
       border-radius:34px;
       overflow:hidden;
       box-shadow:var(--shadow);
       background:
-        radial-gradient(circle at 50% 28%, rgba(143,211,255,.28), transparent 26%),
-        linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
+        linear-gradient(90deg, transparent 0 39%, #cf142b 39% 61%, transparent 61% 100%),
+        linear-gradient(0deg, transparent 0 39%, #cf142b 39% 61%, transparent 61% 100%),
+        #ffffff;
     }
 
     .cover:before {
       content:"";
       position:absolute;
-      width:280px;
-      height:280px;
-      top:70px;
-      left:50%;
-      transform:translateX(-50%);
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(143,211,255,.5), rgba(77,163,255,.12), transparent 68%);
-      filter:blur(4px);
-    }
-
-    .orb {
-      position:absolute;
-      width:210px;
-      height:210px;
-      top:95px;
-      left:50%;
-      transform:translateX(-50%);
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.28);
+      inset:0;
       background:
-        linear-gradient(135deg, rgba(143,211,255,.42), rgba(5,8,20,.1)),
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,.85), transparent 14%);
-      box-shadow:0 0 80px rgba(77,163,255,.36), inset 0 0 44px rgba(255,255,255,.12);
+        linear-gradient(135deg, rgba(0,0,0,.24), transparent 42%),
+        linear-gradient(225deg, rgba(77,163,255,.22), transparent 42%),
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,.45), transparent 22%);
+      pointer-events:none;
     }
 
     .cover-lines {
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg,transparent 10%,rgba(255,255,255,.08) 50%,transparent 90%),
-        repeating-linear-gradient(0deg,transparent 0 22px,rgba(255,255,255,.04) 23px);
-      opacity:.65;
+        linear-gradient(90deg,rgba(0,0,0,.08) 0 1px,transparent 1px),
+        linear-gradient(0deg,rgba(0,0,0,.08) 0 1px,transparent 1px);
+      background-size:42px 42px;
+      opacity:.35;
+      pointer-events:none;
+    }
+
+    .orb {
+      display:none;
     }
 
     .cover-text {
@@ -189,28 +179,41 @@
       left:28px;
       right:28px;
       bottom:28px;
+      padding:22px;
+      border-radius:24px;
+      background:linear-gradient(135deg, rgba(5,8,20,.88), rgba(11,18,38,.78));
+      border:1px solid rgba(255,255,255,.24);
+      box-shadow:0 18px 50px rgba(0,0,0,.35);
+      backdrop-filter:blur(8px);
     }
 
     .cover-text .small {
-      color:var(--gold);
+      display:inline-block;
+      color:#07101f;
+      background:linear-gradient(135deg,#ffe29a,var(--gold));
       font-weight:900;
       letter-spacing:1px;
       text-transform:uppercase;
       font-size:13px;
       margin-bottom:10px;
+      padding:5px 9px;
+      border-radius:8px;
     }
 
     .cover-text h2 {
       margin:0;
+      color:#ffffff;
       font-size:34px;
       line-height:1.05;
       letter-spacing:-1px;
+      text-shadow:0 3px 18px rgba(0,0,0,.7);
     }
 
     .cover-text p {
       margin:12px 0 0;
-      color:var(--muted);
+      color:#e6efff;
       line-height:1.55;
+      text-shadow:0 2px 12px rgba(0,0,0,.65);
     }
 
     .stats {
@@ -340,124 +343,124 @@
     }
 
     .mini-book {
-      margin: 0 0 22px;
-      border: 1px solid rgba(247, 200, 115, .32);
-      border-radius: 26px;
-      overflow: hidden;
+      margin:0 0 22px;
+      border:1px solid rgba(247,200,115,.32);
+      border-radius:26px;
+      overflow:hidden;
       background:
-        radial-gradient(circle at 10% 0%, rgba(247, 200, 115, .16), transparent 30%),
+        radial-gradient(circle at 10% 0%, rgba(247,200,115,.16), transparent 30%),
         linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
-      box-shadow: 0 24px 70px rgba(0,0,0,.24);
+      box-shadow:0 24px 70px rgba(0,0,0,.24);
     }
 
     .mini-book summary {
-      padding: 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      cursor: pointer;
+      padding:22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      cursor:pointer;
       background:
         linear-gradient(135deg, rgba(247,200,115,.14), rgba(77,163,255,.08));
     }
 
     .mini-book-cover {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      display:flex;
+      align-items:center;
+      gap:16px;
     }
 
     .book-icon {
-      width: 58px;
-      height: 72px;
-      border-radius: 8px 16px 16px 8px;
+      width:58px;
+      height:72px;
+      border-radius:8px 16px 16px 8px;
       background:
         linear-gradient(90deg, rgba(0,0,0,.22) 0 10px, transparent 10px),
         linear-gradient(135deg, #ffe29a, #f7c873);
       box-shadow:
         inset -8px 0 18px rgba(0,0,0,.16),
         0 14px 34px rgba(247,200,115,.16);
-      position: relative;
-      flex: 0 0 auto;
+      position:relative;
+      flex:0 0 auto;
     }
 
     .book-icon:before {
-      content: "";
-      position: absolute;
-      left: 15px;
-      right: 12px;
-      top: 18px;
-      height: 2px;
-      background: rgba(5,8,20,.34);
-      box-shadow: 0 12px 0 rgba(5,8,20,.25), 0 24px 0 rgba(5,8,20,.18);
+      content:"";
+      position:absolute;
+      left:15px;
+      right:12px;
+      top:18px;
+      height:2px;
+      background:rgba(5,8,20,.34);
+      box-shadow:0 12px 0 rgba(5,8,20,.25), 0 24px 0 rgba(5,8,20,.18);
     }
 
     .mini-book-title strong {
-      display: block;
-      font-size: 24px;
-      color: var(--text);
-      letter-spacing: -.4px;
+      display:block;
+      font-size:24px;
+      color:var(--text);
+      letter-spacing:-.4px;
     }
 
     .mini-book-title span {
-      display: block;
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
     }
 
     .mini-book-content {
-      padding: 20px;
+      padding:20px;
     }
 
     .book-chapter {
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 20px;
-      background: rgba(0,0,0,.18);
-      padding: 18px;
-      margin-bottom: 14px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:20px;
+      background:rgba(0,0,0,.18);
+      padding:18px;
+      margin-bottom:14px;
     }
 
     .book-chapter h3 {
-      margin: 0 0 14px;
-      color: var(--gold);
-      font-size: 20px;
+      margin:0 0 14px;
+      color:var(--gold);
+      font-size:20px;
     }
 
     .book-line {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,.09);
+      padding:12px 0;
+      border-bottom:1px solid rgba(255,255,255,.09);
     }
 
     .book-line:last-child {
-      border-bottom: 0;
+      border-bottom:0;
     }
 
     .book-line strong {
-      display: block;
-      color: var(--text);
-      font-size: 17px;
-      line-height: 1.55;
+      display:block;
+      color:var(--text);
+      font-size:17px;
+      line-height:1.55;
     }
 
     .book-line span {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-      font-style: italic;
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.55;
+      font-style:italic;
     }
 
     .book-tip {
-      margin-top: 16px;
-      padding: 14px 16px;
-      border: 1px solid rgba(143,211,255,.22);
-      border-radius: 16px;
-      background: rgba(77,163,255,.08);
-      color: var(--muted);
-      line-height: 1.6;
+      margin-top:16px;
+      padding:14px 16px;
+      border:1px solid rgba(143,211,255,.22);
+      border-radius:16px;
+      background:rgba(77,163,255,.08);
+      color:var(--muted);
+      line-height:1.6;
     }
 
     .module {
@@ -784,7 +787,14 @@
 
       .stats { grid-template-columns:1fr; }
 
-      .cover-text h2 { font-size:28px; }
+      .cover-text {
+        left:18px;
+        right:18px;
+        bottom:18px;
+        padding:18px;
+      }
+
+      .cover-text h2 { font-size:27px; }
 
       .lessons { padding:0 10px 10px; }
 
@@ -817,9 +827,9 @@
     <header>
       <section class="hero">
         <div>
-          <div class="badge">🎧 Kurs online z audio, dialogami, mini książką i ćwiczeniem pisania</div>
+          <div class="badge">🎧 Kurs online z audio, dialogami i ćwiczeniem pisania</div>
           <h1>Speak English Premium z AI</h1>
-          <p>Praktyczny kurs angielskiego dla początkujących. Słuchasz nagrań, czytasz prostą mini książkę, poznajesz dialogi i ćwiczysz pisanie.</p>
+          <p>Praktyczny kurs angielskiego dla początkujących. Słuchasz nagrań, czytasz proste teksty po angielsku, sprawdzasz tłumaczenie i ćwiczysz pisanie.</p>
 
           <div class="actions">
             <a class="btn" href="#login">🔐 Mam hasło</a>
@@ -834,7 +844,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>7 modułów, 42 lekcje, mini książka, audio, dialogi i sprawdzanie pisania.</p>
+            <p>7 modułów, 42 lekcje, audio, dialogi i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -844,7 +854,7 @@
       <div class="stat"><strong>7</strong><span>modułów kursu</span></div>
       <div class="stat"><strong>42</strong><span>lekcje krok po kroku</span></div>
       <div class="stat"><strong>183+</strong><span>pliki audio lekcji</span></div>
-      <div class="stat"><strong>1</strong><span>mini książka z tłumaczeniem</span></div>
+      <div class="stat"><strong>17</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -887,179 +897,65 @@
         </summary>
 
         <div class="mini-book-content">
-
           <div class="book-chapter">
             <h3>Chapter 1: My First Day</h3>
-
-            <div class="book-line">
-              <strong>My name is Anna and I want to learn English.</strong>
-              <span>Mam na imię Anna i chcę nauczyć się angielskiego.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>At first, English is difficult for me.</strong>
-              <span>Na początku angielski jest dla mnie trudny.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I do not understand every word.</strong>
-              <span>Nie rozumiem każdego słowa.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>But I want to learn step by step.</strong>
-              <span>Ale chcę uczyć się krok po kroku.</span>
-            </div>
+            <div class="book-line"><strong>My name is Anna and I want to learn English.</strong><span>Mam na imię Anna i chcę nauczyć się angielskiego.</span></div>
+            <div class="book-line"><strong>At first, English is difficult for me.</strong><span>Na początku angielski jest dla mnie trudny.</span></div>
+            <div class="book-line"><strong>I do not understand every word.</strong><span>Nie rozumiem każdego słowa.</span></div>
+            <div class="book-line"><strong>But I want to learn step by step.</strong><span>Ale chcę uczyć się krok po kroku.</span></div>
           </div>
 
           <div class="book-chapter">
             <h3>Chapter 2: Small Steps</h3>
-
-            <div class="book-line">
-              <strong>Every day I listen to simple English.</strong>
-              <span>Każdego dnia słucham prostego angielskiego.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I repeat short words and sentences.</strong>
-              <span>Powtarzam krótkie słowa i zdania.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I write new words in my notebook.</strong>
-              <span>Zapisuję nowe słowa w moim zeszycie.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>Small steps help me make progress.</strong>
-              <span>Małe kroki pomagają mi robić postępy.</span>
-            </div>
+            <div class="book-line"><strong>Every day I listen to simple English.</strong><span>Każdego dnia słucham prostego angielskiego.</span></div>
+            <div class="book-line"><strong>I repeat short words and sentences.</strong><span>Powtarzam krótkie słowa i zdania.</span></div>
+            <div class="book-line"><strong>I write new words in my notebook.</strong><span>Zapisuję nowe słowa w moim zeszycie.</span></div>
+            <div class="book-line"><strong>Small steps help me make progress.</strong><span>Małe kroki pomagają mi robić postępy.</span></div>
           </div>
 
           <div class="book-chapter">
             <h3>Chapter 3: My Daily Routine</h3>
-
-            <div class="book-line">
-              <strong>In the morning, I say simple sentences.</strong>
-              <span>Rano mówię proste zdania.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I say: I am ready. I can do it.</strong>
-              <span>Mówię: Jestem gotowa. Dam radę.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I listen to one lesson and repeat slowly.</strong>
-              <span>Słucham jednej lekcji i powtarzam powoli.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I do not hurry because learning needs time.</strong>
-              <span>Nie spieszę się, ponieważ nauka potrzebuje czasu.</span>
-            </div>
+            <div class="book-line"><strong>In the morning, I say simple sentences.</strong><span>Rano mówię proste zdania.</span></div>
+            <div class="book-line"><strong>I say: I am ready. I can do it.</strong><span>Mówię: Jestem gotowa. Dam radę.</span></div>
+            <div class="book-line"><strong>I listen to one lesson and repeat slowly.</strong><span>Słucham jednej lekcji i powtarzam powoli.</span></div>
+            <div class="book-line"><strong>I do not hurry because learning needs time.</strong><span>Nie spieszę się, ponieważ nauka potrzebuje czasu.</span></div>
           </div>
 
           <div class="book-chapter">
             <h3>Chapter 4: At Work</h3>
-
-            <div class="book-line">
-              <strong>One day, I want to use English at work.</strong>
-              <span>Pewnego dnia chcę używać angielskiego w pracy.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I want to write simple messages.</strong>
-              <span>Chcę pisać proste wiadomości.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I want to ask questions and understand answers.</strong>
-              <span>Chcę zadawać pytania i rozumieć odpowiedzi.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I know I do not need perfect English.</strong>
-              <span>Wiem, że nie potrzebuję idealnego angielskiego.</span>
-            </div>
+            <div class="book-line"><strong>One day, I want to use English at work.</strong><span>Pewnego dnia chcę używać angielskiego w pracy.</span></div>
+            <div class="book-line"><strong>I want to write simple messages.</strong><span>Chcę pisać proste wiadomości.</span></div>
+            <div class="book-line"><strong>I want to ask questions and understand answers.</strong><span>Chcę zadawać pytania i rozumieć odpowiedzi.</span></div>
+            <div class="book-line"><strong>I know I do not need perfect English.</strong><span>Wiem, że nie potrzebuję idealnego angielskiego.</span></div>
           </div>
 
           <div class="book-chapter">
             <h3>Chapter 5: In the City</h3>
-
-            <div class="book-line">
-              <strong>I also want to use English in the city.</strong>
-              <span>Chcę też używać angielskiego w mieście.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I want to ask for directions.</strong>
-              <span>Chcę pytać o drogę.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I want to order food in a restaurant.</strong>
-              <span>Chcę zamawiać jedzenie w restauracji.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I want to feel more confident when I travel.</strong>
-              <span>Chcę czuć się pewniej, kiedy podróżuję.</span>
-            </div>
+            <div class="book-line"><strong>I also want to use English in the city.</strong><span>Chcę też używać angielskiego w mieście.</span></div>
+            <div class="book-line"><strong>I want to ask for directions.</strong><span>Chcę pytać o drogę.</span></div>
+            <div class="book-line"><strong>I want to order food in a restaurant.</strong><span>Chcę zamawiać jedzenie w restauracji.</span></div>
+            <div class="book-line"><strong>I want to feel more confident when I travel.</strong><span>Chcę czuć się pewniej, kiedy podróżuję.</span></div>
           </div>
 
           <div class="book-chapter">
             <h3>Chapter 6: I Can Speak More</h3>
-
-            <div class="book-line">
-              <strong>After many lessons, I understand more.</strong>
-              <span>Po wielu lekcjach rozumiem więcej.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I still make mistakes, but I am not afraid.</strong>
-              <span>Nadal popełniam błędy, ale się nie boję.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I can say more words and simple sentences.</strong>
-              <span>Potrafię powiedzieć więcej słów i prostych zdań.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>English becomes easier every week.</strong>
-              <span>Angielski staje się łatwiejszy z każdym tygodniem.</span>
-            </div>
+            <div class="book-line"><strong>After many lessons, I understand more.</strong><span>Po wielu lekcjach rozumiem więcej.</span></div>
+            <div class="book-line"><strong>I still make mistakes, but I am not afraid.</strong><span>Nadal popełniam błędy, ale się nie boję.</span></div>
+            <div class="book-line"><strong>I can say more words and simple sentences.</strong><span>Potrafię powiedzieć więcej słów i prostych zdań.</span></div>
+            <div class="book-line"><strong>English becomes easier every week.</strong><span>Angielski staje się łatwiejszy z każdym tygodniem.</span></div>
           </div>
 
           <div class="book-chapter">
             <h3>Chapter 7: My English Journey</h3>
-
-            <div class="book-line">
-              <strong>This is my English journey.</strong>
-              <span>To jest moja podróż z angielskim.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>I learn slowly, but I do not stop.</strong>
-              <span>Uczę się powoli, ale się nie zatrzymuję.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>Every lesson gives me more confidence.</strong>
-              <span>Każda lekcja daje mi więcej pewności.</span>
-            </div>
-
-            <div class="book-line">
-              <strong>Now I know that I can learn English.</strong>
-              <span>Teraz wiem, że mogę nauczyć się angielskiego.</span>
-            </div>
+            <div class="book-line"><strong>This is my English journey.</strong><span>To jest moja podróż z angielskim.</span></div>
+            <div class="book-line"><strong>I learn slowly, but I do not stop.</strong><span>Uczę się powoli, ale się nie zatrzymuję.</span></div>
+            <div class="book-line"><strong>Every lesson gives me more confidence.</strong><span>Każda lekcja daje mi więcej pewności.</span></div>
+            <div class="book-line"><strong>Now I know that I can learn English.</strong><span>Teraz wiem, że mogę nauczyć się angielskiego.</span></div>
           </div>
 
           <div class="book-tip">
             Wskazówka: przeczytaj najpierw zdanie po angielsku, spróbuj zrozumieć sens, a dopiero potem sprawdź tłumaczenie pod spodem.
           </div>
-
         </div>
       </details>
 
@@ -1079,7 +975,6 @@
 
   <script>
     const PASSWORD = "SpeakPremium45";
-
     const input = document.getElementById("passwordInput");
     const message = document.getElementById("loginMessage");
     const course = document.getElementById("course");
@@ -1129,8 +1024,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. Can I see your passport, please?<br><strong>B:</strong> Good morning. Here is my passport.<br><strong>A:</strong> Thank you. Do you have any luggage?<br><strong>B:</strong> Yes, I have one suitcase.<br><strong>A:</strong> Your gate is number twelve.<br><strong>B:</strong> Thank you very much.",
         translationHtml: "<strong>A:</strong> Dzień dobry. Czy mogę zobaczyć pana/pani paszport?<br><strong>B:</strong> Dzień dobry. Oto mój paszport.<br><strong>A:</strong> Dziękuję. Czy ma pan/pani jakiś bagaż?<br><strong>B:</strong> Tak, mam jedną walizkę.<br><strong>A:</strong> Pańska bramka to numer dwanaście.<br><strong>B:</strong> Bardzo dziękuję.",
-        english: "Good morning. Can I see your passport, please? Good morning. Here is my passport. Thank you. Do you have any luggage? Yes, I have one suitcase. Your gate is number twelve. Thank you very much.",
-        polish: "Dzień dobry. Czy mogę zobaczyć pana/pani paszport? Dzień dobry. Oto mój paszport. Dziękuję. Czy ma pan/pani jakiś bagaż? Tak, mam jedną walizkę. Pańska bramka to numer dwanaście. Bardzo dziękuję."
+        english: "Good morning. Can I see your passport, please? Good morning. Here is my passport. Thank you. Do you have any luggage? Yes, I have one suitcase. Your gate is number twelve. Thank you very much."
       },
 
       M6L2: {
@@ -1149,8 +1043,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Good evening. I have a reservation.<br><strong>B:</strong> Good evening. What is your name?<br><strong>A:</strong> My name is Anna Kowalska.<br><strong>B:</strong> Yes, I see your reservation. Your room is number twenty-one.<br><strong>A:</strong> Is breakfast included?<br><strong>B:</strong> Yes, breakfast is from seven to ten.",
         translationHtml: "<strong>A:</strong> Dobry wieczór. Mam rezerwację.<br><strong>B:</strong> Dobry wieczór. Jak się pani nazywa?<br><strong>A:</strong> Nazywam się Anna Kowalska.<br><strong>B:</strong> Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden.<br><strong>A:</strong> Czy śniadanie jest wliczone?<br><strong>B:</strong> Tak, śniadanie jest od siódmej do dziesiątej.",
-        english: "Good evening. I have a reservation. Good evening. What is your name? My name is Anna Kowalska. Yes, I see your reservation. Your room is number twenty-one. Is breakfast included? Yes, breakfast is from seven to ten.",
-        polish: "Dobry wieczór. Mam rezerwację. Dobry wieczór. Jak się pani nazywa? Nazywam się Anna Kowalska. Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden. Czy śniadanie jest wliczone? Tak, śniadanie jest od siódmej do dziesiątej."
+        english: "Good evening. I have a reservation. Good evening. What is your name? My name is Anna Kowalska. Yes, I see your reservation. Your room is number twenty-one. Is breakfast included? Yes, breakfast is from seven to ten."
       },
 
       M6L3: {
@@ -1169,8 +1062,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Good afternoon. Can I see the menu, please?<br><strong>B:</strong> Of course. Here you are.<br><strong>A:</strong> Thank you. I would like chicken and water.<br><strong>B:</strong> Would you like coffee after the meal?<br><strong>A:</strong> Yes, please.<br><strong>B:</strong> Great. I will bring your order.",
         translationHtml: "<strong>A:</strong> Dzień dobry. Czy mogę zobaczyć menu?<br><strong>B:</strong> Oczywiście. Proszę bardzo.<br><strong>A:</strong> Dziękuję. Poproszę kurczaka i wodę.<br><strong>B:</strong> Czy chciałby pan/chciałaby pani kawę po posiłku?<br><strong>A:</strong> Tak, proszę.<br><strong>B:</strong> Świetnie. Przyniosę zamówienie.",
-        english: "Good afternoon. Can I see the menu, please? Of course. Here you are. Thank you. I would like chicken and water. Would you like coffee after the meal? Yes, please. Great. I will bring your order.",
-        polish: "Dzień dobry. Czy mogę zobaczyć menu? Oczywiście. Proszę bardzo. Dziękuję. Poproszę kurczaka i wodę. Czy chciałby pan/chciałaby pani kawę po posiłku? Tak, proszę. Świetnie. Przyniosę zamówienie."
+        english: "Good afternoon. Can I see the menu, please? Of course. Here you are. Thank you. I would like chicken and water. Would you like coffee after the meal? Yes, please. Great. I will bring your order."
       },
 
       M6L4: {
@@ -1188,8 +1080,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Excuse me. Where is the train station?<br><strong>B:</strong> Go straight and turn left.<br><strong>A:</strong> Is it far?<br><strong>B:</strong> No, it is about five minutes from here.<br><strong>A:</strong> Thank you.<br><strong>B:</strong> You are welcome.",
         translationHtml: "<strong>A:</strong> Przepraszam. Gdzie jest stacja kolejowa?<br><strong>B:</strong> Proszę iść prosto i skręcić w lewo.<br><strong>A:</strong> Czy to daleko?<br><strong>B:</strong> Nie, to około pięć minut stąd.<br><strong>A:</strong> Dziękuję.<br><strong>B:</strong> Nie ma za co.",
-        english: "Excuse me. Where is the train station? Go straight and turn left. Is it far? No, it is about five minutes from here. Thank you. You are welcome.",
-        polish: "Przepraszam. Gdzie jest stacja kolejowa? Proszę iść prosto i skręcić w lewo. Czy to daleko? Nie, to około pięć minut stąd. Dziękuję. Nie ma za co."
+        english: "Excuse me. Where is the train station? Go straight and turn left. Is it far? No, it is about five minutes from here. Thank you. You are welcome."
       },
 
       M6L5: {
@@ -1208,8 +1099,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Hello. How much is this T-shirt?<br><strong>B:</strong> It is fifteen pounds.<br><strong>A:</strong> Do you have a smaller size?<br><strong>B:</strong> Yes, we do. Here you are.<br><strong>A:</strong> Great. Can I pay by card?<br><strong>B:</strong> Yes, of course.",
         translationHtml: "<strong>A:</strong> Dzień dobry. Ile kosztuje ta koszulka?<br><strong>B:</strong> Kosztuje piętnaście funtów.<br><strong>A:</strong> Czy macie mniejszy rozmiar?<br><strong>B:</strong> Tak, mamy. Proszę bardzo.<br><strong>A:</strong> Świetnie. Czy mogę zapłacić kartą?<br><strong>B:</strong> Tak, oczywiście.",
-        english: "Hello. How much is this T-shirt? It is fifteen pounds. Do you have a smaller size? Yes, we do. Here you are. Great. Can I pay by card? Yes, of course.",
-        polish: "Dzień dobry. Ile kosztuje ta koszulka? Kosztuje piętnaście funtów. Czy macie mniejszy rozmiar? Tak, mamy. Proszę bardzo. Świetnie. Czy mogę zapłacić kartą? Tak, oczywiście."
+        english: "Hello. How much is this T-shirt? It is fifteen pounds. Do you have a smaller size? Yes, we do. Here you are. Great. Can I pay by card? Yes, of course."
       },
 
       M6L6: {
@@ -1227,8 +1117,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Excuse me. I need help.<br><strong>B:</strong> What is the problem?<br><strong>A:</strong> I lost my bag.<br><strong>B:</strong> Where did you see it last?<br><strong>A:</strong> At the airport.<br><strong>B:</strong> Please go to the information desk.",
         translationHtml: "<strong>A:</strong> Przepraszam. Potrzebuję pomocy.<br><strong>B:</strong> Jaki jest problem?<br><strong>A:</strong> Zgubiłem/Zgubiłam torbę.<br><strong>B:</strong> Gdzie widział/widziała ją pan/pani ostatnio?<br><strong>A:</strong> Na lotnisku.<br><strong>B:</strong> Proszę iść do punktu informacyjnego.",
-        english: "Excuse me. I need help. What is the problem? I lost my bag. Where did you see it last? At the airport. Please go to the information desk.",
-        polish: "Przepraszam. Potrzebuję pomocy. Jaki jest problem? Zgubiłem/Zgubiłam torbę. Gdzie widział/widziała ją pan/pani ostatnio? Na lotnisku. Proszę iść do punktu informacyjnego."
+        english: "Excuse me. I need help. What is the problem? I lost my bag. Where did you see it last? At the airport. Please go to the information desk."
       },
 
       M7L1: {
@@ -1247,8 +1136,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. This is my first day.<br><strong>B:</strong> Good morning. Welcome to the team.<br><strong>A:</strong> Thank you. I am new here.<br><strong>B:</strong> No problem. I will show you your desk.<br><strong>A:</strong> Great. I am ready to start.<br><strong>B:</strong> Perfect. We have a short meeting at nine.",
         translationHtml: "<strong>A:</strong> Dzień dobry. To mój pierwszy dzień.<br><strong>B:</strong> Dzień dobry. Witamy w zespole.<br><strong>A:</strong> Dziękuję. Jestem tu nowy/nowa.<br><strong>B:</strong> Nie ma problemu. Pokażę ci twoje biurko.<br><strong>A:</strong> Świetnie. Jestem gotowy/gotowa zacząć.<br><strong>B:</strong> Doskonale. Mamy krótkie spotkanie o dziewiątej.",
-        english: "Good morning. This is my first day. Good morning. Welcome to the team. Thank you. I am new here. No problem. I will show you your desk. Great. I am ready to start. Perfect. We have a short meeting at nine.",
-        polish: "Dzień dobry. To mój pierwszy dzień. Dzień dobry. Witamy w zespole. Dziękuję. Jestem tu nowy/nowa. Nie ma problemu. Pokażę ci twoje biurko. Świetnie. Jestem gotowy/gotowa zacząć. Doskonale. Mamy krótkie spotkanie o dziewiątej."
+        english: "Good morning. This is my first day. Good morning. Welcome to the team. Thank you. I am new here. No problem. I will show you your desk. Great. I am ready to start. Perfect. We have a short meeting at nine."
       },
 
       M7L2: {
@@ -1267,8 +1155,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. Can I ask a question?<br><strong>B:</strong> Of course. What do you need?<br><strong>A:</strong> What is the deadline for this project?<br><strong>B:</strong> The deadline is Friday.<br><strong>A:</strong> Thank you. I will prepare the report.<br><strong>B:</strong> Great. This is your priority today.",
         translationHtml: "<strong>A:</strong> Dzień dobry. Czy mogę zadać pytanie?<br><strong>B:</strong> Oczywiście. Czego potrzebujesz?<br><strong>A:</strong> Jaki jest termin tego projektu?<br><strong>B:</strong> Termin jest w piątek.<br><strong>A:</strong> Dziękuję. Przygotuję raport.<br><strong>B:</strong> Świetnie. To jest twój priorytet na dziś.",
-        english: "Good morning. Can I ask a question? Of course. What do you need? What is the deadline for this project? The deadline is Friday. Thank you. I will prepare the report. Great. This is your priority today.",
-        polish: "Dzień dobry. Czy mogę zadać pytanie? Oczywiście. Czego potrzebujesz? Jaki jest termin tego projektu? Termin jest w piątek. Dziękuję. Przygotuję raport. Świetnie. To jest twój priorytet na dziś."
+        english: "Good morning. Can I ask a question? Of course. What do you need? What is the deadline for this project? The deadline is Friday. Thank you. I will prepare the report. Great. This is your priority today."
       },
 
       M7L3: {
@@ -1287,8 +1174,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Hello. Did you send the email?<br><strong>B:</strong> Not yet. I will send it today.<br><strong>A:</strong> Please attach the document.<br><strong>B:</strong> Of course. I will attach the file.<br><strong>A:</strong> Can you reply before tomorrow?<br><strong>B:</strong> Yes, no problem.",
         translationHtml: "<strong>A:</strong> Cześć. Czy wysłałeś/wysłałaś e-mail?<br><strong>B:</strong> Jeszcze nie. Wyślę go dzisiaj.<br><strong>A:</strong> Proszę załącz dokument.<br><strong>B:</strong> Oczywiście. Załączę plik.<br><strong>A:</strong> Czy możesz odpowiedzieć przed jutrem?<br><strong>B:</strong> Tak, nie ma problemu.",
-        english: "Hello. Did you send the email? Not yet. I will send it today. Please attach the document. Of course. I will attach the file. Can you reply before tomorrow? Yes, no problem.",
-        polish: "Cześć. Czy wysłałeś/wysłałaś e-mail? Jeszcze nie. Wyślę go dzisiaj. Proszę załącz dokument. Oczywiście. Załączę plik. Czy możesz odpowiedzieć przed jutrem? Tak, nie ma problemu."
+        english: "Hello. Did you send the email? Not yet. I will send it today. Please attach the document. Of course. I will attach the file. Can you reply before tomorrow? Yes, no problem."
       },
 
       M7L4: {
@@ -1307,8 +1193,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. The meeting starts now.<br><strong>B:</strong> Good morning. What is the main topic?<br><strong>A:</strong> Today we talk about the new project.<br><strong>B:</strong> I have an idea.<br><strong>A:</strong> Great. Please tell us.<br><strong>B:</strong> Let’s write it in the notes.",
         translationHtml: "<strong>A:</strong> Dzień dobry. Spotkanie zaczyna się teraz.<br><strong>B:</strong> Dzień dobry. Jaki jest główny temat?<br><strong>A:</strong> Dzisiaj rozmawiamy o nowym projekcie.<br><strong>B:</strong> Mam pomysł.<br><strong>A:</strong> Świetnie. Proszę, powiedz nam.<br><strong>B:</strong> Zapiszmy to w notatkach.",
-        english: "Good morning. The meeting starts now. Good morning. What is the main topic? Today we talk about the new project. I have an idea. Great. Please tell us. Let’s write it in the notes.",
-        polish: "Dzień dobry. Spotkanie zaczyna się teraz. Dzień dobry. Jaki jest główny temat? Dzisiaj rozmawiamy o nowym projekcie. Mam pomysł. Świetnie. Proszę, powiedz nam. Zapiszmy to w notatkach."
+        english: "Good morning. The meeting starts now. Good morning. What is the main topic? Today we talk about the new project. I have an idea. Great. Please tell us. Let’s write it in the notes."
       },
 
       M7L5: {
@@ -1327,8 +1212,7 @@
         ],
         dialogueHtml: "<strong>A:</strong> Excuse me. Can you help me?<br><strong>B:</strong> Of course. What is the problem?<br><strong>A:</strong> I cannot open the document.<br><strong>B:</strong> Did you check your password?<br><strong>A:</strong> I forgot my password.<br><strong>B:</strong> No problem. I will help you reset it.",
         translationHtml: "<strong>A:</strong> Przepraszam. Czy możesz mi pomóc?<br><strong>B:</strong> Oczywiście. Jaki jest problem?<br><strong>A:</strong> Nie mogę otworzyć dokumentu.<br><strong>B:</strong> Czy sprawdziłeś/sprawdziłaś hasło?<br><strong>A:</strong> Zapomniałem/Zapomniałam hasła.<br><strong>B:</strong> Nie ma problemu. Pomogę ci je zresetować.",
-        english: "Excuse me. Can you help me? Of course. What is the problem? I cannot open the document. Did you check your password? I forgot my password. No problem. I will help you reset it.",
-        polish: "Przepraszam. Czy możesz mi pomóc? Oczywiście. Jaki jest problem? Nie mogę otworzyć dokumentu. Czy sprawdziłeś/sprawdziłaś hasło? Zapomniałem/Zapomniałam hasła. Nie ma problemu. Pomogę ci je zresetować."
+        english: "Excuse me. Can you help me? Of course. What is the problem? I cannot open the document. Did you check your password? I forgot my password. No problem. I will help you reset it."
       },
 
       M7L6: {
@@ -1347,47 +1231,18 @@
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. What time do I start today?<br><strong>B:</strong> You start at eight o’clock.<br><strong>A:</strong> When is my break?<br><strong>B:</strong> Your break is at twelve.<br><strong>A:</strong> Do I work tomorrow?<br><strong>B:</strong> No, you have a day off tomorrow.",
         translationHtml: "<strong>A:</strong> Dzień dobry. O której zaczynam dzisiaj?<br><strong>B:</strong> Zaczynasz o ósmej.<br><strong>A:</strong> Kiedy mam przerwę?<br><strong>B:</strong> Twoja przerwa jest o dwunastej.<br><strong>A:</strong> Czy pracuję jutro?<br><strong>B:</strong> Nie, jutro masz dzień wolny.",
-        english: "Good morning. What time do I start today? You start at eight o’clock. When is my break? Your break is at twelve. Do I work tomorrow? No, you have a day off tomorrow.",
-        polish: "Dzień dobry. O której zaczynam dzisiaj? Zaczynasz o ósmej. Kiedy mam przerwę? Twoja przerwa jest o dwunastej. Czy pracuję jutro? Nie, jutro masz dzień wolny."
+        english: "Good morning. What time do I start today? You start at eight o’clock. When is my break? Your break is at twelve. Do I work tomorrow? No, you have a day off tomorrow."
       }
     };
 
     const modules = [
-      {
-        code: "M1",
-        title: "Moduł 1: Podstawy",
-        subtitle: "Pierwszy etap kursu. Zacznij od lekcji 1 i przechodź dalej po kolei."
-      },
-      {
-        code: "M2",
-        title: "Moduł 2: Życie codzienne",
-        subtitle: "Drugi etap kursu. Ćwicz codzienne słownictwo, dialogi i powtórki."
-      },
-      {
-        code: "M3",
-        title: "Moduł 3: Komunikacja praktyczna",
-        subtitle: "Trzeci etap kursu. Rozwijaj rozumienie pytań, odpowiedzi i prostych rozmów."
-      },
-      {
-        code: "M4",
-        title: "Moduł 4: Sytuacje praktyczne",
-        subtitle: "Czwarty etap kursu. Utrwalaj dialogi i reakcje w różnych sytuacjach."
-      },
-      {
-        code: "M5",
-        title: "Moduł 5: Utrwalenie i powtórka",
-        subtitle: "Piąty etap kursu. Powtarzaj, utrwalaj i sprawdzaj swoje reakcje."
-      },
-      {
-        code: "M6",
-        title: "Moduł 6: Angielski w podróży",
-        subtitle: "Praktyczny angielski w podróży: lotnisko, hotel, restauracja, droga, sklep i problemy."
-      },
-      {
-        code: "M7",
-        title: "Moduł 7: Angielski w pracy",
-        subtitle: "Praktyczny angielski do pracy, biura, zespołu i prostych rozmów służbowych."
-      }
+      { code:"M1", title:"Moduł 1: Podstawy", subtitle:"Pierwszy etap kursu. Zacznij od lekcji 1 i przechodź dalej po kolei." },
+      { code:"M2", title:"Moduł 2: Życie codzienne", subtitle:"Drugi etap kursu. Ćwicz codzienne słownictwo, dialogi i powtórki." },
+      { code:"M3", title:"Moduł 3: Komunikacja praktyczna", subtitle:"Trzeci etap kursu. Rozwijaj rozumienie pytań, odpowiedzi i prostych rozmów." },
+      { code:"M4", title:"Moduł 4: Sytuacje praktyczne", subtitle:"Czwarty etap kursu. Utrwalaj dialogi i reakcje w różnych sytuacjach." },
+      { code:"M5", title:"Moduł 5: Utrwalenie i powtórka", subtitle:"Piąty etap kursu. Powtarzaj, utrwalaj i sprawdzaj swoje reakcje." },
+      { code:"M6", title:"Moduł 6: Angielski w podróży", subtitle:"Praktyczny angielski w podróży: lotnisko, hotel, restauracja, droga, sklep i problemy." },
+      { code:"M7", title:"Moduł 7: Angielski w pracy", subtitle:"Praktyczny angielski do pracy, biura, zespołu i prostych rozmów służbowych." }
     ];
 
     function unlockCourse() {
@@ -1533,10 +1388,6 @@
             <div>
               <h4>English text</h4>
               <p>${escapeHtml(task.english)}</p>
-            </div>
-            <div>
-              <h4>Tłumaczenie na polski</h4>
-              <p>${escapeHtml(task.polish)}</p>
             </div>
           </div>
 
