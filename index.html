@@ -687,7 +687,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>6 modułów, 34 lekcje, audio, czytanki i sprawdzanie pisania.</p>
+            <p>6 modułów, 35 lekcji, audio, czytanki i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -695,9 +695,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>6</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>34</strong><span>lekcje krok po kroku</span></div>
-      <div class="stat"><strong>159+</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>9</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>35</strong><span>lekcji krok po kroku</span></div>
+      <div class="stat"><strong>162+</strong><span>pliki audio lekcji</span></div>
+      <div class="stat"><strong>10</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -803,6 +803,12 @@
         english: "Excuse me. Where is the train station? Go straight and turn left. Is it far? No, it is about five minutes from here. Thank you. You are welcome.",
         polish: "Przepraszam. Gdzie jest stacja kolejowa? Proszę iść prosto i skręcić w lewo. Czy to daleko? Nie, to około pięć minut stąd. Dziękuję. Nie ma za co.",
         audio: "audio/M6L4_Dialogue.mp3"
+      },
+      M6L5: {
+        title: "Ćwiczenie pisania — dialog w sklepie",
+        english: "Hello. How much is this T-shirt? It is fifteen pounds. Do you have a smaller size? Yes, we do. Here you are. Great. Can I pay by card? Yes, of course.",
+        polish: "Dzień dobry. Ile kosztuje ta koszulka? Kosztuje piętnaście funtów. Czy macie mniejszy rozmiar? Tak, mamy. Proszę bardzo. Świetnie. Czy mogę zapłacić kartą? Tak, oczywiście.",
+        audio: "audio/M6L5_Dialogue.mp3"
       }
     };
 
@@ -1180,7 +1186,7 @@
 
     function module6Lesson4() {
       return `
-        <details class="lesson" open>
+        <details class="lesson">
           <summary>
             <div class="lesson-title">
               <strong>Lekcja 4: Pytanie o drogę</strong>
@@ -1247,6 +1253,75 @@
       `;
     }
 
+    function module6Lesson5() {
+      return `
+        <details class="lesson" open>
+          <summary>
+            <div class="lesson-title">
+              <strong>Lekcja 5: W sklepie</strong>
+              <span>M6L5 · cena, płatność, rozmiar, karta i ćwiczenie pisania.</span>
+            </div>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="lesson-content">
+            <h4>Słownictwo</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>shop</td><td>sklep</td></tr>
+              <tr><td>price</td><td>cena</td></tr>
+              <tr><td>money</td><td>pieniądze</td></tr>
+              <tr><td>card</td><td>karta</td></tr>
+              <tr><td>cash</td><td>gotówka</td></tr>
+              <tr><td>bag</td><td>torba</td></tr>
+              <tr><td>receipt</td><td>paragon</td></tr>
+              <tr><td>cheap</td><td>tani</td></tr>
+              <tr><td>expensive</td><td>drogi</td></tr>
+              <tr><td>size</td><td>rozmiar</td></tr>
+            </table>
+
+            <h4>Zwroty</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>How much is it?</td><td>Ile to kosztuje?</td></tr>
+              <tr><td>Can I pay by card?</td><td>Czy mogę zapłacić kartą?</td></tr>
+              <tr><td>It is too expensive.</td><td>To jest za drogie.</td></tr>
+              <tr><td>Do you have a smaller size?</td><td>Czy macie mniejszy rozmiar?</td></tr>
+              <tr><td>I would like this one.</td><td>Chciałbym/chciałabym ten.</td></tr>
+            </table>
+
+            <h4>Dialog</h4>
+            <p>
+              <strong>A:</strong> Hello. How much is this T-shirt?<br>
+              <strong>B:</strong> It is fifteen pounds.<br>
+              <strong>A:</strong> Do you have a smaller size?<br>
+              <strong>B:</strong> Yes, we do. Here you are.<br>
+              <strong>A:</strong> Great. Can I pay by card?<br>
+              <strong>B:</strong> Yes, of course.
+            </p>
+
+            <h4>Tłumaczenie dialogu</h4>
+            <p>
+              <strong>A:</strong> Dzień dobry. Ile kosztuje ta koszulka?<br>
+              <strong>B:</strong> Kosztuje piętnaście funtów.<br>
+              <strong>A:</strong> Czy macie mniejszy rozmiar?<br>
+              <strong>B:</strong> Tak, mamy. Proszę bardzo.<br>
+              <strong>A:</strong> Świetnie. Czy mogę zapłacić kartą?<br>
+              <strong>B:</strong> Tak, oczywiście.
+            </p>
+          </div>
+
+          <div class="audio-list">
+            ${audioCard("Słownictwo", "M6L5", "audio/M6L5_Vocabulary.mp3")}
+            ${audioCard("Zwroty", "M6L5", "audio/M6L5_Phrases.mp3")}
+            ${audioCard("Dialog", "M6L5", "audio/M6L5_Dialogue.mp3")}
+          </div>
+
+          ${readingCard("M6L5")}
+        </details>
+      `;
+    }
+
     function module6Content() {
       return `
         <div class="reading-card">
@@ -1261,6 +1336,7 @@
           ${module6Lesson2()}
           ${module6Lesson3()}
           ${module6Lesson4()}
+          ${module6Lesson5()}
         </div>
       `;
     }
@@ -1389,7 +1465,7 @@
     }
 
     window.addEventListener("load", function() {
-      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2", "M6L3", "M6L4"].forEach(function(moduleId) {
+      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2", "M6L3", "M6L4", "M6L5"].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
 
