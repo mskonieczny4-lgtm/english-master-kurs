@@ -688,7 +688,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>7 modułów, 37 lekcji, audio, dialogi i sprawdzanie pisania.</p>
+            <p>7 modułów, 38 lekcji, audio, dialogi i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -696,9 +696,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>7</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>37</strong><span>lekcji krok po kroku</span></div>
-      <div class="stat"><strong>168+</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>12</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>38</strong><span>lekcji krok po kroku</span></div>
+      <div class="stat"><strong>171+</strong><span>plików audio lekcji</span></div>
+      <div class="stat"><strong>13</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -988,6 +988,36 @@
         translationHtml: "<strong>A:</strong> Dzień dobry. To mój pierwszy dzień.<br><strong>B:</strong> Dzień dobry. Witamy w zespole.<br><strong>A:</strong> Dziękuję. Jestem tu nowy/nowa.<br><strong>B:</strong> Nie ma problemu. Pokażę ci twoje biurko.<br><strong>A:</strong> Świetnie. Jestem gotowy/gotowa zacząć.<br><strong>B:</strong> Doskonale. Mamy krótkie spotkanie o dziewiątej.",
         english: "Good morning. This is my first day. Good morning. Welcome to the team. Thank you. I am new here. No problem. I will show you your desk. Great. I am ready to start. Perfect. We have a short meeting at nine.",
         polish: "Dzień dobry. To mój pierwszy dzień. Dzień dobry. Witamy w zespole. Dziękuję. Jestem tu nowy/nowa. Nie ma problemu. Pokażę ci twoje biurko. Świetnie. Jestem gotowy/gotowa zacząć. Doskonale. Mamy krótkie spotkanie o dziewiątej."
+      },
+      M7L2: {
+        module: "M7",
+        title: "Lekcja 2: Rozmowa z przełożonym",
+        subtitle: "szef, projekt, termin, raport, plan, priorytet i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — rozmowa z przełożonym",
+        audioBase: "M7L2",
+        vocabulary: [
+          ["boss", "szef"],
+          ["manager", "kierownik / menedżer"],
+          ["question", "pytanie"],
+          ["answer", "odpowiedź"],
+          ["project", "projekt"],
+          ["deadline", "termin"],
+          ["report", "raport"],
+          ["plan", "plan"],
+          ["feedback", "opinia / informacja zwrotna"],
+          ["priority", "priorytet"]
+        ],
+        phrases: [
+          ["Can I ask a question?", "Czy mogę zadać pytanie?"],
+          ["What is the deadline?", "Jaki jest termin?"],
+          ["I will prepare the report.", "Przygotuję raport."],
+          ["This is my priority.", "To jest mój priorytet."],
+          ["Thank you for your feedback.", "Dziękuję za informację zwrotną."]
+        ],
+        dialogueHtml: "<strong>A:</strong> Good morning. Can I ask a question?<br><strong>B:</strong> Of course. What do you need?<br><strong>A:</strong> What is the deadline for this project?<br><strong>B:</strong> The deadline is Friday.<br><strong>A:</strong> Thank you. I will prepare the report.<br><strong>B:</strong> Great. This is your priority today.",
+        translationHtml: "<strong>A:</strong> Dzień dobry. Czy mogę zadać pytanie?<br><strong>B:</strong> Oczywiście. Czego potrzebujesz?<br><strong>A:</strong> Jaki jest termin tego projektu?<br><strong>B:</strong> Termin jest w piątek.<br><strong>A:</strong> Dziękuję. Przygotuję raport.<br><strong>B:</strong> Świetnie. To jest twój priorytet na dziś.",
+        english: "Good morning. Can I ask a question? Of course. What do you need? What is the deadline for this project? The deadline is Friday. Thank you. I will prepare the report. Great. This is your priority today.",
+        polish: "Dzień dobry. Czy mogę zadać pytanie? Oczywiście. Czego potrzebujesz? Jaki jest termin tego projektu? Termin jest w piątek. Dziękuję. Przygotuję raport. Świetnie. To jest twój priorytet na dziś."
       }
     };
 
@@ -1270,7 +1300,8 @@
         </div>
 
         <div class="lessons">
-          ${customLessonCard("M7L1", true)}
+          ${customLessonCard("M7L1", false)}
+          ${customLessonCard("M7L2", true)}
         </div>
       `;
     }
@@ -1404,7 +1435,7 @@
       [
         "M1", "M2", "M3", "M4", "M5",
         "M6L1", "M6L2", "M6L3", "M6L4", "M6L5", "M6L6",
-        "M7L1"
+        "M7L1", "M7L2"
       ].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
