@@ -688,7 +688,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>7 modułów, 41 lekcji, audio, dialogi i sprawdzanie pisania.</p>
+            <p>7 modułów, 42 lekcje, audio, dialogi i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -696,9 +696,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>7</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>41</strong><span>lekcji krok po kroku</span></div>
-      <div class="stat"><strong>180+</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>16</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>42</strong><span>lekcje krok po kroku</span></div>
+      <div class="stat"><strong>183+</strong><span>pliki audio lekcji</span></div>
+      <div class="stat"><strong>17</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -982,28 +982,48 @@
         writingTitle: "Ćwiczenie pisania — prośba o pomoc",
         audioBase: "M7L5",
         vocabulary: [
-          ["help", "pomoc"],
-          ["problem", "problem"],
-          ["task", "zadanie"],
-          ["computer", "komputer"],
-          ["password", "hasło"],
-          ["document", "dokument"],
-          ["mistake", "błąd"],
-          ["question", "pytanie"],
-          ["solution", "rozwiązanie"],
-          ["support", "wsparcie"]
+          ["help", "pomoc"], ["problem", "problem"], ["task", "zadanie"], ["computer", "komputer"], ["password", "hasło"],
+          ["document", "dokument"], ["mistake", "błąd"], ["question", "pytanie"], ["solution", "rozwiązanie"], ["support", "wsparcie"]
         ],
         phrases: [
-          ["Can you help me?", "Czy możesz mi pomóc?"],
-          ["I have a problem.", "Mam problem."],
-          ["I cannot open the document.", "Nie mogę otworzyć dokumentu."],
-          ["I forgot my password.", "Zapomniałem/Zapomniałam hasła."],
+          ["Can you help me?", "Czy możesz mi pomóc?"], ["I have a problem.", "Mam problem."],
+          ["I cannot open the document.", "Nie mogę otworzyć dokumentu."], ["I forgot my password.", "Zapomniałem/Zapomniałam hasła."],
           ["Thank you for your help.", "Dziękuję za pomoc."]
         ],
         dialogueHtml: "<strong>A:</strong> Excuse me. Can you help me?<br><strong>B:</strong> Of course. What is the problem?<br><strong>A:</strong> I cannot open the document.<br><strong>B:</strong> Did you check your password?<br><strong>A:</strong> I forgot my password.<br><strong>B:</strong> No problem. I will help you reset it.",
         translationHtml: "<strong>A:</strong> Przepraszam. Czy możesz mi pomóc?<br><strong>B:</strong> Oczywiście. Jaki jest problem?<br><strong>A:</strong> Nie mogę otworzyć dokumentu.<br><strong>B:</strong> Czy sprawdziłeś/sprawdziłaś hasło?<br><strong>A:</strong> Zapomniałem/Zapomniałam hasła.<br><strong>B:</strong> Nie ma problemu. Pomogę ci je zresetować.",
         english: "Excuse me. Can you help me? Of course. What is the problem? I cannot open the document. Did you check your password? I forgot my password. No problem. I will help you reset it.",
         polish: "Przepraszam. Czy możesz mi pomóc? Oczywiście. Jaki jest problem? Nie mogę otworzyć dokumentu. Czy sprawdziłeś/sprawdziłaś hasło? Zapomniałem/Zapomniałam hasła. Nie ma problemu. Pomogę ci je zresetować."
+      },
+
+      M7L6: {
+        title: "Lekcja 6: Grafik i godziny pracy",
+        subtitle: "grafik, zmiana, poranek, popołudnie, przerwa, dzień wolny i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — grafik i godziny pracy",
+        audioBase: "M7L6",
+        vocabulary: [
+          ["schedule", "grafik / plan"],
+          ["shift", "zmiana"],
+          ["morning", "poranek"],
+          ["afternoon", "popołudnie"],
+          ["evening", "wieczór"],
+          ["hour", "godzina"],
+          ["break", "przerwa"],
+          ["day off", "dzień wolny"],
+          ["overtime", "nadgodziny"],
+          ["calendar", "kalendarz"]
+        ],
+        phrases: [
+          ["What time do I start?", "O której zaczynam?"],
+          ["I work the morning shift.", "Pracuję na porannej zmianie."],
+          ["When is my break?", "Kiedy mam przerwę?"],
+          ["I have a day off tomorrow.", "Jutro mam dzień wolny."],
+          ["Can I check the schedule?", "Czy mogę sprawdzić grafik?"]
+        ],
+        dialogueHtml: "<strong>A:</strong> Good morning. What time do I start today?<br><strong>B:</strong> You start at eight o’clock.<br><strong>A:</strong> When is my break?<br><strong>B:</strong> Your break is at twelve.<br><strong>A:</strong> Do I work tomorrow?<br><strong>B:</strong> No, you have a day off tomorrow.",
+        translationHtml: "<strong>A:</strong> Dzień dobry. O której zaczynam dzisiaj?<br><strong>B:</strong> Zaczynasz o ósmej.<br><strong>A:</strong> Kiedy mam przerwę?<br><strong>B:</strong> Twoja przerwa jest o dwunastej.<br><strong>A:</strong> Czy pracuję jutro?<br><strong>B:</strong> Nie, jutro masz dzień wolny.",
+        english: "Good morning. What time do I start today? You start at eight o’clock. When is my break? Your break is at twelve. Do I work tomorrow? No, you have a day off tomorrow.",
+        polish: "Dzień dobry. O której zaczynam dzisiaj? Zaczynasz o ósmej. Kiedy mam przerwę? Twoja przerwa jest o dwunastej. Czy pracuję jutro? Nie, jutro masz dzień wolny."
       }
     };
 
@@ -1290,7 +1310,8 @@
           ${customLessonCard("M7L2", false)}
           ${customLessonCard("M7L3", false)}
           ${customLessonCard("M7L4", false)}
-          ${customLessonCard("M7L5", true)}
+          ${customLessonCard("M7L5", false)}
+          ${customLessonCard("M7L6", true)}
         </div>
       `;
     }
@@ -1424,7 +1445,7 @@
       [
         "M1", "M2", "M3", "M4", "M5",
         "M6L1", "M6L2", "M6L3", "M6L4", "M6L5", "M6L6",
-        "M7L1", "M7L2", "M7L3", "M7L4", "M7L5"
+        "M7L1", "M7L2", "M7L3", "M7L4", "M7L5", "M7L6"
       ].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
