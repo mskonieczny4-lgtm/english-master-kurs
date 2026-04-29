@@ -325,7 +325,7 @@
       align-items:flex-start;
       gap:16px;
       flex-wrap:wrap;
-      margin-bottom:18px;
+      margin-bottom:8px;
     }
 
     .course-top h2 {
@@ -341,202 +341,156 @@
       max-width:760px;
     }
 
-    .lexi-wrap {
-      margin:0 0 22px;
+    .lexi-free {
       display:flex;
       align-items:center;
-      gap:18px;
-      padding:18px 20px;
-      border:1px solid rgba(143,211,255,.28);
-      border-radius:26px;
-      background:
-        radial-gradient(circle at 12% 20%, rgba(143,211,255,.20), transparent 28%),
-        linear-gradient(135deg, rgba(255,255,255,.105), rgba(255,255,255,.045));
-      box-shadow:0 24px 70px rgba(0,0,0,.22);
-      overflow:hidden;
+      gap:14px;
+      margin:8px 0 24px;
+      max-width:860px;
       position:relative;
     }
 
-    .lexi-wrap:before {
-      content:"";
-      position:absolute;
-      width:220px;
-      height:220px;
-      right:-90px;
-      top:-90px;
-      background:radial-gradient(circle, rgba(77,163,255,.22), transparent 65%);
-      pointer-events:none;
-    }
-
-    .lexi-character {
-      width:112px;
-      height:138px;
+    .lexi-free-character {
+      width:86px;
+      height:104px;
       position:relative;
-      flex:0 0 112px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      flex:0 0 86px;
+      filter:drop-shadow(0 14px 28px rgba(77,163,255,.18));
     }
 
-    .lexi-glow {
+    .lexi-free-orbit {
       position:absolute;
-      width:112px;
-      height:112px;
+      inset:8px 0 auto 0;
+      width:76px;
+      height:76px;
+      margin:auto;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(143,211,255,.35), rgba(77,163,255,.10), transparent 70%);
-      filter:blur(1px);
-      top:4px;
-    }
-
-    .lexi-head {
-      position:absolute;
-      top:18px;
-      width:78px;
-      height:70px;
-      border-radius:28px;
       background:
-        radial-gradient(circle at 34% 25%, rgba(255,255,255,.9), transparent 12%),
-        linear-gradient(135deg, rgba(143,211,255,.92), rgba(77,163,255,.36));
-      border:1px solid rgba(255,255,255,.52);
+        radial-gradient(circle at 35% 26%, rgba(255,255,255,.95), transparent 10%),
+        radial-gradient(circle, rgba(143,211,255,.62), rgba(77,163,255,.22) 58%, transparent 72%);
       box-shadow:
-        0 0 34px rgba(77,163,255,.40),
-        inset 0 0 22px rgba(255,255,255,.16);
-      z-index:2;
+        0 0 36px rgba(77,163,255,.36),
+        inset 0 0 24px rgba(255,255,255,.13);
+      border:1px solid rgba(255,255,255,.38);
     }
 
-    .lexi-head:before,
-    .lexi-head:after {
-      content:"";
-      position:absolute;
-      top:31px;
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:#06101f;
-      box-shadow:0 0 12px rgba(255,255,255,.55);
-    }
-
-    .lexi-head:before { left:22px; }
-    .lexi-head:after { right:22px; }
-
-    .lexi-smile {
+    .lexi-free-face {
       position:absolute;
       left:50%;
-      bottom:17px;
-      width:24px;
-      height:10px;
-      border-bottom:3px solid rgba(6,16,31,.86);
-      border-radius:0 0 20px 20px;
-      transform:translateX(-50%);
-    }
-
-    .lexi-antenna {
-      position:absolute;
-      top:2px;
-      left:50%;
-      width:2px;
+      top:35px;
+      width:44px;
       height:20px;
-      background:rgba(143,211,255,.8);
       transform:translateX(-50%);
-      z-index:1;
+      border-radius:999px;
+      background:rgba(5,8,20,.56);
+      border:1px solid rgba(143,211,255,.28);
     }
 
-    .lexi-antenna:before {
+    .lexi-free-face:before,
+    .lexi-free-face:after {
       content:"";
       position:absolute;
-      top:-8px;
-      left:50%;
-      width:12px;
-      height:12px;
+      top:7px;
+      width:6px;
+      height:6px;
       border-radius:50%;
-      background:var(--gold);
-      box-shadow:0 0 18px rgba(247,200,115,.65);
-      transform:translateX(-50%);
+      background:var(--blue2);
+      box-shadow:0 0 10px rgba(143,211,255,.72);
     }
 
-    .lexi-body {
+    .lexi-free-face:before { left:12px; }
+    .lexi-free-face:after { right:12px; }
+
+    .lexi-free-core {
       position:absolute;
-      top:82px;
-      width:64px;
-      height:48px;
-      border-radius:20px 20px 26px 26px;
-      background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(77,163,255,.18));
-      border:1px solid rgba(255,255,255,.26);
-      box-shadow:0 18px 38px rgba(0,0,0,.18);
+      left:50%;
+      bottom:8px;
+      width:48px;
+      height:38px;
+      transform:translateX(-50%);
+      border-radius:18px 18px 24px 24px;
+      background:linear-gradient(135deg, rgba(143,211,255,.28), rgba(255,255,255,.07));
+      border:1px solid rgba(255,255,255,.22);
+      box-shadow:inset 0 0 20px rgba(143,211,255,.08);
     }
 
-    .lexi-body:before {
+    .lexi-free-core:before {
       content:"AI";
       position:absolute;
       left:50%;
       top:50%;
       transform:translate(-50%,-50%);
-      color:var(--blue2);
+      color:#dff4ff;
+      font-size:12px;
       font-weight:900;
-      font-size:15px;
       letter-spacing:1px;
     }
 
-    .lexi-arm {
+    .lexi-free-antenna {
       position:absolute;
-      top:90px;
-      width:28px;
-      height:9px;
-      border-radius:999px;
-      background:rgba(143,211,255,.42);
-      border:1px solid rgba(255,255,255,.22);
+      left:50%;
+      top:0;
+      width:2px;
+      height:16px;
+      transform:translateX(-50%);
+      background:rgba(143,211,255,.72);
     }
 
-    .lexi-arm.left {
-      left:12px;
-      transform:rotate(22deg);
-    }
-
-    .lexi-arm.right {
-      right:12px;
-      transform:rotate(-22deg);
-    }
-
-    .lexi-shadow {
+    .lexi-free-antenna:before {
+      content:"";
       position:absolute;
-      bottom:0;
-      width:82px;
-      height:14px;
+      left:50%;
+      top:-6px;
+      width:10px;
+      height:10px;
       border-radius:50%;
-      background:rgba(0,0,0,.26);
+      transform:translateX(-50%);
+      background:var(--gold);
+      box-shadow:0 0 14px rgba(247,200,115,.7);
+    }
+
+    .lexi-free-shadow {
+      position:absolute;
+      left:50%;
+      bottom:0;
+      width:58px;
+      height:10px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:rgba(0,0,0,.28);
       filter:blur(4px);
     }
 
-    .lexi-content {
-      position:relative;
-      z-index:1;
+    .lexi-free-text {
+      padding:0;
     }
 
-    .lexi-content strong {
-      display:block;
-      color:#ffffff;
-      font-size:24px;
-      letter-spacing:-.4px;
-      margin-bottom:6px;
-    }
-
-    .lexi-content span {
+    .lexi-free-text span {
       display:inline-flex;
-      margin-bottom:10px;
-      padding:5px 9px;
+      padding:4px 9px;
       border-radius:999px;
       background:rgba(143,211,255,.10);
-      border:1px solid rgba(143,211,255,.24);
+      border:1px solid rgba(143,211,255,.20);
       color:var(--blue2);
-      font-size:13px;
+      font-size:12px;
       font-weight:900;
+      margin-bottom:7px;
     }
 
-    .lexi-content p {
+    .lexi-free-text strong {
+      display:block;
+      font-size:22px;
+      color:#ffffff;
+      letter-spacing:-.3px;
+      margin-bottom:5px;
+    }
+
+    .lexi-free-text p {
       margin:0;
       color:var(--muted);
-      line-height:1.65;
-      max-width:840px;
+      line-height:1.6;
+      max-width:720px;
+      font-size:15px;
     }
 
     .mini-book {
@@ -962,10 +916,6 @@
         grid-template-columns:1fr;
       }
 
-      .lexi-wrap {
-        align-items:flex-start;
-      }
-
       .mini-book summary {
         align-items:flex-start;
       }
@@ -999,60 +949,46 @@
 
       .cover-text p { font-size:14px; }
 
-      .lexi-wrap {
-        padding:16px;
-        gap:12px;
+      .lexi-free {
+        gap:10px;
+        align-items:flex-start;
       }
 
-      .lexi-character {
-        width:88px;
-        height:116px;
-        flex-basis:88px;
+      .lexi-free-character {
+        width:72px;
+        height:90px;
+        flex-basis:72px;
       }
 
-      .lexi-glow {
-        width:88px;
-        height:88px;
+      .lexi-free-orbit {
+        width:64px;
+        height:64px;
       }
 
-      .lexi-head {
-        width:62px;
-        height:58px;
-        top:18px;
-        border-radius:23px;
+      .lexi-free-face {
+        top:31px;
+        width:37px;
+        height:17px;
       }
 
-      .lexi-head:before,
-      .lexi-head:after {
-        top:26px;
-        width:8px;
-        height:8px;
+      .lexi-free-face:before,
+      .lexi-free-face:after {
+        top:6px;
+        width:5px;
+        height:5px;
       }
 
-      .lexi-head:before { left:17px; }
-      .lexi-head:after { right:17px; }
-
-      .lexi-smile {
-        bottom:13px;
-        width:20px;
+      .lexi-free-core {
+        width:42px;
+        height:33px;
+        bottom:7px;
       }
 
-      .lexi-body {
-        top:74px;
-        width:52px;
-        height:40px;
+      .lexi-free-text strong {
+        font-size:19px;
       }
 
-      .lexi-arm {
-        top:82px;
-        width:22px;
-      }
-
-      .lexi-content strong {
-        font-size:20px;
-      }
-
-      .lexi-content p {
+      .lexi-free-text p {
         font-size:14px;
       }
 
@@ -1137,21 +1073,19 @@
         <button class="btn secondary" type="button" onclick="lockCourse()">🔒 Zablokuj kurs</button>
       </div>
 
-      <section class="lexi-wrap" aria-label="Lexi AI pomocnik kursu">
-        <div class="lexi-character" aria-hidden="true">
-          <div class="lexi-glow"></div>
-          <div class="lexi-antenna"></div>
-          <div class="lexi-head"><div class="lexi-smile"></div></div>
-          <div class="lexi-arm left"></div>
-          <div class="lexi-arm right"></div>
-          <div class="lexi-body"></div>
-          <div class="lexi-shadow"></div>
+      <section class="lexi-free" aria-label="Lexi AI pomocnik kursu">
+        <div class="lexi-free-character" aria-hidden="true">
+          <div class="lexi-free-antenna"></div>
+          <div class="lexi-free-orbit"></div>
+          <div class="lexi-free-face"></div>
+          <div class="lexi-free-core"></div>
+          <div class="lexi-free-shadow"></div>
         </div>
 
-        <div class="lexi-content">
+        <div class="lexi-free-text">
           <span>Twój pomocnik w kursie</span>
           <strong>Lexi AI</strong>
-          <p>Zacznij spokojnie. Najpierw przeczytaj mini książkę, potem przechodź przez lekcje po kolei: słuchaj nagrań, czytaj dialogi, powtarzaj na głos i ćwicz pisanie. Nie musisz robić wszystkiego idealnie — najważniejsza jest regularność.</p>
+          <p>Zacznij od mini książki, potem przechodź przez lekcje po kolei: słuchaj, czytaj, powtarzaj na głos i ćwicz pisanie. Małe kroki dają najlepszy efekt.</p>
         </div>
       </section>
 
