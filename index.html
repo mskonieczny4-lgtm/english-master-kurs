@@ -451,6 +451,7 @@
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:14px;
+      margin-bottom:14px;
     }
 
     .reading-grid div {
@@ -822,38 +823,32 @@
       {
         code: "M1",
         title: "Moduł 1: Podstawy",
-        subtitle: "Pierwszy etap kursu. Zacznij od lekcji 1 i przechodź dalej po kolei.",
-        standardLessons: true
+        subtitle: "Pierwszy etap kursu. Zacznij od lekcji 1 i przechodź dalej po kolei."
       },
       {
         code: "M2",
         title: "Moduł 2: Życie codzienne",
-        subtitle: "Drugi etap kursu. Ćwicz codzienne słownictwo, dialogi i powtórki.",
-        standardLessons: true
+        subtitle: "Drugi etap kursu. Ćwicz codzienne słownictwo, dialogi i powtórki."
       },
       {
         code: "M3",
         title: "Moduł 3: Komunikacja praktyczna",
-        subtitle: "Trzeci etap kursu. Rozwijaj rozumienie pytań, odpowiedzi i prostych rozmów.",
-        standardLessons: true
+        subtitle: "Trzeci etap kursu. Rozwijaj rozumienie pytań, odpowiedzi i prostych rozmów."
       },
       {
         code: "M4",
         title: "Moduł 4: Sytuacje praktyczne",
-        subtitle: "Czwarty etap kursu. Utrwalaj dialogi i reakcje w różnych sytuacjach.",
-        standardLessons: true
+        subtitle: "Czwarty etap kursu. Utrwalaj dialogi i reakcje w różnych sytuacjach."
       },
       {
         code: "M5",
         title: "Moduł 5: Utrwalenie i powtórka",
-        subtitle: "Piąty etap kursu. Powtarzaj, utrwalaj i sprawdzaj swoje reakcje.",
-        standardLessons: true
+        subtitle: "Piąty etap kursu. Powtarzaj, utrwalaj i sprawdzaj swoje reakcje."
       },
       {
         code: "M6",
         title: "Moduł 6: Angielski w podróży",
-        subtitle: "Nowy moduł. Zawiera praktyczny angielski w podróży: lotnisko, hotel, restauracja, droga, sklep i problemy.",
-        standardLessons: false
+        subtitle: "Nowy moduł. Zawiera praktyczny angielski w podróży: lotnisko, hotel, restauracja, droga, sklep i problemy."
       }
     ];
 
@@ -943,17 +938,25 @@
 
       if (!task) return "";
 
+      const showAudio = moduleCode.startsWith("M6");
+
       return `
         <div class="reading-card">
           <h3>📘 ${task.title}</h3>
 
-          <div class="reading-audio">
-            <h4>🎧 Posłuchaj tekstu po angielsku</h4>
-            <audio controls preload="metadata">
-              <source src="${task.audio}" type="audio/mpeg">
-              Twoja przeglądarka nie obsługuje odtwarzacza audio.
-            </audio>
-          </div>
+          ${
+            showAudio
+              ? `
+                <div class="reading-audio">
+                  <h4>🎧 Posłuchaj tekstu po angielsku</h4>
+                  <audio controls preload="metadata">
+                    <source src="${task.audio}" type="audio/mpeg">
+                    Twoja przeglądarka nie obsługuje odtwarzacza audio.
+                  </audio>
+                </div>
+              `
+              : ""
+          }
 
           <div class="reading-grid">
             <div>
@@ -968,7 +971,7 @@
 
           <div class="writing-task" data-answer="${escapeHtml(task.english)}" data-module="${moduleCode}">
             <h4>✍️ Ćwiczenie pisania</h4>
-            <p>Posłuchaj nagrania, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
+            <p>Przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
 
             <textarea id="${moduleCode}_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
 
