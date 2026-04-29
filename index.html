@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Speak English Premium z AI</title>
-  <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio, dialogami, tłumaczeniami i ćwiczeniem pisania.">
+  <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio, dialogami, tłumaczeniami, mini książką i ćwiczeniem pisania.">
 
   <style>
     :root {
@@ -339,6 +339,127 @@
       max-width:760px;
     }
 
+    .mini-book {
+      margin: 0 0 22px;
+      border: 1px solid rgba(247, 200, 115, .32);
+      border-radius: 26px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(247, 200, 115, .16), transparent 30%),
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045));
+      box-shadow: 0 24px 70px rgba(0,0,0,.24);
+    }
+
+    .mini-book summary {
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      background:
+        linear-gradient(135deg, rgba(247,200,115,.14), rgba(77,163,255,.08));
+    }
+
+    .mini-book-cover {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .book-icon {
+      width: 58px;
+      height: 72px;
+      border-radius: 8px 16px 16px 8px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.22) 0 10px, transparent 10px),
+        linear-gradient(135deg, #ffe29a, #f7c873);
+      box-shadow:
+        inset -8px 0 18px rgba(0,0,0,.16),
+        0 14px 34px rgba(247,200,115,.16);
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .book-icon:before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      right: 12px;
+      top: 18px;
+      height: 2px;
+      background: rgba(5,8,20,.34);
+      box-shadow: 0 12px 0 rgba(5,8,20,.25), 0 24px 0 rgba(5,8,20,.18);
+    }
+
+    .mini-book-title strong {
+      display: block;
+      font-size: 24px;
+      color: var(--text);
+      letter-spacing: -.4px;
+    }
+
+    .mini-book-title span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .mini-book-content {
+      padding: 20px;
+    }
+
+    .book-chapter {
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 20px;
+      background: rgba(0,0,0,.18);
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .book-chapter h3 {
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-size: 20px;
+    }
+
+    .book-line {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .book-line:last-child {
+      border-bottom: 0;
+    }
+
+    .book-line strong {
+      display: block;
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .book-line span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    .book-tip {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 1px solid rgba(143,211,255,.22);
+      border-radius: 16px;
+      background: rgba(77,163,255,.08);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
     .module {
       border:1px solid var(--line);
       background:rgba(255,255,255,.07);
@@ -640,6 +761,14 @@
       .audio-list, .reading-grid {
         grid-template-columns:1fr;
       }
+
+      .mini-book summary {
+        align-items:flex-start;
+      }
+
+      .mini-book-cover {
+        align-items:flex-start;
+      }
     }
 
     @media (max-width:560px) {
@@ -662,6 +791,23 @@
       .reading-card { margin:10px; }
 
       .lesson-content { margin:10px; }
+
+      .mini-book summary {
+        padding:16px;
+      }
+
+      .mini-book-content {
+        padding:12px;
+      }
+
+      .book-icon {
+        width:48px;
+        height:62px;
+      }
+
+      .mini-book-title strong {
+        font-size:20px;
+      }
     }
   </style>
 </head>
@@ -671,9 +817,9 @@
     <header>
       <section class="hero">
         <div>
-          <div class="badge">🎧 Kurs online z audio, dialogami i ćwiczeniem pisania</div>
+          <div class="badge">🎧 Kurs online z audio, dialogami, mini książką i ćwiczeniem pisania</div>
           <h1>Speak English Premium z AI</h1>
-          <p>Praktyczny kurs angielskiego dla początkujących. Słuchasz nagrań, czytasz proste teksty po angielsku, sprawdzasz tłumaczenie i ćwiczysz pisanie.</p>
+          <p>Praktyczny kurs angielskiego dla początkujących. Słuchasz nagrań, czytasz prostą mini książkę, poznajesz dialogi i ćwiczysz pisanie.</p>
 
           <div class="actions">
             <a class="btn" href="#login">🔐 Mam hasło</a>
@@ -688,7 +834,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>7 modułów, 42 lekcje, audio, dialogi i sprawdzanie pisania.</p>
+            <p>7 modułów, 42 lekcje, mini książka, audio, dialogi i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -698,12 +844,12 @@
       <div class="stat"><strong>7</strong><span>modułów kursu</span></div>
       <div class="stat"><strong>42</strong><span>lekcje krok po kroku</span></div>
       <div class="stat"><strong>183+</strong><span>pliki audio lekcji</span></div>
-      <div class="stat"><strong>17</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>1</strong><span>mini książka z tłumaczeniem</span></div>
     </section>
 
     <section id="login" class="login-box">
       <h2>Dostęp do kursu</h2>
-      <p>Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła odblokujesz wszystkie moduły, lekcje, nagrania, dialogi, tłumaczenia i ćwiczenia pisania.</p>
+      <p>Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła odblokujesz wszystkie moduły, lekcje, nagrania, mini książkę, dialogi, tłumaczenia i ćwiczenia pisania.</p>
 
       <div class="login-row">
         <input id="passwordInput" type="password" placeholder="Wpisz hasło dostępu">
@@ -722,11 +868,200 @@
       <div class="course-top">
         <div>
           <h2>Panel kursu</h2>
-          <p>Każdy moduł zawiera lekcje audio. Kursant słucha, czyta, powtarza i ćwiczy pisanie po angielsku.</p>
+          <p>Na górze znajdziesz mini książkę do czytania po angielsku. Niżej są moduły, lekcje audio, dialogi i ćwiczenia pisania.</p>
         </div>
 
         <button class="btn secondary" type="button" onclick="lockCourse()">🔒 Zablokuj kurs</button>
       </div>
+
+      <details class="mini-book" open>
+        <summary>
+          <div class="mini-book-cover">
+            <div class="book-icon" aria-hidden="true"></div>
+            <div class="mini-book-title">
+              <strong>📖 Mini książka: My First English Steps</strong>
+              <span>Krótka czytanka po angielsku z tłumaczeniem pod każdym zdaniem. Idealna na start przed lekcjami.</span>
+            </div>
+          </div>
+          <span class="arrow">›</span>
+        </summary>
+
+        <div class="mini-book-content">
+
+          <div class="book-chapter">
+            <h3>Chapter 1: My First Day</h3>
+
+            <div class="book-line">
+              <strong>My name is Anna and I want to learn English.</strong>
+              <span>Mam na imię Anna i chcę nauczyć się angielskiego.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>At first, English is difficult for me.</strong>
+              <span>Na początku angielski jest dla mnie trudny.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I do not understand every word.</strong>
+              <span>Nie rozumiem każdego słowa.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>But I want to learn step by step.</strong>
+              <span>Ale chcę uczyć się krok po kroku.</span>
+            </div>
+          </div>
+
+          <div class="book-chapter">
+            <h3>Chapter 2: Small Steps</h3>
+
+            <div class="book-line">
+              <strong>Every day I listen to simple English.</strong>
+              <span>Każdego dnia słucham prostego angielskiego.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I repeat short words and sentences.</strong>
+              <span>Powtarzam krótkie słowa i zdania.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I write new words in my notebook.</strong>
+              <span>Zapisuję nowe słowa w moim zeszycie.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>Small steps help me make progress.</strong>
+              <span>Małe kroki pomagają mi robić postępy.</span>
+            </div>
+          </div>
+
+          <div class="book-chapter">
+            <h3>Chapter 3: My Daily Routine</h3>
+
+            <div class="book-line">
+              <strong>In the morning, I say simple sentences.</strong>
+              <span>Rano mówię proste zdania.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I say: I am ready. I can do it.</strong>
+              <span>Mówię: Jestem gotowa. Dam radę.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I listen to one lesson and repeat slowly.</strong>
+              <span>Słucham jednej lekcji i powtarzam powoli.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I do not hurry because learning needs time.</strong>
+              <span>Nie spieszę się, ponieważ nauka potrzebuje czasu.</span>
+            </div>
+          </div>
+
+          <div class="book-chapter">
+            <h3>Chapter 4: At Work</h3>
+
+            <div class="book-line">
+              <strong>One day, I want to use English at work.</strong>
+              <span>Pewnego dnia chcę używać angielskiego w pracy.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I want to write simple messages.</strong>
+              <span>Chcę pisać proste wiadomości.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I want to ask questions and understand answers.</strong>
+              <span>Chcę zadawać pytania i rozumieć odpowiedzi.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I know I do not need perfect English.</strong>
+              <span>Wiem, że nie potrzebuję idealnego angielskiego.</span>
+            </div>
+          </div>
+
+          <div class="book-chapter">
+            <h3>Chapter 5: In the City</h3>
+
+            <div class="book-line">
+              <strong>I also want to use English in the city.</strong>
+              <span>Chcę też używać angielskiego w mieście.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I want to ask for directions.</strong>
+              <span>Chcę pytać o drogę.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I want to order food in a restaurant.</strong>
+              <span>Chcę zamawiać jedzenie w restauracji.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I want to feel more confident when I travel.</strong>
+              <span>Chcę czuć się pewniej, kiedy podróżuję.</span>
+            </div>
+          </div>
+
+          <div class="book-chapter">
+            <h3>Chapter 6: I Can Speak More</h3>
+
+            <div class="book-line">
+              <strong>After many lessons, I understand more.</strong>
+              <span>Po wielu lekcjach rozumiem więcej.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I still make mistakes, but I am not afraid.</strong>
+              <span>Nadal popełniam błędy, ale się nie boję.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I can say more words and simple sentences.</strong>
+              <span>Potrafię powiedzieć więcej słów i prostych zdań.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>English becomes easier every week.</strong>
+              <span>Angielski staje się łatwiejszy z każdym tygodniem.</span>
+            </div>
+          </div>
+
+          <div class="book-chapter">
+            <h3>Chapter 7: My English Journey</h3>
+
+            <div class="book-line">
+              <strong>This is my English journey.</strong>
+              <span>To jest moja podróż z angielskim.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>I learn slowly, but I do not stop.</strong>
+              <span>Uczę się powoli, ale się nie zatrzymuję.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>Every lesson gives me more confidence.</strong>
+              <span>Każda lekcja daje mi więcej pewności.</span>
+            </div>
+
+            <div class="book-line">
+              <strong>Now I know that I can learn English.</strong>
+              <span>Teraz wiem, że mogę nauczyć się angielskiego.</span>
+            </div>
+          </div>
+
+          <div class="book-tip">
+            Wskazówka: przeczytaj najpierw zdanie po angielsku, spróbuj zrozumieć sens, a dopiero potem sprawdź tłumaczenie pod spodem.
+          </div>
+
+        </div>
+      </details>
 
       <div id="modulesContainer"></div>
 
@@ -1002,22 +1337,12 @@
         writingTitle: "Ćwiczenie pisania — grafik i godziny pracy",
         audioBase: "M7L6",
         vocabulary: [
-          ["schedule", "grafik / plan"],
-          ["shift", "zmiana"],
-          ["morning", "poranek"],
-          ["afternoon", "popołudnie"],
-          ["evening", "wieczór"],
-          ["hour", "godzina"],
-          ["break", "przerwa"],
-          ["day off", "dzień wolny"],
-          ["overtime", "nadgodziny"],
-          ["calendar", "kalendarz"]
+          ["schedule", "grafik / plan"], ["shift", "zmiana"], ["morning", "poranek"], ["afternoon", "popołudnie"], ["evening", "wieczór"],
+          ["hour", "godzina"], ["break", "przerwa"], ["day off", "dzień wolny"], ["overtime", "nadgodziny"], ["calendar", "kalendarz"]
         ],
         phrases: [
-          ["What time do I start?", "O której zaczynam?"],
-          ["I work the morning shift.", "Pracuję na porannej zmianie."],
-          ["When is my break?", "Kiedy mam przerwę?"],
-          ["I have a day off tomorrow.", "Jutro mam dzień wolny."],
+          ["What time do I start?", "O której zaczynam?"], ["I work the morning shift.", "Pracuję na porannej zmianie."],
+          ["When is my break?", "Kiedy mam przerwę?"], ["I have a day off tomorrow.", "Jutro mam dzień wolny."],
           ["Can I check the schedule?", "Czy mogę sprawdzić grafik?"]
         ],
         dialogueHtml: "<strong>A:</strong> Good morning. What time do I start today?<br><strong>B:</strong> You start at eight o’clock.<br><strong>A:</strong> When is my break?<br><strong>B:</strong> Your break is at twelve.<br><strong>A:</strong> Do I work tomorrow?<br><strong>B:</strong> No, you have a day off tomorrow.",
