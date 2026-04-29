@@ -687,7 +687,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>6 modułów, 33 lekcje, audio, czytanki i sprawdzanie pisania.</p>
+            <p>6 modułów, 34 lekcje, audio, czytanki i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -695,9 +695,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>6</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>33</strong><span>lekcje krok po kroku</span></div>
-      <div class="stat"><strong>156+</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>8</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>34</strong><span>lekcje krok po kroku</span></div>
+      <div class="stat"><strong>159+</strong><span>plików audio lekcji</span></div>
+      <div class="stat"><strong>9</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -797,6 +797,12 @@
         english: "Good afternoon. Can I see the menu, please? Of course. Here you are. Thank you. I would like chicken and water. Would you like coffee after the meal? Yes, please. Great. I will bring your order.",
         polish: "Dzień dobry. Czy mogę zobaczyć menu? Oczywiście. Proszę bardzo. Dziękuję. Poproszę kurczaka i wodę. Czy chciałby pan/chciałaby pani kawę po posiłku? Tak, proszę. Świetnie. Przyniosę zamówienie.",
         audio: "audio/M6L3_Dialogue.mp3"
+      },
+      M6L4: {
+        title: "Ćwiczenie pisania — pytanie o drogę",
+        english: "Excuse me. Where is the train station? Go straight and turn left. Is it far? No, it is about five minutes from here. Thank you. You are welcome.",
+        polish: "Przepraszam. Gdzie jest stacja kolejowa? Proszę iść prosto i skręcić w lewo. Czy to daleko? Nie, to około pięć minut stąd. Dziękuję. Nie ma za co.",
+        audio: "audio/M6L4_Dialogue.mp3"
       }
     };
 
@@ -1105,7 +1111,7 @@
 
     function module6Lesson3() {
       return `
-        <details class="lesson" open>
+        <details class="lesson">
           <summary>
             <div class="lesson-title">
               <strong>Lekcja 3: W restauracji</strong>
@@ -1172,6 +1178,75 @@
       `;
     }
 
+    function module6Lesson4() {
+      return `
+        <details class="lesson" open>
+          <summary>
+            <div class="lesson-title">
+              <strong>Lekcja 4: Pytanie o drogę</strong>
+              <span>M6L4 · ulica, kierunki, stacja, mapa i ćwiczenie pisania.</span>
+            </div>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="lesson-content">
+            <h4>Słownictwo</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>street</td><td>ulica</td></tr>
+              <tr><td>left</td><td>lewo</td></tr>
+              <tr><td>right</td><td>prawo</td></tr>
+              <tr><td>straight</td><td>prosto</td></tr>
+              <tr><td>near</td><td>blisko</td></tr>
+              <tr><td>far</td><td>daleko</td></tr>
+              <tr><td>map</td><td>mapa</td></tr>
+              <tr><td>station</td><td>stacja</td></tr>
+              <tr><td>shop</td><td>sklep</td></tr>
+              <tr><td>city center</td><td>centrum miasta</td></tr>
+            </table>
+
+            <h4>Zwroty</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>Where is the station?</td><td>Gdzie jest stacja?</td></tr>
+              <tr><td>Go straight.</td><td>Idź prosto.</td></tr>
+              <tr><td>Turn left.</td><td>Skręć w lewo.</td></tr>
+              <tr><td>Turn right.</td><td>Skręć w prawo.</td></tr>
+              <tr><td>Is it far?</td><td>Czy to daleko?</td></tr>
+            </table>
+
+            <h4>Dialog</h4>
+            <p>
+              <strong>A:</strong> Excuse me. Where is the train station?<br>
+              <strong>B:</strong> Go straight and turn left.<br>
+              <strong>A:</strong> Is it far?<br>
+              <strong>B:</strong> No, it is about five minutes from here.<br>
+              <strong>A:</strong> Thank you.<br>
+              <strong>B:</strong> You are welcome.
+            </p>
+
+            <h4>Tłumaczenie dialogu</h4>
+            <p>
+              <strong>A:</strong> Przepraszam. Gdzie jest stacja kolejowa?<br>
+              <strong>B:</strong> Proszę iść prosto i skręcić w lewo.<br>
+              <strong>A:</strong> Czy to daleko?<br>
+              <strong>B:</strong> Nie, to około pięć minut stąd.<br>
+              <strong>A:</strong> Dziękuję.<br>
+              <strong>B:</strong> Nie ma za co.
+            </p>
+          </div>
+
+          <div class="audio-list">
+            ${audioCard("Słownictwo", "M6L4", "audio/M6L4_Vocabulary.mp3")}
+            ${audioCard("Zwroty", "M6L4", "audio/M6L4_Phrases.mp3")}
+            ${audioCard("Dialog", "M6L4", "audio/M6L4_Dialogue.mp3")}
+          </div>
+
+          ${readingCard("M6L4")}
+        </details>
+      `;
+    }
+
     function module6Content() {
       return `
         <div class="reading-card">
@@ -1185,6 +1260,7 @@
           ${module6Lesson1()}
           ${module6Lesson2()}
           ${module6Lesson3()}
+          ${module6Lesson4()}
         </div>
       `;
     }
@@ -1313,7 +1389,7 @@
     }
 
     window.addEventListener("load", function() {
-      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2", "M6L3"].forEach(function(moduleId) {
+      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2", "M6L3", "M6L4"].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
 
