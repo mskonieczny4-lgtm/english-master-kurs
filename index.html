@@ -688,7 +688,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>7 modułów, 38 lekcji, audio, dialogi i sprawdzanie pisania.</p>
+            <p>7 modułów, 39 lekcji, audio, dialogi i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -696,9 +696,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>7</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>38</strong><span>lekcji krok po kroku</span></div>
-      <div class="stat"><strong>171+</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>13</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>39</strong><span>lekcji krok po kroku</span></div>
+      <div class="stat"><strong>174+</strong><span>pliki audio lekcji</span></div>
+      <div class="stat"><strong>14</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -1018,6 +1018,36 @@
         translationHtml: "<strong>A:</strong> Dzień dobry. Czy mogę zadać pytanie?<br><strong>B:</strong> Oczywiście. Czego potrzebujesz?<br><strong>A:</strong> Jaki jest termin tego projektu?<br><strong>B:</strong> Termin jest w piątek.<br><strong>A:</strong> Dziękuję. Przygotuję raport.<br><strong>B:</strong> Świetnie. To jest twój priorytet na dziś.",
         english: "Good morning. Can I ask a question? Of course. What do you need? What is the deadline for this project? The deadline is Friday. Thank you. I will prepare the report. Great. This is your priority today.",
         polish: "Dzień dobry. Czy mogę zadać pytanie? Oczywiście. Czego potrzebujesz? Jaki jest termin tego projektu? Termin jest w piątek. Dziękuję. Przygotuję raport. Świetnie. To jest twój priorytet na dziś."
+      },
+      M7L3: {
+        module: "M7",
+        title: "Lekcja 3: Proste wiadomości służbowe",
+        subtitle: "wiadomość, e-mail, temat, odpowiedź, załącznik i ćwiczenie pisania",
+        writingTitle: "Ćwiczenie pisania — proste wiadomości służbowe",
+        audioBase: "M7L3",
+        vocabulary: [
+          ["message", "wiadomość"],
+          ["email", "e-mail"],
+          ["subject", "temat"],
+          ["reply", "odpowiedź"],
+          ["send", "wysłać"],
+          ["document", "dokument"],
+          ["attachment", "załącznik"],
+          ["information", "informacja"],
+          ["today", "dzisiaj"],
+          ["tomorrow", "jutro"]
+        ],
+        phrases: [
+          ["I will send the email.", "Wyślę e-mail."],
+          ["Please check the document.", "Proszę sprawdzić dokument."],
+          ["Thank you for your message.", "Dziękuję za wiadomość."],
+          ["Can you reply today?", "Czy możesz odpowiedzieć dzisiaj?"],
+          ["I attached the file.", "Załączyłem/Załączyłam plik."]
+        ],
+        dialogueHtml: "<strong>A:</strong> Hello. Did you send the email?<br><strong>B:</strong> Not yet. I will send it today.<br><strong>A:</strong> Please attach the document.<br><strong>B:</strong> Of course. I will attach the file.<br><strong>A:</strong> Can you reply before tomorrow?<br><strong>B:</strong> Yes, no problem.",
+        translationHtml: "<strong>A:</strong> Cześć. Czy wysłałeś/wysłałaś e-mail?<br><strong>B:</strong> Jeszcze nie. Wyślę go dzisiaj.<br><strong>A:</strong> Proszę załącz dokument.<br><strong>B:</strong> Oczywiście. Załączę plik.<br><strong>A:</strong> Czy możesz odpowiedzieć przed jutrem?<br><strong>B:</strong> Tak, nie ma problemu.",
+        english: "Hello. Did you send the email? Not yet. I will send it today. Please attach the document. Of course. I will attach the file. Can you reply before tomorrow? Yes, no problem.",
+        polish: "Cześć. Czy wysłałeś/wysłałaś e-mail? Jeszcze nie. Wyślę go dzisiaj. Proszę załącz dokument. Oczywiście. Załączę plik. Czy możesz odpowiedzieć przed jutrem? Tak, nie ma problemu."
       }
     };
 
@@ -1301,7 +1331,8 @@
 
         <div class="lessons">
           ${customLessonCard("M7L1", false)}
-          ${customLessonCard("M7L2", true)}
+          ${customLessonCard("M7L2", false)}
+          ${customLessonCard("M7L3", true)}
         </div>
       `;
     }
@@ -1435,7 +1466,7 @@
       [
         "M1", "M2", "M3", "M4", "M5",
         "M6L1", "M6L2", "M6L3", "M6L4", "M6L5", "M6L6",
-        "M7L1", "M7L2"
+        "M7L1", "M7L2", "M7L3"
       ].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
