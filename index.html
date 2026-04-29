@@ -5,16 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Speak English Premium z AI</title>
   <meta name="description" content="Speak English Premium z AI — kurs angielskiego online dla początkujących z nagraniami audio, czytankami i ćwiczeniem pisania.">
+
   <style>
     :root {
-      --bg:#050814; --bg2:#0b1226; --line:rgba(255,255,255,.16); --text:#f5f7ff;
-      --muted:#b9c4e6; --blue:#4da3ff; --blue2:#8fd3ff; --gold:#f7c873;
-      --green:#7cffb2; --red:#ff7676; --shadow:0 28px 80px rgba(0,0,0,.42);
+      --bg:#050814;
+      --bg2:#0b1226;
+      --line:rgba(255,255,255,.16);
+      --text:#f5f7ff;
+      --muted:#b9c4e6;
+      --blue:#4da3ff;
+      --blue2:#8fd3ff;
+      --gold:#f7c873;
+      --green:#7cffb2;
+      --red:#ff7676;
+      --shadow:0 28px 80px rgba(0,0,0,.42);
     }
+
     * { box-sizing:border-box; }
+
     html { scroll-behavior:smooth; }
+
     body {
-      margin:0; font-family:Arial, Helvetica, sans-serif; color:var(--text);
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
       background:
         radial-gradient(circle at 12% 0%, rgba(77,163,255,.34), transparent 34%),
         radial-gradient(circle at 82% 12%, rgba(143,211,255,.18), transparent 28%),
@@ -22,110 +36,621 @@
         linear-gradient(135deg,var(--bg),var(--bg2));
       min-height:100vh;
     }
+
     body:before {
-      content:""; position:fixed; inset:0; pointer-events:none;
-      background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-      background-size:44px 44px; mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 70%);
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:44px 44px;
+      mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 70%);
     }
-    .page { width:min(1180px, calc(100% - 28px)); margin:0 auto; position:relative; z-index:1; }
+
+    .page {
+      width:min(1180px, calc(100% - 28px));
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
     header { padding:44px 0 22px; }
-    .hero { display:grid; grid-template-columns:1.05fr .95fr; gap:28px; align-items:center; min-height:520px; }
-    .badge { display:inline-flex; gap:8px; align-items:center; padding:9px 15px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.07); color:var(--blue2); font-weight:800; font-size:14px; margin-bottom:18px; }
-    h1 { margin:0; font-size:clamp(38px,6vw,76px); line-height:.98; letter-spacing:-2px; }
-    .hero p { color:var(--muted); font-size:18px; line-height:1.7; margin:20px 0 0; max-width:680px; }
-    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
-    .btn { display:inline-flex; justify-content:center; align-items:center; gap:8px; border:0; border-radius:16px; padding:14px 20px; font-weight:900; font-size:15px; text-decoration:none; cursor:pointer; color:#06101f; background:linear-gradient(135deg,var(--blue2),var(--blue)); box-shadow:0 18px 40px rgba(77,163,255,.24); transition:.2s ease; }
-    .btn:hover { transform:translateY(-2px); }
-    .btn.secondary { color:var(--text); background:rgba(255,255,255,.08); border:1px solid var(--line); box-shadow:none; }
-    .btn.buy { color:#07101f; background:linear-gradient(135deg,#ffe29a,var(--gold)); box-shadow:0 18px 40px rgba(247,200,115,.18); }
-    .cover { position:relative; min-height:420px; border:1px solid rgba(143,211,255,.28); border-radius:34px; overflow:hidden; box-shadow:var(--shadow); background:radial-gradient(circle at 50% 28%, rgba(143,211,255,.28), transparent 26%), linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.04)); }
-    .cover:before { content:""; position:absolute; width:280px; height:280px; top:70px; left:50%; transform:translateX(-50%); border-radius:50%; background:radial-gradient(circle, rgba(143,211,255,.5), rgba(77,163,255,.12), transparent 68%); filter:blur(4px); }
-    .orb { position:absolute; width:210px; height:210px; top:95px; left:50%; transform:translateX(-50%); border-radius:50%; border:1px solid rgba(255,255,255,.28); background:linear-gradient(135deg, rgba(143,211,255,.42), rgba(5,8,20,.1)), radial-gradient(circle at 35% 30%, rgba(255,255,255,.85), transparent 14%); box-shadow:0 0 80px rgba(77,163,255,.36), inset 0 0 44px rgba(255,255,255,.12); }
-    .cover-lines { position:absolute; inset:0; background:linear-gradient(90deg,transparent 10%,rgba(255,255,255,.08) 50%,transparent 90%), repeating-linear-gradient(0deg,transparent 0 22px,rgba(255,255,255,.04) 23px); opacity:.65; }
-    .cover-text { position:absolute; left:28px; right:28px; bottom:28px; }
-    .cover-text .small { color:var(--gold); font-weight:900; letter-spacing:1px; text-transform:uppercase; font-size:13px; margin-bottom:10px; }
-    .cover-text h2 { margin:0; font-size:34px; line-height:1.05; letter-spacing:-1px; }
-    .cover-text p { margin:12px 0 0; color:var(--muted); line-height:1.55; }
-    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:8px 0 38px; }
-    .stat { border:1px solid var(--line); background:rgba(255,255,255,.07); border-radius:20px; padding:18px; text-align:center; }
-    .stat strong { display:block; font-size:28px; color:var(--blue2); }
-    .stat span { display:block; color:var(--muted); margin-top:6px; font-size:14px; }
-    .login-box { width:min(760px,100%); margin:0 auto 48px; border:1px solid rgba(143,211,255,.24); background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.055)); border-radius:24px; box-shadow:var(--shadow); padding:24px; }
-    .login-box h2 { margin:0; font-size:28px; }
-    .login-box p { margin:10px 0 18px; color:var(--muted); line-height:1.6; }
-    .login-row { display:grid; grid-template-columns:1fr auto; gap:12px; }
-    input, textarea { width:100%; border:1px solid var(--line); border-radius:16px; background:rgba(0,0,0,.22); color:var(--text); padding:15px 16px; outline:none; font-size:16px; font-family:Arial, Helvetica, sans-serif; }
-    textarea { min-height:160px; resize:vertical; line-height:1.6; }
-    .message { min-height:24px; margin-top:14px; font-weight:900; }
-    .buy-note { margin-top:16px; padding:14px 16px; border:1px solid rgba(143,211,255,.22); border-radius:16px; background:rgba(255,255,255,.06); color:var(--muted); line-height:1.6; }
-    .buy-note a { color:var(--blue2); font-weight:900; text-decoration:none; }
-    .buy-note a:hover { text-decoration:underline; }
-    #course { display:none; padding-bottom:70px; }
-    #course.unlocked { display:block; }
-    .course-top { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
-    .course-top h2 { margin:0; font-size:clamp(30px,4vw,48px); letter-spacing:-1px; }
-    .course-top p { margin:10px 0 0; color:var(--muted); line-height:1.6; max-width:760px; }
-    .module { border:1px solid var(--line); background:rgba(255,255,255,.07); border-radius:24px; margin:14px 0; overflow:hidden; box-shadow:0 18px 60px rgba(0,0,0,.18); }
-    summary { list-style:none; cursor:pointer; }
-    summary::-webkit-details-marker { display:none; }
-    .module > summary { padding:20px; display:flex; justify-content:space-between; gap:16px; align-items:center; background:linear-gradient(135deg,rgba(77,163,255,.16),rgba(255,255,255,.045)); }
-    .module-title strong { display:block; font-size:22px; }
-    .module-title span { display:block; color:var(--muted); font-size:14px; margin-top:6px; }
-    .reading-card { margin:16px; padding:18px; border:1px solid rgba(143,211,255,.22); border-radius:20px; background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.045)); }
-    .reading-card h3 { margin:0 0 14px; color:var(--gold); font-size:20px; }
-    .reading-audio, .writing-task { border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(0,0,0,.18); padding:14px; margin-bottom:14px; }
-    .reading-audio h4, .writing-task h4 { margin:0 0 10px; color:var(--blue2); font-size:15px; }
-    .writing-task p { margin:0 0 12px; color:var(--muted); line-height:1.6; }
-    .writing-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
-    .writing-result { margin-top:12px; padding:12px 14px; border-radius:14px; display:none; line-height:1.6; font-weight:700; }
-    .writing-result.good { display:block; color:var(--green); background:rgba(124,255,178,.08); border:1px solid rgba(124,255,178,.2); }
-    .writing-result.medium { display:block; color:var(--gold); background:rgba(247,200,115,.08); border:1px solid rgba(247,200,115,.2); }
-    .writing-result.bad { display:block; color:var(--red); background:rgba(255,118,118,.08); border:1px solid rgba(255,118,118,.2); }
-    .reading-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-    .reading-grid div { border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(0,0,0,.18); padding:14px; }
-    .reading-grid h4 { margin:0 0 10px; color:var(--blue2); font-size:15px; }
-    .reading-grid p { margin:0; color:var(--muted); line-height:1.7; }
-    .lesson-content { margin:16px; padding:16px; border:1px solid rgba(143,211,255,.18); border-radius:18px; background:rgba(0,0,0,.16); }
-    .lesson-content h4 { color:var(--blue2); margin:0 0 10px; }
-    .lesson-content table { width:100%; border-collapse:collapse; margin:10px 0 18px; overflow:hidden; border-radius:14px; }
-    .lesson-content th, .lesson-content td { border:1px solid rgba(255,255,255,.12); padding:10px; text-align:left; color:var(--muted); line-height:1.45; }
-    .lesson-content th { color:var(--text); background:rgba(255,255,255,.08); }
-    .lesson-content p { color:var(--muted); line-height:1.7; margin:0 0 14px; }
-    .lessons { padding:0 16px 16px; display:grid; gap:12px; }
-    .lesson { border:1px solid rgba(255,255,255,.13); background:rgba(0,0,0,.18); border-radius:20px; overflow:hidden; }
-    .lesson > summary { padding:16px; display:flex; justify-content:space-between; align-items:center; gap:14px; }
-    .lesson-title strong { display:block; font-size:17px; }
-    .lesson-title span { display:block; color:var(--muted); font-size:13px; margin-top:5px; line-height:1.45; }
-    .arrow { color:var(--blue2); font-weight:900; transition:.2s ease; }
-    details[open] > summary .arrow { transform:rotate(90deg); }
-    .audio-list { padding:0 16px 16px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-    .audio-card { border:1px solid rgba(255,255,255,.13); background:rgba(255,255,255,.06); border-radius:18px; padding:14px; }
-    .audio-top { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; }
-    .audio-top h4 { margin:0; color:var(--blue2); font-size:15px; }
-    .audio-top span { color:var(--muted); font-size:12px; border:1px solid var(--line); padding:4px 8px; border-radius:999px; background:rgba(0,0,0,.16); }
-    audio { width:100%; }
-    .note { color:var(--muted); font-size:13px; line-height:1.55; margin-top:12px; }
-    footer { color:var(--muted); text-align:center; padding:34px 0 48px; font-size:14px; line-height:1.6; }
-    @media (max-width:860px) {
-      .hero { grid-template-columns:1fr; min-height:auto; padding-top:12px; }
-      .cover { min-height:360px; }
-      .stats { grid-template-columns:repeat(2,1fr); }
-      .audio-list, .reading-grid { grid-template-columns:1fr; }
+
+    .hero {
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:28px;
+      align-items:center;
+      min-height:520px;
     }
+
+    .badge {
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:9px 15px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
+      color:var(--blue2);
+      font-weight:800;
+      font-size:14px;
+      margin-bottom:18px;
+    }
+
+    h1 {
+      margin:0;
+      font-size:clamp(38px,6vw,76px);
+      line-height:.98;
+      letter-spacing:-2px;
+    }
+
+    .hero p {
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.7;
+      margin:20px 0 0;
+      max-width:680px;
+    }
+
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:26px;
+    }
+
+    .btn {
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      border:0;
+      border-radius:16px;
+      padding:14px 20px;
+      font-weight:900;
+      font-size:15px;
+      text-decoration:none;
+      cursor:pointer;
+      color:#06101f;
+      background:linear-gradient(135deg,var(--blue2),var(--blue));
+      box-shadow:0 18px 40px rgba(77,163,255,.24);
+      transition:.2s ease;
+    }
+
+    .btn:hover { transform:translateY(-2px); }
+
+    .btn.secondary {
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      box-shadow:none;
+    }
+
+    .btn.buy {
+      color:#07101f;
+      background:linear-gradient(135deg,#ffe29a,var(--gold));
+      box-shadow:0 18px 40px rgba(247,200,115,.18);
+    }
+
+    .cover {
+      position:relative;
+      min-height:420px;
+      border:1px solid rgba(143,211,255,.28);
+      border-radius:34px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        radial-gradient(circle at 50% 28%, rgba(143,211,255,.28), transparent 26%),
+        linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.04));
+    }
+
+    .cover:before {
+      content:"";
+      position:absolute;
+      width:280px;
+      height:280px;
+      top:70px;
+      left:50%;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(143,211,255,.5), rgba(77,163,255,.12), transparent 68%);
+      filter:blur(4px);
+    }
+
+    .orb {
+      position:absolute;
+      width:210px;
+      height:210px;
+      top:95px;
+      left:50%;
+      transform:translateX(-50%);
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.28);
+      background:
+        linear-gradient(135deg, rgba(143,211,255,.42), rgba(5,8,20,.1)),
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.85), transparent 14%);
+      box-shadow:0 0 80px rgba(77,163,255,.36), inset 0 0 44px rgba(255,255,255,.12);
+    }
+
+    .cover-lines {
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,transparent 10%,rgba(255,255,255,.08) 50%,transparent 90%),
+        repeating-linear-gradient(0deg,transparent 0 22px,rgba(255,255,255,.04) 23px);
+      opacity:.65;
+    }
+
+    .cover-text {
+      position:absolute;
+      left:28px;
+      right:28px;
+      bottom:28px;
+    }
+
+    .cover-text .small {
+      color:var(--gold);
+      font-weight:900;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-size:13px;
+      margin-bottom:10px;
+    }
+
+    .cover-text h2 {
+      margin:0;
+      font-size:34px;
+      line-height:1.05;
+      letter-spacing:-1px;
+    }
+
+    .cover-text p {
+      margin:12px 0 0;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .stats {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin:8px 0 38px;
+    }
+
+    .stat {
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.07);
+      border-radius:20px;
+      padding:18px;
+      text-align:center;
+    }
+
+    .stat strong {
+      display:block;
+      font-size:28px;
+      color:var(--blue2);
+    }
+
+    .stat span {
+      display:block;
+      color:var(--muted);
+      margin-top:6px;
+      font-size:14px;
+    }
+
+    .login-box {
+      width:min(760px,100%);
+      margin:0 auto 48px;
+      border:1px solid rgba(143,211,255,.24);
+      background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,.055));
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+
+    .login-box h2 {
+      margin:0;
+      font-size:28px;
+    }
+
+    .login-box p {
+      margin:10px 0 18px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .login-row {
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+    }
+
+    input, textarea {
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(0,0,0,.22);
+      color:var(--text);
+      padding:15px 16px;
+      outline:none;
+      font-size:16px;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    textarea {
+      min-height:160px;
+      resize:vertical;
+      line-height:1.6;
+    }
+
+    .message {
+      min-height:24px;
+      margin-top:14px;
+      font-weight:900;
+    }
+
+    .buy-note {
+      margin-top:16px;
+      padding:14px 16px;
+      border:1px solid rgba(143,211,255,.22);
+      border-radius:16px;
+      background:rgba(255,255,255,.06);
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .buy-note a {
+      color:var(--blue2);
+      font-weight:900;
+      text-decoration:none;
+    }
+
+    .buy-note a:hover { text-decoration:underline; }
+
+    #course {
+      display:none;
+      padding-bottom:70px;
+    }
+
+    #course.unlocked { display:block; }
+
+    .course-top {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .course-top h2 {
+      margin:0;
+      font-size:clamp(30px,4vw,48px);
+      letter-spacing:-1px;
+    }
+
+    .course-top p {
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.6;
+      max-width:760px;
+    }
+
+    .module {
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.07);
+      border-radius:24px;
+      margin:14px 0;
+      overflow:hidden;
+      box-shadow:0 18px 60px rgba(0,0,0,.18);
+    }
+
+    summary {
+      list-style:none;
+      cursor:pointer;
+    }
+
+    summary::-webkit-details-marker { display:none; }
+
+    .module > summary {
+      padding:20px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:center;
+      background:linear-gradient(135deg,rgba(77,163,255,.16),rgba(255,255,255,.045));
+    }
+
+    .module-title strong {
+      display:block;
+      font-size:22px;
+    }
+
+    .module-title span {
+      display:block;
+      color:var(--muted);
+      font-size:14px;
+      margin-top:6px;
+    }
+
+    .reading-card {
+      margin:16px;
+      padding:18px;
+      border:1px solid rgba(143,211,255,.22);
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.045));
+    }
+
+    .reading-card h3 {
+      margin:0 0 14px;
+      color:var(--gold);
+      font-size:20px;
+    }
+
+    .reading-audio, .writing-task {
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      background:rgba(0,0,0,.18);
+      padding:14px;
+      margin-bottom:14px;
+    }
+
+    .reading-audio h4, .writing-task h4 {
+      margin:0 0 10px;
+      color:var(--blue2);
+      font-size:15px;
+    }
+
+    .writing-task p {
+      margin:0 0 12px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .writing-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .writing-result {
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      display:none;
+      line-height:1.6;
+      font-weight:700;
+    }
+
+    .writing-result.good {
+      display:block;
+      color:var(--green);
+      background:rgba(124,255,178,.08);
+      border:1px solid rgba(124,255,178,.2);
+    }
+
+    .writing-result.medium {
+      display:block;
+      color:var(--gold);
+      background:rgba(247,200,115,.08);
+      border:1px solid rgba(247,200,115,.2);
+    }
+
+    .writing-result.bad {
+      display:block;
+      color:var(--red);
+      background:rgba(255,118,118,.08);
+      border:1px solid rgba(255,118,118,.2);
+    }
+
+    .reading-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .reading-grid div {
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      background:rgba(0,0,0,.18);
+      padding:14px;
+    }
+
+    .reading-grid h4 {
+      margin:0 0 10px;
+      color:var(--blue2);
+      font-size:15px;
+    }
+
+    .reading-grid p {
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .lessons {
+      padding:0 16px 16px;
+      display:grid;
+      gap:12px;
+    }
+
+    .lesson {
+      border:1px solid rgba(255,255,255,.13);
+      background:rgba(0,0,0,.18);
+      border-radius:20px;
+      overflow:hidden;
+    }
+
+    .lesson > summary {
+      padding:16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+    }
+
+    .lesson-title strong {
+      display:block;
+      font-size:17px;
+    }
+
+    .lesson-title span {
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:5px;
+      line-height:1.45;
+    }
+
+    .arrow {
+      color:var(--blue2);
+      font-weight:900;
+      transition:.2s ease;
+    }
+
+    details[open] > summary .arrow {
+      transform:rotate(90deg);
+    }
+
+    .audio-list {
+      padding:0 16px 16px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .audio-card {
+      border:1px solid rgba(255,255,255,.13);
+      background:rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .audio-top {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .audio-top h4 {
+      margin:0;
+      color:var(--blue2);
+      font-size:15px;
+    }
+
+    .audio-top span {
+      color:var(--muted);
+      font-size:12px;
+      border:1px solid var(--line);
+      padding:4px 8px;
+      border-radius:999px;
+      background:rgba(0,0,0,.16);
+    }
+
+    .lesson-content {
+      margin:16px;
+      padding:16px;
+      border:1px solid rgba(143,211,255,.18);
+      border-radius:18px;
+      background:rgba(0,0,0,.16);
+    }
+
+    .lesson-content h4 {
+      color:var(--blue2);
+      margin:0 0 10px;
+    }
+
+    .lesson-content p {
+      color:var(--muted);
+      line-height:1.7;
+      margin:0 0 14px;
+    }
+
+    .lesson-content table {
+      width:100%;
+      border-collapse:collapse;
+      margin:10px 0 18px;
+      overflow:hidden;
+      border-radius:14px;
+    }
+
+    .lesson-content th,
+    .lesson-content td {
+      border:1px solid rgba(255,255,255,.12);
+      padding:10px;
+      text-align:left;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .lesson-content th {
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+    }
+
+    audio { width:100%; }
+
+    .note {
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+      margin-top:12px;
+    }
+
+    footer {
+      color:var(--muted);
+      text-align:center;
+      padding:34px 0 48px;
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    @media (max-width:860px) {
+      .hero {
+        grid-template-columns:1fr;
+        min-height:auto;
+        padding-top:12px;
+      }
+
+      .cover { min-height:360px; }
+
+      .stats { grid-template-columns:repeat(2,1fr); }
+
+      .audio-list, .reading-grid {
+        grid-template-columns:1fr;
+      }
+    }
+
     @media (max-width:560px) {
       .page { width:min(100% - 20px,1180px); }
+
       header { padding-top:28px; }
+
       h1 { letter-spacing:-1px; }
+
       .hero p { font-size:16px; }
+
       .login-row { grid-template-columns:1fr; }
+
       .stats { grid-template-columns:1fr; }
+
       .cover-text h2 { font-size:28px; }
+
       .lessons { padding:0 10px 10px; }
+
       .reading-card { margin:10px; }
+
       .lesson-content { margin:10px; }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header>
@@ -134,14 +659,17 @@
           <div class="badge">🎧 Kurs online z audio, czytankami i ćwiczeniem pisania</div>
           <h1>Speak English Premium z AI</h1>
           <p>Praktyczny kurs angielskiego dla początkujących. Słuchasz nagrań, czytasz proste teksty po angielsku, sprawdzasz tłumaczenie i ćwiczysz pisanie.</p>
+
           <div class="actions">
             <a class="btn" href="#login">🔐 Mam hasło</a>
             <a class="btn buy" href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">🛒 Kup kurs za 45 zł</a>
             <a class="btn secondary" href="#opis">📘 Zobacz zawartość</a>
           </div>
         </div>
+
         <div class="cover" aria-label="Okładka kursu Speak English Premium z AI">
-          <div class="cover-lines"></div><div class="orb"></div>
+          <div class="cover-lines"></div>
+          <div class="orb"></div>
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
@@ -155,17 +683,20 @@
       <div class="stat"><strong>6</strong><span>modułów kursu</span></div>
       <div class="stat"><strong>31</strong><span>lekcji krok po kroku</span></div>
       <div class="stat"><strong>150+</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>5</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>6</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
       <h2>Dostęp do kursu</h2>
       <p>Wpisz hasło otrzymane po zakupie kursu. Po poprawnym wpisaniu hasła odblokujesz wszystkie moduły, lekcje, nagrania, czytanki i ćwiczenia pisania.</p>
+
       <div class="login-row">
         <input id="passwordInput" type="password" placeholder="Wpisz hasło dostępu">
         <button class="btn" type="button" onclick="unlockCourse()">Odblokuj kurs</button>
       </div>
+
       <div id="loginMessage" class="message"></div>
+
       <div class="buy-note">
         Nie masz jeszcze hasła?
         <a href="https://www.naffy.io/mariusz-skonieczny/speak-english-premium-z-ai-dBq" target="_blank" rel="noopener">Kup dostęp do kursu na Naffy za 45 zł</a>
@@ -176,379 +707,244 @@
       <div class="course-top">
         <div>
           <h2>Panel kursu</h2>
-          <p>Każdy moduł zawiera lekcje audio. Pierwsze moduły mają też czytankę po angielsku, tłumaczenie oraz ćwiczenie pisania z automatycznym wynikiem.</p>
+          <p>Każdy moduł zawiera lekcje audio. Kursant słucha, czyta, powtarza i ćwiczy pisanie po angielsku.</p>
         </div>
+
         <button class="btn secondary" type="button" onclick="lockCourse()">🔒 Zablokuj kurs</button>
       </div>
 
-      <details class="module">
-        <summary>
-          <div class="module-title">
-            <strong>Moduł 1: Podstawy</strong>
-            <span>Pierwszy etap kursu. Zacznij od lekcji 1 i przechodź dalej po kolei.</span>
-          </div>
-          <span class="arrow">›</span>
-        </summary>
+      <div id="modulesContainer"></div>
 
+      <div class="note">
+        Wskazówka: jeśli nagranie nie odtwarza się od razu, sprawdź, czy plik MP3 znajduje się w folderze <strong>audio</strong> i czy nazwa pliku jest dokładnie taka sama jak w kodzie.
+      </div>
+    </main>
+
+    <footer>
+      Speak English Premium z AI<br>
+      Kurs online dla początkujących.
+    </footer>
+  </div>
+
+  <script>
+    const PASSWORD = "SpeakPremium45";
+
+    const input = document.getElementById("passwordInput");
+    const message = document.getElementById("loginMessage");
+    const course = document.getElementById("course");
+    const modulesContainer = document.getElementById("modulesContainer");
+
+    const writingTasks = {
+      M1: {
+        title: "Czytanka modułowa",
+        english: "My name is Anna. I am from Poland. I am learning English because I want to speak with people from other countries. Every day I repeat simple words and short sentences. I say hello, I introduce myself, and I ask simple questions. English is new for me, but I learn step by step.",
+        polish: "Mam na imię Anna. Jestem z Polski. Uczę się angielskiego, ponieważ chcę rozmawiać z ludźmi z innych krajów. Każdego dnia powtarzam proste słowa i krótkie zdania. Mówię „cześć”, przedstawiam się i zadaję proste pytania. Angielski jest dla mnie nowy, ale uczę się krok po kroku.",
+        audio: "audio/M1_Reading.mp3"
+      },
+      M2: {
+        title: "Czytanka modułowa",
+        english: "Every morning I wake up early. I make breakfast, drink tea, and plan my day. I go shopping when I need food or water. Sometimes I take a bus or walk to the city. I like learning useful English words for everyday life because I can use them at home, in a shop, and on the street.",
+        polish: "Każdego ranka wstaję wcześnie. Robię śniadanie, piję herbatę i planuję dzień. Idę na zakupy, kiedy potrzebuję jedzenia albo wody. Czasami jadę autobusem albo idę pieszo do miasta. Lubię uczyć się przydatnych angielskich słów do codziennego życia, ponieważ mogę ich używać w domu, w sklepie i na ulicy.",
+        audio: "audio/M2_Reading.mp3"
+      },
+      M3: {
+        title: "Czytanka modułowa",
+        english: "At work I try to speak clearly and politely. I write short messages, answer simple questions, and ask for help when I need it. I can say when I am available and I can make an appointment. I do not need perfect English. I need simple English that helps me communicate.",
+        polish: "W pracy staram się mówić jasno i uprzejmie. Piszę krótkie wiadomości, odpowiadam na proste pytania i proszę o pomoc, kiedy jej potrzebuję. Potrafię powiedzieć, kiedy jestem dostępny, i umówić termin. Nie potrzebuję idealnego angielskiego. Potrzebuję prostego angielskiego, który pomaga mi się komunikować.",
+        audio: "audio/M3_Reading.mp3"
+      },
+      M4: {
+        title: "Czytanka modułowa",
+        english: "When I travel, I use English in many situations. I can ask for a room in a hotel, order food in a restaurant, and ask for directions. At the airport I listen carefully and look for important information. If I have a problem, I stay calm and use simple sentences.",
+        polish: "Kiedy podróżuję, używam angielskiego w wielu sytuacjach. Potrafię zapytać o pokój w hotelu, zamówić jedzenie w restauracji i zapytać o drogę. Na lotnisku słucham uważnie i szukam ważnych informacji. Jeśli mam problem, zachowuję spokój i używam prostych zdań.",
+        audio: "audio/M4_Reading.mp3"
+      },
+      M5: {
+        title: "Czytanka modułowa",
+        english: "Now I can use many simple English sentences. I can talk about myself, my day, my plans, and basic situations. I still make mistakes, but I understand more and I speak with more confidence. The most important thing is regular practice. Small steps every day bring real progress.",
+        polish: "Teraz potrafię używać wielu prostych zdań po angielsku. Potrafię mówić o sobie, swoim dniu, swoich planach i podstawowych sytuacjach. Nadal popełniam błędy, ale rozumiem więcej i mówię z większą pewnością. Najważniejsza jest regularna praktyka. Małe kroki każdego dnia dają prawdziwy postęp.",
+        audio: "audio/M5_Reading.mp3"
+      },
+      M6L1: {
+        title: "Ćwiczenie pisania — dialog na lotnisku",
+        english: "Good morning. Can I see your passport, please? Good morning. Here is my passport. Thank you. Do you have any luggage? Yes, I have one suitcase. Your gate is number twelve. Thank you very much.",
+        polish: "Dzień dobry. Czy mogę zobaczyć pana/pani paszport? Dzień dobry. Oto mój paszport. Dziękuję. Czy ma pan/pani jakiś bagaż? Tak, mam jedną walizkę. Pańska bramka to numer dwanaście. Bardzo dziękuję.",
+        audio: "audio/M6L1_Dialogue.mp3"
+      }
+    };
+
+    const modules = [
+      {
+        code: "M1",
+        title: "Moduł 1: Podstawy",
+        subtitle: "Pierwszy etap kursu. Zacznij od lekcji 1 i przechodź dalej po kolei.",
+        standardLessons: true
+      },
+      {
+        code: "M2",
+        title: "Moduł 2: Życie codzienne",
+        subtitle: "Drugi etap kursu. Ćwicz codzienne słownictwo, dialogi i powtórki.",
+        standardLessons: true
+      },
+      {
+        code: "M3",
+        title: "Moduł 3: Komunikacja praktyczna",
+        subtitle: "Trzeci etap kursu. Rozwijaj rozumienie pytań, odpowiedzi i prostych rozmów.",
+        standardLessons: true
+      },
+      {
+        code: "M4",
+        title: "Moduł 4: Sytuacje praktyczne",
+        subtitle: "Czwarty etap kursu. Utrwalaj dialogi i reakcje w różnych sytuacjach.",
+        standardLessons: true
+      },
+      {
+        code: "M5",
+        title: "Moduł 5: Utrwalenie i powtórka",
+        subtitle: "Piąty etap kursu. Powtarzaj, utrwalaj i sprawdzaj swoje reakcje.",
+        standardLessons: true
+      },
+      {
+        code: "M6",
+        title: "Moduł 6: Angielski w podróży",
+        subtitle: "Nowy moduł. Lekcja 1 zawiera słownictwo, zwroty, dialog, audio i ćwiczenie pisania.",
+        standardLessons: false
+      }
+    ];
+
+    function unlockCourse() {
+      if (input.value.trim() === PASSWORD) {
+        course.classList.add("unlocked");
+        message.style.color = "var(--green)";
+        message.textContent = "Dostęp odblokowany. Możesz rozpocząć naukę.";
+        localStorage.setItem("speakEnglishPremiumAccess", "yes");
+        setTimeout(() => course.scrollIntoView({ behavior: "smooth" }), 250);
+      } else {
+        course.classList.remove("unlocked");
+        message.style.color = "var(--red)";
+        message.textContent = "Nieprawidłowe hasło. Sprawdź hasło z pliku PDF.";
+      }
+    }
+
+    function lockCourse() {
+      course.classList.remove("unlocked");
+      localStorage.removeItem("speakEnglishPremiumAccess");
+      input.value = "";
+      message.style.color = "var(--muted)";
+      message.textContent = "Kurs został zablokowany.";
+      document.getElementById("login").scrollIntoView({ behavior: "smooth" });
+    }
+
+    input.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") unlockCourse();
+    });
+
+    if (localStorage.getItem("speakEnglishPremiumAccess") === "yes") {
+      course.classList.add("unlocked");
+      message.style.color = "var(--green)";
+      message.textContent = "Dostęp jest już odblokowany na tym urządzeniu.";
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function audioCard(title, code, src) {
+      return `
+        <div class="audio-card">
+          <div class="audio-top">
+            <h4>${title}</h4>
+            <span>${code}</span>
+          </div>
+          <audio controls preload="metadata">
+            <source src="${src}" type="audio/mpeg">
+            Twoja przeglądarka nie obsługuje odtwarzacza audio.
+          </audio>
+        </div>
+      `;
+    }
+
+    function standardLesson(moduleCode, lessonNumber) {
+      const code = moduleCode + "L" + lessonNumber;
+
+      return `
+        <details class="lesson">
+          <summary>
+            <div class="lesson-title">
+              <strong>Lekcja ${lessonNumber}</strong>
+              <span>${code} · słuchaj nagrań po kolei.</span>
+            </div>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="audio-list">
+            ${audioCard("Słownictwo", code, "audio/" + code + "_Vocabulary_1.mp3")}
+            ${audioCard("Kluczowe zwroty", code, "audio/" + code + "_KeyPhrases_1.mp3")}
+            ${audioCard("Dialog", code, "audio/" + code + "_Dialogue_1.mp3")}
+            ${audioCard("Pytania", code, "audio/" + code + "_Questions_1.mp3")}
+            ${audioCard("Powtórka", code, "audio/" + code + "_Repeat_1.mp3")}
+          </div>
+        </details>
+      `;
+    }
+
+    function readingCard(moduleCode) {
+      const task = writingTasks[moduleCode];
+
+      if (!task) return "";
+
+      return `
         <div class="reading-card">
-          <h3>📘 Czytanka modułowa</h3>
+          <h3>📘 ${task.title}</h3>
+
           <div class="reading-audio">
-            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
+            <h4>🎧 Posłuchaj tekstu po angielsku</h4>
             <audio controls preload="metadata">
-              <source src="audio/M1_Reading.mp3.mp3" type="audio/mpeg">
+              <source src="${task.audio}" type="audio/mpeg">
               Twoja przeglądarka nie obsługuje odtwarzacza audio.
             </audio>
           </div>
+
           <div class="reading-grid">
             <div>
               <h4>English text</h4>
-              <p>My name is Anna. I am from Poland. I am learning English because I want to speak with people from other countries. Every day I repeat simple words and short sentences. I say hello, I introduce myself, and I ask simple questions. English is new for me, but I learn step by step.</p>
+              <p>${escapeHtml(task.english)}</p>
             </div>
             <div>
               <h4>Tłumaczenie na polski</h4>
-              <p>Mam na imię Anna. Jestem z Polski. Uczę się angielskiego, ponieważ chcę rozmawiać z ludźmi z innych krajów. Każdego dnia powtarzam proste słowa i krótkie zdania. Mówię „cześć”, przedstawiam się i zadaję proste pytania. Angielski jest dla mnie nowy, ale uczę się krok po kroku.</p>
+              <p>${escapeHtml(task.polish)}</p>
             </div>
           </div>
-          <div class="writing-task" data-answer="My name is Anna. I am from Poland. I am learning English because I want to speak with people from other countries. Every day I repeat simple words and short sentences. I say hello, I introduce myself, and I ask simple questions. English is new for me, but I learn step by step." data-module="M1">
+
+          <div class="writing-task" data-answer="${escapeHtml(task.english)}" data-module="${moduleCode}">
             <h4>✍️ Ćwiczenie pisania</h4>
-            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
-            <textarea id="M1_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
+            <p>Posłuchaj nagrania, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
+
+            <textarea id="${moduleCode}_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
+
             <div class="writing-actions">
-              <button class="btn" type="button" onclick="checkWriting('M1')">✅ Sprawdź odpowiedź</button>
-              <button class="btn secondary" type="button" onclick="clearWriting('M1')">🧹 Wyczyść</button>
+              <button class="btn" type="button" onclick="checkWriting('${moduleCode}')">✅ Sprawdź odpowiedź</button>
+              <button class="btn secondary" type="button" onclick="clearWriting('${moduleCode}')">🧹 Wyczyść</button>
             </div>
-            <div id="M1_result" class="writing-result"></div>
+
+            <div id="${moduleCode}_result" class="writing-result"></div>
           </div>
         </div>
+      `;
+    }
 
-        <div class="lessons">
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 1</strong><span>M1L1 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M1L1</span></div><audio controls preload="metadata"><source src="audio/M1L1_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M1L1</span></div><audio controls preload="metadata"><source src="audio/M1L1_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M1L1</span></div><audio controls preload="metadata"><source src="audio/M1L1_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M1L1</span></div><audio controls preload="metadata"><source src="audio/M1L1_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M1L1</span></div><audio controls preload="metadata"><source src="audio/M1L1_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 2</strong><span>M1L2 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M1L2</span></div><audio controls preload="metadata"><source src="audio/M1L2_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M1L2</span></div><audio controls preload="metadata"><source src="audio/M1L2_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M1L2</span></div><audio controls preload="metadata"><source src="audio/M1L2_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M1L2</span></div><audio controls preload="metadata"><source src="audio/M1L2_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M1L2</span></div><audio controls preload="metadata"><source src="audio/M1L2_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 3</strong><span>M1L3 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M1L3</span></div><audio controls preload="metadata"><source src="audio/M1L3_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M1L3</span></div><audio controls preload="metadata"><source src="audio/M1L3_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M1L3</span></div><audio controls preload="metadata"><source src="audio/M1L3_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M1L3</span></div><audio controls preload="metadata"><source src="audio/M1L3_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M1L3</span></div><audio controls preload="metadata"><source src="audio/M1L3_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 4</strong><span>M1L4 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M1L4</span></div><audio controls preload="metadata"><source src="audio/M1L4_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M1L4</span></div><audio controls preload="metadata"><source src="audio/M1L4_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M1L4</span></div><audio controls preload="metadata"><source src="audio/M1L4_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M1L4</span></div><audio controls preload="metadata"><source src="audio/M1L4_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M1L4</span></div><audio controls preload="metadata"><source src="audio/M1L4_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 5</strong><span>M1L5 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M1L5</span></div><audio controls preload="metadata"><source src="audio/M1L5_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M1L5</span></div><audio controls preload="metadata"><source src="audio/M1L5_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M1L5</span></div><audio controls preload="metadata"><source src="audio/M1L5_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M1L5</span></div><audio controls preload="metadata"><source src="audio/M1L5_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M1L5</span></div><audio controls preload="metadata"><source src="audio/M1L5_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 6</strong><span>M1L6 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M1L6</span></div><audio controls preload="metadata"><source src="audio/M1L6_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M1L6</span></div><audio controls preload="metadata"><source src="audio/M1L6_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M1L6</span></div><audio controls preload="metadata"><source src="audio/M1L6_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M1L6</span></div><audio controls preload="metadata"><source src="audio/M1L6_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M1L6</span></div><audio controls preload="metadata"><source src="audio/M1L6_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-        </div>
-      </details>
-
-      <details class="module">
-        <summary>
-          <div class="module-title">
-            <strong>Moduł 2: Życie codzienne</strong>
-            <span>Drugi etap kursu. Ćwicz codzienne słownictwo, dialogi i powtórki.</span>
-          </div>
-          <span class="arrow">›</span>
-        </summary>
-
-        <div class="reading-card">
-          <h3>📘 Czytanka modułowa</h3>
-          <div class="reading-audio">
-            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
-            <audio controls preload="metadata">
-              <source src="audio/M2_Reading.mp3.mp3" type="audio/mpeg">
-              Twoja przeglądarka nie obsługuje odtwarzacza audio.
-            </audio>
-          </div>
-          <div class="reading-grid">
-            <div>
-              <h4>English text</h4>
-              <p>Every morning I wake up early. I make breakfast, drink tea, and plan my day. I go shopping when I need food or water. Sometimes I take a bus or walk to the city. I like learning useful English words for everyday life because I can use them at home, in a shop, and on the street.</p>
-            </div>
-            <div>
-              <h4>Tłumaczenie na polski</h4>
-              <p>Każdego ranka wstaję wcześnie. Robię śniadanie, piję herbatę i planuję dzień. Idę na zakupy, kiedy potrzebuję jedzenia albo wody. Czasami jadę autobusem albo idę pieszo do miasta. Lubię uczyć się przydatnych angielskich słów do codziennego życia, ponieważ mogę ich używać w domu, w sklepie i na ulicy.</p>
-            </div>
-          </div>
-          <div class="writing-task" data-answer="Every morning I wake up early. I make breakfast, drink tea, and plan my day. I go shopping when I need food or water. Sometimes I take a bus or walk to the city. I like learning useful English words for everyday life because I can use them at home, in a shop, and on the street." data-module="M2">
-            <h4>✍️ Ćwiczenie pisania</h4>
-            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
-            <textarea id="M2_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
-            <div class="writing-actions">
-              <button class="btn" type="button" onclick="checkWriting('M2')">✅ Sprawdź odpowiedź</button>
-              <button class="btn secondary" type="button" onclick="clearWriting('M2')">🧹 Wyczyść</button>
-            </div>
-            <div id="M2_result" class="writing-result"></div>
-          </div>
-        </div>
-
-        <div class="lessons">
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 1</strong><span>M2L1 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M2L1</span></div><audio controls preload="metadata"><source src="audio/M2L1_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M2L1</span></div><audio controls preload="metadata"><source src="audio/M2L1_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M2L1</span></div><audio controls preload="metadata"><source src="audio/M2L1_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M2L1</span></div><audio controls preload="metadata"><source src="audio/M2L1_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M2L1</span></div><audio controls preload="metadata"><source src="audio/M2L1_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Wprowadzenie do testu</h4><span>M2L1</span></div><audio controls preload="metadata"><source src="audio/M2L1_Test_Intro.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 2</strong><span>M2L2 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M2L2</span></div><audio controls preload="metadata"><source src="audio/M2L2_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M2L2</span></div><audio controls preload="metadata"><source src="audio/M2L2_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M2L2</span></div><audio controls preload="metadata"><source src="audio/M2L2_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M2L2</span></div><audio controls preload="metadata"><source src="audio/M2L2_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M2L2</span></div><audio controls preload="metadata"><source src="audio/M2L2_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 3</strong><span>M2L3 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M2L3</span></div><audio controls preload="metadata"><source src="audio/M2L3_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M2L3</span></div><audio controls preload="metadata"><source src="audio/M2L3_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M2L3</span></div><audio controls preload="metadata"><source src="audio/M2L3_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M2L3</span></div><audio controls preload="metadata"><source src="audio/M2L3_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M2L3</span></div><audio controls preload="metadata"><source src="audio/M2L3_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 4</strong><span>M2L4 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M2L4</span></div><audio controls preload="metadata"><source src="audio/M2L4_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M2L4</span></div><audio controls preload="metadata"><source src="audio/M2L4_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M2L4</span></div><audio controls preload="metadata"><source src="audio/M2L4_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M2L4</span></div><audio controls preload="metadata"><source src="audio/M2L4_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M2L4</span></div><audio controls preload="metadata"><source src="audio/M2L4_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 5</strong><span>M2L5 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Kluczowe zwroty</h4><span>M2L5</span></div><audio controls preload="metadata"><source src="audio/M2L5_KeyPhrases_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M2L5</span></div><audio controls preload="metadata"><source src="audio/M2L5_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M2L5</span></div><audio controls preload="metadata"><source src="audio/M2L5_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-
-          <details class="lesson">
-            <summary><div class="lesson-title"><strong>Lekcja 6</strong><span>M2L6 · słuchaj nagrań po kolei.</span></div><span class="arrow">›</span></summary>
-            <div class="audio-list">
-              <div class="audio-card"><div class="audio-top"><h4>Słownictwo</h4><span>M2L6</span></div><audio controls preload="metadata"><source src="audio/M2L6_Vocabulary_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Dialog</h4><span>M2L6</span></div><audio controls preload="metadata"><source src="audio/M2L6_Dialogue_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Pytania</h4><span>M2L6</span></div><audio controls preload="metadata"><source src="audio/M2L6_Questions_1.mp3" type="audio/mpeg"></audio></div>
-              <div class="audio-card"><div class="audio-top"><h4>Powtórka</h4><span>M2L6</span></div><audio controls preload="metadata"><source src="audio/M2L6_Repeat_1.mp3" type="audio/mpeg"></audio></div>
-            </div>
-          </details>
-        </div>
-      </details>
-
-      <details class="module">
-        <summary>
-          <div class="module-title">
-            <strong>Moduł 3: Komunikacja praktyczna</strong>
-            <span>Trzeci etap kursu. Rozwijaj rozumienie pytań, odpowiedzi i prostych rozmów.</span>
-          </div>
-          <span class="arrow">›</span>
-        </summary>
-
-        <div class="reading-card">
-          <h3>📘 Czytanka modułowa</h3>
-          <div class="reading-audio">
-            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
-            <audio controls preload="metadata">
-              <source src="audio/M3_Reading.mp3.mp3" type="audio/mpeg">
-              Twoja przeglądarka nie obsługuje odtwarzacza audio.
-            </audio>
-          </div>
-          <div class="reading-grid">
-            <div>
-              <h4>English text</h4>
-              <p>At work I try to speak clearly and politely. I write short messages, answer simple questions, and ask for help when I need it. I can say when I am available and I can make an appointment. I do not need perfect English. I need simple English that helps me communicate.</p>
-            </div>
-            <div>
-              <h4>Tłumaczenie na polski</h4>
-              <p>W pracy staram się mówić jasno i uprzejmie. Piszę krótkie wiadomości, odpowiadam na proste pytania i proszę o pomoc, kiedy jej potrzebuję. Potrafię powiedzieć, kiedy jestem dostępny, i umówić termin. Nie potrzebuję idealnego angielskiego. Potrzebuję prostego angielskiego, który pomaga mi się komunikować.</p>
-            </div>
-          </div>
-          <div class="writing-task" data-answer="At work I try to speak clearly and politely. I write short messages, answer simple questions, and ask for help when I need it. I can say when I am available and I can make an appointment. I do not need perfect English. I need simple English that helps me communicate." data-module="M3">
-            <h4>✍️ Ćwiczenie pisania</h4>
-            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
-            <textarea id="M3_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
-            <div class="writing-actions">
-              <button class="btn" type="button" onclick="checkWriting('M3')">✅ Sprawdź odpowiedź</button>
-              <button class="btn secondary" type="button" onclick="clearWriting('M3')">🧹 Wyczyść</button>
-            </div>
-            <div id="M3_result" class="writing-result"></div>
-          </div>
-        </div>
-
-        <div class="lessons">
-          <script>
-            document.addEventListener("DOMContentLoaded", function() {
-              createStandardModuleLessons("module3Lessons", "M3");
-            });
-          </script>
-          <div id="module3Lessons"></div>
-        </div>
-      </details>
-
-      <details class="module">
-        <summary>
-          <div class="module-title">
-            <strong>Moduł 4: Sytuacje praktyczne</strong>
-            <span>Czwarty etap kursu. Utrwalaj dialogi i reakcje w różnych sytuacjach.</span>
-          </div>
-          <span class="arrow">›</span>
-        </summary>
-
-        <div class="reading-card">
-          <h3>📘 Czytanka modułowa</h3>
-          <div class="reading-audio">
-            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
-            <audio controls preload="metadata">
-              <source src="audio/M4_Reading.mp3.mp3" type="audio/mpeg">
-              Twoja przeglądarka nie obsługuje odtwarzacza audio.
-            </audio>
-          </div>
-          <div class="reading-grid">
-            <div>
-              <h4>English text</h4>
-              <p>When I travel, I use English in many situations. I can ask for a room in a hotel, order food in a restaurant, and ask for directions. At the airport I listen carefully and look for important information. If I have a problem, I stay calm and use simple sentences.</p>
-            </div>
-            <div>
-              <h4>Tłumaczenie na polski</h4>
-              <p>Kiedy podróżuję, używam angielskiego w wielu sytuacjach. Potrafię zapytać o pokój w hotelu, zamówić jedzenie w restauracji i zapytać o drogę. Na lotnisku słucham uważnie i szukam ważnych informacji. Jeśli mam problem, zachowuję spokój i używam prostych zdań.</p>
-            </div>
-          </div>
-          <div class="writing-task" data-answer="When I travel, I use English in many situations. I can ask for a room in a hotel, order food in a restaurant, and ask for directions. At the airport I listen carefully and look for important information. If I have a problem, I stay calm and use simple sentences." data-module="M4">
-            <h4>✍️ Ćwiczenie pisania</h4>
-            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
-            <textarea id="M4_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
-            <div class="writing-actions">
-              <button class="btn" type="button" onclick="checkWriting('M4')">✅ Sprawdź odpowiedź</button>
-              <button class="btn secondary" type="button" onclick="clearWriting('M4')">🧹 Wyczyść</button>
-            </div>
-            <div id="M4_result" class="writing-result"></div>
-          </div>
-        </div>
-
-        <div class="lessons">
-          <div id="module4Lessons"></div>
-        </div>
-      </details>
-
-      <details class="module">
-        <summary>
-          <div class="module-title">
-            <strong>Moduł 5: Utrwalenie i powtórka</strong>
-            <span>Piąty etap kursu. Powtarzaj, utrwalaj i sprawdzaj swoje reakcje.</span>
-          </div>
-          <span class="arrow">›</span>
-        </summary>
-
-        <div class="reading-card">
-          <h3>📘 Czytanka modułowa</h3>
-          <div class="reading-audio">
-            <h4>🎧 Posłuchaj czytanki po angielsku</h4>
-            <audio controls preload="metadata">
-              <source src="audio/M5_Reading.mp3.mp3" type="audio/mpeg">
-              Twoja przeglądarka nie obsługuje odtwarzacza audio.
-            </audio>
-          </div>
-          <div class="reading-grid">
-            <div>
-              <h4>English text</h4>
-              <p>Now I can use many simple English sentences. I can talk about myself, my day, my plans, and basic situations. I still make mistakes, but I understand more and I speak with more confidence. The most important thing is regular practice. Small steps every day bring real progress.</p>
-            </div>
-            <div>
-              <h4>Tłumaczenie na polski</h4>
-              <p>Teraz potrafię używać wielu prostych zdań po angielsku. Potrafię mówić o sobie, swoim dniu, swoich planach i podstawowych sytuacjach. Nadal popełniam błędy, ale rozumiem więcej i mówię z większą pewnością. Najważniejsza jest regularna praktyka. Małe kroki każdego dnia dają prawdziwy postęp.</p>
-            </div>
-          </div>
-          <div class="writing-task" data-answer="Now I can use many simple English sentences. I can talk about myself, my day, my plans, and basic situations. I still make mistakes, but I understand more and I speak with more confidence. The most important thing is regular practice. Small steps every day bring real progress." data-module="M5">
-            <h4>✍️ Ćwiczenie pisania</h4>
-            <p>Posłuchaj czytanki, a potem przepisz tekst po angielsku w polu poniżej. System sprawdzi zgodność z oryginałem i pokaże wynik.</p>
-            <textarea id="M5_writing" placeholder="Wpisz tutaj tekst po angielsku..."></textarea>
-            <div class="writing-actions">
-              <button class="btn" type="button" onclick="checkWriting('M5')">✅ Sprawdź odpowiedź</button>
-              <button class="btn secondary" type="button" onclick="clearWriting('M5')">🧹 Wyczyść</button>
-            </div>
-            <div id="M5_result" class="writing-result"></div>
-          </div>
-        </div>
-
-        <div class="lessons">
-          <div id="module5Lessons"></div>
-        </div>
-      </details>
-
-      <details class="module" open>
-        <summary>
-          <div class="module-title">
-            <strong>Moduł 6: Angielski w podróży</strong>
-            <span>Nowy moduł. Lekcja 1 została dodana do kodu razem z trzema plikami audio.</span>
-          </div>
-          <span class="arrow">›</span>
-        </summary>
-
+    function module6Lesson1() {
+      return `
         <div class="reading-card">
           <h3>🌍 Lekcja modułu 6</h3>
-          <p style="color:var(--muted);line-height:1.7;margin:0;">Ten moduł rozwija praktyczny angielski potrzebny w podróży: lotnisko, hotel, restauracja, pytanie o drogę, zakupy i sytuacje awaryjne.</p>
+          <p style="color:var(--muted);line-height:1.7;margin:0;">
+            Ten moduł rozwija praktyczny angielski potrzebny w podróży: lotnisko, hotel, restauracja, pytanie o drogę, zakupy i sytuacje awaryjne.
+          </p>
         </div>
 
         <div class="lessons">
@@ -556,7 +952,7 @@
             <summary>
               <div class="lesson-title">
                 <strong>Lekcja 1: Na lotnisku</strong>
-                <span>M6L1 · odprawa, paszport, bagaż, bramka i podstawowy dialog.</span>
+                <span>M6L1 · odprawa, paszport, bagaż, bramka, dialog i ćwiczenie pisania.</span>
               </div>
               <span class="arrow">›</span>
             </summary>
@@ -609,138 +1005,55 @@
             </div>
 
             <div class="audio-list">
-              <div class="audio-card">
-                <div class="audio-top">
-                  <h4>Słownictwo</h4>
-                  <span>M6L1</span>
-                </div>
-                <audio controls preload="metadata">
-                  <source src="audio/M6L1_Vocabulary.mp3" type="audio/mpeg">
-                  Twoja przeglądarka nie obsługuje odtwarzacza audio.
-                </audio>
-              </div>
-
-              <div class="audio-card">
-                <div class="audio-top">
-                  <h4>Zwroty</h4>
-                  <span>M6L1</span>
-                </div>
-                <audio controls preload="metadata">
-                  <source src="audio/M6L1_Phrases.mp3" type="audio/mpeg">
-                  Twoja przeglądarka nie obsługuje odtwarzacza audio.
-                </audio>
-              </div>
-
-              <div class="audio-card">
-                <div class="audio-top">
-                  <h4>Dialog</h4>
-                  <span>M6L1</span>
-                </div>
-                <audio controls preload="metadata">
-                  <source src="audio/M6L1_Dialogue.mp3" type="audio/mpeg">
-                  Twoja przeglądarka nie obsługuje odtwarzacza audio.
-                </audio>
-              </div>
+              ${audioCard("Słownictwo", "M6L1", "audio/M6L1_Vocabulary.mp3")}
+              ${audioCard("Zwroty", "M6L1", "audio/M6L1_Phrases.mp3")}
+              ${audioCard("Dialog", "M6L1", "audio/M6L1_Dialogue.mp3")}
             </div>
+
+            ${readingCard("M6L1")}
           </details>
         </div>
-      </details>
-
-      <div class="note">Wskazówka: jeśli nagranie nie odtwarza się od razu, sprawdź, czy plik MP3 znajduje się w folderze <strong>audio</strong> i czy nazwa pliku jest dokładnie taka sama jak w kodzie.</div>
-    </main>
-
-    <footer>Speak English Premium z AI<br>Kurs online dla początkujących.</footer>
-  </div>
-
-  <script>
-    const PASSWORD = "SpeakPremium45";
-    const input = document.getElementById("passwordInput");
-    const message = document.getElementById("loginMessage");
-    const course = document.getElementById("course");
-
-    function unlockCourse() {
-      if (input.value.trim() === PASSWORD) {
-        course.classList.add("unlocked");
-        message.style.color = "var(--green)";
-        message.textContent = "Dostęp odblokowany. Możesz rozpocząć naukę.";
-        localStorage.setItem("speakEnglishPremiumAccess", "yes");
-        setTimeout(() => course.scrollIntoView({ behavior: "smooth" }), 250);
-      } else {
-        course.classList.remove("unlocked");
-        message.style.color = "var(--red)";
-        message.textContent = "Nieprawidłowe hasło. Sprawdź hasło z pliku PDF.";
-      }
-    }
-
-    function lockCourse() {
-      course.classList.remove("unlocked");
-      localStorage.removeItem("speakEnglishPremiumAccess");
-      input.value = "";
-      message.style.color = "var(--muted)";
-      message.textContent = "Kurs został zablokowany.";
-      document.getElementById("login").scrollIntoView({ behavior: "smooth" });
-    }
-
-    input.addEventListener("keydown", function(event) {
-      if (event.key === "Enter") unlockCourse();
-    });
-
-    if (localStorage.getItem("speakEnglishPremiumAccess") === "yes") {
-      course.classList.add("unlocked");
-      message.style.color = "var(--green)";
-      message.textContent = "Dostęp jest już odblokowany na tym urządzeniu.";
-    }
-
-    function audioCard(title, code, src) {
-      return `
-        <div class="audio-card">
-          <div class="audio-top">
-            <h4>${title}</h4>
-            <span>${code}</span>
-          </div>
-          <audio controls preload="metadata">
-            <source src="${src}" type="audio/mpeg">
-            Twoja przeglądarka nie obsługuje odtwarzacza audio.
-          </audio>
-        </div>
       `;
     }
 
-    function standardLesson(moduleCode, lessonNumber) {
-      const code = moduleCode + "L" + lessonNumber;
-      return `
-        <details class="lesson">
-          <summary>
-            <div class="lesson-title">
-              <strong>Lekcja ${lessonNumber}</strong>
-              <span>${code} · słuchaj nagrań po kolei.</span>
-            </div>
-            <span class="arrow">›</span>
-          </summary>
-          <div class="audio-list">
-            ${audioCard("Słownictwo", code, "audio/" + code + "_Vocabulary_1.mp3")}
-            ${audioCard("Kluczowe zwroty", code, "audio/" + code + "_KeyPhrases_1.mp3")}
-            ${audioCard("Dialog", code, "audio/" + code + "_Dialogue_1.mp3")}
-            ${audioCard("Pytania", code, "audio/" + code + "_Questions_1.mp3")}
-            ${audioCard("Powtórka", code, "audio/" + code + "_Repeat_1.mp3")}
-          </div>
-        </details>
-      `;
-    }
-
-    function createStandardModuleLessons(containerId, moduleCode) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
+    function renderModules() {
       let html = "";
-      for (let i = 1; i <= 6; i++) {
-        html += standardLesson(moduleCode, i);
-      }
-      container.innerHTML = html;
+
+      modules.forEach(function(module) {
+        let body = "";
+
+        if (module.code !== "M6") {
+          body += readingCard(module.code);
+          body += `<div class="lessons">`;
+
+          for (let i = 1; i <= 6; i++) {
+            body += standardLesson(module.code, i);
+          }
+
+          body += `</div>`;
+        } else {
+          body += module6Lesson1();
+        }
+
+        html += `
+          <details class="module" ${module.code === "M6" ? "open" : ""}>
+            <summary>
+              <div class="module-title">
+                <strong>${module.title}</strong>
+                <span>${module.subtitle}</span>
+              </div>
+              <span class="arrow">›</span>
+            </summary>
+
+            ${body}
+          </details>
+        `;
+      });
+
+      modulesContainer.innerHTML = html;
     }
 
-    createStandardModuleLessons("module3Lessons", "M3");
-    createStandardModuleLessons("module4Lessons", "M4");
-    createStandardModuleLessons("module5Lessons", "M5");
+    renderModules();
 
     function normalizeText(text) {
       return text
@@ -799,7 +1112,7 @@
       } else if (score >= 50) {
         className = "medium";
         title = "Jest postęp, ale warto poprawić tekst.";
-        advice = "Porównaj swoją odpowiedź z czytanką i spróbuj ponownie.";
+        advice = "Porównaj swoją odpowiedź z tekstem i spróbuj ponownie.";
       }
 
       result.className = "writing-result " + className;
@@ -815,19 +1128,25 @@
     function clearWriting(moduleId) {
       const textarea = document.getElementById(moduleId + "_writing");
       const result = document.getElementById(moduleId + "_result");
+
       if (textarea) textarea.value = "";
+
       if (result) {
         result.className = "writing-result";
         result.innerHTML = "";
       }
+
       localStorage.removeItem("writing_" + moduleId);
     }
 
     window.addEventListener("load", function() {
-      ["M1", "M2", "M3", "M4", "M5"].forEach(function(moduleId) {
+      ["M1", "M2", "M3", "M4", "M5", "M6L1"].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
-        if (saved && textarea) textarea.value = saved;
+
+        if (saved && textarea) {
+          textarea.value = saved;
+        }
       });
     });
   </script>
