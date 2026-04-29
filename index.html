@@ -673,7 +673,7 @@
           <div class="cover-text">
             <div class="small">Premium English Course</div>
             <h2>Angielski od podstaw w prostych lekcjach</h2>
-            <p>6 modułów, 31 lekcji, audio, czytanki i sprawdzanie pisania.</p>
+            <p>6 modułów, 32 lekcje, audio, czytanki i sprawdzanie pisania.</p>
           </div>
         </div>
       </section>
@@ -681,9 +681,9 @@
 
     <section id="opis" class="stats">
       <div class="stat"><strong>6</strong><span>modułów kursu</span></div>
-      <div class="stat"><strong>31</strong><span>lekcji krok po kroku</span></div>
-      <div class="stat"><strong>150+</strong><span>plików audio lekcji</span></div>
-      <div class="stat"><strong>6</strong><span>ćwiczeń pisania</span></div>
+      <div class="stat"><strong>32</strong><span>lekcje krok po kroku</span></div>
+      <div class="stat"><strong>153+</strong><span>pliki audio lekcji</span></div>
+      <div class="stat"><strong>7</strong><span>ćwiczeń pisania</span></div>
     </section>
 
     <section id="login" class="login-box">
@@ -770,6 +770,12 @@
         english: "Good morning. Can I see your passport, please? Good morning. Here is my passport. Thank you. Do you have any luggage? Yes, I have one suitcase. Your gate is number twelve. Thank you very much.",
         polish: "Dzień dobry. Czy mogę zobaczyć pana/pani paszport? Dzień dobry. Oto mój paszport. Dziękuję. Czy ma pan/pani jakiś bagaż? Tak, mam jedną walizkę. Pańska bramka to numer dwanaście. Bardzo dziękuję.",
         audio: "audio/M6L1_Dialogue.mp3"
+      },
+      M6L2: {
+        title: "Ćwiczenie pisania — dialog w hotelu",
+        english: "Good evening. I have a reservation. Good evening. What is your name? My name is Anna Kowalska. Yes, I see your reservation. Your room is number twenty-one. Is breakfast included? Yes, breakfast is from seven to ten.",
+        polish: "Dobry wieczór. Mam rezerwację. Dobry wieczór. Jak się pani nazywa? Nazywam się Anna Kowalska. Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden. Czy śniadanie jest wliczone? Tak, śniadanie jest od siódmej do dziesiątej.",
+        audio: "audio/M6L2_Dialogue.mp3"
       }
     };
 
@@ -807,7 +813,7 @@
       {
         code: "M6",
         title: "Moduł 6: Angielski w podróży",
-        subtitle: "Nowy moduł. Lekcja 1 zawiera słownictwo, zwroty, dialog, audio i ćwiczenie pisania.",
+        subtitle: "Nowy moduł. Zawiera praktyczny angielski w podróży: lotnisko, hotel, restauracja, droga, sklep i problemy.",
         standardLessons: false
       }
     ];
@@ -940,78 +946,154 @@
 
     function module6Lesson1() {
       return `
+        <details class="lesson">
+          <summary>
+            <div class="lesson-title">
+              <strong>Lekcja 1: Na lotnisku</strong>
+              <span>M6L1 · odprawa, paszport, bagaż, bramka, dialog i ćwiczenie pisania.</span>
+            </div>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="lesson-content">
+            <h4>Słownictwo</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>airport</td><td>lotnisko</td></tr>
+              <tr><td>ticket</td><td>bilet</td></tr>
+              <tr><td>passport</td><td>paszport</td></tr>
+              <tr><td>luggage</td><td>bagaż</td></tr>
+              <tr><td>gate</td><td>bramka</td></tr>
+              <tr><td>flight</td><td>lot</td></tr>
+              <tr><td>boarding pass</td><td>karta pokładowa</td></tr>
+              <tr><td>seat</td><td>miejsce</td></tr>
+              <tr><td>delay</td><td>opóźnienie</td></tr>
+              <tr><td>plane</td><td>samolot</td></tr>
+            </table>
+
+            <h4>Zwroty</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>Where is the gate?</td><td>Gdzie jest bramka?</td></tr>
+              <tr><td>I have a ticket.</td><td>Mam bilet.</td></tr>
+              <tr><td>Here is my passport.</td><td>Oto mój paszport.</td></tr>
+              <tr><td>My flight is delayed.</td><td>Mój lot jest opóźniony.</td></tr>
+              <tr><td>Where can I check in?</td><td>Gdzie mogę się odprawić?</td></tr>
+            </table>
+
+            <h4>Dialog</h4>
+            <p>
+              <strong>A:</strong> Good morning. Can I see your passport, please?<br>
+              <strong>B:</strong> Good morning. Here is my passport.<br>
+              <strong>A:</strong> Thank you. Do you have any luggage?<br>
+              <strong>B:</strong> Yes, I have one suitcase.<br>
+              <strong>A:</strong> Your gate is number twelve.<br>
+              <strong>B:</strong> Thank you very much.
+            </p>
+
+            <h4>Tłumaczenie dialogu</h4>
+            <p>
+              <strong>A:</strong> Dzień dobry. Czy mogę zobaczyć pana/pani paszport?<br>
+              <strong>B:</strong> Dzień dobry. Oto mój paszport.<br>
+              <strong>A:</strong> Dziękuję. Czy ma pan/pani jakiś bagaż?<br>
+              <strong>B:</strong> Tak, mam jedną walizkę.<br>
+              <strong>A:</strong> Pańska bramka to numer dwanaście.<br>
+              <strong>B:</strong> Bardzo dziękuję.
+            </p>
+          </div>
+
+          <div class="audio-list">
+            ${audioCard("Słownictwo", "M6L1", "audio/M6L1_Vocabulary.mp3")}
+            ${audioCard("Zwroty", "M6L1", "audio/M6L1_Phrases.mp3")}
+            ${audioCard("Dialog", "M6L1", "audio/M6L1_Dialogue.mp3")}
+          </div>
+
+          ${readingCard("M6L1")}
+        </details>
+      `;
+    }
+
+    function module6Lesson2() {
+      return `
+        <details class="lesson" open>
+          <summary>
+            <div class="lesson-title">
+              <strong>Lekcja 2: W hotelu</strong>
+              <span>M6L2 · rezerwacja, pokój, śniadanie, klucz i ćwiczenie pisania.</span>
+            </div>
+            <span class="arrow">›</span>
+          </summary>
+
+          <div class="lesson-content">
+            <h4>Słownictwo</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>hotel</td><td>hotel</td></tr>
+              <tr><td>room</td><td>pokój</td></tr>
+              <tr><td>reservation</td><td>rezerwacja</td></tr>
+              <tr><td>key</td><td>klucz</td></tr>
+              <tr><td>reception</td><td>recepcja</td></tr>
+              <tr><td>night</td><td>noc</td></tr>
+              <tr><td>breakfast</td><td>śniadanie</td></tr>
+              <tr><td>bathroom</td><td>łazienka</td></tr>
+              <tr><td>elevator</td><td>winda</td></tr>
+              <tr><td>check-in</td><td>zameldowanie</td></tr>
+            </table>
+
+            <h4>Zwroty</h4>
+            <table>
+              <tr><th>English</th><th>Polski</th></tr>
+              <tr><td>I have a reservation.</td><td>Mam rezerwację.</td></tr>
+              <tr><td>I would like a room.</td><td>Chciałbym/chciałabym pokój.</td></tr>
+              <tr><td>Is breakfast included?</td><td>Czy śniadanie jest wliczone?</td></tr>
+              <tr><td>What time is check-out?</td><td>O której jest wymeldowanie?</td></tr>
+              <tr><td>Can I have the key?</td><td>Czy mogę dostać klucz?</td></tr>
+            </table>
+
+            <h4>Dialog</h4>
+            <p>
+              <strong>A:</strong> Good evening. I have a reservation.<br>
+              <strong>B:</strong> Good evening. What is your name?<br>
+              <strong>A:</strong> My name is Anna Kowalska.<br>
+              <strong>B:</strong> Yes, I see your reservation. Your room is number twenty-one.<br>
+              <strong>A:</strong> Is breakfast included?<br>
+              <strong>B:</strong> Yes, breakfast is from seven to ten.
+            </p>
+
+            <h4>Tłumaczenie dialogu</h4>
+            <p>
+              <strong>A:</strong> Dobry wieczór. Mam rezerwację.<br>
+              <strong>B:</strong> Dobry wieczór. Jak się pani nazywa?<br>
+              <strong>A:</strong> Nazywam się Anna Kowalska.<br>
+              <strong>B:</strong> Tak, widzę pani rezerwację. Pani pokój to numer dwadzieścia jeden.<br>
+              <strong>A:</strong> Czy śniadanie jest wliczone?<br>
+              <strong>B:</strong> Tak, śniadanie jest od siódmej do dziesiątej.
+            </p>
+          </div>
+
+          <div class="audio-list">
+            ${audioCard("Słownictwo", "M6L2", "audio/M6L2_Vocabulary.mp3")}
+            ${audioCard("Zwroty", "M6L2", "audio/M6L2_Phrases.mp3")}
+            ${audioCard("Dialog", "M6L2", "audio/M6L2_Dialogue.mp3")}
+          </div>
+
+          ${readingCard("M6L2")}
+        </details>
+      `;
+    }
+
+    function module6Content() {
+      return `
         <div class="reading-card">
-          <h3>🌍 Lekcja modułu 6</h3>
+          <h3>🌍 Moduł 6: Angielski w podróży</h3>
           <p style="color:var(--muted);line-height:1.7;margin:0;">
             Ten moduł rozwija praktyczny angielski potrzebny w podróży: lotnisko, hotel, restauracja, pytanie o drogę, zakupy i sytuacje awaryjne.
           </p>
         </div>
 
         <div class="lessons">
-          <details class="lesson" open>
-            <summary>
-              <div class="lesson-title">
-                <strong>Lekcja 1: Na lotnisku</strong>
-                <span>M6L1 · odprawa, paszport, bagaż, bramka, dialog i ćwiczenie pisania.</span>
-              </div>
-              <span class="arrow">›</span>
-            </summary>
-
-            <div class="lesson-content">
-              <h4>Słownictwo</h4>
-              <table>
-                <tr><th>English</th><th>Polski</th></tr>
-                <tr><td>airport</td><td>lotnisko</td></tr>
-                <tr><td>ticket</td><td>bilet</td></tr>
-                <tr><td>passport</td><td>paszport</td></tr>
-                <tr><td>luggage</td><td>bagaż</td></tr>
-                <tr><td>gate</td><td>bramka</td></tr>
-                <tr><td>flight</td><td>lot</td></tr>
-                <tr><td>boarding pass</td><td>karta pokładowa</td></tr>
-                <tr><td>seat</td><td>miejsce</td></tr>
-                <tr><td>delay</td><td>opóźnienie</td></tr>
-                <tr><td>plane</td><td>samolot</td></tr>
-              </table>
-
-              <h4>Zwroty</h4>
-              <table>
-                <tr><th>English</th><th>Polski</th></tr>
-                <tr><td>Where is the gate?</td><td>Gdzie jest bramka?</td></tr>
-                <tr><td>I have a ticket.</td><td>Mam bilet.</td></tr>
-                <tr><td>Here is my passport.</td><td>Oto mój paszport.</td></tr>
-                <tr><td>My flight is delayed.</td><td>Mój lot jest opóźniony.</td></tr>
-                <tr><td>Where can I check in?</td><td>Gdzie mogę się odprawić?</td></tr>
-              </table>
-
-              <h4>Dialog</h4>
-              <p>
-                <strong>A:</strong> Good morning. Can I see your passport, please?<br>
-                <strong>B:</strong> Good morning. Here is my passport.<br>
-                <strong>A:</strong> Thank you. Do you have any luggage?<br>
-                <strong>B:</strong> Yes, I have one suitcase.<br>
-                <strong>A:</strong> Your gate is number twelve.<br>
-                <strong>B:</strong> Thank you very much.
-              </p>
-
-              <h4>Tłumaczenie dialogu</h4>
-              <p>
-                <strong>A:</strong> Dzień dobry. Czy mogę zobaczyć pana/pani paszport?<br>
-                <strong>B:</strong> Dzień dobry. Oto mój paszport.<br>
-                <strong>A:</strong> Dziękuję. Czy ma pan/pani jakiś bagaż?<br>
-                <strong>B:</strong> Tak, mam jedną walizkę.<br>
-                <strong>A:</strong> Pańska bramka to numer dwanaście.<br>
-                <strong>B:</strong> Bardzo dziękuję.
-              </p>
-            </div>
-
-            <div class="audio-list">
-              ${audioCard("Słownictwo", "M6L1", "audio/M6L1_Vocabulary.mp3")}
-              ${audioCard("Zwroty", "M6L1", "audio/M6L1_Phrases.mp3")}
-              ${audioCard("Dialog", "M6L1", "audio/M6L1_Dialogue.mp3")}
-            </div>
-
-            ${readingCard("M6L1")}
-          </details>
+          ${module6Lesson1()}
+          ${module6Lesson2()}
         </div>
       `;
     }
@@ -1032,7 +1114,7 @@
 
           body += `</div>`;
         } else {
-          body += module6Lesson1();
+          body += module6Content();
         }
 
         html += `
@@ -1140,7 +1222,7 @@
     }
 
     window.addEventListener("load", function() {
-      ["M1", "M2", "M3", "M4", "M5", "M6L1"].forEach(function(moduleId) {
+      ["M1", "M2", "M3", "M4", "M5", "M6L1", "M6L2"].forEach(function(moduleId) {
         const saved = localStorage.getItem("writing_" + moduleId);
         const textarea = document.getElementById(moduleId + "_writing");
 
